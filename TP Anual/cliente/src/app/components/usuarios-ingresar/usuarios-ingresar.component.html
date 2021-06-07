@@ -1,0 +1,25 @@
+<div class="container p-4">
+  <div class="row">
+    <div class="col-md-4 mx-auto">
+      <div class="card text-center">
+        <div class="card-header">
+          <h3>Iniciar sesion</h3>
+        </div>
+        <div *ngIf="!reintentar" class="card-body">
+          <form (submit)="ingresar()">
+            <div class="form-group">
+              <input type="email" name="mail" [(ngModel)]="user.mail" placeholder="Mail" class="form-control" autofocus>
+              <input type="password" name="password" [(ngModel)]="user.password" placeholder="Contraseña"
+                class="form-control"> <button type="submit" class="btn btn-success btn-block">Enviar</button>
+            </div>
+          </form>
+        </div>
+        <div *ngIf="reintentar" class="card-body">
+          {{mensaje}} <br>
+          <a class="btn btn-info" (click)=restablecerForm()>Reintentar</a>
+          <a class="btn btn-dark" routerLink="../inicio">Cancelar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

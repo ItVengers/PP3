@@ -75,7 +75,7 @@ CREATE TABLE `persona` (
   `legajo` int(5) DEFAULT NULL,
   `rol` varchar(10) NOT NULL,
   `mail` varchar(50) NOT NULL,
-  `contraseña` varchar(32) NOT NULL
+  `contrasenia` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------

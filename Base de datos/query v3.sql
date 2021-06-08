@@ -1,3 +1,4 @@
+
 USE dbhoteles;
 
 #Tabla usuarios externos (Registrarse)

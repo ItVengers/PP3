@@ -15,6 +15,9 @@ class UserRoutes{
         });
         this.router.get('/signin',userController.signin);
 		this.router.post('/signin',userController.login);
+
+		this.router.get('/signup',userController.signup);
+		this.router.post('/signup',userController.addUser);
 	}
 
 }

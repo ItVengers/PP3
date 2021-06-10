@@ -1,34 +1,35 @@
-ESTE ES UN MENSAJE DE PRUEBA PARA JIIIT JAB!!!!!
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
 
-            <li class="nav-item active">
-                <a class="nav-link" routerLink="usuarios/inicio">Inicio<span class="sr-only">(current)</span></a>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Hoteles</a>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Habitaciones</a>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Ubicaciónes</a>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Servicios</a>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Tarifas</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="usuarios/ingresar">Iniciar sesión<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Registrarse</a>
-            </li>
-        </ul>
-    </div>
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="usuarios/inicio">Inicio<span class="sr-only">(current)</span></a>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Hoteles</a>
+      <li class="nav-item">
+        <a class="nav-link" href="usuarios/habitaciones">Habitaciones</a>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Ubicaciones</a>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Servicios</a>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Tarifas</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="usuarios/ingresar">Iniciar sesión<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Registrarse</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="logout" (click)="logout()">Cerrar sesion</a>
+      </li>
+    </ul>
+  </div>
 </nav>
 <!-- <header class="page-head">
     <a href="#" class="logo">

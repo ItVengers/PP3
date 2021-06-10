@@ -11,8 +11,8 @@ import { Router } from '@angular/router'
 export class UsuariosIngresarComponent implements OnInit {
 
   user = { mail: "", password: "" };
-  reintentar: boolean = false;
-  mensaje: string = "";
+  errorMail = 0;
+  errorPassword = 0;
 
   constructor(private usuariosService: UsuariosService, private router: Router) {
 
@@ -27,24 +27,62 @@ export class UsuariosIngresarComponent implements OnInit {
       res => {
         let result: any = res;
         console.log(result);
-        // localStorage.setItem('token',result.token);
-        this.router.navigate(['usuarios/inicio']);
+        localStorage.setItem('token',result.token);
+        this.router.navigate(['usuarios/habitaciones']);
       },
       err => {
         console.log(err.error.message);
-        this.reintentar = true;
-        this.mensaje = err.error.message;
       }
     )
   }
 
-  restablecerForm() {
-    this.reintentar = false;
-    this.user.mail = "";
-    this.user.password = "";
-    this.mensaje = "";
 
+  verificarMail(mail: string) {
+    const patron = /[a-z0-9]{1,14}@[a-z0-9]{1,10}\.[a-z]{2,3}/;
+    if (mail.length == 0)
+      return 1;
+    if (mail.length > 27)
+      return 2;
+    if (!patron.test(mail))
+      return 3;
+    return 0;
+  }
 
+  verificarPassword(password: string) {
+    const patron = /^[A-Z][A-Za-z0-9]{6,20}$/;
+    if (password.length == 0)
+      return 1;
+    if (password.length > 20)
+      return 2;
+    if (!patron.test(password))
+      return 3;
+    return 0;
+  }
+
+  verificarForm(): boolean {
+    this.errorMail = this.verificarMail(this.user.mail);
+    this.errorPassword = this.verificarPassword(this.user.password);
+    if ((this.errorMail + this.errorPassword) > 0) {
+      return false;
+    }
+    return true;
+  }
+
+  limpiarPassword() {
+    if (this.errorPassword > 0) {
+      console.log("Limpiar password");
+      this.user.password = "";
+      this.errorPassword = 0;
+    }
+
+  }
+
+  limpiarMail() {
+    if (this.errorMail > 0) {
+      console.log("Limpiar email");
+      this.user.mail = "";
+      this.errorMail = 0;
+    }
   }
 
 }

@@ -13,6 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const userModel_1 = __importDefault(require("../models/userModel"));
+const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 class UserController {
     signin(req, res) {
         console.log(req.body);
@@ -31,7 +32,8 @@ class UserController {
             }
             if (result.contrasenia == password && result.mail == mail) {
                 //res.send({ "Bienvenido!": result.nombre });
-                res.status(200).json({ message: "Bienvenido " + result.nombre });
+                const token = jsonwebtoken_1.default.sign({ _id: result.id }, "secretKey");
+                res.status(200).json({ message: "Bienvenido " + result.nombre, token: token });
                 return;
             }
             if (result.contrasenia != password || result.mail != mail) {
@@ -40,6 +42,14 @@ class UserController {
                 //res.send("No estas registrado");
             }
             //res.status(403).json({ message: "Usuario y/o contraseña incorrectos" });
+        });
+    }
+    signup(req, res) {
+        console.log(req.body);
+        res.render("partials/signupForm");
+    }
+    addUser(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
         });
     }
 }

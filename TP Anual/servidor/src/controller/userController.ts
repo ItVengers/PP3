@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import userModel from "../models/userModel";
+import jwt from "jsonwebtoken";
 
 class UserController {
 
@@ -19,7 +20,8 @@ class UserController {
 		}
 		if (result.contrasenia == password && result.mail == mail) {
 			//res.send({ "Bienvenido!": result.nombre });
-			res.status(200).json({ message: "Bienvenido " + result.nombre });
+			const token:string=jwt.sign({_id: result.id}, "secretKey");
+			res.status(200).json({ message: "Bienvenido " + result.nombre, token:token });
 			return;
 		}
 		if (result.contrasenia != password || result.mail != mail) {
@@ -29,9 +31,16 @@ class UserController {
 			//res.send("No estas registrado");
 		}
 		//res.status(403).json({ message: "Usuario y/o contraseña incorrectos" });
-
 	}
 
+	public signup(req:Request, res:Response) {
+		console.log(req.body);
+		res.render("partials/signupForm");
+	}
+
+	public async addUser(req:Request, res:Response) {
+
+	}
 
 }
 

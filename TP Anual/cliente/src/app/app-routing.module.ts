@@ -4,6 +4,7 @@ import { UsuariosIngresarComponent } from "./components/usuarios-ingresar/usuari
 import { InicioComponent } from "./components/inicio/inicio.component";
 import { UsuariosHabitacionesComponent } from "./components/usuarios-habitaciones/usuarios-habitaciones.component";
 import { AuthGuard } from './auth.guard';
+import { UsuariosRegistrarComponent } from "./components/usuarios-registrar/usuarios-registrar.component"
 
 const routes: Routes = [
   {
@@ -19,6 +20,10 @@ const routes: Routes = [
     path: 'usuarios/habitaciones',
     component: UsuariosHabitacionesComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'usuarios/registrar',
+    component: UsuariosRegistrarComponent
   },
 ];
 /*

@@ -41,29 +41,29 @@ class UserController {
 	}
 
 	public async addUser(req: Request, res: Response) {
-		// try {
-		// 	const contraseniaHashed = await bcrypt.hash(req.body.contrasenia, 10)
-		// 	const datos = {
-		// 		nombre: req.body.nombre,
-		// 		apellido: req.body.apellido,
-		// 		dni: req.body.dni,
-		// 		telefono: req.body.telefono,
-		// 		mail: req.body.mail,
-		// 		contrasenia: contraseniaHashed,
-		// 		rol: 'user'
-		// 	}
-		// 	const resultado = await userModel.buscarUsuario(datos.mail);
-		// 	if (!resultado) {
-		// 		const usuario = await userModel.crearUsuario(datos);
+		try {
+			const contraseniaHashed = await bcrypt.hash(req.body.contrasenia, 10)
+			const datos = {
+				nombre: req.body.nombre,
+				apellido: req.body.apellido,
+				dni: req.body.dni,
+				telefono: req.body.telefono,
+				mail: req.body.mail,
+				contrasenia: contraseniaHashed,
+				rol: 'user'
+			}
+			const resultado = await userModel.buscarUsuario(datos.mail);
+			if (!resultado) {
+				const usuario = await userModel.crearUsuario(datos);
 
-		// 		res.status(200).json({
-		// 			message: 'Usuario Registrado!',
-		// 			datos: datos.contrasenia
-		// 		});
-		// 	}
-		// 	res.status(403).json({ message: 'Error, ya existe el usuario' });
-		// }
-		// catch { res.redirect('/signup') }
+				res.status(200).json({
+					message: 'Usuario Registrado!',
+					datos: datos.contrasenia
+				});
+			}
+			res.status(403).json({ message: 'Error, ya existe el usuario' });
+		}
+		catch { res.redirect('/signup') }
 
 		const datos = req.body;
 		delete datos.repassword;

@@ -31,4 +31,7 @@ export class UsuariosService {
     //Obtenemos el token que despues enviara el interceptor x cada req
     return localStorage.getItem('token');
   }
+  registrar(usuario:any){
+		return this.http.post(`${this.API_URI}/signup`,usuario);
+	}
 }

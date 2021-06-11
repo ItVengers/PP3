@@ -22,6 +22,12 @@ class UserModel {
 			return encontrado[0][0];
 		return null;
 	}
+
+	async crearUsuario(persona: object){
+		const result: any = (await this.db.query('INSERT INTO persona SET ?', [persona]))[0].affectedRows;
+		console.log(result);
+		return result;
+	}
 }
 
 const userModel: UserModel = new UserModel();

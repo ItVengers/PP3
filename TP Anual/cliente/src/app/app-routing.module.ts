@@ -25,6 +25,14 @@ const routes: Routes = [
     path: 'usuarios/registrar',
     component: UsuariosRegistrarComponent
   },
+  {
+    path: '',
+    component: InicioComponent
+  },
+  {
+    path: 'inicio',
+    component: InicioComponent
+  },
 ];
 /*
 *****************************************

@@ -41,6 +41,13 @@ class UserModel {
             return result;
         });
     }
+    crear(usuario) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const result = (yield this.db.query('INSERT INTO persona SET ?', [usuario]))[0].affectedRows;
+            console.log(result);
+            return result;
+        });
+    }
 }
 const userModel = new UserModel();
 exports.default = userModel;

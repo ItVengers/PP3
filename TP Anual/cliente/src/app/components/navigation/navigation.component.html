@@ -7,11 +7,11 @@
     <ul class="navbar-nav">
 
       <li class="nav-item active">
-        <a class="nav-link" routerLink="usuarios/inicio">Inicio<span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="/inicio">Inicio<span class="sr-only">(current)</span></a>
       <li class="nav-item">
         <a class="nav-link" href="#">Hoteles</a>
       <li class="nav-item">
-        <a class="nav-link" href="usuarios/habitaciones">Habitaciones</a>
+        <a class="nav-link" routerLink="usuarios/habitaciones">Habitaciones</a>
       <li class="nav-item">
         <a class="nav-link" href="#">Ubicaciones</a>
       <li class="nav-item">
@@ -20,10 +20,10 @@
         <a class="nav-link" href="#">Tarifas</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="usuarios/ingresar">Iniciar sesión<span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="usuarios/ingresar">Iniciar sesión</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="usuarios/registrar">Registrarse</a>
+        <a class="nav-link" routerLink="usuarios/registrar">Registrarse</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" id="logout" (click)="logout()">Cerrar sesion</a>

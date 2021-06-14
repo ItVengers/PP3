@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import userModel from "../models/userModel";
 import jwt from "jsonwebtoken";
-import bcrypt from "bcrypt";
+//import bcrypt from "bcrypt";
 
 class UserController {
 
@@ -21,7 +21,7 @@ class UserController {
 			//res.redirect("./error");
 		}
 		if (result.contrasenia == password && result.mail == mail) {
-			//res.send({ "Bienvenido!": result.nombre });
+			//res.send({ "Bienvenido!": result.nombre }); 
 			const token: string = jwt.sign({ _id: result.id }, "secretKey");
 			res.status(200).json({ message: "Bienvenido " + result.nombre, token: token });
 			return;
@@ -41,36 +41,12 @@ class UserController {
 	}
 
 	public async addUser(req: Request, res: Response) {
-		// try {
-		// 	const contraseniaHashed = await bcrypt.hash(req.body.contrasenia, 10)
-		// 	const datos = {
-		// 		nombre: req.body.nombre,
-		// 		apellido: req.body.apellido,
-		// 		dni: req.body.dni,
-		// 		telefono: req.body.telefono,
-		// 		mail: req.body.mail,
-		// 		contrasenia: contraseniaHashed,
-		// 		rol: 'user'
-		// 	}
-		// 	const resultado = await userModel.buscarUsuario(datos.mail);
-		// 	if (!resultado) {
-		// 		const usuario = await userModel.crearUsuario(datos);
-
-		// 		res.status(200).json({
-		// 			message: 'Usuario Registrado!',
-		// 			datos: datos.contrasenia
-		// 		});
-		// 	}
-		// 	res.status(403).json({ message: 'Error, ya existe el usuario' });
-		// }
-		// catch { res.redirect('/signup') }
-
 		const datos = req.body;
 		delete datos.repassword;
 		const resultado = await userModel.buscarUsuario(datos.mail);
 		if (!resultado) {
 			datos.rol = 'user'
-			const usuario = await userModel.crearUsuario(datos);
+			await userModel.crearUsuario(datos);
 
 			res.status(200).json({
 				message: 'Usuario Registrado!',

@@ -14,6 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const userModel_1 = __importDefault(require("../models/userModel"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
+//import bcrypt from "bcrypt";
 class UserController {
     signin(req, res) {
         console.log(req.body);
@@ -31,7 +32,7 @@ class UserController {
                 //res.redirect("./error");
             }
             if (result.contrasenia == password && result.mail == mail) {
-                //res.send({ "Bienvenido!": result.nombre });
+                //res.send({ "Bienvenido!": result.nombre }); 
                 const token = jsonwebtoken_1.default.sign({ _id: result.id }, "secretKey");
                 res.status(200).json({ message: "Bienvenido " + result.nombre, token: token });
                 return;
@@ -50,34 +51,12 @@ class UserController {
     }
     addUser(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            // try {
-            // 	const contraseniaHashed = await bcrypt.hash(req.body.contrasenia, 10)
-            // 	const datos = {
-            // 		nombre: req.body.nombre,
-            // 		apellido: req.body.apellido,
-            // 		dni: req.body.dni,
-            // 		telefono: req.body.telefono,
-            // 		mail: req.body.mail,
-            // 		contrasenia: contraseniaHashed,
-            // 		rol: 'user'
-            // 	}
-            // 	const resultado = await userModel.buscarUsuario(datos.mail);
-            // 	if (!resultado) {
-            // 		const usuario = await userModel.crearUsuario(datos);
-            // 		res.status(200).json({
-            // 			message: 'Usuario Registrado!',
-            // 			datos: datos.contrasenia
-            // 		});
-            // 	}
-            // 	res.status(403).json({ message: 'Error, ya existe el usuario' });
-            // }
-            // catch { res.redirect('/signup') }
             const datos = req.body;
             delete datos.repassword;
             const resultado = yield userModel_1.default.buscarUsuario(datos.mail);
             if (!resultado) {
                 datos.rol = 'user';
-                const usuario = yield userModel_1.default.crearUsuario(datos);
+                yield userModel_1.default.crearUsuario(datos);
                 res.status(200).json({
                     message: 'Usuario Registrado!',
                 });

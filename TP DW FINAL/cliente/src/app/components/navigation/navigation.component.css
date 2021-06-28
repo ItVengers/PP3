@@ -1,0 +1,14 @@
+
+#logout{
+  cursor: pointer;
+}
+.bi {
+  vertical-align: -.125em;
+  fill: currentColor;
+}
+.me-2 {
+  margin-right: .7rem!important;
+}
+.justify-content-center {
+  justify-content: flex-start;
+}

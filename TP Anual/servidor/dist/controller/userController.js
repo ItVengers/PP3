@@ -13,7 +13,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const userModel_1 = __importDefault(require("../models/userModel"));
-const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 //import bcrypt from "bcrypt";
 class UserController {
     signin(req, res) {
@@ -33,9 +32,9 @@ class UserController {
             }
             if (result.contrasenia == password && result.mail == mail) {
                 //res.send({ "Bienvenido!": result.nombre }); 
-                const token = jsonwebtoken_1.default.sign({ _id: result.id }, "secretKey");
-                res.status(200).json({ message: "Bienvenido " + result.nombre, token: token });
-                return;
+                // const token: string = jwt.sign({ _id: result.id }, "secretKey");
+                // res.status(200).json({ message: "Bienvenido " + result.nombre, token: token });
+                // return;
             }
             if (result.contrasenia != password || result.mail != mail) {
                 //return res.status(404).json({ message: "Usuario no registrado" });

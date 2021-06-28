@@ -22,9 +22,9 @@ class UserController {
 		}
 		if (result.contrasenia == password && result.mail == mail) {
 			//res.send({ "Bienvenido!": result.nombre }); 
-			const token: string = jwt.sign({ _id: result.id }, "secretKey");
-			res.status(200).json({ message: "Bienvenido " + result.nombre, token: token });
-			return;
+			// const token: string = jwt.sign({ _id: result.id }, "secretKey");
+			// res.status(200).json({ message: "Bienvenido " + result.nombre, token: token });
+			// return;
 		}
 		if (result.contrasenia != password || result.mail != mail) {
 			//return res.status(404).json({ message: "Usuario no registrado" });

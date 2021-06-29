@@ -1,0 +1,31 @@
+<div class="container p-4">
+  <div class="row">
+    <div class="col-md-4 mx-auto">
+      <div class="card text-center">
+        <div class="card-header">
+          <h3>Iniciar sesion</h3>
+        </div>
+        <form (submit)="ingresar()">
+          <div class="form-group">
+            <input type="email" name="mail" [(ngModel)]="user.mail" placeholder="Mail" class="form-control"
+              (focus)="limpiarMail()">
+            <div [ngSwitch]="errorMail">
+              <div class="DivError" *ngSwitchCase="1">Error, campo vacio</div>
+              <div class="DivError" *ngSwitchCase="2">Error, excedió el limite maximo de caracteres</div>
+              <div class="DivError" *ngSwitchCase="3">Error, mail invalido, debe ser example@dominio.com</div>
+            </div>
+            <input type="password" name="password" [(ngModel)]="user.password" placeholder="Contraseña"
+              class="form-control" (focus)="limpiarPassword()">
+            <div [ngSwitch]="errorPassword">
+              <div class="DivError" *ngSwitchCase="1">Error, campo vacio</div>
+              <div class="DivError" *ngSwitchCase="2">Error, excedió el limite maximo de caracteres</div>
+              <div class="DivError" *ngSwitchCase="3">Error, contraseña invalida, debe ser alfanumerica y tener
+                mayusculas.</div>
+            </div>
+            <button type="submit" class="btn btn-success btn-block" (click)="verificarForm()">Enviar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

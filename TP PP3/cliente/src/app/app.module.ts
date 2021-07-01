@@ -14,6 +14,7 @@ import { UsuariosHabitacionesComponent } from './components/usuarios-habitacione
 import { UsuariosService } from './services/usuarios.service';
 import { HomeComponent } from './components/home/home.component';
 import { ComentariosComponent } from './components/comentarios/comentarios.component';
+import { ConstruccionComponent } from './components/construccion/construccion.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { ComentariosComponent } from './components/comentarios/comentarios.compo
     InicioComponent,
     UsuariosHabitacionesComponent,
     HomeComponent,
-    ComentariosComponent
+    ComentariosComponent,
+    ConstruccionComponent
   ],
   imports: [
     BrowserModule,

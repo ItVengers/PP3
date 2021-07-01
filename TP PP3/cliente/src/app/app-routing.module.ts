@@ -7,6 +7,7 @@ import { AuthGuard } from './auth.guard';
 import { UsuariosRegistrarComponent } from "./components/usuarios-registrar/usuarios-registrar.component"
 import { HomeComponent } from "./components/home/home.component"
 import { ComentariosComponent } from "./components/comentarios/comentarios.component"
+import { ConstruccionComponent } from './components/construccion/construccion.component';
 
 
 const routes: Routes = [
@@ -64,6 +65,10 @@ const routes: Routes = [
     component: ComentariosComponent,
     canActivate: [AuthGuard]
 
+  },
+  {
+    path: 'construccion',
+    component: ConstruccionComponent,
   },
 ];
 

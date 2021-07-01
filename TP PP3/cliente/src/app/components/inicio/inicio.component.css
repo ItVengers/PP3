@@ -5,7 +5,7 @@
 	font-style:italic;
 	font-weight:bold;
 }
-h1{
+#title{
     text-align: center;
     font-family:times new roman;
 	font-style:normal;
@@ -18,6 +18,13 @@ h3{
     font-family:Georgia, 'Times New Roman', Times, serif;
 	font-style:italic;
 	font-weight:normal;
+    color: ivory;
+}
+
+#textocol{
+    text-align: center;
+	font-weight:normal;
+    color: lightgoldenrodyellow;
 }
 
 .container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {

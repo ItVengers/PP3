@@ -23,6 +23,8 @@ input::-webkit-inner-spin-button {
 
 body {
   background-image: url(assets/img/fondoweb4.png);
+  background-position: center center;
+  background-size: cover;
 }
 
 /* .fondo {

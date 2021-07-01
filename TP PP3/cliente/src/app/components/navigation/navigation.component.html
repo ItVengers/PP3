@@ -1,7 +1,7 @@
 <header class="p-3 bg-dark text-white">
   <div id="INIC" class="container">
     <div class="d-flex flex-wrap align-items-center justify-content-right justify-content-lg-start">
-      <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+      <a routerLink="inicio" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
         <a class="navbar-brand" href="/inicio">
           <img id="logo" src="https://media.hrs.com/media/image/01/99/b7/hotel-dummy.png" width="100" height="62">
         </a>
@@ -13,9 +13,9 @@
       <nav *ngIf="!login_" class="navbar navbar-expand-lg navbar-dark bg-dark">
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <!-- <li><a routerLink="/inicio" class="nav-link px-2 text-secondary">Inicio</a></li> -->
-          <li><a href="#" class="nav-link px-2 text-white">Preguntas frecuentes</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">Sobre nosotros</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">Contacto</a></li>
+          <li><a routerLink="construccion" class="nav-link px-2 text-white">Preguntas frecuentes</a></li>
+          <li><a routerLink="construccion" class="nav-link px-2 text-white">Sobre nosotros</a></li>
+          <li><a routerLink="construccion" class="nav-link px-2 text-white">Contacto</a></li>
         </ul>
       </nav>
       <nav *ngIf="login_" class="navbar navbar-expand-lg navbar-dark bg-dark">

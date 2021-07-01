@@ -1,6 +1,6 @@
 img {
-  height: 60px;
-  width: 60px;
+  height: max-content;
+  width: max-content;
   border: 0px;
   text-decoration: none;
   outline: none;
@@ -24,3 +24,6 @@ img {
   color: black;
 }
 
+#coment{
+width: 100px;
+}

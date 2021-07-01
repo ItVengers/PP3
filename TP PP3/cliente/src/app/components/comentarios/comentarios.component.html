@@ -19,8 +19,8 @@
   </thead>
   <tbody *ngIf="comentarios.length > 0; else fila">
     <tr *ngFor=" let comentario of comentarios">
-      <td>{{comentario.id}}</td>
-      <td>{{comentario.comentario}}</td>
+      <td id="coment">{{comentario.id}}</td>
+      <td id="coment" [innerHtml]="comentario.comentario">{{comentario.comentario}}</td>
       <td>{{comentario.fcreacion}}</td>
       <td>{{comentario.personaID}}</td>
       <td><img src={{comentario.imagen}} alt=""></td>

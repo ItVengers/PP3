@@ -7,6 +7,9 @@
         </a>
       </a>
 
+
+
+      
       <nav *ngIf="!login_" class="navbar navbar-expand-lg navbar-dark bg-dark">
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <!-- <li><a routerLink="/inicio" class="nav-link px-2 text-secondary">Inicio</a></li> -->
@@ -26,21 +29,9 @@
           <li class="nav-item active">
             <a class="nav-link" routerLink="usuarios/habitaciones">Habitaciones</a>
           </li>
-          <!-- <li *ngIf="admin_" class="nav-item active">
-            <a class="nav-link" routerLink="admin/comentarios">Comentarios<span class="sr-only">(current)</span></a>
-          </li>
-          <li *ngIf="!admin_" class="nav-item active">
-            <a class="nav-link" routerLink="usuarios/comentarios">Comentarios<span class="sr-only">(current)</span></a>
-          </li> -->
-
-          <!-- <li class="nav-item active">
-            <a class="nav-link" id="logout" (click)="logout()">Cerrar sesion</a>
-          </li> -->
+          
         </ul>
       </nav>
-      <!-- <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-        <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
-      </form> -->
       <div id="espaciado">
 
       </div>
@@ -48,7 +39,7 @@
       <div class="text-end">
         <nav *ngIf="!login_" class="navbar navbar-expand-lg navbar-dark bg-dark">
           <button type="button" class="btn btn-outline-light me-2" routerLink="usuarios/ingresar">Iniciar
-            Sesion</button>
+            Sesión</button>
           <button type="button" class="btn btn-warning" routerLink="usuarios/registrar">Registrarse</button>
         </nav>
         <nav id="CS" *ngIf="login_" class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -59,12 +50,6 @@
     </div>
   </div>
 </header>
-
-
-
-
-
-
 
 
 <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">

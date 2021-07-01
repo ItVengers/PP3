@@ -21,13 +21,9 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-/* body {
-  width: 1920px;
-  height: 1080;
-  padding: 300px;
-  object-fit: contain;
-  background-image: url(assets/Fondo2.jpg);
-} */
+body {
+  background-image: url(assets/img/fondoweb4.png);
+}
 
 /* .fondo {
   width: 1600px;

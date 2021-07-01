@@ -26,13 +26,13 @@ class UserController {
 				//req.session.admin = true;
 				//res.redirect("../admin/home");
 				const token: string = jwt.sign({ _id: result.id }, "secretKey");
-				res.status(200).json({ message: "Bienvenido " + result.nombre, token: token, rol: result.rol, idPersona: result.idPersona });
+				res.status(200).json({ message: "Bienvenido Admin" + result.nombre, token: token, rol: result.rol, idPersona: result.idPersona });
 				return;
 			}
 			else {
 				//req.session.admin = false;
 				const token: string = jwt.sign({ _id: result.id }, "secretKey");
-				res.status(200).json({ message: "Bienvenido " + result.nombre, token: token, rol: result.rol, idPersona: result.idPersona });
+				res.status(200).json({ message: "Bienvenido User" + result.nombre, token: token, rol: result.rol, idPersona: result.idPersona });
 				return;
 			}
 

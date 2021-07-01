@@ -1,0 +1,69 @@
+<br>
+<div>
+  <form class="form-inline my-2 my-lg-0">
+    <input class="form-control mr-sm-2" type="text" placeholder="Filtrar por ID"
+      (keyup.enter)="filtrar(buscarTexto.value)" #buscarTexto>
+    <button (click)="filtrar(buscarTexto.value)" class="btn btn-primary my-sm-0"
+      type="button">Buscar</button>
+  </form>
+</div>
+
+<table class="table table-hover table-dark ">
+  <thead class="thead-dark">
+    <th>ID</th>
+    <th>Comentario</th>
+    <th><button id="Crear" (click)=ordenarxID()>Fecha</button></th>
+    <th>IdPersona</th>
+    <th>Imagen</th>
+    <th>Accion</th>
+  </thead>
+  <tbody *ngIf="comentarios.length > 0; else fila">
+    <tr *ngFor=" let comentario of comentarios">
+      <td>{{comentario.id}}</td>
+      <td>{{comentario.comentario}}</td>
+      <td>{{comentario.fcreacion}}</td>
+      <td>{{comentario.personaID}}</td>
+      <td><img src={{comentario.imagen}} alt=""></td>
+      <td><a *ngIf="comentario.personaID == idPersona || rolPersona == 'admin'" class="btn btn-danger btn-block"
+          (click)=eliminar(comentario)>Eliminar</a></td>
+    </tr>
+  </tbody>
+  <ng-template #fila>
+    <tbody>
+      <tr>
+        <td colspan="4">No hay mas filas</td>
+      </tr>
+    </tbody>
+  </ng-template>
+</table>
+<br>
+
+
+<div class="container p-4">
+  <div class="row">
+    <div class="col-md-4 mx-auto">
+      <div class="card text-center">
+        <div class="card-header">
+          <h3>Comentarios</h3>
+        </div>
+        <form (submit)="crearComentario()">
+          <div class="form-group">
+            <input id="caja" type="text" name="descripcion" [(ngModel)]="comentario.comentario"
+              (focus)="limpiarComentario()" placeholder="Comentario">
+            <div [ngSwitch]="errorComentario">
+              <div class="DivErrorComent" *ngSwitchCase="1">Error, campo vacio</div>
+              <div class="DivErrorComent" *ngSwitchCase="2">Error, excedió el limite maximo de caracteres</div>
+            </div>
+            <input id="cajaimagen" type="text" name="imagen" [(ngModel)]="comentario.imagen" placeholder="Imagen"
+              (focus)="limpiarImagen()">
+            <div [ngSwitch]="errorImagen">
+              <div class="DivErrorComent" *ngSwitchCase="1">Error, campo vacio</div>
+            </div>
+            <br>
+            <button class="btn btn-small btn-success" (click)="verificarForm()" type="submit">Crear</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

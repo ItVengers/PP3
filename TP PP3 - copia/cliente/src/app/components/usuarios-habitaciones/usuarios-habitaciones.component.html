@@ -1,0 +1,64 @@
+<div *ngIf="rol == 'admin'">
+  <table class="table table-hover table-light ">
+    <thead class="thead-dark">
+      <th>ID</th>
+      <th>Categoria</th>
+      <th>Descripcion</th>
+      <th>Precio</th>
+      <th>Modificar</th>
+      <th>Eliminar</th>
+    </thead>
+    <tbody>
+      <tr ng-form *ngFor="let habitacion of habitaciones">
+        <td><input type="number" name="id" [(ngModel)]="habitacion.idH" disabled></td>
+        <td><input type="text" name="categoria" [(ngModel)]="habitacion.categoria"></td>
+        <td><input type="text" name="descripcion" [(ngModel)]="habitacion.descripcion" id="inputDesc"></td>
+        <td><input type="number" name="precio" [(ngModel)]="habitacion.precio"></td>
+        <td><button class="btn btn-xs btn-primary" (click)=modificar(habitacion)>Modificar</button></td>
+        <td><a class="btn btn-danger" (click)=eliminar(habitacion)>Eliminar</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+
+  <div ng-form class="container-fluid alert-info">
+    <BR>
+    <div class="">
+      <p>Categoria: </p>
+      <input type="text" name="Categoria" [(ngModel)]="nuevaHab.categoria" placeholder="Ingrese una categoria" required>
+    </div>
+    <div class="">
+      <p>Descripcion: </p>
+      <input type="text" name="descripcion" [(ngModel)]="nuevaHab.descripcion" placeholder="Ingrese una descripcion"
+        required>
+    </div>
+    <div>
+      <p>Precio: </p>
+      <input type="number" name="precio" [(ngModel)]="nuevaHab.precio" placeholder="Ingrese un precio" required>
+    </div>
+    <br>
+    <div><button class="" (click)=agregar() id="btnAgregar">Agregar</button></div>
+    <BR>
+  </div>
+
+</div>
+
+<div *ngIf="rol == 'user'">
+  <table class="table table-hover table-light center">
+    <thead class="thead-dark">
+      <th>ID</th>
+      <th>Categoria</th>
+      <th>Descripcion</th>
+      <th>Precio</th>
+    </thead>
+    <tbody>
+      <tr ng-form *ngFor="let habitacion of habitaciones">
+        <td>{{habitacion.idH}}</td>
+        <td>{{habitacion.categoria}}</td>
+        <td>{{habitacion.descripcion}}</td>
+        <td>{{habitacion.precio}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

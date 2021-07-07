@@ -1,0 +1,54 @@
+<div class="container">
+  <p-toast></p-toast>
+  <div class='row h-50 justify-content-center align-items-center'>
+    <div class='mx-auto col-sm-6'>
+      <div class="card text-center">
+        <div class="card-header">
+          <h3>Iniciar sesion</h3>
+        </div>
+        <form role="form" novalidate (ngSubmit)="ingresar()" [formGroup]="loginForm">
+          <div class="inputs">
+            <div class="form-group">
+              <input type="email" name="mail" formControlName="mail" placeholder="&#xf2b6;"
+                class="form-control">
+
+              <div *ngIf="loginForm.get('mail')!.invalid && (loginForm.get('mail')!.dirty || loginForm.get('mail')!.touched)">
+                <p class="form-text text-danger" *ngIf="loginForm.get('mail')?.errors?.required">
+                  El campo mail es obligatorio
+                </p>
+                <p class="form-text text-danger" *ngIf="loginForm.get('mail')?.errors?.email">
+                  El email es invalido
+                </p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <input type="password" name="password" formControlName="password" placeholder="&#xf084;"
+                class="form-control">
+
+              <div *ngIf="loginForm.get('password')!.invalid && (loginForm.get('password')!.dirty || loginForm.get('password')!.touched)">
+                <p class="form-text text-danger" *ngIf="loginForm.get('password')?.errors?.required">
+                  El campo clave es obligatorio
+                </p>
+                <p class="form-text text-danger" *ngIf="loginForm.get('password')?.errors?.pattern">
+                  La password no tiene formato valido
+                </p>
+                <p class="form-text text-danger" *ngIf="loginForm.get('password')?.errors?.maxlength">
+                  La password no puede tener mas de 50 caracteres
+                </p>
+                <p class="form-text text-danger" *ngIf="loginForm.get('password')?.errors?.minlength">
+                  La password no puede tener menos de 8 caracteres
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <button pButton type="submit" [disabled]="loginForm.invalid || isLogin" class="btn btn-primary"
+              class="btn p-button-rounded">
+            <i class="fa fa-sign-in-alt fa-lg"></i>&nbsp;&nbsp;&nbsp;<span>Iniciar sesion</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

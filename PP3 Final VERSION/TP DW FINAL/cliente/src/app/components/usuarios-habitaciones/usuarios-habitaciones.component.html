@@ -1,0 +1,108 @@
+<br>
+<div *ngIf="rol == 'admin'">
+  <form class="form-inline my-2 my-lg-0">
+    <!-- <input class="form-control mr-sm-2" type="text" placeholder="Filtrar por ID"
+      (keyup.enter)="filtrar(buscarTexto.value)" #buscarTexto>
+    <button (click)="filtrar(buscarTexto.value)" style="width: 100px; font-weight: bold;"
+      class="btn btn-outline-primary my-sm-0" type="button">Buscar</button> -->
+  </form>
+</div>
+
+<div *ngIf="rol == 'admin'">
+  <table class="table table-hover table-dark ">
+    <thead class="thead-dark">
+      <th>ID</th>
+      <th>Categoria</th>
+      <th>Descripcion</th>
+      <th>Precio</th>
+      <th>Modificar</th>
+      <th>Eliminar</th>
+    </thead>
+    <tbody>
+      <tr ng-form *ngFor="let habitacion of habitaciones">
+        <td id="cb2">{{habitacion.idH}}</td>
+        <!-- <td id="cb2"><input type="number" name="id" [(ngModel)]="habitacion.idH" disabled id="inputID"></td> -->
+        <td id="CB">
+          <select name="selector" [(ngModel)]="habitacion.categoria">
+            <option name="opcion1">Basica</option>
+            <option name="opcion2">Estandar</option>
+            <option name="opcion3">Premium</option>
+          </select>
+        </td>
+        <td id="cb2"><input type="text" name="descripcion" [(ngModel)]="habitacion.descripcion" id="inputDesc"></td>
+        <td id="cb2"><input type="number" name="precio" [(ngModel)]="habitacion.precio"></td>
+        <td id="btn"><button class="btn btn-outline-warning" style="font-weight: bold;"
+            (click)=modificarYverificar(habitacion) id="btnMod">Modificar</button>
+        </td>
+        <td id="btn"><a class="btn btn-outline-danger" style="font-weight: bold;" (click)=eliminar(habitacion)
+            id="btnEli">Eliminar</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+
+  <div class="container alert-link alert-dark" style="margin-left: 0; width: 358px;">
+    <BR>
+    <div class="">
+      <label id="lab1">Categoria:</label>
+      <select id="CBCat" name="selector" [(ngModel)]="nuevaHab.categoria">
+        <option name="categoria1">Basica</option>
+        <option name="categoria2">Estandar</option>
+        <option name="categoria3">Premium</option>
+      </select>
+      <div id="DivHab" [ngSwitch]="errorCategoria">
+        <div class="DivError" *ngSwitchCase="1"> Campo vacio</div>
+        <div class="DivError" *ngSwitchCase="2"> Excedió el limite maximo de numeros</div>
+      </div>
+    </div>
+    <br>
+    <div class="">
+      <label id="lab2">Descripcion:</label>
+      <input type="text" name="descripcion" [(ngModel)]="nuevaHab.descripcion" placeholder="Ingrese una descripcion"
+        required (focus)="limpiarDescripcion()">
+      <div id="DivHab" [ngSwitch]="errorDescripcion">
+        <div class="DivError" *ngSwitchCase="1"> Campo vacio</div>
+        <div class="DivError" *ngSwitchCase="2"> Excedió el limite maximo de numeros</div>
+      </div>
+    </div>
+    <br>
+    <div>
+      <label id="lab3">Precio: </label>
+      <input type="number" name="precio" [(ngModel)]="nuevaHab.precio" placeholder="Ingrese un precio" required
+        (focus)="limpiarPrecio()">
+    </div>
+    <div id="DivHab" [ngSwitch]="errorPrecio">
+      <div class="DivError" *ngSwitchCase="1"> Campo vacio</div>
+      <div class="DivError" *ngSwitchCase="2"> El precio no puede ser 0</div>
+      <div class="DivError" *ngSwitchCase="3"> Precio invalido, un precio no puede ser negativo</div>
+    </div>
+    <br>
+    <div id="divAg"><button id="btAg" class="btn btn-outline-dark" style="font-weight: bold; width: 188px;"
+        (click)=agregarYverificar() id="btnAgregar">Agregar</button>
+    </div>
+    <BR>
+  </div>
+</div>
+
+
+
+
+<div *ngIf="rol == 'user'">
+  <table class="table table-hover table-dark">
+    <thead class="thead-dark">
+      <th>ID</th>
+      <th>Categoria</th>
+      <th>Descripcion</th>
+      <th>Precio</th>
+    </thead>
+    <tbody>
+      <tr ng-form *ngFor="let habitacion of habitaciones">
+        <td>{{habitacion.idH}}</td>
+        <td>{{habitacion.categoria}}</td>
+        <td>{{habitacion.descripcion}}</td>
+        <td>{{habitacion.precio}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

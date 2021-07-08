@@ -17,10 +17,10 @@ class ComentarioModel {
     config() {
         return __awaiter(this, void 0, void 0, function* () {
             this.db = yield promise_1.createPool({
-                host: 'localhost',
-                user: 'root',
-                password: '',
-                database: 'testing',
+                host: 'remotemysql.com',
+                user: '868JNygZMY',
+                password: 'vsXA45H28F',
+                database: '868JNygZMY',
                 connectionLimit: 10
             });
         });

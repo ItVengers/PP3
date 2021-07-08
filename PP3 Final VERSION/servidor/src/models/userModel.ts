@@ -8,10 +8,10 @@ class UserModel {
 
 	async config() {//Parametro de conexion con la BD.
 		this.db = await createPool({
-			host: 'localhost',
-			user: 'root',
-			password: '',
-			database: 'testing',
+			host: 'remotemysql.com',
+			user: '868JNygZMY',
+			password: 'vsXA45H28F',
+			database: '868JNygZMY',
 			connectionLimit: 10
 		});
 	}

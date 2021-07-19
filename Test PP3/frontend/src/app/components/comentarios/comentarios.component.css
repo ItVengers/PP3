@@ -1,0 +1,33 @@
+img {
+  max-width: 100px;
+  max-height: 100px;
+
+  border: 0px;
+  text-decoration: none;
+  outline: none;
+}
+
+#caja {
+  height: 100px;
+  width: 330px;
+  padding-bottom: 80px;
+}
+
+#cajaimagen {
+  width: 330px;
+  text-align: left;
+}
+
+#Crear {
+  background-color: darkgray;
+  font-weight: bold;
+  color: black;
+}
+
+td {
+  border-width: 2px;
+  border-style: inset;
+  border-color: white;
+  margin-left: auto;
+  margin-right: auto;
+}

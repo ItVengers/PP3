@@ -1,0 +1,47 @@
+#logout {
+  cursor: pointer;
+}
+.bi {
+  vertical-align: -0.125em;
+  fill: currentColor;
+}
+.me-2 {
+  margin-right: 0.7rem !important;
+}
+.justify-content-center {
+  justify-content: flex-start;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: rgba(255,255,255);
+}
+
+#CS {
+  margin-left: 80%;
+  min-width: 400px;
+}
+
+.logo-col {
+  display: flex;
+  background-color: #343a40 !important;
+}
+
+.text-end {
+  text-align: right!important;
+  margin: auto;
+  margin-right: unset;
+}
+
+.btn {
+  width: 10em;
+}
+
+@media only screen and (max-width: 640px){
+  .btn-text{
+    display: none;
+  }
+
+  .btn {
+    width: auto;
+  }
+}

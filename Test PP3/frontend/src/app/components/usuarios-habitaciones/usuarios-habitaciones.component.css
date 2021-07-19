@@ -1,0 +1,72 @@
+td {
+  border-width: 2px;
+  border-style: inset;
+  border-color: white;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+#inputDesc {
+  width: 600px;
+}
+
+#inputID {
+  width: 200px;
+}
+
+#DivHab {
+  width: 182px;
+  text-align: center;
+  font-weight: bold;
+  padding-left: 29mm;
+  width: 290px;
+}
+
+#divAg {
+  font-weight: bolder;
+  padding-left: 13mm;
+  padding: 3px 107px;
+}
+
+#btAg{
+  width: 300px;
+}
+
+#CB{
+  width: 80PX;
+}
+#cb2{
+  width: 180PX;
+}
+
+#btn{
+  padding-right: 3mm;
+  width: 200PX;
+}
+
+#btnMod{
+  width: 200PX;
+
+}
+
+#btnEli{
+  width: 200PX;
+
+}
+
+#CBCat{
+  width: 181px;
+}
+
+#lab1{
+  padding-right: 1cm;
+}
+
+#lab2{
+  padding-right: 6mm;
+}
+#lab3{
+  padding-right: 1.6cm;
+}
+

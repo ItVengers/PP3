@@ -54,10 +54,10 @@ CREATE TABLE `habitaciones` (
 --
 
 CREATE TABLE `hoteles` (
-  `idHotel` int(11) NOT NULL,
-  `descripcion` varchar(15) NOT NULL,
-  `ubicacion` varchar(15) NOT NULL,
-  `zona_id` int(11) NOT NULL
+  `idHotel` int(11) NOT NULL, 
+  `descripcion` varchar(30) NOT NULL, 
+  `ubicacion` varchar(50) NOT NULL, 
+  `zona_id` int(11) NOT NULL 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -130,8 +130,8 @@ CREATE TABLE `temporada` (
 --
 
 CREATE TABLE `zonas` (
-  `idZona` int(11) NOT NULL,
-  `descripcion` varchar(20) NOT NULL
+  `idZona` int(11) NOT NULL, 
+  `descripcion` varchar(20) NOT NULL 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --

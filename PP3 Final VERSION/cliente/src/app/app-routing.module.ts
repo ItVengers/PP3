@@ -8,6 +8,7 @@ import { UsuariosRegistrarComponent } from "./components/usuarios-registrar/usua
 import { HomeComponent } from "./components/home/home.component"
 import { ComentariosComponent } from "./components/comentarios/comentarios.component"
 import { ConstruccionComponent } from './components/construccion/construccion.component';
+import { ContactoComponent } from './components/contacto/contacto.component';
 
 
 const routes: Routes = [
@@ -69,6 +70,10 @@ const routes: Routes = [
   {
     path: 'construccion',
     component: ConstruccionComponent,
+  },
+  {
+    path: 'contacto',
+    component: ContactoComponent,
   },
 ];
 

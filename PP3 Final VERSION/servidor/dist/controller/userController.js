@@ -24,7 +24,7 @@ class UserController {
         return __awaiter(this, void 0, void 0, function* () {
             const { mail, password } = req.body;
             const result = yield userModel_1.default.buscarUsuario(mail);
-            console.log(result.idPersona);
+            //console.log(result.idPersona);
             console.log(mail, password);
             if (!result) {
                 return res.status(404).json({ message: "Usuario no registrado" });

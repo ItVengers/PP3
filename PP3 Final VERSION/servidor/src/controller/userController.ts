@@ -11,8 +11,9 @@ class UserController {
 	public async login(req: Request, res: Response) {
 		const { mail, password } = req.body;
 		const result = await userModel.buscarUsuario(mail);
-		console.log(result.idPersona);
+		//console.log(result.idPersona);
 		console.log(mail, password);
+
 
 		if (!result) {
 			return res.status(404).json({ message: "Usuario no registrado" });

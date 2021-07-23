@@ -19,7 +19,7 @@ class UserModel {
             this.db = yield promise_1.createPool({
                 host: 'remotemysql.com',
                 user: '868JNygZMY',
-                password: 'vsXA45H28F',
+                password: 'HOP6t1Lq7X',
                 database: '868JNygZMY',
                 connectionLimit: 10
             });

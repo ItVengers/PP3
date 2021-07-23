@@ -37,7 +37,9 @@ export class UsuariosIngresarComponent implements OnInit {
   ingresar() {
     this.isLogin = true;
     this.usuario.mail= this.loginForm.get(['mail'])!.value;
+    console.log(this.usuario.mail);
     this.usuario.password= this.loginForm.get(['password'])!.value;
+    console.log(this.usuario.password);
     //this.usuariosService.ingresar(this.loginForm.get(['mail'])!.value).subscribe(
     this.usuariosService.ingresar(this.usuario).subscribe(
       (res) => {
@@ -67,9 +69,9 @@ export class UsuariosIngresarComponent implements OnInit {
         this.messageService.add({
           severity: 'error',
           summary: err.statusText,
-          detail: err.message,
+          detail: err.error.message,
         });
-       // console.log(err.error.message);
+        console.log(err.error.message);
         this.isLogin = false;
       }
     );

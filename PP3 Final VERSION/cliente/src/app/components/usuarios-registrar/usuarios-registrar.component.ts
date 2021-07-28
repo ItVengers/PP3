@@ -1,14 +1,66 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from '../../services/usuarios.service';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
+import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-usuarios-registrar',
   templateUrl: './usuarios-registrar.component.html',
-  styleUrls: ['./usuarios-registrar.component.css']
+  styleUrls: ['./usuarios-registrar.component.css'],
+  providers: [MessageService]
 })
 export class UsuariosRegistrarComponent implements OnInit {
 
+  isLogin = false;
+  loginForm = this.fb.group({
+    mail: ['', [Validators.required, Validators.email]],
+    // password: [
+    //   '',
+    //   [
+    //     Validators.required,
+    //     Validators.maxLength(20),
+    //     Validators.minLength(6),
+    //     Validators.pattern('/^[A-Z][A-Za-z0-9]/')
+    //     // Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])([A-Za-z\\d$@$!%*?&]|[^ ]){8,15}$'),
+    //   ],
+    // ],
+    nombre: ['',
+      [Validators.required,
+      Validators.maxLength(14),
+      Validators.minLength(3),
+      Validators.pattern('^[A-Z][A-Za-z]')]],
+    apellido: ['',
+      [Validators.required,
+      Validators.maxLength(14),
+      Validators.minLength(3),
+      Validators.pattern('^[A-Z][A-Za-z]'),
+      Validators.nullValidator]],
+    dni: ['',
+      [Validators.required,
+      Validators.maxLength(9),
+      Validators.minLength(7),
+      Validators.pattern('^[0-9]'),
+      Validators.nullValidator]],
+    telefono: ['',
+      [Validators.required,
+      Validators.maxLength(10),
+      Validators.minLength(9),
+      Validators.pattern('^[0-9]'),
+      Validators.nullValidator]],
+    contrasenia: ['',
+      [Validators.required,
+      Validators.maxLength(20),
+      Validators.minLength(6),
+      Validators.pattern(/^[A-Z][A-Za-z0-9]/),
+      Validators.nullValidator]],
+    repassword: ['',
+      [Validators.required,
+      Validators.maxLength(20),
+      Validators.minLength(6),
+      Validators.pattern(/^[A-Z][A-Za-z0-9]/),
+      Validators.nullValidator]],
+  });
   user = { nombre: "", apellido: "", dni: "", telefono: "", mail: "", contrasenia: "", repassword: "" };
 
   errorNombre = 0;
@@ -19,7 +71,10 @@ export class UsuariosRegistrarComponent implements OnInit {
   errorRePassword = 0;
   errorMail = 0;
 
-  constructor(private usuariosService: UsuariosService, private router: Router) { }
+  constructor(private usuariosService: UsuariosService,
+    private router: Router,
+    protected fb: FormBuilder,
+    private messageService: MessageService) { }
 
   ngOnInit(): void {
   }
@@ -122,7 +177,7 @@ export class UsuariosRegistrarComponent implements OnInit {
       return 1;
     if (password.length > 21)
       return 2;
-      if (password.length < 6)
+    if (password.length < 6)
       return 3;
     if (!patron.test(password))
       return 4;

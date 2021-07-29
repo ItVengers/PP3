@@ -99,6 +99,9 @@
                 <p class="form-text text-danger" *ngIf="loginForm.get('nombre')?.errors?.maxlength">
                   Excedió el limite maximo de caracteres
                 </p>
+                <p class="form-text text-danger" *ngIf="loginForm.get('nombre')?.errors?.pattern">
+                  El nombre no tiene formato valido
+                </p>
               </div>
             </div>
 
@@ -117,41 +120,47 @@
                 <p class="form-text text-danger" *ngIf="loginForm.get('apellido')?.errors?.maxlength">
                   Excedió el limite maximo de caracteres
                 </p>
+                <p class="form-text text-danger" *ngIf="loginForm.get('apellido')?.errors?.pattern">
+                  El apellido no tiene formato valido
+                </p>
               </div>
             </div>
 
             <div class="form-group">
-              <input type="number" name="dni" formControlName="dni" placeholder="&#xf2bb;   DNI" class="form-control">
+              <input type="text" name="dni" formControlName="dni" placeholder="&#xf2bb;   DNI" class="form-control">
 
               <div
-              *ngIf="loginForm.get('dni')!.invalid && (loginForm.get('dni')!.dirty || loginForm.get('dni')!.touched)">
-              <p class="form-text text-danger" *ngIf="loginForm.get('dni')?.errors?.required">
-                El campo DNI es obligatorio
-              </p>
-              <p class="form-text text-danger" *ngIf="loginForm.get('dni')?.errors?.minlength">
-                DNI invalido, debe contener minimo 7 numeros
-              </p>
-              <p class="form-text text-danger" *ngIf="loginForm.get('dni')?.errors?.maxlength">
-                Excedió el limite maximo de numeros
-              </p>
+                *ngIf="loginForm.get('dni')!.invalid && (loginForm.get('dni')!.dirty || loginForm.get('dni')!.touched)">
+                <p class="form-text text-danger" *ngIf="loginForm.get('dni')?.errors?.required">
+                  El campo DNI es obligatorio
+                </p>
+                <p class="form-text text-danger" *ngIf="loginForm.get('dni')?.errors?.minlength">
+                  DNI invalido, debe contener minimo 7 numeros
+                </p>
+                <p class="form-text text-danger" *ngIf="loginForm.get('dni')?.errors?.maxlength">
+                  Excedió el limite maximo de numeros
+                </p>
               </div>
             </div>
 
             <div class="form-group">
-              <input type="number" name="telefono" formControlName="telefono" placeholder="&#xf095;   Telefono"
+              <input type="text" name="telefono" formControlName="telefono" placeholder="&#xf095;   Telefono"
                 class="form-control">
 
               <div
-              *ngIf="loginForm.get('telefono')!.invalid && (loginForm.get('telefono')!.dirty || loginForm.get('telefono')!.touched)">
-              <p class="form-text text-danger" *ngIf="loginForm.get('telefono')?.errors?.required">
-                El campo telefono es obligatorio
-              </p>
-              <p class="form-text text-danger" *ngIf="loginForm.get('telefono')?.errors?.minlength">
-                Telefono invalido, debe contener minimo 8 numeros
-              </p>
-              <p class="form-text text-danger" *ngIf="loginForm.get('telefono')?.errors?.maxlength">
-                Excedió el limite maximo de numeros
-              </p>
+                *ngIf="loginForm.get('telefono')!.invalid && (loginForm.get('telefono')!.dirty || loginForm.get('telefono')!.touched)">
+                <p class="form-text text-danger" *ngIf="loginForm.get('telefono')?.errors?.required">
+                  El campo telefono es obligatorio
+                </p>
+                <p class="form-text text-danger" *ngIf="loginForm.get('telefono')?.errors?.minlength">
+                  Telefono invalido, debe contener minimo 8 numeros
+                </p>
+                <p class="form-text text-danger" *ngIf="loginForm.get('telefono')?.errors?.maxlength">
+                  Excedió el limite maximo de numeros
+                </p>
+                <p class="form-text text-danger" *ngIf="loginForm.get('telefono')?.errors?.pattern">
+                  El telefono no tiene formato valido
+                </p>
               </div>
             </div>
 
@@ -170,8 +179,8 @@
             </div>
 
             <div class="form-group">
-              <input type="password" name="contrasenia" formControlName="contrasenia" placeholder="&#xf084;   Contraseña"
-                class="form-control">
+              <input type="password" name="contrasenia" formControlName="contrasenia"
+                placeholder="&#xf084;   Contraseña" class="form-control">
 
               <div
                 *ngIf="loginForm.get('contrasenia')!.invalid && (loginForm.get('contrasenia')!.dirty || loginForm.get('contrasenia')!.touched)">
@@ -191,21 +200,21 @@
             </div>
 
             <div class="form-group">
-              <input type="password" name="repassword" formControlName="contrasenia"
+              <input type="password" name="repassword" formControlName="repassword"
                 placeholder="&#xf084;   Repetir Contraseña" class="form-control">
 
               <div
-                *ngIf="loginForm.get('contrasenia')!.invalid && (loginForm.get('contrasenia')!.dirty || loginForm.get('contrasenia')!.touched)">
-                <p class="form-text text-danger" *ngIf="loginForm.get('contrasenia')?.errors?.required">
+                *ngIf="loginForm.get('repassword')!.invalid && (loginForm.get('repassword')!.dirty || loginForm.get('repassword')!.touched)">
+                <p class="form-text text-danger" *ngIf="loginForm.get('repassword')?.errors?.required">
                   El campo contraseña es obligatorio
                 </p>
-                <p class="form-text text-danger" *ngIf="loginForm.get('contrasenia')?.errors?.pattern">
+                <p class="form-text text-danger" *ngIf="loginForm.get('repassword')?.errors?.pattern">
                   La contraseña no tiene formato valido
                 </p>
-                <p class="form-text text-danger" *ngIf="loginForm.get('contrasenia')?.errors?.maxlength">
+                <p class="form-text text-danger" *ngIf="loginForm.get('repassword')?.errors?.maxlength">
                   La contraseña no puede tener mas de 20 caracteres
                 </p>
-                <p class="form-text text-danger" *ngIf="loginForm.get('contrasenia')?.errors?.minlength">
+                <p class="form-text text-danger" *ngIf="loginForm.get('repassword')?.errors?.minlength">
                   La contraseña no puede tener menos de 8 caracteres
                 </p>
               </div>

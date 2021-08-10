@@ -1,22 +1,24 @@
-
 <div class="header">
   <div class="logo-col">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" routerLink="usuarios/inicio">
       <img id="logo" src="../assets/img/logo.png" width="100" height="62">
     </a>
     <div class="text-end">
-      <div *ngIf="!login_" class="">
-        <button type="button" class="btn btn-outline-light me-2" style="font-weight: bold;" routerLink="usuarios/ingresar">
+      <div *ngIf="login_ == false" class="">
+        <button type="button" class="btn btn-outline-light me-3" style="font-weight: bold;"
+          routerLink="usuarios/ingresar">
           <i class="fa fa-sign-in-alt"></i>
           <span class="btn-text">&nbsp;Iniciar Sesión</span>
         </button>
-        <button type="button" class="btn btn-outline-warning me-2" style="font-weight: bold;" routerLink="usuarios/registrar">
+        <button type="button" class="btn btn-outline-warning me-3" style="font-weight: bold;"
+          routerLink="usuarios/registrar">
           <i class="fa fa-user-plus"></i>
           <span class="btn-text">&nbsp;Registrarse</span>
         </button>
       </div>
-      <div id="CS" *ngIf="login_" class="">
-        <button type="button" class="btn btn-outline-light me-2" style="font-weight: bold;" id="logout" (click)="logout()">
+      <div *ngIf="login_ == true" class="">
+        <button type="button" class="btn btn-outline-light me-xl-5" style="font-weight: bold;" id="logout"
+          (click)="logout()">
           <i class="fa fa-sign-out-alt"></i>
           <span class="btn-text">&nbsp;Cerrar Sesión</span>
         </button>
@@ -28,27 +30,13 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
   <a class="navbar-brand logo" routerLink="/" (click)="collapseNavbar()"></a>
 
-  <a class="navbar-toggler d-lg-none"
-    href="javascript:void(0);"
-    data-toggle="collapse"
-    data-target="#navbarResponsive"
-    aria-controls="navbarResponsive"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-    (click)="toggleNavbar()">
+  <a class="navbar-toggler d-lg-none" href="javascript:void(0);" data-toggle="collapse" data-target="#navbarResponsive"
+    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" (click)="toggleNavbar()">
     <span class="navbar-toggler-icon"></span>
   </a>
 
   <div class="navbar-collapse collapse" id="navbarResponsive" [ngbCollapse]="isNavbarCollapsed" [ngSwitch]="login_">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-        <a class="nav-link" routerLink="/" (click)="collapseNavbar()">
-          <span>
-            <i class="fa fa-home"></i>&nbsp;
-            <span>Home</span>
-          </span>
-        </a>
-      </li>
       <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
         <a class="nav-link" routerLink="construccion" (click)="collapseNavbar()">
           <span>
@@ -57,7 +45,8 @@
           </span>
         </a>
       </li>
-      <li ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <li ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }">
         <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="sub-menu">
           <span>
             <i class="fa fa-concierge-bell"></i>&nbsp;
@@ -66,13 +55,13 @@
         </a>
         <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="sub-menu">
           <li>
-            <a class="dropdown-item" (click)="collapseNavbar()">
+            <a class="dropdown-item" id=logout (click)="collapseNavbar()">
               <i class="fa fa-users"></i>&nbsp;
               <span>Nosotros</span>
             </a>
           </li>
           <li>
-            <a class="dropdown-item" (click)="collapseNavbar()">
+            <a class="dropdown-item" id=logout (click)="collapseNavbar()">
               <i class="fa fa-bed"></i>&nbsp;
               <span>El Hotel</span>
             </a>
@@ -86,6 +75,31 @@
             <span>Contacto</span>
           </span>
         </a>
+      </li>
+
+
+      <li *ngIf="login_ == true" ngbDropdown class="nav-item dropdown pointer" display="dynamic"
+        routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="sub-menu">
+          <span>
+            <i class="fa fa-user"></i>&nbsp;
+            <span>Mi Cuenta</span>
+          </span>
+        </a>
+        <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="sub-menu">
+          <li>
+            <a class="dropdown-item" id=logout (click)="collapseNavbar()">
+              <i class="fa fa-shopping-cart"></i>&nbsp;
+              <span>Mis Reservas</span>
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item" id=logout (click)="collapseNavbar()">
+              <i class="fa fa-id-card"></i>&nbsp;
+              <span>Mis Datos</span>
+            </a>
+          </li>
+        </ul>
       </li>
     </ul>
   </div>

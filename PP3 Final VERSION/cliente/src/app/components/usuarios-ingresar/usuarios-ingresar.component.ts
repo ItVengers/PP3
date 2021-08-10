@@ -62,7 +62,10 @@ export class UsuariosIngresarComponent implements OnInit {
           this.usuariosService.admin$.emit();
           this.router.navigate(['admin/home']);
         } else {
-          this.router.navigate(['usuarios/home']);
+          this.router.navigate(['usuarios/inicio']);
+          this.usuario.mail = "";
+          this.usuario.password = "";
+
         }
       },
       (err) => {

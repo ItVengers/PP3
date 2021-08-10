@@ -48,6 +48,8 @@ export class UsuariosRegistrarComponent implements OnInit {
   });
   user = { nombre: "", apellido: "", dni: "", telefono: "", mail: "", contrasenia: "" };
 
+  repassword: any = "";
+  error: number = 0;
   // errorNombre = 0;
   // errorApellido = 0;
   // errorDni = 0;
@@ -78,18 +80,26 @@ export class UsuariosRegistrarComponent implements OnInit {
     console.log(this.user.mail);
     this.user.contrasenia = this.loginForm.get(['contrasenia'])!.value;
     console.log(this.user.contrasenia);
+    this.repassword = this.loginForm.get(['repassword'])!.value;
+    console.log(this.user.contrasenia);
     console.log("Sign Up");
     console.log(this.user);
-    this.usuariosService.registrar(this.user).subscribe(
-      res => {
-        let result: any = res;
-        console.log(result.message);
-        this.router.navigate(["usuarios/ingresar"]);
-      },
-      err => {
-        console.log(err.error.message);
-      }
-    )
+    if (this.user.contrasenia == this.repassword) {
+      this.usuariosService.registrar(this.user).subscribe(
+        res => {
+          let result: any = res;
+          console.log(result.message);
+          this.router.navigate(["usuarios/ingresar"]);
+        },
+        err => {
+          console.log(err.error.message);
+        }
+      )
+    }
+    else
+    {
+      this.error = 1;
+    }
   }
 
   // verificarForm(): boolean {

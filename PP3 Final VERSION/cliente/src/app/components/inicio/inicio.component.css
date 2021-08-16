@@ -50,4 +50,23 @@ h1{
 
 #contenedor{
  background-color: wheat;
+ box-sizing: border-box;
+ width: 100%;
+ padding: 12px;
+ /* margin: 8px 0px; */
+ border: 1px solid red;
+ border-radius: 4px;
+ background-color: black;
+ color: white;
+ resize: vertical;
+ font-weight: bold;
+ margin-bottom: 40px;
 }
+
+#columnabtn{
+align-items: center;
+
+}
+#boton{
+margin-top: 26px;  
+  }

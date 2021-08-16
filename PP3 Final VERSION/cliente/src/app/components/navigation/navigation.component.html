@@ -40,7 +40,7 @@
       <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
         <a class="nav-link" routerLink="construccion" (click)="collapseNavbar()">
           <span>
-            <i class="fa fa-file-signature"></i>&nbsp;
+            <i class="fas fa-bed"></i>&nbsp;
             <span>Habitaciones</span>
           </span>
         </a>
@@ -55,13 +55,13 @@
         </a>
         <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="sub-menu">
           <li>
-            <a class="dropdown-item" id=logout (click)="collapseNavbar()">
+            <a class="dropdown-item" id=logout routerLink="construccion" (click)="collapseNavbar()">
               <i class="fa fa-users"></i>&nbsp;
               <span>Nosotros</span>
             </a>
           </li>
           <li>
-            <a class="dropdown-item" id=logout (click)="collapseNavbar()">
+            <a class="dropdown-item" id=logout routerLink="construccion" (click)="collapseNavbar()">
               <i class="fa fa-bed"></i>&nbsp;
               <span>El Hotel</span>
             </a>

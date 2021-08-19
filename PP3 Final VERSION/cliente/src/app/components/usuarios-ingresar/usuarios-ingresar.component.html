@@ -9,10 +9,10 @@
         <form role="form" novalidate (ngSubmit)="ingresar()" [formGroup]="loginForm">
           <div class="inputs">
             <div class="form-group">
-              <input type="email" name="mail" formControlName="mail" placeholder="&#xf2b6;"
-                class="form-control">
+              <input type="email" name="mail" formControlName="mail" placeholder="&#xf2b6;   Mail" class="form-control">
 
-              <div *ngIf="loginForm.get('mail')!.invalid && (loginForm.get('mail')!.dirty || loginForm.get('mail')!.touched)">
+              <div
+                *ngIf="loginForm.get('mail')!.invalid && (loginForm.get('mail')!.dirty || loginForm.get('mail')!.touched)">
                 <p class="form-text text-danger" *ngIf="loginForm.get('mail')?.errors?.required">
                   El campo mail es obligatorio
                 </p>
@@ -23,10 +23,11 @@
             </div>
 
             <div class="form-group">
-              <input type="password" name="password" formControlName="password" placeholder="&#xf084;"
+              <input type="password" name="password" formControlName="password" placeholder="&#xf084;   Contraseña"
                 class="form-control">
 
-              <div *ngIf="loginForm.get('password')!.invalid && (loginForm.get('password')!.dirty || loginForm.get('password')!.touched)">
+              <div
+                *ngIf="loginForm.get('password')!.invalid && (loginForm.get('password')!.dirty || loginForm.get('password')!.touched)">
                 <p class="form-text text-danger" *ngIf="loginForm.get('password')?.errors?.required">
                   El campo clave es obligatorio
                 </p>
@@ -42,12 +43,17 @@
               </div>
             </div>
           </div>
-
+          <a routerLink= "/usuarios/inicio" style="margin-left: 8cm;">
+            ¿Ha olvidado su contraseña?
+          </a>
           <button pButton type="submit" [disabled]="loginForm.invalid || isLogin" class="btn btn-primary"
-              class="btn p-button-rounded">
+            class="btn p-button-rounded">
             <i class="fa fa-sign-in-alt fa-lg"></i>&nbsp;&nbsp;&nbsp;<span>Iniciar sesion</span>
           </button>
         </form>
+        <p>¿Aún no tiene una cuenta?
+          <a routerLink="/usuarios/registrar">Registrarse</a>
+        </p>
       </div>
     </div>
   </div>

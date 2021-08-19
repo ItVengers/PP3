@@ -49,14 +49,6 @@ export class UsuariosRegistrarComponent implements OnInit {
   user = { nombre: "", apellido: "", dni: "", telefono: "", mail: "", contrasenia: "" };
 
   repassword: any = "";
-  error: number = 0;
-  // errorNombre = 0;
-  // errorApellido = 0;
-  // errorDni = 0;
-  // errorTelefono = 0;
-  // errorPassword = 0;
-  // errorRePassword = 0;
-  // errorMail = 0;
 
   constructor(private usuariosService: UsuariosService,
     private router: Router,
@@ -98,7 +90,12 @@ export class UsuariosRegistrarComponent implements OnInit {
     }
     else
     {
-      this.error = 1;
+      this.isLogin = false;
+      this.messageService.add({
+        severity: 'error',
+        summary: 'ERROR',
+        detail: 'Las contraseñas no coinciden!'
+      });
     }
   }
 

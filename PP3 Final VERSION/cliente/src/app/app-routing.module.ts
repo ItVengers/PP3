@@ -9,6 +9,7 @@ import { HomeComponent } from "./components/home/home.component"
 import { ComentariosComponent } from "./components/comentarios/comentarios.component"
 import { ConstruccionComponent } from './components/construccion/construccion.component';
 import { ContactoComponent } from './components/contacto/contacto.component';
+import { ListarHabitacionesComponent } from './components/listar-habitaciones/listar-habitaciones.component';
 
 
 const routes: Routes = [
@@ -74,6 +75,10 @@ const routes: Routes = [
   {
     path: 'contacto',
     component: ContactoComponent,
+  },
+  {
+    path: 'listar-habitaciones',
+    component: ListarHabitacionesComponent,
   },
 ];
 

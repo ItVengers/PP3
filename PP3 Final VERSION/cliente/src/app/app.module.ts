@@ -21,6 +21,7 @@ import { ToastModule } from 'primeng/toast';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ConstruccionComponent } from './components/construccion/construccion.component';
 import { ContactoComponent } from './components/contacto/contacto.component';
+import { ListarHabitacionesComponent } from './listar-habitaciones/listar-habitaciones.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ContactoComponent } from './components/contacto/contacto.component';
     HomeComponent,
     ComentariosComponent,
     ConstruccionComponent,
-    ContactoComponent
+    ContactoComponent,
+    ListarHabitacionesComponent
   ],
   imports: [
     BrowserModule,

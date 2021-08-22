@@ -22,6 +22,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ConstruccionComponent } from './components/construccion/construccion.component';
 import { ContactoComponent } from './components/contacto/contacto.component';
 import { ListarHabitacionesComponent } from './components/listar-habitaciones/listar-habitaciones.component';
+import { MisReservasComponent } from './components/mis-reservas/mis-reservas.component';
+import { MisDatosComponent } from './components/mis-datos/mis-datos.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { ListarHabitacionesComponent } from './components/listar-habitaciones/li
     ComentariosComponent,
     ConstruccionComponent,
     ContactoComponent,
-    ListarHabitacionesComponent
+    ListarHabitacionesComponent,
+    MisReservasComponent,
+    MisDatosComponent
   ],
   imports: [
     BrowserModule,

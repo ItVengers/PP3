@@ -10,6 +10,8 @@ import { ComentariosComponent } from "./components/comentarios/comentarios.compo
 import { ConstruccionComponent } from './components/construccion/construccion.component';
 import { ContactoComponent } from './components/contacto/contacto.component';
 import { ListarHabitacionesComponent } from './components/listar-habitaciones/listar-habitaciones.component';
+import { MisDatosComponent } from './components/mis-datos/mis-datos.component';
+import { MisReservasComponent } from './components/mis-reservas/mis-reservas.component';
 
 
 const routes: Routes = [
@@ -77,8 +79,16 @@ const routes: Routes = [
     component: ContactoComponent,
   },
   {
-    path: 'listar-habitaciones',
+    path: 'usuarios/listarhabitaciones',
     component: ListarHabitacionesComponent,
+  },
+  {
+    path: 'usuarios/misdatos',
+    component: MisDatosComponent,
+  },
+  {
+    path: 'usuarios/misreservas',
+    component: MisReservasComponent,
   },
 ];
 

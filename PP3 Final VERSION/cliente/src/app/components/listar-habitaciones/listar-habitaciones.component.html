@@ -1,18 +1,20 @@
 <table class="table table-hover table-dark ">
   <thead class="thead-dark">
     <th>ID</th>
-    <th> </th>
-    <th>Habitacion</th>
-    <th>Descripcion</th>
+    <!-- <th> </th> -->
+    <th>Categoría_id</th>
+    <th>Camas Id</th>
   </thead>
-  <tbody #fila>
-    <!-- <tr *ngFor=" let usuario of usuarios">
-      <td>{{usuario.id}}</td>
-      <td>{{usuario.nombre}}</td>
-      <td class="col-4 ">{{usuario.password}}</td>
-      <td><a class="btn btn-danger btn-block" href="/user/delete/{{usuario.id}}">Eliminar</a></td>
-    </tr> -->
+  <tbody *ngIf="habitaciones.length > 0; else fila">
+    <tr *ngFor=" let habitacion of habitaciones">
+        <td>{{habitacion.idHabitacion}}</td>
+        <td>{{habitacion.cat_id}}</td>
+        <td>{{habitacion.camas_id}}</td>
+    </tr>
   </tbody>
+  <!-- <tbody #fila>
+  
+  </tbody> -->
   <ng-template #fila>
     <tbody>
       <tr>

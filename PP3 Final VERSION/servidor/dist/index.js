@@ -14,6 +14,7 @@ const path_1 = __importDefault(require("path"));
 const userRoutes_1 = __importDefault(require("./routes/userRoutes"));
 const adminRoutes_1 = __importDefault(require("./routes/adminRoutes"));
 const comentarioRoutes_1 = __importDefault(require("./routes/comentarioRoutes"));
+const habitacionesRoutes_1 = __importDefault(require("./routes/habitacionesRoutes"));
 class Server {
     constructor() {
         this.app = express_1.default();
@@ -55,6 +56,7 @@ class Server {
         this.app.use("/user", userRoutes_1.default); //user sera un objeto existene en la app.
         this.app.use("/admin", adminRoutes_1.default); //user sera un objeto existene en la app.
         this.app.use("/comentario", comentarioRoutes_1.default); //user sera un objeto existene en la app.
+        this.app.use("/habitaciones", habitacionesRoutes_1.default); //listar habitaciones
     }
     start() {
         this.app.listen(this.app.get('port'), () => {

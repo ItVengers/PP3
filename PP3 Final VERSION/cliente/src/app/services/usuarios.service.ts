@@ -13,6 +13,7 @@ export class UsuariosService {
   API_URI = environment.API_URI + '/user';
   API_URI2 = environment.API_URI + '/comentario';
   API_URI3 = environment.API_URI + '/admin';
+  API_URI4 = environment.API_URI + '/habitaciones'
 
   logued$ = new EventEmitter<string>();
   admin$ = new EventEmitter<string>();
@@ -90,5 +91,10 @@ export class UsuariosService {
   filtrarID(searchText: string) {
     console.log(searchText);
     return this.http.get(`${this.API_URI2}/find/${searchText}`);
+  }
+  // nuevos services
+  //---------
+  listarHabitaciones() {
+    return this.http.get(`${this.API_URI4}/listarhabitaciones`);
   }
 }

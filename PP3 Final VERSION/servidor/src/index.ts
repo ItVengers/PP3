@@ -9,6 +9,7 @@ import path from "path";
 import userRoutes from "./routes/userRoutes";
 import adminRoutes from "./routes/adminRoutes";
 import comentarioRoutes from "./routes/comentarioRoutes";
+import habitacionesRoutes from './routes/habitacionesRoutes';
 //import session from "express-session";
 import flash from "connect-flash";
 
@@ -70,6 +71,7 @@ class Server {
 		this.app.use("/user", userRoutes); //user sera un objeto existene en la app.
 		this.app.use("/admin", adminRoutes); //user sera un objeto existene en la app.
 		this.app.use("/comentario", comentarioRoutes); //user sera un objeto existene en la app.
+		this.app.use("/habitaciones", habitacionesRoutes); //listar habitaciones
 
 	}
 	start(): void {

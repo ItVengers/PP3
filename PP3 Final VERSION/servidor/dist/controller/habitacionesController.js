@@ -21,6 +21,7 @@ class HabitacionesController {
             const result = yield habitacionesModel_1.default.listarhabitaciones();
             //console.log(result.idPersona);
             console.log(result);
+            return res.json(result);
         });
     }
 }

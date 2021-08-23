@@ -11,7 +11,8 @@ class HabitacionesController {
 		const result = await habitacionesModel.listarhabitaciones();
 		//console.log(result.idPersona);
 		console.log(result);
-
+		return res.json(result);
+		
     }
 }
 

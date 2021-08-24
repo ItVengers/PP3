@@ -96,9 +96,14 @@ values (20210201,20210220,20201225,1,3800,"Pendiente",11,3),(20210101,20210120,2
 
 #------------------------------------------------
 
-select * from habitaciones h
+select cat.tipo, c.descripcion from habitaciones h
 inner join camas c on c.idCamas = h.camas_id
+inner join categoria cat on cat.idCategoria = h.cat_id
 where c.idCamas  between 2 and 3;
+
+select h.idHabitacion, cat.tipo, c.descripcion from habitaciones h 
+inner join camas c on c.idCamas = h.camas_id
+inner join categoria cat on cat.idCategoria = h.cat_id;
 
 select * from habitaciones h
 inner join camas c on c.idCamas = h.camas_id

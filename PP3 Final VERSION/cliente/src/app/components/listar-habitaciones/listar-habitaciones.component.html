@@ -1,15 +1,15 @@
 <table class="table table-hover table-dark ">
   <thead class="thead-dark">
-    <th>ID</th>
+    <th>Habitación</th>
     <!-- <th> </th> -->
-    <th>Categoría_id / Categoría</th>
-    <th>Camas Id / Descripción</th>
+    <th>Categoría</th>
+    <th>Descripción</th>
   </thead>
   <tbody *ngIf="habitaciones.length > 0; else fila">
     <tr *ngFor=" let habitacion of habitaciones">
         <td>{{habitacion.idHabitacion}}</td>
-        <td>{{habitacion.cat_id}}</td>
-        <td>{{habitacion.camas_id}}</td>
+        <td>{{habitacion.tipo}}</td>
+        <td>{{habitacion.descripcion}}</td>
     </tr>
   </tbody>
   <!-- <tbody #fila>

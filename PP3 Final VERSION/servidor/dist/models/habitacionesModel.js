@@ -27,15 +27,7 @@ class HabitacionesModel {
     }
     listarhabitaciones() {
         return __awaiter(this, void 0, void 0, function* () {
-            const habitaciones = yield this.db.query('SELECT * FROM habitaciones');
-            //console.log(usuarios[0]);
-            //devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
-            return habitaciones[0];
-        });
-    }
-    prueba() {
-        return __awaiter(this, void 0, void 0, function* () {
-            const habitaciones = yield this.db.query('SELECT id_Habitacion, cat_id, camas_id FROM habitaciones');
+            const habitaciones = yield this.db.query('select h.idHabitacion, cat.tipo, c.descripcion from habitaciones h inner join camas c on c.idCamas = h.camas_id inner join categoria cat on cat.idCategoria = h.cat_id');
             //console.log(usuarios[0]);
             //devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
             return habitaciones[0];

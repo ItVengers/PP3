@@ -92,3 +92,14 @@ truncate reservas;
 insert	into reservas (fechaDesde,fechaHasta,fechaReserva,cantidadPax,precioTotal, estado, habitacion_id, persona_id) 
 values (20210201,20210220,20201225,1,3800,"Pendiente",11,3),(20210101,20210120,20201210,2,7800,"Aprobado",13,6),(20210301,20210320,20210201,3,10800,"Pendiente",16,4),
 (20210401,20210420,20210301,4,15800,"Aprobada",17,3),(20210501,20210520,20210401,5,30200,"Anulada",20,2);
+
+
+#------------------------------------------------
+
+select * from habitaciones h
+inner join camas c on c.idCamas = h.camas_id
+where c.idCamas  between 2 and 3;
+
+select * from habitaciones h
+inner join camas c on c.idCamas = h.camas_id
+where h.cantPax like '2';

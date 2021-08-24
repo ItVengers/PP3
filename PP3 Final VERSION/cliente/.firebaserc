@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "cadena-hotelera"
-  }
+    "default": "cadena-de-hoteles",
+    "cadena-de-hoteles": "cadena-de-hoteles"
+  },
+  "targets": {}
 }

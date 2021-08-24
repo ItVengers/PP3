@@ -47,7 +47,9 @@ class Server {
 		this.app.use(morgan('dev'));
 
 		this.app.use(cors({
-			origin: ["http://localhost:4200"],
+			//origin: ["https://cadena-hotelera.web.app"],
+			origin: ["https://localhost:4200"],
+
 			credentials: true
 		})); //iniciamos cors
 		this.app.use(express.json()); //habilitamos el intercambio de objetos json entre aplicaciones

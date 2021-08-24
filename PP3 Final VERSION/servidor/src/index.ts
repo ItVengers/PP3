@@ -1,4 +1,3 @@
-console.log("SRC INDEX Hello World");
 // import express from 'express';
 import express, { Application } from 'express';
 import morgan from 'morgan';

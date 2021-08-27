@@ -35,7 +35,8 @@ class Server {
         //Middlewares
         this.app.use(morgan_1.default('dev'));
         this.app.use(cors_1.default({
-            origin: ["http://localhost:4200"],
+            //origin: ["https://cadena-hotelera.web.app"],
+            origin: ["https://localhost:4200"],
             credentials: true
         })); //iniciamos cors
         this.app.use(express_1.default.json()); //habilitamos el intercambio de objetos json entre aplicaciones

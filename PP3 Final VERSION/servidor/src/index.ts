@@ -45,15 +45,14 @@ class Server {
 
 		//Middlewares
 		this.app.use(morgan('dev'));
-
-		this.app.use(cors({
-			//origin: ["https://cadena-hotelera.web.app"],
-			origin: ["https://localhost:4200"],
-
-			credentials: true
-		})); //iniciamos cors
+		// this.app.use(cors({
+		// 	//origin: ["https://cadena-hotelera.web.app"],
+		// 	origin: ["https://localhost:4200"],
+		// 	credentials: true
+		// })); //iniciamos cors
+		this.app.use(cors());
 		this.app.use(express.json()); //habilitamos el intercambio de objetos json entre aplicaciones
-		this.app.use(express.urlencoded({ extended: false }));//habilitamos para recibir datos a traves de formularios html.
+		this.app.use(express.urlencoded({ extended: true }));//habilitamos para recibir datos a traves de formularios html.
 
 		//this.app.use(flash());
 

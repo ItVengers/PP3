@@ -4,6 +4,12 @@ import jwt from "jsonwebtoken";
 //import bcrypt from "bcrypt";
 class UserController {
 
+	public async listarUsuario(req: Request, res: Response) {    
+		const result = await userModel.listarDatosUsuario();
+		console.log(result);
+		return res.json(result);
+	
+	}
 	public signin(req: Request, res: Response) {
 		console.log(req.body);
 		res.render("partials/signinForm");
@@ -209,6 +215,7 @@ class UserController {
 		res.status(403).json({ message: 'Error, ya existe el usuario' });
 	}
 }
+// -------------------------------
 
 const userController = new UserController();
 export default userController;

@@ -10,7 +10,7 @@ class UserRoutes{
 	}
 	config():void{
 		this.router.get('/',(req:Request,res:Response)=> {
-            res.send('Main!!!');
+            res.send('Main users!!!');
             //res.render("partials/principal");
         });
         this.router.get('/signin',userController.signin);
@@ -18,6 +18,8 @@ class UserRoutes{
 
 		this.router.get('/signup',userController.signup);
 		this.router.post('/signup',userController.addUser);
+
+		this.router.get('/misdatos',userController.listarUsuario);
 	}
 
 }

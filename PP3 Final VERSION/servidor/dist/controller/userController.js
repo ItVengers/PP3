@@ -16,6 +16,13 @@ const userModel_1 = __importDefault(require("../models/userModel"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 //import bcrypt from "bcrypt";
 class UserController {
+    listarUsuario(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const result = yield userModel_1.default.listarDatosUsuario();
+            console.log(result);
+            return res.json(result);
+        });
+    }
     signin(req, res) {
         console.log(req.body);
         res.render("partials/signinForm");
@@ -205,6 +212,7 @@ class UserController {
         });
     }
 }
+// -------------------------------
 const userController = new UserController();
 exports.default = userController;
 //# sourceMappingURL=userController.js.map

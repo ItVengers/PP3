@@ -35,12 +35,7 @@ class UserModel {
 	}
 
 
-	async listarhabitaciones() {
-		const habitaciones = await this.db.query('SELECT * FROM habitaciones');
-		//console.log(usuarios[0]);
-		//devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
-		return habitaciones[0];
-	}
+
 
 	async eliminar(id: string) {
 		const art = (await this.db.query('DELETE FROM habitaciones WHERE idH = ?', [id]))[0].affectedRows;
@@ -65,6 +60,14 @@ class UserModel {
 	// 	console.log(result);
 	// 	return result;
 	// }
+// ----------------------------
+
+	async listarhabitaciones() {
+		const habitaciones = await this.db.query('SELECT * FROM habitaciones');
+		//console.log(usuarios[0]);
+		//devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
+		return habitaciones[0];
+	}
 
 	async modificarDatos(id: string, apellido: string, dni: string, telefono: string, mail: string, contrasenia: string, ) {
 		const result = (await this.db.query('UPDATE persona SET nombre = ?, apellido = ?,dni = ?, telefono = ?,	mail= ?, contrasenia= ?  WHERE idPersona = ?', 
@@ -72,7 +75,12 @@ class UserModel {
 		console.log(result);
 		return result;
 	}
-	
+	async listarDatosUsuario() {
+		const persona = await this.db.query('SELECT * FROM persona');
+		//console.log(usuarios[0]);
+		//devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
+		return persona[0];
+	}
 }
 
 const userModel: UserModel = new UserModel();

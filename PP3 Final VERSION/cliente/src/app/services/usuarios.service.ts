@@ -15,6 +15,7 @@ export class UsuariosService {
   API_URI3 = environment.API_URI + '/admin';
   API_URI4 = environment.API_URI + '/habitaciones'
 
+
   logued$ = new EventEmitter<string>();
   admin$ = new EventEmitter<string>();
 

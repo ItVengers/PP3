@@ -107,4 +107,13 @@ export class UsuariosService {
   peticionCambiarDatosUsuarios(actualizarDatos: Usuario): Observable<Usuario> {
     return this.http.post(`${this.API_URI}/modificardatos`, actualizarDatos);
   }
+
+  listarHoteles() {
+    return this.http.get(`${this.API_URI}/listarhoteles`);
+  }
+
+  buscarId(desc: any) {
+    return this.http.get(`${this.API_URI}/buscarId`, desc);
+  }
+
 }

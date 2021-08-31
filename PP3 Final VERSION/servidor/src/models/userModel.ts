@@ -78,6 +78,17 @@ class UserModel {
 		//devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
 		return persona[0][0];
 	}
+
+	async listarhoteles() {
+		const hoteles = (await this.db.query('SELECT descripcion FROM hoteles'));
+		return hoteles[0];
+	}
+
+	async buscarID(desc: any) {
+		const hoteles = (await this.db.query('SELECT zona_id FROM hoteles WHERE descripcion = ?', [desc]));
+		if (hoteles.length > 1)
+		return hoteles[0][0];
+	return null;	}
 }
 
 const userModel: UserModel = new UserModel();

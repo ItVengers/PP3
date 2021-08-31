@@ -27,6 +27,23 @@ class UserController {
             return;
         });
     }
+    listarhoteles(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.body);
+            const hoteles = yield userModel_1.default.listarhoteles();
+            console.log(hoteles);
+            return res.json(hoteles);
+        });
+    }
+    buscarID(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.body);
+            const { descripcion } = req.body;
+            const zona = yield userModel_1.default.buscarID(descripcion);
+            console.log(zona);
+            return res.json(zona);
+        });
+    }
     modificarDatosUsuario(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req.body);

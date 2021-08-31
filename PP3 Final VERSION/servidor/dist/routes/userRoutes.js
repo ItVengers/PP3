@@ -21,6 +21,8 @@ class UserRoutes {
         this.router.post('/signup', userController_1.default.addUser);
         this.router.get('/misdatos/:id', userController_1.default.listarUsuario);
         this.router.post('/modificardatos', userController_1.default.modificarDatosUsuario);
+        this.router.get('/listarhoteles', userController_1.default.listarhoteles);
+        this.router.get('/buscarId', userController_1.default.buscarID);
     }
 }
 //Exportamos el enrutador con 

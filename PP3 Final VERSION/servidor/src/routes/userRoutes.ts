@@ -22,6 +22,10 @@ class UserRoutes {
 		this.router.get('/misdatos/:id', userController.listarUsuario);
 		this.router.post('/modificardatos', userController.modificarDatosUsuario);
 
+		this.router.get('/listarhoteles', userController.listarhoteles);
+		this.router.get('/buscarId', userController.buscarID)
+
+
 	}
 
 }

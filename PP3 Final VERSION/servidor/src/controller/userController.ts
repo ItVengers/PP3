@@ -12,9 +12,23 @@ class UserController {
 		console.log(result.mail);
 		res.status(200).json(result);
 		return;
-
-
 	}
+
+	public async listarhoteles(req: Request, res: Response) {
+		console.log(req.body);
+		const hoteles = await userModel.listarhoteles();
+		console.log(hoteles);
+        return res.json(hoteles);
+	}
+
+	public async buscarID(req: Request, res: Response) {
+		console.log(req.body);
+		const {descripcion} = req.body;
+		const zona = await userModel.buscarID(descripcion);
+		console.log(zona);
+        return res.json(zona);
+	}
+
 
 	public async modificarDatosUsuario(req: Request, res: Response) {
 		console.log(req.body);

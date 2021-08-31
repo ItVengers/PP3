@@ -11,8 +11,7 @@ import { MessageService } from 'primeng/api';
 })
 export class MisDatosComponent implements OnInit {
 
-
-  isLogin = false;
+  idPersona = localStorage.getItem('idPersona');
   // loginForm = this.fb.group({
   //   mail: ['', [Validators.required, Validators.email]],
   //   contrasenia: ['',
@@ -29,6 +28,7 @@ export class MisDatosComponent implements OnInit {
   ) { }
 
   user = { nombre: "", apellido: "", dni: "", telefono: "", mail: "", contrasenia: "" };
+  repassword: any = "";
 
   ngOnInit(): void {
     this.traerDatos(localStorage.getItem('idPersona'));
@@ -55,14 +55,31 @@ export class MisDatosComponent implements OnInit {
           detail: err.error.message,
         });
         console.log(err.error.message);
-        this.isLogin = false;
       }
     )
   }
 
-
-
-
-
-
+  modificarDatos(datos: any) {
+    if (this.user.contrasenia == this.repassword) {
+      this.usuariosService.peticionCambiarDatosUsuarios(datos).subscribe(
+        (res) => {
+          let result: any = res;
+          console.log(result)
+          this.ngOnInit();
+          this.messageService.add({
+            severity: 'success',
+            summary: result.message,
+            detail: "LOS DATOS HAN SIDO ACTUALIZADOS SATISFACTORIAMENTE",
+          });
+        }
+      )
+    }
+    else {
+      this.messageService.add({
+        severity: 'error',
+        summary: 'ERROR',
+        detail: 'Las contraseñas no coinciden!'
+      });
+    }
+  }
 }

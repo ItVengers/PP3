@@ -20,6 +20,7 @@ class UserRoutes {
         this.router.get('/signup', userController_1.default.signup);
         this.router.post('/signup', userController_1.default.addUser);
         this.router.get('/misdatos/:id', userController_1.default.listarUsuario);
+        this.router.post('/modificardatos', userController_1.default.modificarDatosUsuario);
     }
 }
 //Exportamos el enrutador con 

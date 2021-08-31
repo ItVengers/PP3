@@ -20,6 +20,8 @@ class UserRoutes {
 		this.router.post('/signup', userController.addUser);
 
 		this.router.get('/misdatos/:id', userController.listarUsuario);
+		this.router.post('/modificardatos', userController.modificarDatosUsuario);
+
 	}
 
 }

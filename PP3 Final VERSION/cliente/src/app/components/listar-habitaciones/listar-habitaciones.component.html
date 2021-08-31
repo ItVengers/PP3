@@ -6,16 +6,18 @@
     <!-- <th> </th> -->
     <th>Categoría</th>
     <th>Descripción</th>
+    <th>Precio</th>
   </thead>
   <tbody *ngIf="habitaciones.length > 0; else fila">
     <tr *ngFor=" let habitacion of habitaciones">
         <td>{{habitacion.idHabitacion}}</td>
         <td>{{habitacion.tipo}}</td>
         <td>{{habitacion.descripcion}}</td>
+        <td>{{habitacion.precio}}</td>
     </tr>
   </tbody>
   <!-- <tbody #fila>
-  
+
   </tbody> -->
   <ng-template #fila>
     <tbody>

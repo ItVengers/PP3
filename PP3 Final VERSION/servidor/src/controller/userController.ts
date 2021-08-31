@@ -15,6 +15,15 @@ class UserController {
 
 
 	}
+
+	public async modificarDatosUsuario(req: Request, res: Response) {
+		console.log(req.body);
+		const { idPersona, nombre, apellido, dni, telefono, mail, contrasenia } = req.body;
+		const result = await userModel.modificarDatos(idPersona, nombre, apellido, dni, telefono, mail, contrasenia);
+		res.status(200).json({ message: "DATOS ACTUALIZADOS!!" });
+		return;
+	}
+
 	public signin(req: Request, res: Response) {
 		console.log(req.body);
 		res.render("partials/signinForm");
@@ -211,6 +220,7 @@ class UserController {
 		const resultado = await userModel.buscarUsuario(datos.mail);
 		if (!resultado) {
 			datos.rol = 'user'
+			datos.legajo = 0;
 			await userModel.crearUsuario(datos);
 
 			res.status(200).json({

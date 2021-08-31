@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { Habitacion } from '../models/habitacionModel';
 import { environment } from 'src/environments/environment';
+import { Usuario } from '../models/usuarioModel';
 
 @Injectable({
   providedIn: 'root'
@@ -101,5 +102,9 @@ export class UsuariosService {
 
   peticionDatosUsuarios(id: string) {
     return this.http.get(`${this.API_URI}/misdatos/${id}`);
+  }
+
+  peticionCambiarDatosUsuarios(actualizarDatos: Usuario): Observable<Usuario> {
+    return this.http.post(`${this.API_URI}/modificardatos`, actualizarDatos);
   }
 }

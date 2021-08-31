@@ -1,34 +1,43 @@
-<div class="container">
+<div class="container" style="margin-left:0cm;">
   <p-toast></p-toast>
+  <br>
+  <h1 align="left" style="color: white;">Mis Datos</h1>
 
-  <h1 align="center" style="color: white;">Mis Datos</h1>
-
-
-  <form role="form">
-    <div class="inputs">
-
+  <form role="form" (submit)="modificarDatos(user)">
+    <div>
       <div class="form-group">
-        <input type="text" name="nombre" [(ngModel)]="user.nombre" class="form-control">
+        <label>Nombre:</label>
+        <input id="input-datos" type="text" name="nombre" [(ngModel)]="user.nombre" class="form-control">
       </div>
 
       <div class="form-group">
-        <input type="text" name="apellido" [(ngModel)]="user.apellido" class="form-control">
+        <label>Apellido:</label>
+        <input type="text" id="input-datos" name="apellido" [(ngModel)]="user.apellido" class="form-control">
       </div>
 
       <div class="form-group">
-        <input type="text" name="dni" [(ngModel)]="user.dni" class="form-control">
+        <label>DNI:</label>
+        <input type="text" id="input-datos" name="dni" [(ngModel)]="user.dni" class="form-control">
       </div>
 
       <div class="form-group">
-        <input type="text" name="telefono" [(ngModel)]="user.telefono" class="form-control">
+        <label>Telefono:</label>
+        <input type="text" id="input-datos" name="telefono" [(ngModel)]="user.telefono" class="form-control">
       </div>
 
       <div class="form-group">
-        <input type="email" name="mail" [(ngModel)]="user.mail" class="form-control">
+        <label>Mail:</label>
+        <input type="email" id="input-datos" name="mail" [(ngModel)]="user.mail" class="form-control">
       </div>
 
       <div class="form-group">
-        <input type="password" name="contrasenia" [(ngModel)]="user.contrasenia" class="form-control">
+        <label>Contraseña:</label>
+        <input type="password" id="input-datos" name="contrasenia" [(ngModel)]="user.contrasenia" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>Confirmar Contraseña:</label>
+        <input type="password" id="input-datos" name="repassword" [(ngModel)]="repassword" placeholder="Confirmar"
+          class="form-control">
       </div>
     </div>
     <button pButton type="submit" class="btn p-button-rounded p-button-danger">
@@ -81,4 +90,9 @@
             <i class="fa fa-sign-in-alt fa-lg"></i>&nbsp;&nbsp;&nbsp;<span>Iniciar sesion</span>
           </button>
         </form> -->
+
+  <br>
+  <br>
+  <br>
+  <br>
 </div>

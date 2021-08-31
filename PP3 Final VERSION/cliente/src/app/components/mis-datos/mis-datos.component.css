@@ -1,0 +1,9 @@
+#input-datos {
+  background-color: rgb(238, 228, 165);
+  font-weight: bold;
+  font-family: "Font Awesome 5 Free", "Source Sans Pro";
+}
+label {
+  font-weight: bold;
+  color: white;
+}

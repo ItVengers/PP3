@@ -27,6 +27,15 @@ class UserController {
             return;
         });
     }
+    modificarDatosUsuario(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.body);
+            const { idPersona, nombre, apellido, dni, telefono, mail, contrasenia } = req.body;
+            const result = yield userModel_1.default.modificarDatos(idPersona, nombre, apellido, dni, telefono, mail, contrasenia);
+            res.status(200).json({ message: "DATOS ACTUALIZADOS!!" });
+            return;
+        });
+    }
     signin(req, res) {
         console.log(req.body);
         res.render("partials/signinForm");
@@ -207,6 +216,7 @@ class UserController {
             const resultado = yield userModel_1.default.buscarUsuario(datos.mail);
             if (!resultado) {
                 datos.rol = 'user';
+                datos.legajo = 0;
                 yield userModel_1.default.crearUsuario(datos);
                 res.status(200).json({
                     message: 'Usuario Registrado!',

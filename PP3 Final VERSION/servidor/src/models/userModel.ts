@@ -34,9 +34,6 @@ class UserModel {
 		return result;
 	}
 
-
-
-
 	async eliminar(id: string) {
 		const art = (await this.db.query('DELETE FROM habitaciones WHERE idH = ?', [id]))[0].affectedRows;
 		return art;
@@ -55,11 +52,11 @@ class UserModel {
 		return result;
 	}
 
-	// async actualizar(id: string, categoria: string, descripcion: string, precio: number) {
-	// 	const result = (await this.db.query('UPDATE habitaciones SET categoria = ?,descripcion = ?, precio = ?  WHERE idH = ?', [categoria, descripcion, precio, id]))[0].affectedRows;
-	// 	console.log(result);
-	// 	return result;
-	// }
+	async actualizar(id: string, categoria: string, descripcion: string, precio: number) {
+		const result = (await this.db.query('UPDATE habitaciones SET categoria = ?,descripcion = ?, precio = ?  WHERE idH = ?', [categoria, descripcion, precio, id]))[0].affectedRows;
+		console.log(result);
+		return result;
+	}
 	// ----------------------------
 
 	async listarhabitaciones() {
@@ -69,9 +66,9 @@ class UserModel {
 		return habitaciones[0];
 	}
 
-	async modificarDatos(id: string, apellido: string, dni: string, telefono: string, mail: string, contrasenia: string,) {
+	async modificarDatos(id: string, nombre: string, apellido: string, dni: string, telefono: string, mail: string, contrasenia: string,) {
 		const result = (await this.db.query('UPDATE persona SET nombre = ?, apellido = ?,dni = ?, telefono = ?,	mail= ?, contrasenia= ?  WHERE idPersona = ?',
-			[apellido, dni, telefono, mail, contrasenia, id]))[0].affectedRows;
+			[nombre, apellido, dni, telefono, mail, contrasenia, id]))[0].affectedRows;
 		console.log(result);
 		return result;
 	}

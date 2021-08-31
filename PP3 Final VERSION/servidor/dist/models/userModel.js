@@ -88,12 +88,12 @@ class UserModel {
             return result;
         });
     }
-    listarDatosUsuario() {
+    listarDatosUsuario(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            const persona = yield this.db.query('SELECT * FROM persona');
+            const persona = (yield this.db.query('SELECT * FROM persona WHERE idPersona = ?', [id]));
             //console.log(usuarios[0]);
             //devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
-            return persona[0];
+            return persona[0][0];
         });
     }
 }

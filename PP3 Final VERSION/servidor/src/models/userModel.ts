@@ -60,7 +60,7 @@ class UserModel {
 	// 	console.log(result);
 	// 	return result;
 	// }
-// ----------------------------
+	// ----------------------------
 
 	async listarhabitaciones() {
 		const habitaciones = await this.db.query('SELECT * FROM habitaciones');
@@ -69,17 +69,17 @@ class UserModel {
 		return habitaciones[0];
 	}
 
-	async modificarDatos(id: string, apellido: string, dni: string, telefono: string, mail: string, contrasenia: string, ) {
-		const result = (await this.db.query('UPDATE persona SET nombre = ?, apellido = ?,dni = ?, telefono = ?,	mail= ?, contrasenia= ?  WHERE idPersona = ?', 
-		[apellido, dni, telefono, mail, contrasenia, id]))[0].affectedRows;
+	async modificarDatos(id: string, apellido: string, dni: string, telefono: string, mail: string, contrasenia: string,) {
+		const result = (await this.db.query('UPDATE persona SET nombre = ?, apellido = ?,dni = ?, telefono = ?,	mail= ?, contrasenia= ?  WHERE idPersona = ?',
+			[apellido, dni, telefono, mail, contrasenia, id]))[0].affectedRows;
 		console.log(result);
 		return result;
 	}
-	async listarDatosUsuario() {
-		const persona = await this.db.query('SELECT * FROM persona');
+	async listarDatosUsuario(id: string) {
+		const persona = (await this.db.query('SELECT * FROM persona WHERE idPersona = ?', [id]));
 		//console.log(usuarios[0]);
 		//devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
-		return persona[0];
+		return persona[0][0];
 	}
 }
 

@@ -18,9 +18,13 @@ const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 class UserController {
     listarUsuario(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const result = yield userModel_1.default.listarDatosUsuario();
-            console.log(result);
-            return res.json(result);
+            console.log(req.params.id);
+            const { id } = req.params;
+            console.log(id);
+            const result = yield userModel_1.default.listarDatosUsuario(id);
+            console.log(result.mail);
+            res.status(200).json(result);
+            return;
         });
     }
     signin(req, res) {

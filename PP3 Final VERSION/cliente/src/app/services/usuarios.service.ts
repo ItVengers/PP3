@@ -98,4 +98,8 @@ export class UsuariosService {
   listarHabitaciones() {
     return this.http.get(`${this.API_URI4}/listarhabitaciones`);
   }
+
+  peticionDatosUsuarios(id: string) {
+    return this.http.get(`${this.API_URI}/misdatos/${id}`);
+  }
 }

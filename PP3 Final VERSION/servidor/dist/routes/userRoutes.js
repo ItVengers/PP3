@@ -19,7 +19,7 @@ class UserRoutes {
         this.router.post('/signin', userController_1.default.login);
         this.router.get('/signup', userController_1.default.signup);
         this.router.post('/signup', userController_1.default.addUser);
-        this.router.get('/misdatos', userController_1.default.listarUsuario);
+        this.router.get('/misdatos/:id', userController_1.default.listarUsuario);
     }
 }
 //Exportamos el enrutador con 

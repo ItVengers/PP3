@@ -4,11 +4,16 @@ import jwt from "jsonwebtoken";
 //import bcrypt from "bcrypt";
 class UserController {
 
-	public async listarUsuario(req: Request, res: Response) {    
-		const result = await userModel.listarDatosUsuario();
-		console.log(result);
-		return res.json(result);
-	
+	public async listarUsuario(req: Request, res: Response) {
+		console.log(req.params.id);
+		const { id } = req.params;
+		console.log(id);
+		const result = await userModel.listarDatosUsuario(id);
+		console.log(result.mail);
+		res.status(200).json(result);
+		return;
+
+
 	}
 	public signin(req: Request, res: Response) {
 		console.log(req.body);

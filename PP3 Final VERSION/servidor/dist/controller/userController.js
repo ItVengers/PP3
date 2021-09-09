@@ -16,6 +16,43 @@ const userModel_1 = __importDefault(require("../models/userModel"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 //import bcrypt from "bcrypt";
 class UserController {
+    listarUsuario(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.params.id);
+            const { id } = req.params;
+            console.log(id);
+            const result = yield userModel_1.default.listarDatosUsuario(id);
+            console.log(result.mail);
+            res.status(200).json(result);
+            return;
+        });
+    }
+    listarhoteles(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.body);
+            const hoteles = yield userModel_1.default.listarhoteles();
+            console.log(hoteles);
+            return res.json(hoteles);
+        });
+    }
+    buscarID(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.body);
+            const { descripcion } = req.body;
+            const zona = yield userModel_1.default.buscarID(descripcion);
+            console.log(zona);
+            return res.json(zona);
+        });
+    }
+    modificarDatosUsuario(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.body);
+            const { idPersona, nombre, apellido, dni, telefono, mail, contrasenia } = req.body;
+            const result = yield userModel_1.default.modificarDatos(idPersona, nombre, apellido, dni, telefono, mail, contrasenia);
+            res.status(200).json({ message: "DATOS ACTUALIZADOS!!" });
+            return;
+        });
+    }
     signin(req, res) {
         console.log(req.body);
         res.render("partials/signinForm");
@@ -196,6 +233,7 @@ class UserController {
             const resultado = yield userModel_1.default.buscarUsuario(datos.mail);
             if (!resultado) {
                 datos.rol = 'user';
+                datos.legajo = 0;
                 yield userModel_1.default.crearUsuario(datos);
                 res.status(200).json({
                     message: 'Usuario Registrado!',
@@ -205,6 +243,7 @@ class UserController {
         });
     }
 }
+// -------------------------------
 const userController = new UserController();
 exports.default = userController;
 //# sourceMappingURL=userController.js.map

@@ -34,14 +34,6 @@ class UserModel {
 		return result;
 	}
 
-
-	async listarhabitaciones() {
-		const habitaciones = await this.db.query('SELECT * FROM habitaciones');
-		//console.log(usuarios[0]);
-		//devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
-		return habitaciones[0];
-	}
-
 	async eliminar(id: string) {
 		const art = (await this.db.query('DELETE FROM habitaciones WHERE idH = ?', [id]))[0].affectedRows;
 		return art;
@@ -65,7 +57,38 @@ class UserModel {
 		console.log(result);
 		return result;
 	}
+	// ----------------------------
 
+	async listarhabitaciones() {
+		const habitaciones = await this.db.query('SELECT * FROM habitaciones');
+		//console.log(usuarios[0]);
+		//devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
+		return habitaciones[0];
+	}
+
+	async modificarDatos(id: string, nombre: string, apellido: string, dni: string, telefono: string, mail: string, contrasenia: string,) {
+		const result = (await this.db.query('UPDATE persona SET nombre = ?, apellido = ?,dni = ?, telefono = ?,	mail= ?, contrasenia= ?  WHERE idPersona = ?',
+			[nombre, apellido, dni, telefono, mail, contrasenia, id]))[0].affectedRows;
+		console.log(result);
+		return result;
+	}
+	async listarDatosUsuario(id: string) {
+		const persona = (await this.db.query('SELECT * FROM persona WHERE idPersona = ?', [id]));
+		//console.log(usuarios[0]);
+		//devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
+		return persona[0][0];
+	}
+
+	async listarhoteles() {
+		const hoteles = (await this.db.query('SELECT descripcion FROM hoteles'));
+		return hoteles[0];
+	}
+
+	async buscarID(desc: any) {
+		const hoteles = (await this.db.query('SELECT zona_id FROM hoteles WHERE descripcion = ?', [desc]));
+		if (hoteles.length > 1)
+		return hoteles[0][0];
+	return null;	}
 }
 
 const userModel: UserModel = new UserModel();

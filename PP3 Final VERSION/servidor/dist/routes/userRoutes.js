@@ -12,13 +12,17 @@ class UserRoutes {
     }
     config() {
         this.router.get('/', (req, res) => {
-            res.send('Main!!!');
+            res.send('Main users!!!');
             //res.render("partials/principal");
         });
         this.router.get('/signin', userController_1.default.signin);
         this.router.post('/signin', userController_1.default.login);
         this.router.get('/signup', userController_1.default.signup);
         this.router.post('/signup', userController_1.default.addUser);
+        this.router.get('/misdatos/:id', userController_1.default.listarUsuario);
+        this.router.post('/modificardatos', userController_1.default.modificarDatosUsuario);
+        this.router.get('/listarhoteles', userController_1.default.listarhoteles);
+        this.router.get('/buscarId', userController_1.default.buscarID);
     }
 }
 //Exportamos el enrutador con 

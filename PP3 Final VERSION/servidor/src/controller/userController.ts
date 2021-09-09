@@ -4,6 +4,40 @@ import jwt from "jsonwebtoken";
 //import bcrypt from "bcrypt";
 class UserController {
 
+	public async listarUsuario(req: Request, res: Response) {
+		console.log(req.params.id);
+		const { id } = req.params;
+		console.log(id);
+		const result = await userModel.listarDatosUsuario(id);
+		console.log(result.mail);
+		res.status(200).json(result);
+		return;
+	}
+
+	public async listarhoteles(req: Request, res: Response) {
+		console.log(req.body);
+		const hoteles = await userModel.listarhoteles();
+		console.log(hoteles);
+        return res.json(hoteles);
+	}
+
+	public async buscarID(req: Request, res: Response) {
+		console.log(req.body);
+		const {descripcion} = req.body;
+		const zona = await userModel.buscarID(descripcion);
+		console.log(zona);
+        return res.json(zona);
+	}
+
+
+	public async modificarDatosUsuario(req: Request, res: Response) {
+		console.log(req.body);
+		const { idPersona, nombre, apellido, dni, telefono, mail, contrasenia } = req.body;
+		const result = await userModel.modificarDatos(idPersona, nombre, apellido, dni, telefono, mail, contrasenia);
+		res.status(200).json({ message: "DATOS ACTUALIZADOS!!" });
+		return;
+	}
+
 	public signin(req: Request, res: Response) {
 		console.log(req.body);
 		res.render("partials/signinForm");
@@ -200,6 +234,7 @@ class UserController {
 		const resultado = await userModel.buscarUsuario(datos.mail);
 		if (!resultado) {
 			datos.rol = 'user'
+			datos.legajo = 0;
 			await userModel.crearUsuario(datos);
 
 			res.status(200).json({
@@ -209,6 +244,7 @@ class UserController {
 		res.status(403).json({ message: 'Error, ya existe el usuario' });
 	}
 }
+// -------------------------------
 
 const userController = new UserController();
 export default userController;

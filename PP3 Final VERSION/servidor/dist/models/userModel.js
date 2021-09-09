@@ -48,14 +48,6 @@ class UserModel {
             return result;
         });
     }
-    listarhabitaciones() {
-        return __awaiter(this, void 0, void 0, function* () {
-            const habitaciones = yield this.db.query('SELECT * FROM habitaciones');
-            //console.log(usuarios[0]);
-            //devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
-            return habitaciones[0];
-        });
-    }
     eliminar(id) {
         return __awaiter(this, void 0, void 0, function* () {
             const art = (yield this.db.query('DELETE FROM habitaciones WHERE idH = ?', [id]))[0].affectedRows;
@@ -80,6 +72,44 @@ class UserModel {
             const result = (yield this.db.query('UPDATE habitaciones SET categoria = ?,descripcion = ?, precio = ?  WHERE idH = ?', [categoria, descripcion, precio, id]))[0].affectedRows;
             console.log(result);
             return result;
+        });
+    }
+    // ----------------------------
+    listarhabitaciones() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const habitaciones = yield this.db.query('SELECT * FROM habitaciones');
+            //console.log(usuarios[0]);
+            //devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
+            return habitaciones[0];
+        });
+    }
+    modificarDatos(id, nombre, apellido, dni, telefono, mail, contrasenia) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const result = (yield this.db.query('UPDATE persona SET nombre = ?, apellido = ?,dni = ?, telefono = ?,	mail= ?, contrasenia= ?  WHERE idPersona = ?', [nombre, apellido, dni, telefono, mail, contrasenia, id]))[0].affectedRows;
+            console.log(result);
+            return result;
+        });
+    }
+    listarDatosUsuario(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const persona = (yield this.db.query('SELECT * FROM persona WHERE idPersona = ?', [id]));
+            //console.log(usuarios[0]);
+            //devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
+            return persona[0][0];
+        });
+    }
+    listarhoteles() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const hoteles = (yield this.db.query('SELECT descripcion FROM hoteles'));
+            return hoteles[0];
+        });
+    }
+    buscarID(desc) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const hoteles = (yield this.db.query('SELECT zona_id FROM hoteles WHERE descripcion = ?', [desc]));
+            if (hoteles.length > 1)
+                return hoteles[0][0];
+            return null;
         });
     }
 }

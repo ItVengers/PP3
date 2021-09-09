@@ -14,6 +14,6 @@ export class AppComponent implements OnInit {
   constructor(private primengConfig: PrimeNGConfig, private messageService: MessageService) {}
 
   ngOnInit() {
-      this.primengConfig.ripple = true;
+      this.primengConfig.ripple = true; 
   }
 }

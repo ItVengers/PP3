@@ -29,9 +29,9 @@
 
   <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
     <div class="col-md-6 px-0">
-      <h1 class="display-4 fst-italic">Hoteles Del Sur</h1>
+      <h1 class="display-4 fst-italic">Hoteles De Argentina</h1>
       <p class="lead my-3" style="left: 300px;">Ofrecemos alojamiento 4 estrellas, tenemos hoteles en todo el país.
-        Grandes celebridades como Mariano Rosi y Juan Di Biasi ya han disfrutado de las comodidades de nuestras
+        Grandes celebridades ya han disfrutado de las comodidades de nuestras
         habitaciones.
         ¿Y vos? ¿Qué estás esperando?
       </p>
@@ -39,74 +39,77 @@
   </div>
 
   <!-- Filtro de habitaciones -->
-  <div class="contaiener" id="contenedor" name="filtrohabitaciones">
-    <div class="row">
-      <div class="col-2" id="columna">
-        <div class="form-group">
-          <label for="sel1" id="label">Hotel/Lugar</label>
-          <select class="form-control" id="sel1">
-            <option value="" disabled selected hidden>Seleccione</option>
-            <option>Hotel Sur Centro</option>
-            <option>Hotel Del Plata</option>
-            <option>Hotel Cordoba</option>
-          </select>
+  <form role="form">
+    <div class="contaiener" id="contenedor" name="filtrohabitaciones">
+      <div class="row">
+        <div class="col-2" id="columna">
+          <div class="form-group">
+            <label for="sel1" id="label">Hotel/Lugar</label>
+            <select name="selector" id='sel1'>
+              <option name="opcion1" *ngFor="let hotel of hoteles">xam
+                {{hotel.descripcion}}
+              </option>
+            </select>
+            <button pButton type="submit" class="btn p-button-rounded p-button-info">prueba</button>
+          </div>
         </div>
-      </div>
-      <div class="col-1" id="columna">
-        <div class="form-group">
-          <label for="sel2" id="label">Adultos</label>
-          <select class="form-control" id="sel1">
-            <option value="" disabled selected hidden>Seleccione</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-          </select>
+        <div class="col-1" id="columna">
+          <div class="form-group">
+            <label for="sel2" id="label">Adultos</label>
+            <select class="form-control" id="sel1">
+              <option value="" disabled selected hidden>Seleccione</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
+          </div>
         </div>
-      </div>
-      <div class="col-1" id="columna">
-        <div class="form-group">
-          <label for="sel3" id="label">Niños</label>
-          <select class="form-control" id="sel1">
-            <option>0</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-          </select>
+        <div class="col-1" id="columna">
+          <div class="form-group">
+            <label for="sel3" id="label">Niños</label>
+            <select class="form-control" id="sel1">
+              <option>0</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
+          </div>
         </div>
-      </div>
-      <div class="col-2" id="columna">
-        <div class="form-group">
-          <label for="sel3" id="label">Tipo de Camas</label>
-          <select class="form-control" id="sel1">
-            <option value="" disabled selected hidden>Seleccione</option>
-            <option>Camas simples</option>
-            <option>Con cama Doble</option>
-          </select>
+        <div class="col-2" id="columna">
+          <div class="form-group">
+            <label for="sel3" id="label">Tipo de Camas</label>
+            <select class="form-control" id="sel1">
+              <option value="" disabled selected hidden>Seleccione</option>
+              <option>Camas simples</option>
+              <option>Con cama Doble</option>
+            </select>
+          </div>
         </div>
-      </div>
-      <div class="col-2" id="columna">
-        <div class="form-group">
-          <label for="ingresoF" id="label">Fecha de llegada</label>
-          &nbsp;<input type="date" name="llegada">
+        <div class="col-2" id="columna">
+          <div class="form-group">
+            <label for="ingresoF" id="label">Fecha de llegada</label>
+            &nbsp;<input type="date" name="llegada">
+          </div>
         </div>
-      </div>
-      <div class="col-2" id="columna">
-        <div class="form-group">
-          <label for="egresoF" id="label">Fecha de Salida</label>
-          &nbsp; <input type="date" name="salida">
+        <div class="col-2" id="columna">
+          <div class="form-group">
+            <label for="egresoF" id="label">Fecha de Salida</label>
+            &nbsp; <input type="date" name="salida">
+          </div>
         </div>
-      </div>
-      <div class="col-2" id="columnabtn">
-        <div class="form-group">
-          <a type="submit" class="btn btn-primary btn-block" name="buscar" id="boton" value="Buscar"
-            href="usuarios/listarhabitaciones">Buscar</a>
+        <div class="col-2" id="columnabtn">
+          <div class="form-group">
+            <a type="submit" class="btn btn-primary btn-block" name="buscar" id="boton" value="Buscar"
+              href="usuarios/listarhabitaciones">Buscar</a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </form>
   <!-- Fin filtro habitaciones -->
+
 
   <div class="row mb-2">
     <div class="col-md-6">

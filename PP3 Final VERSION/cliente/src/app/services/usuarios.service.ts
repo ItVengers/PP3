@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { Habitacion } from '../models/habitacionModel';
 import { environment } from 'src/environments/environment';
+import { Usuario } from '../models/usuarioModel';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class UsuariosService {
   API_URI2 = environment.API_URI + '/comentario';
   API_URI3 = environment.API_URI + '/admin';
   API_URI4 = environment.API_URI + '/habitaciones'
+
 
   logued$ = new EventEmitter<string>();
   admin$ = new EventEmitter<string>();
@@ -97,4 +99,21 @@ export class UsuariosService {
   listarHabitaciones() {
     return this.http.get(`${this.API_URI4}/listarhabitaciones`);
   }
+
+  peticionDatosUsuarios(id: string) {
+    return this.http.get(`${this.API_URI}/misdatos/${id}`);
+  }
+
+  peticionCambiarDatosUsuarios(actualizarDatos: Usuario): Observable<Usuario> {
+    return this.http.post(`${this.API_URI}/modificardatos`, actualizarDatos);
+  }
+
+  listarHoteles() {
+    return this.http.get(`${this.API_URI}/listarhoteles`);
+  }
+
+  buscarId(desc: any) {
+    return this.http.get(`${this.API_URI}/buscarId`, desc);
+  }
+
 }

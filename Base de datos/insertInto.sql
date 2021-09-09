@@ -39,6 +39,8 @@ ALTER TABLE habitaciones ADD COLUMN camas_id int (2)  NOT NULL;
 insert into habitaciones (cat_id, camas_id) 
 values(1,1),(2,1),(3,2),(3,3),(7,4),(7,5),(13,7),(13,8),(15,9),(15,10),(15,11);
 
+
+
 #----------------------------------------------
 
 select * from hoteles;
@@ -54,7 +56,7 @@ insert into zonas (descripcion) values ("Patagonia"),("Cuyo"),("Norte"),("Litora
 
 #-----------------------------------------------
 select * from temporada;
-update temporada set zona_id = 5 where idTemporada =6;
+update temporada set fecha_desde = 19000923  where idTemporada = 9;
 
 insert into temporada (descripcion,fecha_desde, fecha_hasta, zona_id) 
 values ("Baja",19000621,19000922,6),("Media",19000320,19000621,6),("Alta",19000922,19000320,6);
@@ -95,6 +97,11 @@ values (20210201,20210220,20201225,1,3800,"Pendiente",11,3),(20210101,20210120,2
 
 
 #------------------------------------------------
+
+select h.idHabitacion, cat.tipo, c.descripcion, t.precio from habitaciones h 
+inner join camas c on c.idCamas = h.camas_id 
+inner join categoria cat on cat.idCategoria = h.cat_id 
+inner join tarifas t on t.categoria_id = cat.idCategoria;
 
 select cat.tipo, c.descripcion from habitaciones h
 inner join camas c on c.idCamas = h.camas_id

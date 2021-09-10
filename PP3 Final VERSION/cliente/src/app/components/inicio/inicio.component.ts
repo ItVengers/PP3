@@ -15,6 +15,8 @@ export class InicioComponent implements OnInit {
 
   hoteles: any = [];
 
+  seleccionado: string = "";
+
 
   ngOnInit(): void {
 
@@ -39,7 +41,9 @@ export class InicioComponent implements OnInit {
     )
   }
 
-  enviarDescripcion(desc: any) {
+  enviarDescripcion(desc: string) {
+    desc = this.seleccionado;
+    console.log(desc);
     console.log(desc);
     this.usuariosService.buscarId(desc).subscribe(
       (res) => {
@@ -55,5 +59,6 @@ export class InicioComponent implements OnInit {
         console.log(err.error.message);
       }
     )
+    this.traerHoteles();
   }
 }

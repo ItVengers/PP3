@@ -115,9 +115,9 @@ class UserModel {
     }
     buscarID(desc) {
         return __awaiter(this, void 0, void 0, function* () {
-            const hoteles = (yield this.db.query('SELECT zona_id FROM hoteles WHERE descripcion = ?', [desc]));
-            if (hoteles.length > 1)
-                return hoteles[0][0];
+            const zona = (yield this.db.query('SELECT zona_id FROM hoteles WHERE descripcion = ?', [desc]));
+            if (zona.length > 1)
+                return zona[0];
             return null;
         });
     }

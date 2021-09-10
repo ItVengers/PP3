@@ -98,9 +98,9 @@ class UserModel {
 	}
 
 	async buscarID(desc: any) {
-		const hoteles = (await this.db.query('SELECT zona_id FROM hoteles WHERE descripcion = ?', [desc]));
-		if (hoteles.length > 1)
-			return hoteles[0][0];
+		const zona = (await this.db.query('SELECT zona_id FROM hoteles WHERE descripcion = ?', [desc]));
+		if (zona.length > 1)
+			return zona[0];
 		return null;
 	}
 }

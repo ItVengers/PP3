@@ -18,15 +18,15 @@ class UserController {
 		console.log(req.body);
 		const hoteles = await userModel.listarhoteles();
 		console.log(hoteles);
-        return res.json(hoteles);
+		return res.json(hoteles);
 	}
 
 	public async buscarID(req: Request, res: Response) {
-		console.log(req.body);
-		const {descripcion} = req.body;
+		const { descripcion } = req.body;
+		console.log(descripcion);
 		const zona = await userModel.buscarID(descripcion);
 		console.log(zona);
-        return res.json(zona);
+		return res.json(zona);
 	}
 
 

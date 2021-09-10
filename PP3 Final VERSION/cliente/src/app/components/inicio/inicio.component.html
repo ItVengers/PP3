@@ -45,12 +45,11 @@
         <div class="col-2" id="columna">
           <div class="form-group">
             <label for="sel1" id="label">Hotel/Lugar</label>
-            <select name="selector" id='sel1'>
-              <option name="opcion1" *ngFor="let hotel of hoteles">
+            <select name="selector" [(ngModel)]="seleccionado" id='sel1'>
+              <option [ngValue]="hotel" *ngFor="let hotel of hoteles">
                 {{hotel.descripcion}}
               </option>
             </select>
-            <button pButton type="submit" class="btn p-button-rounded p-button-info">prueba</button>
           </div>
         </div>
         <div class="col-1" id="columna">
@@ -109,6 +108,22 @@
     </div>
   </form>
   <!-- Fin filtro habitaciones -->
+
+  <form (ngSubmit)="enviarDescripcion(seleccionado)">
+    <div class="col-2" id="columna">
+      <div class="form-group">
+        <label for="sel1" id="label">Hotel/Lugar</label>
+        <select name="selector" [(ngModel)]="seleccionado" id='sel1'>
+          <option [ngValue]="hotel" *ngFor="let hotel of hoteles">
+            {{hotel.descripcion}}
+          </option>
+        </select>
+      </div>
+    </div>
+    <button pButton type="submit" class="btn btn-primary" class="btn p-button-rounded">
+      <i class="fa fa-sign-in-alt fa-lg"></i>&nbsp;&nbsp;&nbsp;<span>Iniciar sesion</span>
+    </button>
+  </form>
 
 
   <div class="row mb-2">

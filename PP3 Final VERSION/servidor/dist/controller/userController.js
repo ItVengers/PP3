@@ -37,8 +37,8 @@ class UserController {
     }
     buscarID(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(req.body);
             const { descripcion } = req.body;
+            console.log(descripcion);
             const zona = yield userModel_1.default.buscarID(descripcion);
             console.log(zona);
             return res.json(zona);

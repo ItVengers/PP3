@@ -6,13 +6,23 @@ class ComentarioModel {
         this.config(); //aplicamos la conexion con la BD.
     }
 
+    // async config() {//Parametro de conexion con la BD.
+    //     this.db = await createPool({
+    // 		host: 'remotemysql.com',
+    // 		user: '868JNygZMY',
+    // 		password: 'vsXA45H28F',
+    // 		database: '868JNygZMY',
+    // 		connectionLimit: 10
+    //     });
+    // }
+
     async config() {//Parametro de conexion con la BD.
         this.db = await createPool({
-			host: 'remotemysql.com',
-			user: '868JNygZMY',
-			password: 'vsXA45H28F',
-			database: '868JNygZMY',
-			connectionLimit: 10
+            host: '127.0.0.1',
+            user: 'root',
+            password: '',
+            database: 'dbhoteles',
+            connectionLimit: 10
         });
     }
 
@@ -31,7 +41,7 @@ class ComentarioModel {
             return encontrado[0];
         return null;
     }
-  
+
 
     //Devuelve 1 si logro crear un nuevo usuario de la tabla usuarios
     async crear(comentario: object) {

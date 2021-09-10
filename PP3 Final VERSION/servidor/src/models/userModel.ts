@@ -6,15 +6,28 @@ class UserModel {
 		this.config(); //aplicamos la conexion con la BD.
 	}
 
+	// async config() {//Parametro de conexion con la BD.
+	//     this.db = await createPool({
+	// 		host: 'remotemysql.com',
+	// 		user: '868JNygZMY',
+	// 		password: 'vsXA45H28F',
+	// 		database: '868JNygZMY',
+	// 		connectionLimit: 10
+	//     });
+	// }
+
 	async config() {//Parametro de conexion con la BD.
 		this.db = await createPool({
-			host: 'remotemysql.com',
-			user: '868JNygZMY',
-			password: 'HOP6t1Lq7X',
-			database: '868JNygZMY',
+			host: '127.0.0.1',
+			user: 'root',
+			password: '',
+			database: 'dbhoteles',
 			connectionLimit: 10
 		});
 	}
+
+
+
 	async buscarUsuario(mail: string) {
 		const encontrado: any = await this.db.query('SELECT * FROM persona WHERE mail = ?', [mail]);
 		//Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
@@ -87,8 +100,9 @@ class UserModel {
 	async buscarID(desc: any) {
 		const hoteles = (await this.db.query('SELECT zona_id FROM hoteles WHERE descripcion = ?', [desc]));
 		if (hoteles.length > 1)
-		return hoteles[0][0];
-	return null;	}
+			return hoteles[0][0];
+		return null;
+	}
 }
 
 const userModel: UserModel = new UserModel();

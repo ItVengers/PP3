@@ -14,13 +14,22 @@ class UserModel {
     constructor() {
         this.config(); //aplicamos la conexion con la BD.
     }
+    // async config() {//Parametro de conexion con la BD.
+    //     this.db = await createPool({
+    // 		host: 'remotemysql.com',
+    // 		user: '868JNygZMY',
+    // 		password: 'vsXA45H28F',
+    // 		database: '868JNygZMY',
+    // 		connectionLimit: 10
+    //     });
+    // }
     config() {
         return __awaiter(this, void 0, void 0, function* () {
             this.db = yield promise_1.createPool({
-                host: 'remotemysql.com',
-                user: '868JNygZMY',
-                password: 'HOP6t1Lq7X',
-                database: '868JNygZMY',
+                host: '127.0.0.1',
+                user: 'root',
+                password: '',
+                database: 'dbhoteles',
                 connectionLimit: 10
             });
         });

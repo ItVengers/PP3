@@ -27,6 +27,7 @@
   </div>
 </div>
 
+
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
   <a class="navbar-brand logo" routerLink="/" (click)="collapseNavbar()"></a>
 
@@ -36,7 +37,7 @@
   </a>
 
   <div class="navbar-collapse collapse" id="navbarResponsive" [ngbCollapse]="isNavbarCollapsed" [ngSwitch]="login_">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+    <ul *ngIf="admin_ != true" class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
         <a class="nav-link" routerLink="construccion" (click)="collapseNavbar()">
           <span>

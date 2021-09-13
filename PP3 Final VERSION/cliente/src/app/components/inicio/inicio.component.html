@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" id="cabecera">
 
   <h1 id="title">Bienvenido a Hoteles Argentinos</h1>
   <h3>Hoteles ideales para familias y parejas</h3>
@@ -40,13 +40,14 @@
 
   <!-- Filtro de habitaciones -->
   <form role="form">
+    <!-- <div class="container" data-view="accommodation" id="contenedor" name="filtrohabitaciones"> -->
     <div class="contaiener" id="contenedor" name="filtrohabitaciones">
       <div class="row">
         <div class="col-2" id="columna">
           <div class="form-group">
             <label for="sel1" id="label">Hotel/Lugar</label>
             <select name="selector" [(ngModel)]="seleccionado" id='sel1'>
-              <option [ngValue]="hotel" *ngFor="let hotel of hoteles">
+              <option [ngValue]="hotel.descripcion" *ngFor="let hotel of hoteles">
                 {{hotel.descripcion}}
               </option>
             </select>
@@ -114,7 +115,7 @@
       <div class="form-group">
         <label for="sel1" id="label">Hotel/Lugar</label>
         <select name="selector" [(ngModel)]="seleccionado" id='sel1'>
-          <option [ngValue]="hotel" *ngFor="let hotel of hoteles">
+          <option [ngValue]="hotel.descripcion" *ngFor="let hotel of hoteles">
             {{hotel.descripcion}}
           </option>
         </select>
@@ -160,7 +161,6 @@
           <img class="bd-placeholder-img" width="200" height="250" src="../../../assets/img/telo.jpg" role="img"
             aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
           <title>Placeholder</title>
-
         </div>
       </div>
     </div>

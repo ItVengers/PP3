@@ -21,12 +21,17 @@ class UserController {
 		return res.json(hoteles);
 	}
 
+
 	public async buscarID(req: Request, res: Response) {
-		const { descripcion } = req.body;
+		console.log("ENTRE AL METODO BUSCARID");
+		//const { descripcion } = req.body;
+		const descripcion = "Hotel del Plata"
 		console.log(descripcion);
 		const zona = await userModel.buscarID(descripcion);
 		console.log(zona);
-		return res.json(zona);
+		console.log("SALI DEL METODO BUSCARID");
+		res.status(200).json(zona);
+		return;
 	}
 
 

@@ -24,6 +24,14 @@
 .logo-col {
   display: flex;
   background-color: #343a40 !important;
+
+}
+
+#cabecera{
+  /* width: 358px;
+  height: 0.5px;
+  margin: 91px 35.5px 47.5px 17.5px; */
+  border-bottom: solid 2px white;
 }
 
 .text-end {

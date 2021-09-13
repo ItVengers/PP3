@@ -97,11 +97,16 @@ class UserModel {
 		return hoteles[0];
 	}
 
-	async buscarID(desc: any) {
+	async buscarID(desc: string) {
+		console.log("ENTRE AL USERMODEL");
+		console.log(desc);
 		const zona = (await this.db.query('SELECT zona_id FROM hoteles WHERE descripcion = ?', [desc]));
-		if (zona.length > 1)
-			return zona[0];
-		return null;
+		if (zona.length >= 1) {
+			console.log("SALI DEL USERMODEL");
+			return zona[0][0];
+		}
+		return "VACIO";
+
 	}
 }
 

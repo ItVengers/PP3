@@ -14,9 +14,9 @@ export class InicioComponent implements OnInit {
   constructor(private usuariosService: UsuariosService, private router: Router, private messageService: MessageService) { }
 
   hoteles: any = [];
+  zona = { zona_id: "" };
 
   seleccionado: string = "";
-
 
   ngOnInit(): void {
 
@@ -42,13 +42,13 @@ export class InicioComponent implements OnInit {
   }
 
   enviarDescripcion(desc: string) {
-    desc = this.seleccionado;
-    console.log(desc);
+    console.log("ENTRE AL enviardescripcion");
     console.log(desc);
     this.usuariosService.buscarId(desc).subscribe(
       (res) => {
-        this.hoteles = res;
-        console.log(this.hoteles);
+        let result: any = res;
+        this.zona.zona_id = result;
+        console.log(this.zona.zona_id);
       },
       (err) => {
         this.messageService.add({
@@ -60,5 +60,6 @@ export class InicioComponent implements OnInit {
       }
     )
     this.traerHoteles();
+    this.seleccionado = "";
   }
 }

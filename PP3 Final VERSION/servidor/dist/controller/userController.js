@@ -37,11 +37,15 @@ class UserController {
     }
     buscarID(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { descripcion } = req.body;
+            console.log("ENTRE AL METODO BUSCARID");
+            //const { descripcion } = req.body;
+            const descripcion = "Hotel del Plata";
             console.log(descripcion);
             const zona = yield userModel_1.default.buscarID(descripcion);
             console.log(zona);
-            return res.json(zona);
+            console.log("SALI DEL METODO BUSCARID");
+            res.status(200).json(zona);
+            return;
         });
     }
     modificarDatosUsuario(req, res) {

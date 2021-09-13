@@ -113,8 +113,8 @@ export class UsuariosService {
   }
 
   buscarId(desc: any) {
-    console.log("Estoy en usuarioService: " + desc.descripcion);
-    return this.http.get(`${this.API_URI}/buscarId`, desc.descripcion);
+    console.log("Estoy en usuarioService: " + desc);
+    return this.http.get(`${this.API_URI}/buscarId`, desc);
   }
 
 }

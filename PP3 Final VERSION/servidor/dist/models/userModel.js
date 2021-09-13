@@ -115,10 +115,14 @@ class UserModel {
     }
     buscarID(desc) {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log("ENTRE AL USERMODEL");
+            console.log(desc);
             const zona = (yield this.db.query('SELECT zona_id FROM hoteles WHERE descripcion = ?', [desc]));
-            if (zona.length > 1)
-                return zona[0];
-            return null;
+            if (zona.length >= 1) {
+                console.log("SALI DEL USERMODEL");
+                return zona[0][0];
+            }
+            return "VACIO";
         });
     }
 }

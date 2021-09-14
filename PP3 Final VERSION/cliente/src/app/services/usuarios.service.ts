@@ -112,9 +112,13 @@ export class UsuariosService {
     return this.http.get(`${this.API_URI}/listarhoteles`);
   }
 
-  buscarId(desc: any) {
-    console.log("Estoy en usuarioService: " + desc);
-    return this.http.get(`${this.API_URI}/buscarId`, desc);
+  buscarId(desc: string) {
+    return this.http.get(`${this.API_URI}/buscarId/${desc}`);
+  }
+
+  buscarFecha(fecha: string) {
+    console.log("Estoy en usuarioService: " + fecha);
+    return this.http.get(`${this.API_URI}/buscarId/${fecha}`);
   }
 
 }

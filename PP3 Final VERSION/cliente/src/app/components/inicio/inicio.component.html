@@ -46,8 +46,8 @@
         <div class="col-2" id="columna">
           <div class="form-group">
             <label for="sel1" id="label">Hotel/Lugar</label>
-            <select name="selector" [(ngModel)]="seleccionado" id='sel1'>
-              <option [ngValue]="hotel.descripcion" *ngFor="let hotel of hoteles">
+            <select name="selector" id='sel1'>
+              <option *ngFor="let hotel of hoteles">
                 {{hotel.descripcion}}
               </option>
             </select>
@@ -90,7 +90,8 @@
         <div class="col-2" id="columna">
           <div class="form-group">
             <label for="ingresoF" id="label">Fecha de llegada</label>
-            &nbsp;<input type="date" name="llegada">
+            &nbsp;
+            <input type="date" name="llegada">
           </div>
         </div>
         <div class="col-2" id="columna">
@@ -110,12 +111,12 @@
   </form>
   <!-- Fin filtro habitaciones -->
 
-  <form (ngSubmit)="enviarDescripcion(seleccionado)">
+  <!-- <form (ngSubmit)="enviarDescripcion(seleccionado)">
     <div class="col-2" id="columna">
       <div class="form-group">
         <label for="sel1" id="label">Hotel/Lugar</label>
         <select name="selector" [(ngModel)]="seleccionado" id='sel1'>
-          <option [ngValue]="hotel.descripcion" *ngFor="let hotel of hoteles">
+          <option [(ngValue)]="hotel.descripcion" *ngFor="let hotel of hoteles">
             {{hotel.descripcion}}
           </option>
         </select>
@@ -124,7 +125,30 @@
     <button pButton type="submit" class="btn btn-primary" class="btn p-button-rounded">
       <i class="fa fa-sign-in-alt fa-lg"></i>&nbsp;&nbsp;&nbsp;<span>Iniciar sesion</span>
     </button>
+  </form> -->
+
+  <form (ngSubmit)="enviarFecha(fecha)">
+    <!-- <div class="col-2" id="columna">
+      <div class="form-group">
+        <label for="sel1" id="label">Hotel/Lugar</label>
+        <select name="selector" [(ngModel)]="seleccionado" id='sel1'>
+          <option [(ngValue)]="hotel.descripcion" *ngFor="let hotel of hoteles">
+            {{hotel.descripcion}}
+          </option>
+        </select>
+      </div>
+    </div> -->
+    <div class="form-group">
+      <label for="ingresoF" id="label">Fecha de llegada</label>
+      &nbsp;
+      <input type="date" name="llegada" value="getDate()" min=getDateY()>
+    </div>
+    <button pButton type="submit" class="btn btn-primary" class="btn p-button-rounded">
+      <i class="fa fa-sign-in-alt fa-lg"></i>&nbsp;&nbsp;&nbsp;<span>Iniciar sesion</span>
+    </button>
   </form>
+
+
 
 
   <div class="row mb-2">

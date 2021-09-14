@@ -23,7 +23,7 @@ class UserRoutes {
 		this.router.post('/modificardatos', userController.modificarDatosUsuario);
 
 		this.router.get('/listarhoteles', userController.listarhoteles);
-		this.router.get('/buscarId', userController.buscarID)
+		this.router.get('/buscarId/:desc', userController.buscarID)
 
 
 	}

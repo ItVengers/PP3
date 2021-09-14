@@ -17,11 +17,13 @@ export class InicioComponent implements OnInit {
   zona = { zona_id: "" };
 
   seleccionado: string = "";
+  fecha: string = "";
 
   ngOnInit(): void {
 
     this.traerHoteles();
     console.log(this.hoteles);
+
   }
 
   traerHoteles() {
@@ -42,13 +44,11 @@ export class InicioComponent implements OnInit {
   }
 
   enviarDescripcion(desc: string) {
-    console.log("ENTRE AL enviardescripcion");
     console.log(desc);
     this.usuariosService.buscarId(desc).subscribe(
       (res) => {
         let result: any = res;
         this.zona.zona_id = result;
-        console.log(this.zona.zona_id);
       },
       (err) => {
         this.messageService.add({
@@ -59,7 +59,25 @@ export class InicioComponent implements OnInit {
         console.log(err.error.message);
       }
     )
-    this.traerHoteles();
-    this.seleccionado = "";
+    // this.traerHoteles();
+  }
+
+  enviarFecha(fecha: string) {
+    console.log(fecha);
+    this.usuariosService.buscarId(fecha).subscribe(
+      (res) => {
+        let result: any = res;
+        this.zona.zona_id = result;
+      },
+      (err) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: err.statusText,
+          detail: err.error.message,
+        });
+        console.log(err.error.message);
+      }
+    )
+    // this.traerHoteles();
   }
 }

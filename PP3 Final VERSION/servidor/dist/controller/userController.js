@@ -38,10 +38,9 @@ class UserController {
     buscarID(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log("ENTRE AL METODO BUSCARID");
-            //const { descripcion } = req.body;
-            const descripcion = "Hotel del Plata";
-            console.log(descripcion);
-            const zona = yield userModel_1.default.buscarID(descripcion);
+            const { desc } = req.params;
+            console.log(desc);
+            const zona = yield userModel_1.default.buscarID(desc);
             console.log(zona);
             console.log("SALI DEL METODO BUSCARID");
             res.status(200).json(zona);

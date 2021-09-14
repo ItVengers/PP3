@@ -24,10 +24,9 @@ class UserController {
 
 	public async buscarID(req: Request, res: Response) {
 		console.log("ENTRE AL METODO BUSCARID");
-		//const { descripcion } = req.body;
-		const descripcion = "Hotel del Plata"
-		console.log(descripcion);
-		const zona = await userModel.buscarID(descripcion);
+		const { desc } = req.params;
+		console.log(desc);
+		const zona = await userModel.buscarID(desc);
 		console.log(zona);
 		console.log("SALI DEL METODO BUSCARID");
 		res.status(200).json(zona);

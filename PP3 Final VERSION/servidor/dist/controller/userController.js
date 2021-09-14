@@ -47,6 +47,18 @@ class UserController {
             return;
         });
     }
+    buscarFecha(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log("ENTRE AL METODO BUSCARFECHA");
+            const { fecha } = req.params;
+            console.log(fecha);
+            const date = yield userModel_1.default.buscarFecha(fecha);
+            console.log(date);
+            console.log("SALI DEL METODO BUSCARID");
+            res.status(200).json(date);
+            return;
+        });
+    }
     modificarDatosUsuario(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req.body);

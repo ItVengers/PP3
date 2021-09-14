@@ -118,7 +118,7 @@ export class UsuariosService {
 
   buscarFecha(fecha: string) {
     console.log("Estoy en usuarioService: " + fecha);
-    return this.http.get(`${this.API_URI}/buscarId/${fecha}`);
+    return this.http.get(`${this.API_URI}/buscarFecha/${fecha}`);
   }
 
 }

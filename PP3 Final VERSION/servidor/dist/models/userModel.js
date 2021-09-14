@@ -125,6 +125,18 @@ class UserModel {
             return "VACIO";
         });
     }
+    buscarFecha(date) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log("ENTRE AL USERMODEL");
+            console.log(date);
+            const fecha = (yield this.db.query('SELECT zona_id FROM hoteles WHERE descripcion = ?', [date]));
+            if (fecha.length >= 1) {
+                console.log("SALI DEL USERMODEL");
+                return fecha[0][0];
+            }
+            return "VACIO";
+        });
+    }
 }
 const userModel = new UserModel();
 exports.default = userModel;

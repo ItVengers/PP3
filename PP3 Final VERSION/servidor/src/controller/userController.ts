@@ -33,6 +33,17 @@ class UserController {
 		return;
 	}
 
+	public async buscarFecha(req: Request, res: Response) {
+		console.log("ENTRE AL METODO BUSCARFECHA");
+		const { fecha } = req.params;
+		console.log(fecha);
+		const date = await userModel.buscarFecha(fecha);
+		console.log(date);
+		console.log("SALI DEL METODO BUSCARID");
+		res.status(200).json(date);
+		return;
+	}
+
 
 	public async modificarDatosUsuario(req: Request, res: Response) {
 		console.log(req.body);

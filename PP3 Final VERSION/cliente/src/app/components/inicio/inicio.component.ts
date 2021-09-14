@@ -64,10 +64,11 @@ export class InicioComponent implements OnInit {
 
   enviarFecha(fecha: string) {
     console.log(fecha);
-    this.usuariosService.buscarId(fecha).subscribe(
+    this.usuariosService.buscarFecha(fecha).subscribe(
       (res) => {
         let result: any = res;
-        this.zona.zona_id = result;
+        this.fecha = result;
+        console.log(this.fecha)
       },
       (err) => {
         this.messageService.add({

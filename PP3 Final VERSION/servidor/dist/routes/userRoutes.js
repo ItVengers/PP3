@@ -23,6 +23,7 @@ class UserRoutes {
         this.router.post('/modificardatos', userController_1.default.modificarDatosUsuario);
         this.router.get('/listarhoteles', userController_1.default.listarhoteles);
         this.router.get('/buscarId/:desc', userController_1.default.buscarID);
+        this.router.get('/buscarFecha/:fecha', userController_1.default.buscarFecha);
     }
 }
 //Exportamos el enrutador con 

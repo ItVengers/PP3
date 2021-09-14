@@ -27,6 +27,7 @@ import { MisDatosComponent } from './components/mis-datos/mis-datos.component';
 import { AdminReservasComponent } from './components/admin-reservas/admin-reservas.component';
 import { AdminUsuariosComponent } from './components/admin-usuarios/admin-usuarios.component';
 import { AdminHabitacionesComponent } from './components/admin-habitaciones/admin-habitaciones.component';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker'
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { AdminHabitacionesComponent } from './components/admin-habitaciones/admi
     InputTextModule,
     ToastModule,
     NgbModule,
+    BsDatepickerModule.forRoot()
   ],
   providers: [
     UsuariosService,
@@ -68,7 +70,7 @@ import { AdminHabitacionesComponent } from './components/admin-habitaciones/admi
       multi: true
     }
   ],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

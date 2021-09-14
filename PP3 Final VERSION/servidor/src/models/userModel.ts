@@ -108,6 +108,18 @@ class UserModel {
 		return "VACIO";
 
 	}
+
+	async buscarFecha(date: string) {
+		console.log("ENTRE AL USERMODEL");
+		console.log(date);
+		const fecha = (await this.db.query('SELECT zona_id FROM hoteles WHERE descripcion = ?', [date]));
+		if (fecha.length >= 1) {
+			console.log("SALI DEL USERMODEL");
+			return fecha[0][0];
+		}
+		return "VACIO";
+
+	}
 }
 
 const userModel: UserModel = new UserModel();

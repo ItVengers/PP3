@@ -12,6 +12,9 @@ import { ContactoComponent } from './components/contacto/contacto.component';
 import { ListarHabitacionesComponent } from './components/listar-habitaciones/listar-habitaciones.component';
 import { MisDatosComponent } from './components/mis-datos/mis-datos.component';
 import { MisReservasComponent } from './components/mis-reservas/mis-reservas.component';
+import { AdminReservasComponent } from './components/admin-reservas/admin-reservas.component';
+import { AdminUsuariosComponent } from './components/admin-usuarios/admin-usuarios.component';
+import { AdminHabitacionesComponent } from './components/admin-habitaciones/admin-habitaciones.component';
 
 
 const routes: Routes = [
@@ -29,11 +32,11 @@ const routes: Routes = [
     component: UsuariosHabitacionesComponent,
     canActivate: [AuthGuard]
   },
-  {
-    path: 'admin/habitaciones',
-    component: UsuariosHabitacionesComponent,
-    canActivate: [AuthGuard]
-  },
+  // {
+  //   path: 'admin/habitaciones',
+  //   component: UsuariosHabitacionesComponent,
+  //   canActivate: [AuthGuard]
+  // },
   {
     path: 'usuarios/registrar',
     component: UsuariosRegistrarComponent
@@ -89,6 +92,18 @@ const routes: Routes = [
   {
     path: 'usuarios/misreservas',
     component: MisReservasComponent,
+  },
+  {
+    path: 'admin/reservas',
+    component: AdminReservasComponent,
+  },
+  {
+    path: 'admin/usuarios',
+    component: AdminUsuariosComponent,
+  },
+  {
+    path: 'admin/habitaciones',
+    component: AdminHabitacionesComponent,
   },
 ];
 

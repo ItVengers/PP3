@@ -24,6 +24,9 @@ import { ContactoComponent } from './components/contacto/contacto.component';
 import { ListarHabitacionesComponent } from './components/listar-habitaciones/listar-habitaciones.component';
 import { MisReservasComponent } from './components/mis-reservas/mis-reservas.component';
 import { MisDatosComponent } from './components/mis-datos/mis-datos.component';
+import { AdminReservasComponent } from './components/admin-reservas/admin-reservas.component';
+import { AdminUsuariosComponent } from './components/admin-usuarios/admin-usuarios.component';
+import { AdminHabitacionesComponent } from './components/admin-habitaciones/admin-habitaciones.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,10 @@ import { MisDatosComponent } from './components/mis-datos/mis-datos.component';
     ContactoComponent,
     ListarHabitacionesComponent,
     MisReservasComponent,
-    MisDatosComponent
+    MisDatosComponent,
+    AdminReservasComponent,
+    AdminUsuariosComponent,
+    AdminHabitacionesComponent
   ],
   imports: [
     BrowserModule,

@@ -141,7 +141,8 @@
     <div class="col-xs-12 col-12 col-md-4 form-group mb-3">
       <label for="ingresoF" id="label">Fecha de llegada</label>
       &nbsp;
-      <input type="text" placeholder="Fecha" class="form-control" [(ngModel)]="fecha" name="first" bsDatepicker>
+      <input type="text" placeholder="Fecha" class="form-control" [(ngModel)]="fecha" name="first" bsDaterangepicker
+        [bsConfig]="{ rangeInputFormat : 'YYYY/MM/DD, hh:mm', dateInputFormat: 'YYYY/MM/DD, hh:mm', showWeekNumbers: false }">
     </div>
     <button pButton type="submit" class="btn btn-primary" class="btn p-button-rounded">
       <i class="fa fa-sign-in-alt fa-lg"></i>&nbsp;&nbsp;&nbsp;<span>Enviar Fecha</span>

@@ -38,9 +38,89 @@
     </div>
   </div>
 
-  <!-- Filtro de habitaciones -->
   <form role="form">
     <!-- <div class="container" data-view="accommodation" id="contenedor" name="filtrohabitaciones"> -->
+    <div class="container-lg " name="filtrohabitaciones" id="containerfiltro">
+      <div class="row justify-content-sm-center">
+        <div class="col-sm-auto" id="columna">
+          <div class="form-group">
+            <label id="label">Hotel/Lugar</label> <br>
+            <select class="form-select form-select-sm" name="selector" >
+              <option *ngFor="let hotel of hoteles">
+                {{hotel.descripcion}}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-auto" id="columna">
+          <div class="form-group">
+            <label for="sel2" id="label">Adultos</label>
+            <select class="form-select form-select-sm">
+              <option value="" disabled selected hidden>Seleccione</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-auto" id="columna">
+          <div class="form-group">
+            <label for="sel3" id="label">Niños</label>
+            <select class="form-select form-select-sm" id="sel1">
+              <option>0</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-auto" id="columna">
+          <div class="form-group">
+            <label for="sel3" id="label">Tipo de Camas</label>
+            <select class="form-select form-select-sm" id="sel1">
+              <option value="" disabled selected hidden>Seleccione</option>
+              <option>Camas simples</option>
+              <option>Con cama Doble</option>
+            </select>
+          </div>
+        </div>
+        <!-- <div class="col-sm-auto" id="columna">
+          <div class="form-group">
+            <label for="ingresoF" id="label">Fecha de llegada</label>
+            &nbsp;
+            <input type="date" name="llegada">
+          </div>
+        </div> -->
+        <div class="col-sm-auto">
+          <label for="ingresoF" id="label">Fecha de llegada</label>
+          &nbsp;
+          <input type="text" placeholder="Fecha" class="form-select form-select-sm" [(ngModel)]="fecha" name="first" bsDaterangepicker
+            [bsConfig]="{ rangeInputFormat : 'YYYY/MM/DD', dateInputFormat: 'YYYY/MM/DD', showWeekNumbers: false }">
+        </div>
+        <!-- <div class="col-sm-auto" id="columna">
+          <div class="form-group">
+            <label for="egresoF" id="label">Fecha de Salida</label>
+            &nbsp; <input type="date" name="salida">
+          </div>
+        </div> -->
+        <div class="col-sm-auto" id="divbutton">
+          <div class="form-group">
+            <a type="submit" class="btn btn-primary btn-block" name="buscar" id="boton" value="Buscar"
+              href="usuarios/listarhabitaciones">Buscar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+
+
+
+  <!-- Filtro de habitaciones
+  <form role="form">
+    <!-- <div class="container" data-view="accommodation" id="contenedor" name="filtrohabitaciones">
     <div class="contaiener" id="contenedor" name="filtrohabitaciones">
       <div class="row">
         <div class="col-2" id="columna">
@@ -109,7 +189,10 @@
       </div>
     </div>
   </form>
-  <!-- Fin filtro habitaciones -->
+  <!-- Fin filtro habitaciones
+
+
+-->
 
   <!-- <form (ngSubmit)="enviarDescripcion(seleccionado)">
     <div class="col-2" id="columna">
@@ -138,7 +221,7 @@
         </select>
       </div>
     </div> -->
-    <div class="col-xs-12 col-12 col-md-4 form-group mb-3">
+    <!-- <div class="col-xs-12 col-12 col-md-4 form-group mb-3">
       <label for="ingresoF" id="label">Fecha de llegada</label>
       &nbsp;
       <input type="text" placeholder="Fecha" class="form-control" [(ngModel)]="fecha" name="first" bsDaterangepicker
@@ -146,7 +229,7 @@
     </div>
     <button pButton type="submit" class="btn btn-primary" class="btn p-button-rounded">
       <i class="fa fa-sign-in-alt fa-lg"></i>&nbsp;&nbsp;&nbsp;<span>Enviar Fecha</span>
-    </button>
+    </button> -->
   </form>
 
   <div class="row mb-2">
@@ -155,7 +238,8 @@
         <div class="col p-4 d-flex flex-column position-static">
           <strong class="d-inline-block mb-2 text-primary">Familiar</strong>
           <h3 class="mb-0">Un lugar donde entran todos</h3>
-          <p id="textocol" class="card-text mb-auto">Espacio hasta 6 personas, parrilla al aire libre, cancha de croket
+          <p id="textocol" class="card-text mb-auto">Espacio hasta 6 personas, parrilla al aire libre, cancha de
+            croket
             y 2 televisiones con conexión satelital.
             ¿qué mas se puede pedir? ¡Haganse chiquitos que entramos todos!
           </p>

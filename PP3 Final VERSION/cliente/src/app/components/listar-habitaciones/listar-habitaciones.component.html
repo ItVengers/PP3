@@ -1,19 +1,23 @@
 <div class="col-12">
 <h1 align="center" style="color: chocolate;">Habitaciones Disponibles</h1>
-<table class="table table-hover table-dark ">
+<table class="table table-hover table-striped table-light ">
   <thead class="thead-dark">
     <th>Habitación</th>
     <!-- <th> </th> -->
     <th>Categoría</th>
-    <th>Descripción</th>
+    <th>Camas</th>
     <th>Precio</th>
+    <th>Fotos</th>
   </thead>
   <tbody *ngIf="habitaciones.length > 0; else fila">
     <tr *ngFor=" let habitacion of habitaciones">
+     
         <td>{{habitacion.idHabitacion}}</td>
         <td>{{habitacion.tipo}}</td>
         <td>{{habitacion.descripcion}}</td>
         <td>{{habitacion.precio}}</td>
+        <img id="foto" src="../assets/img/parejas2.jpg" width="100" height="62">
+
     </tr>
   </tbody>
   <!-- <tbody #fila>

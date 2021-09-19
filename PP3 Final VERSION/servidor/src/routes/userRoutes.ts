@@ -26,6 +26,7 @@ class UserRoutes {
 		this.router.get('/buscarId/:desc', userController.buscarID)
 		this.router.get('/buscarFecha/:fecha', userController.buscarFecha)
 
+		
 
 	}
 

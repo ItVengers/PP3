@@ -72,12 +72,7 @@ class UserModel {
 	}
 	// ----------------------------
 
-	async listarhabitaciones() {
-		const habitaciones = await this.db.query('SELECT * FROM habitaciones');
-		//console.log(usuarios[0]);
-		//devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
-		return habitaciones[0];
-	}
+
 
 	async modificarDatos(id: string, nombre: string, apellido: string, dni: string, telefono: string, mail: string, contrasenia: string,) {
 		const result = (await this.db.query('UPDATE persona SET nombre = ?, apellido = ?,dni = ?, telefono = ?,	mail= ?, contrasenia= ?  WHERE idPersona = ?',
@@ -118,7 +113,30 @@ class UserModel {
 			return fecha[0][0];
 		}
 		return "VACIO";
+	}
 
+	//--------------
+	// ADMIN MODELS
+	//--------------
+
+	async listarReservas() {
+		const reservas = await this.db.query('SELECT * FROM reservas');
+		//console.log(usuarios[0]);
+		//devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
+		return reservas[0];
+	}
+	async listarUsuarios() {
+		const reservas = await this.db.query('SELECT * FROM persona');
+		//console.log(usuarios[0]);
+		//devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
+		return reservas[0];
+	}
+
+	async listarhabitaciones() {
+		const habitaciones = await this.db.query('SELECT * FROM habitaciones');
+		//console.log(usuarios[0]);
+		//devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
+		return habitaciones[0];
 	}
 }
 

@@ -44,6 +44,22 @@ class AdminController {
         return res.json({ message: "Se actualizó la habitacion" });
 
     }
+
+    public async listarReservas(req: Request, res: Response){
+        const result = await userModel.listarReservas();
+        console.log(result);
+		return res.json(result);
+	}
+    public async listarUsuarios(req: Request, res: Response){
+        const result = await userModel.listarUsuarios();
+        console.log(result);
+		return res.json(result);
+	}
+    public async listarHabitaciones(req: Request, res: Response){
+        const result = await userModel.listarhabitaciones();
+        console.log(result);
+		return res.json(result);
+	}
 }
 
 

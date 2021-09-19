@@ -4,6 +4,8 @@ import jwt from "jsonwebtoken";
 //import bcrypt from "bcrypt";
 class UserController {
 
+
+
 	public async listarUsuario(req: Request, res: Response) {
 		console.log(req.params.id);
 		const { id } = req.params;

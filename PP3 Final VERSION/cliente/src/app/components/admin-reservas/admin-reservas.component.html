@@ -6,32 +6,29 @@
     <table class="table table-hover table-dark ">
       <thead class="thead-dark">
         <th>ID</th>
+        <th>Nombre</th>
         <th>Hotel</th>
         <th>Habitación</th>
-        <th>Estado</th>
-        <th>Nombre</th>
         <th>Check In</th>
         <th>Check Out</th>
+        <th>Fecha de reserva</th>
+        <th>Estado</th>
         <th>Monto</th>
       </thead>   
-        <tr id="tr">
-            <td>1</td>
-            <td>Hotel Sur Centro</td>
-            <td>Suite 2 camas individuales</td>
-            <td>Sin señar</td>
-            <td>Peter Sellers</td>
-            <td>10/12/2020</td>
-            <td>15/12/2020</td>
-            <td>$3777</td>            
+        <tr *ngFor= "let reservas of reserva">
+          <td>{{reservas.idReserva}}</td>
+          <td style="color: red;">sin Datos</td>
+            <td style="color: red;">sin Datos</td>
+            <td>{{reservas.habitacion_id}}</td>
+            <td class="event" data-date="2021-02-01T03:00:00.000Z">{{reservas.fechaDesde}}
+              <!-- <div class="date"></div> -->
+            </td>
+            <td class="event" data-date="(reservas.fechaHasta)">{{reservas.fechaHasta}}    
+            <!-- <div class="date"></div> -->
+            </td>
+            <td class="event" data-date="(reservas.fechaReserva)">{{reservas.fechaReserva}}
+              <!-- <div class="date"></div> -->
+            </td>
+            <td style="color: red;">Sin Datos</td>
+            <td>{{reservas.precioTotal}}</td>     
         </tr>
-        <tr id="tr">
-            <td>2</td>
-            <td>Hotel del Plata</td>
-            <td>Premium 1 doble y 1 simple</td>
-            <td>Seña 50%</td>
-            <td>Greta Garbo</td>
-            <td>22/11/2020</td>
-            <td>28/11/2020</td>
-            <td>$6847</td>            
-        </tr>
-     

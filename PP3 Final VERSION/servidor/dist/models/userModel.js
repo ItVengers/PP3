@@ -84,14 +84,6 @@ class UserModel {
         });
     }
     // ----------------------------
-    listarhabitaciones() {
-        return __awaiter(this, void 0, void 0, function* () {
-            const habitaciones = yield this.db.query('SELECT * FROM habitaciones');
-            //console.log(usuarios[0]);
-            //devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
-            return habitaciones[0];
-        });
-    }
     modificarDatos(id, nombre, apellido, dni, telefono, mail, contrasenia) {
         return __awaiter(this, void 0, void 0, function* () {
             const result = (yield this.db.query('UPDATE persona SET nombre = ?, apellido = ?,dni = ?, telefono = ?,	mail= ?, contrasenia= ?  WHERE idPersona = ?', [nombre, apellido, dni, telefono, mail, contrasenia, id]))[0].affectedRows;
@@ -135,6 +127,33 @@ class UserModel {
                 return fecha[0][0];
             }
             return "VACIO";
+        });
+    }
+    //--------------
+    // ADMIN MODELS
+    //--------------
+    listarReservas() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const reservas = yield this.db.query('SELECT * FROM reservas');
+            //console.log(usuarios[0]);
+            //devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
+            return reservas[0];
+        });
+    }
+    listarUsuarios() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const reservas = yield this.db.query('SELECT * FROM persona');
+            //console.log(usuarios[0]);
+            //devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
+            return reservas[0];
+        });
+    }
+    listarhabitaciones() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const habitaciones = yield this.db.query('SELECT * FROM habitaciones');
+            //console.log(usuarios[0]);
+            //devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
+            return habitaciones[0];
         });
     }
 }

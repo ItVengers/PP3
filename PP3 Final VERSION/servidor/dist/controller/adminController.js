@@ -58,6 +58,27 @@ class AdminController {
             return res.json({ message: "Se actualizó la habitacion" });
         });
     }
+    listarReservas(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const result = yield userModel_1.default.listarReservas();
+            console.log(result);
+            return res.json(result);
+        });
+    }
+    listarUsuarios(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const result = yield userModel_1.default.listarUsuarios();
+            console.log(result);
+            return res.json(result);
+        });
+    }
+    listarHabitaciones(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const result = yield userModel_1.default.listarhabitaciones();
+            console.log(result);
+            return res.json(result);
+        });
+    }
 }
 const adminController = new AdminController();
 exports.default = adminController;

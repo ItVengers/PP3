@@ -72,23 +72,7 @@ export class UsuariosService {
     return this.http.get(`${this.API_URI3}/abmproductos`);
   }
 
-  guardarHabitacion(agregarHab: Habitacion) {
-    console.log("Entre al metodo: guardarHabitacion");
-    console.log(agregarHab);
-    return this.http.post(`${this.API_URI3}/agregar`, agregarHab);
-  }
 
-  eliminarHabitacion(eliminarHab: any) {
-    console.log("Entre al metodo: eliminarHabitacion");
-    console.log(eliminarHab);
-    return this.http.delete(`${this.API_URI3}/delete/${eliminarHab.idH}`);
-  }
-
-  actualizarHabitacion(actualizarHab: Habitacion): Observable<Habitacion> {
-    console.log("Entre al metodo: actualizarHabitacion");
-    console.log(actualizarHab);
-    return this.http.post(`${this.API_URI3}/modificar`, actualizarHab);
-  }
 
   filtrarID(searchText: string) {
     console.log(searchText);
@@ -121,4 +105,36 @@ export class UsuariosService {
     return this.http.get(`${this.API_URI}/buscarFecha/${fecha}`);
   }
 
+  // -------------
+  // ADMIN SERVICE -----------
+  // -------------
+
+  reservasAdmin() {
+    return this.http.get(`${this.API_URI3}/reservas`);
+  }
+  usuariosAdmin() {
+    return this.http.get(`${this.API_URI3}/usuarios`);
+  }
+  habitacionesAdmin() {
+    return this.http.get(`${this.API_URI3}/habitaciones`);
+  }
+
+  // Services Pablo
+  guardarHabitacion(agregarHab: Habitacion) {
+    console.log("Entre al metodo: guardarHabitacion");
+    console.log(agregarHab);
+    return this.http.post(`${this.API_URI3}/agregar`, agregarHab);
+  }
+
+  eliminarHabitacion(eliminarHab: any) {
+    console.log("Entre al metodo: eliminarHabitacion");
+    console.log(eliminarHab);
+    return this.http.delete(`${this.API_URI3}/delete/${eliminarHab.idH}`);
+  }
+
+  actualizarHabitacion(actualizarHab: Habitacion): Observable<Habitacion> {
+    console.log("Entre al metodo: actualizarHabitacion");
+    console.log(actualizarHab);
+    return this.http.post(`${this.API_URI3}/modificar`, actualizarHab);
+  }
 }

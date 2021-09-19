@@ -18,6 +18,12 @@ class AdminRoutes {
         this.router.post("/agregar", TokenValidation, adminController.agregar);
 
         this.router.post("/modificar", TokenValidation, adminController.modificar);
+
+        // ADMIN FUNCIONES
+
+        this.router.get("/reservas", adminController.listarReservas);
+        this.router.get("/usuarios", adminController.listarUsuarios);
+        this.router.get("/habitaciones", adminController.listarHabitaciones);
     }
 }
 

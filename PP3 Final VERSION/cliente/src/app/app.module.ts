@@ -28,6 +28,7 @@ import { AdminReservasComponent } from './components/admin-reservas/admin-reserv
 import { AdminUsuariosComponent } from './components/admin-usuarios/admin-usuarios.component';
 import { AdminHabitacionesComponent } from './components/admin-habitaciones/admin-habitaciones.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { ReservaFichaComponent } from './components/reserva-ficha/reserva-ficha.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     AdminReservasComponent,
     AdminUsuariosComponent,
     AdminHabitacionesComponent,
+    ReservaFichaComponent,
   ],
   imports: [
     BrowserModule,

@@ -60,8 +60,14 @@ class AdminController {
         console.log(result);
 		return res.json(result);
 	}
+    public async datosReservas(req: Request, res: Response){
+        const {idReserva} = req.params;
+        console.log(idReserva);
+        const result = await userModel.datosReserva(idReserva);
+        console.log(result);
+		return res.json(result);
+	}
 }
-
 
 const adminController = new AdminController();
 export default adminController;

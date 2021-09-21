@@ -1,7 +1,6 @@
 
 import { Router, Request, Response } from 'express';
 import habitacionesController from '../controller/habitacionesController';
-import HabitacionesController from '../controller/habitacionesController';
 import { TokenValidation } from '../lib/verifyToken';
 
 

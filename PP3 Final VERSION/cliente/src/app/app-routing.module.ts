@@ -15,6 +15,7 @@ import { MisReservasComponent } from './components/mis-reservas/mis-reservas.com
 import { AdminReservasComponent } from './components/admin-reservas/admin-reservas.component';
 import { AdminUsuariosComponent } from './components/admin-usuarios/admin-usuarios.component';
 import { AdminHabitacionesComponent } from './components/admin-habitaciones/admin-habitaciones.component';
+import { ReservaFichaComponent } from './components/reserva-ficha/reserva-ficha.component';
 
 
 const routes: Routes = [
@@ -104,6 +105,10 @@ const routes: Routes = [
   {
     path: 'admin/habitaciones',
     component: AdminHabitacionesComponent,
+  },
+  {
+    path: 'admin/datosreservas/:id',
+    component: ReservaFichaComponent,
   },
 ];
 

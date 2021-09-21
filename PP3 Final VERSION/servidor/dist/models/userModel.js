@@ -130,7 +130,7 @@ class UserModel {
         });
     }
     //--------------
-    // ADMIN MODELS
+    // ADMIN MODELS ----------------
     //--------------
     listarReservas() {
         return __awaiter(this, void 0, void 0, function* () {
@@ -154,6 +154,13 @@ class UserModel {
             //console.log(usuarios[0]);
             //devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
             return habitaciones[0];
+        });
+    }
+    datosReserva(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(id);
+            const reservaDato = yield this.db.query('SELECT * FROM reservas WHERE idReserva = ?', [id]);
+            return reservaDato[0][0];
         });
     }
 }

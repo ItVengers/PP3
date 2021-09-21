@@ -116,7 +116,7 @@ class UserModel {
 	}
 
 	//--------------
-	// ADMIN MODELS
+	// ADMIN MODELS ----------------
 	//--------------
 
 	async listarReservas() {
@@ -137,6 +137,12 @@ class UserModel {
 		//console.log(usuarios[0]);
 		//devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
 		return habitaciones[0];
+	}
+
+	async datosReserva(id:string){
+		console.log(id);
+		const reservaDato = await this.db.query('SELECT * FROM reservas WHERE idReserva = ?', [id]);
+		return reservaDato[0][0];
 	}
 }
 

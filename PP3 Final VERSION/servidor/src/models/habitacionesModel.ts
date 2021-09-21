@@ -33,6 +33,7 @@ class HabitacionesModel {
 		//devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
 		return habitaciones[0];
 	}
+	// ADMIN FUNCIONES -----------------
 
 }
 

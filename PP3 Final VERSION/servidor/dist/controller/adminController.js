@@ -79,6 +79,15 @@ class AdminController {
             return res.json(result);
         });
     }
+    datosReservas(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { idReserva } = req.params;
+            console.log(idReserva);
+            const result = yield userModel_1.default.datosReserva(idReserva);
+            console.log(result);
+            return res.json(result);
+        });
+    }
 }
 const adminController = new AdminController();
 exports.default = adminController;

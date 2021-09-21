@@ -3,6 +3,8 @@
     font-size: 28px; /* Increased text to enable scrolling */
     padding: 0px 10px;
   }
-#tr{
-    background-color: gray;
+#a{
+  background-color:rgba(0, 0, 0, 0);
+  text-decoration: none;
+  font-weight: bold;
 }

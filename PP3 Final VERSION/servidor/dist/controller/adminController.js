@@ -85,7 +85,7 @@ class AdminController {
             console.log(idReserva);
             const result = yield userModel_1.default.datosReserva(idReserva);
             console.log(result);
-            return res.json(result);
+            return res.status(200).json(result);
         });
     }
 }

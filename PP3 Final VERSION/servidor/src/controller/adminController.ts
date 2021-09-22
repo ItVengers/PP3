@@ -65,7 +65,7 @@ class AdminController {
         console.log(idReserva);
         const result = await userModel.datosReserva(idReserva);
         console.log(result);
-		return res.json(result);
+		return res.status(200).json(result);
 	}
 }
 

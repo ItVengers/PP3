@@ -133,8 +133,13 @@ export class UsuariosService {
   }
 
   actualizarHabitacion(actualizarHab: Habitacion): Observable<Habitacion> {
-    console.log("Entre al metodo: actualizarHabitacion");
-    console.log(actualizarHab);
     return this.http.post(`${this.API_URI3}/modificar`, actualizarHab);
   }
+
+  listarDatosReservas(idRes: any){
+    console.log("Entre al metodo: listarDatosReservas");
+    console.log(idRes);
+    return this.http.get(`${this.API_URI3}/datosreservas/${idRes}`);
+  }
+
 }

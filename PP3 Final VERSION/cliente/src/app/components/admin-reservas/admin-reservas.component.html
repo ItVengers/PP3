@@ -14,21 +14,22 @@
         <th>Fecha de reserva</th>
         <th>Estado</th>
         <th>Monto</th>
-      </thead>   
+      </thead>
         <tr *ngFor= "let reservas of reserva">
-          <td><a id="a" class="primary" routerLink="../datosreservas/{{reservas.idReserva}}">{{reservas.idReserva}}</a></td>
+          <td><a id="a" class="primary" routerLink="../datosreservas/{{reservas.idReserva}}" (click)=datosreservas(reservas)>{{reservas.idReserva}}
+          </a></td>
           <td style="color: red;">sin Datos</td>
             <td style="color: red;">sin Datos</td>
             <td>{{reservas.habitacion_id}}</td>
             <td class="event" data-date="2021-02-01T03:00:00.000Z">{{reservas.fechaDesde}}
               <!-- <div class="date"></div> -->
             </td>
-            <td class="event" data-date="(reservas.fechaHasta)">{{reservas.fechaHasta}}    
+            <td class="event" data-date="(reservas.fechaHasta)">{{reservas.fechaHasta}}
             <!-- <div class="date"></div> -->
             </td>
             <td class="event" data-date="(reservas.fechaReserva)">{{reservas.fechaReserva}}
               <!-- <div class="date"></div> -->
             </td>
             <td style="color: red;">Sin Datos</td>
-            <td>{{reservas.precioTotal}}</td>     
+            <td>{{reservas.precioTotal}}</td>
         </tr>

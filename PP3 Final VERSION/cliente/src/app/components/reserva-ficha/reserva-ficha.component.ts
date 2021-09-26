@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import { Router } from '@angular/router';
 import { state } from '@angular/animations';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-reserva-ficha',
@@ -21,7 +23,7 @@ export class ReservaFichaComponent implements OnInit {
   };
 
 
-  constructor(private usuariosService: UsuariosService, private router: Router) {
+  constructor(private usuariosService: UsuariosService, private router: Router, private location: Location) {
     const navigation = this.router.getCurrentNavigation();
     const state = navigation?.extras.state as {
       idReserva: string,
@@ -45,11 +47,16 @@ export class ReservaFichaComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log()
     this.mostrarDatos();
   }
 
   mostrarDatos() {
     console.log(this.datosreserva);
+  }
+
+  goBack(){
+    this.location.back();
   }
 
 

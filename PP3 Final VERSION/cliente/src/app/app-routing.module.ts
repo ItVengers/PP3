@@ -107,7 +107,7 @@ const routes: Routes = [
     component: AdminHabitacionesComponent,
   },
   {
-    path: 'admin/datosreservas/:id',
+    path: 'datosreserva/:idReserva',
     component: ReservaFichaComponent,
   },
 ];

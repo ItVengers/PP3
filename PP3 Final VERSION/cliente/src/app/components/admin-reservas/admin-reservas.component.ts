@@ -39,7 +39,6 @@ export class AdminReservasComponent implements OnInit {
       res => {
         let result: any
         result = res;
-        console.log(result);
         const navigationExtras: NavigationExtras = {
           state: {
             idReserva: result.idReserva,
@@ -53,7 +52,7 @@ export class AdminReservasComponent implements OnInit {
           }
         }
         console.log(navigationExtras);
-        this.router.navigate(['admin/datosreservas/:id'], navigationExtras);
+        this.router.navigate(['../datosreserva/'+ result.idReserva], navigationExtras);
       },
       err => console.log(err)
 

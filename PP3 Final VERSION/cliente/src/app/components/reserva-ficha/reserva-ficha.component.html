@@ -1,27 +1,56 @@
 <app-home></app-home>
+<div class="container" id="a2">
+  <p-toast></p-toast>
+  <button class="btn-outline-success" (click)="goBack()" id="a2">Volver</button>
 
-<div class="main">
-<div class="col-12">
-    <h1 align="center" style="color: chocolate;">Reservas</h1>
-    <table class="table table-hover table-striped table-dark ">
-      <thead class="thead-dark">
-        <th>ID</th>
-        <th>Check In</th>
-        <th>Check Out</th>
-        <th>Fecha de reserva</th>
-        <th>ID Habitación</th>
-        <th>Pasajeros</th>
-        <th>ID Usuario</th>
-        <th>Valor total</th>
-      </thead>   
-        <tr *ngFor= "let reservas of reserva">
-          <td></td>
-            <td>{{reservas.idReserva}}</td>
-            <td>{{reservas.fechaDesde}}</td>
-            <td>{{reservas.fechaHasta}}</td>
-            <td>{{reservas.fechaReserva}}</td>
-            <td>{{reservas.habitacion_id}}</td>
-            <td>{{reservas.cantidadPax}}</td>
-            <td>{{reservas.persona_id}}</td>
-            <td>{{reservas.precioTotal}}</td> 
-        </tr>
+  <br>
+  <h1 align="left" style="color: white;" id="a2">Datos de la Reserva</h1>
+
+  <div id="a2">
+    <div class="form-group">
+      <label>ID:</label>
+      <input id="input-datos" type="text" name="nombre" [(ngModel)]="datosreserva.idReserva" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label>Fecha Desde:</label>
+      <input type="text" id="input-datos" name="apellido" [(ngModel)]="datosreserva.fechaDesde" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label>Fecha Hasta:</label>
+      <input type="text" id="input-datos" name="dni" [(ngModel)]="datosreserva.fechaHasta" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label>Fecha Reserva:</label>
+      <input type="text" id="input-datos" name="telefono" [(ngModel)]="datosreserva.fechaReserva" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label>Id Hab:</label>
+      <input type="text" id="input-datos" name="mail" [(ngModel)]="datosreserva.habitacion_id" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label>Cantidad Pax:</label>
+      <input type="text" id="input-datos" name="contrasenia" [(ngModel)]="datosreserva.cantidadPax"
+        class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Id Persona:</label>
+      <input type="text" id="input-datos" name="repassword" [(ngModel)]="datosreserva.persona_id"
+        placeholder="Confirmar" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Precio Total:</label>
+      <input type="text" id="input-datos" name="repassword" [(ngModel)]="datosreserva.precioTotal"
+        placeholder="Confirmar" class="form-control">
+    </div>
+  </div>
+
+  <br>
+  <br>
+  <br>
+  <br>
+</div>

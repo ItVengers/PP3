@@ -8,3 +8,24 @@
   text-decoration: none;
   font-weight: bold;
 }
+
+#aprob
+{
+  color: green;
+  background-color: transparent;
+  font-weight: bold;
+}
+
+#pend
+{
+  background-color: transparent;
+  font-weight: bold;
+  color: orange;
+}
+
+#anul
+{
+  background-color: transparent;
+  font-weight: bold;
+  color: red;
+}

@@ -137,8 +137,6 @@ export class UsuariosService {
   }
 
   listarDatosReservas(idRes: any){
-    console.log("Entre al metodo: listarDatosReservas");
-    console.log(idRes);
     return this.http.get(`${this.API_URI3}/datosreservas/${idRes}`);
   }
 

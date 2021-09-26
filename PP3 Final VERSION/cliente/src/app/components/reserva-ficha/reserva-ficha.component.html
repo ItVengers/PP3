@@ -1,28 +1,27 @@
 <app-home></app-home>
-<p>Soy la Ficha</p>
-<!-- <div class="main">
+
+<div class="main">
 <div class="col-12">
     <h1 align="center" style="color: chocolate;">Reservas</h1>
     <table class="table table-hover table-striped table-dark ">
       <thead class="thead-dark">
         <th>ID</th>
-        <th>Nombre</th>
-        <th>Hotel</th>
-        <th>Habitación</th>
         <th>Check In</th>
         <th>Check Out</th>
         <th>Fecha de reserva</th>
-        <th>Estado</th>
-        <th>Monto</th>
+        <th>ID Habitación</th>
+        <th>Pasajeros</th>
+        <th>ID Usuario</th>
+        <th>Valor total</th>
       </thead>   
         <tr *ngFor= "let reservas of reserva">
-          <td><a id="a" class="primary" routerLink="#">{{reservas.idReserva}}</a></td>
-          <td style="color: red;">sin Datos</td>
-            <td style="color: red;">sin Datos</td>
-            <td>{{reservas.habitacion_id}}</td>
+          <td></td>
+            <td>{{reservas.idReserva}}</td>
             <td>{{reservas.fechaDesde}}</td>
             <td>{{reservas.fechaHasta}}</td>
-            <td class="event" data-date="(reservas.fechaReserva)">{{reservas.fechaReserva}}</td>
-            <td style="color: red;">Sin Datos</td>
-            <td>{{reservas.precioTotal}}</td>     
-        </tr> -->
+            <td>{{reservas.fechaReserva}}</td>
+            <td>{{reservas.habitacion_id}}</td>
+            <td>{{reservas.cantidadPax}}</td>
+            <td>{{reservas.persona_id}}</td>
+            <td>{{reservas.precioTotal}}</td> 
+        </tr>

@@ -14,6 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const userModel_1 = __importDefault(require("../models/userModel"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
+const mailer_1 = require("../config/mailer");
 //import bcrypt from "bcrypt";
 class UserController {
     listarUsuario(req, res) {
@@ -83,27 +84,30 @@ class UserController {
                 //req.flash("error_session", "Usuario Incorrecto");
                 //res.redirect("./error");
             }
-            if (result.contrasenia == password && result.mail == mail) {
-                //req.session.user = result;
-                //req.session.auth = true;
-                if ((result === null || result === void 0 ? void 0 : result.rol) == 'admin') {
-                    //req.session.admin = true;
-                    //res.redirect("../admin/home");
-                    const token = jsonwebtoken_1.default.sign({ _id: result.id }, "secretKey");
-                    res.status(200).json({ message: "Bienvenido " + result.nombre, token: token, rol: result.rol, idPersona: result.idPersona });
-                    return;
+            else {
+                const checkPassword = yield userModel_1.default.validarPassword(password, result.contrasenia);
+                if (result.contrasenia == password && result.mail == mail) {
+                    //req.session.user = result;
+                    //req.session.auth = true;
+                    if ((result === null || result === void 0 ? void 0 : result.rol) == 'admin') {
+                        //req.session.admin = true;
+                        //res.redirect("../admin/home");
+                        const token = jsonwebtoken_1.default.sign({ _id: result.id }, "secretKey");
+                        res.status(200).json({ message: "Bienvenido " + result.nombre, token: token, rol: result.rol, idPersona: result.idPersona });
+                        return;
+                    }
+                    else {
+                        //req.session.admin = false;
+                        const token = jsonwebtoken_1.default.sign({ _id: result.id }, "secretKey");
+                        res.status(200).json({ message: "Bienvenido " + result.nombre, token: token, rol: result.rol, idPersona: result.idPersona });
+                        return;
+                    }
                 }
-                else {
-                    //req.session.admin = false;
-                    const token = jsonwebtoken_1.default.sign({ _id: result.id }, "secretKey");
-                    res.status(200).json({ message: "Bienvenido " + result.nombre, token: token, rol: result.rol, idPersona: result.idPersona });
-                    return;
+                if (result.contrasenia != password || result.mail != mail) {
+                    //return res.status(404).json({ message: "Usuario no registrado" });
+                    return res.status(403).json({ message: "Usuario y/o contraseña incorrectos" });
+                    //res.send("No estas registrado");
                 }
-            }
-            if (result.contrasenia != password || result.mail != mail) {
-                //return res.status(404).json({ message: "Usuario no registrado" });
-                return res.status(403).json({ message: "Usuario y/o contraseña incorrectos" });
-                //res.send("No estas registrado");
             }
             //res.status(403).json({ message: "Usuario y/o contraseña incorrectos" });
         });
@@ -246,10 +250,23 @@ class UserController {
             }
             // FIN TELEFONO
             const resultado = yield userModel_1.default.buscarUsuario(datos.mail);
+            datos.contrasenia = yield userModel_1.default.encriptPass(datos.contrasenia);
             if (!resultado) {
                 datos.rol = 'user';
                 datos.legajo = 0;
                 yield userModel_1.default.crearUsuario(datos);
+                try {
+                    yield mailer_1.transporter.sendMail({
+                        from: '"SISRO Hoteles 👻" <info@sisrohoteles.com>',
+                        to: datos.mail,
+                        subject: 'Registro en SISRO exitoso!!',
+                        html: `Hola ${datos.nombre}, ¡gracias por utilizar SISRO Hoteles! <button href="http://localhost:4200"> SISRO Hoteles </a>`
+                    }); // ya podés ingresar a nuestro sitio clickeando el siguiente enlace:
+                }
+                catch (err) {
+                    console.log("error: ", err);
+                }
+                // await userModel.crearUsuario(datos);
                 res.status(200).json({
                     message: 'Usuario Registrado!',
                 });

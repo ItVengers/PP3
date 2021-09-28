@@ -1,4 +1,5 @@
 import { createPool } from 'mysql2/promise';
+import  bcryptjs from 'bcryptjs';
 
 class UserModel {
 	private db: any;
@@ -26,7 +27,18 @@ class UserModel {
 		});
 	}
 
+	// - - encriptación de password
+	encriptPass = async(password: string): Promise<string> => {
+        const salt = await bcryptjs.genSalt(10);
+        return await bcryptjs.hash(password, salt);
+    }
 
+	
+	validarPassword = async function (password: string, passwordHash: string): Promise<boolean> {		
+        return await bcryptjs.compare(password, passwordHash);
+    }
+
+	// -- Fin Encriptación
 
 	async buscarUsuario(mail: string) {
 		const encontrado: any = await this.db.query('SELECT * FROM persona WHERE mail = ?', [mail]);

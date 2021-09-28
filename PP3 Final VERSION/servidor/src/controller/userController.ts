@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import userModel from "../models/userModel";
 import jwt from "jsonwebtoken";
+import {transporter} from '../config/mailer'
 //import bcrypt from "bcrypt";
 class UserController {
 
@@ -71,9 +72,12 @@ class UserController {
 			//req.flash("error_session", "Usuario Incorrecto");
 			//res.redirect("./error");
 		}
+		else{
+		const checkPassword = await userModel.validarPassword(password, result.contrasenia);
 		if (result.contrasenia == password && result.mail == mail) {
 			//req.session.user = result;
 			//req.session.auth = true;
+			
 			if (result?.rol == 'admin') {
 				//req.session.admin = true;
 				//res.redirect("../admin/home");
@@ -94,6 +98,7 @@ class UserController {
 			return res.status(403).json({ message: "Usuario y/o contraseña incorrectos" });
 
 			//res.send("No estas registrado");
+		}
 		}
 		//res.status(403).json({ message: "Usuario y/o contraseña incorrectos" });
 	}
@@ -249,10 +254,25 @@ class UserController {
 		// FIN TELEFONO
 
 		const resultado = await userModel.buscarUsuario(datos.mail);
+		datos.contrasenia = await userModel.encriptPass(datos.contrasenia);
 		if (!resultado) {
 			datos.rol = 'user'
 			datos.legajo = 0;
 			await userModel.crearUsuario(datos);
+			try{
+				await transporter.sendMail({
+					from: '"SISRO Hoteles 👻" <info@sisrohoteles.com>',
+					to:datos.mail,
+					subject:'Registro en SISRO exitoso!!',
+					html:`Hola ${datos.nombre}, ¡gracias por utilizar SISRO Hoteles! <button href="http://localhost:4200"> SISRO Hoteles </a>`
+				}); // ya podés ingresar a nuestro sitio clickeando el siguiente enlace:
+				
+			}
+			catch(err){
+			console.log("error: ",err)
+			}
+			
+			// await userModel.crearUsuario(datos);
 
 			res.status(200).json({
 				message: 'Usuario Registrado!',

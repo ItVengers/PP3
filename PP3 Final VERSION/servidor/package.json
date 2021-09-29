@@ -20,6 +20,7 @@
     "express": "^4.17.1",
     "express-handlebars": "^5.3.2",
     "express-session": "^1.17.2",
+    "i": "^0.3.7",
     "install": "^0.13.0",
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",

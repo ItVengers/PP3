@@ -54,17 +54,19 @@
         </div>
         <div class="col-sm-auto" id="columna">
           <div class="form-group">
-            <label for="sel2" id="label">Adultos</label>
-            <select class="form-select form-select-sm">
+            <label for="sel2" id="label">Personas</label><br>
+            <!-- <select class="form-select form-select-sm">
               <option value="" disabled selected hidden>Seleccione</option>
               <option>1</option>
               <option>2</option>
               <option>3</option>
               <option>4</option>
-            </select>
+              <option>5</option>
+            </select> -->
+            <input type="number" [(ngModel)]="personas" name="personas" min="1" max="10">
           </div>
         </div>
-        <div class="col-sm-auto" id="columna">
+        <!-- <div class="col-sm-auto" id="columna">
           <div class="form-group">
             <label for="sel3" id="label">Niños</label>
             <select class="form-select form-select-sm" id="sel1">
@@ -75,8 +77,8 @@
               <option>4</option>
             </select>
           </div>
-        </div>
-        <div class="col-sm-auto" id="columna">
+        </div> -->
+        <!-- <div class="col-sm-auto" id="columna">
           <div class="form-group">
             <label for="sel3" id="label">Tipo de Camas</label>
             <select class="form-select form-select-sm" id="sel1">
@@ -85,7 +87,7 @@
               <option>Con cama Doble</option>
             </select>
           </div>
-        </div>
+        </div> -->
         <!-- <div class="col-sm-auto" id="columna">
           <div class="form-group">
             <label for="ingresoF" id="label">Fecha de llegada</label>
@@ -94,10 +96,16 @@
           </div>
         </div> -->
         <div class="col-sm-auto">
-          <label for="ingresoF" id="label">Fecha de llegada</label>
+          <label for="ingresoF" id="label">Check In</label>
           &nbsp;
-          <input type="text" placeholder="Fecha" class="form-select form-select-sm" [(ngModel)]="fecha" name="first" bsDaterangepicker
-            [bsConfig]="{ rangeInputFormat : 'YYYY/MM/DD', dateInputFormat: 'YYYY/MM/DD', showWeekNumbers: false }">
+          <input type="text" placeholder="Fecha" class="form-select form-select-sm" [(ngModel)]="checkIn" name="first" bsDatepicker
+            [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY', showWeekNumbers: false, isAnimated: true }">
+        </div>
+        <div class="col-sm-auto">
+          <label for="ingresoF" id="label">Check Out</label>
+          &nbsp;
+          <input type="text" placeholder="Fecha" class="form-select form-select-sm" [(ngModel)]="checkOut" name="first" bsDatepicker
+            [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY', showWeekNumbers: false, isAnimated: true }">
         </div>
         <!-- <div class="col-sm-auto" id="columna">
           <div class="form-group">
@@ -209,28 +217,6 @@
       <i class="fa fa-sign-in-alt fa-lg"></i>&nbsp;&nbsp;&nbsp;<span>Iniciar sesion</span>
     </button>
   </form> -->
-
-  <form (ngSubmit)="enviarFecha(fecha)">
-    <!-- <div class="col-2" id="columna">
-      <div class="form-group">
-        <label for="sel1" id="label">Hotel/Lugar</label>
-        <select name="selector" [(ngModel)]="seleccionado" id='sel1'>
-          <option [(ngValue)]="hotel.descripcion" *ngFor="let hotel of hoteles">
-            {{hotel.descripcion}}
-          </option>
-        </select>
-      </div>
-    </div> -->
-    <!-- <div class="col-xs-12 col-12 col-md-4 form-group mb-3">
-      <label for="ingresoF" id="label">Fecha de llegada</label>
-      &nbsp;
-      <input type="text" placeholder="Fecha" class="form-control" [(ngModel)]="fecha" name="first" bsDaterangepicker
-        [bsConfig]="{ rangeInputFormat : 'YYYY/MM/DD, hh:mm', dateInputFormat: 'YYYY/MM/DD, hh:mm', showWeekNumbers: false }">
-    </div>
-    <button pButton type="submit" class="btn btn-primary" class="btn p-button-rounded">
-      <i class="fa fa-sign-in-alt fa-lg"></i>&nbsp;&nbsp;&nbsp;<span>Enviar Fecha</span>
-    </button> -->
-  </form>
 
   <div class="row mb-2">
     <div class="col-md-6">

@@ -1,25 +1,40 @@
 <div class="col-12">
 <h1 align="center" style="color: chocolate;">Habitaciones Disponibles</h1>
-<table class="table table-hover table-striped table-light ">
-  <thead class="thead-dark">
+</div>
+<!-- <table class="table table-hover table-striped table-light "> -->
+  <!-- <thead class="thead-dark">
     <th>Habitación</th>
-    <!-- <th> </th> -->
     <th>Categoría</th>
-    <th>Camas</th>
     <th>Precio</th>
     <th>Fotos</th>
-  </thead>
-  <tbody *ngIf="habitaciones.length > 0; else fila">
+  </thead> -->
+  <div class="card">
+  <p-dataView [value]="habitaciones" [rows]="3" >
+    <ng-template let-habitaciones pTemplate="listItem">
+      <div class="p-col-12">
+        <div class="product-list-item">
+             <img [src]="'../assets/img/parejas2.jpg'"/> 
+            <div class="product-list-detail">
+                <div class="product-name">{{habitaciones.idHabitacion}}</div>
+                <div class="product-description">{{habitaciones.descripcion}}</div>
+                <p-rating [ngModel]="habitaciones.descripcion" [readonly]="true" [cancel]="false"></p-rating>
+                <i class="pi pi-tag product-category-icon"></i><span class="product-category">Categoría de la habitación (Rellenar)</span>
+            </div>
+        </div>
+    </div>
+    </ng-template>
+</p-dataView>
+
+  <!-- <tbody *ngIf="habitaciones.length > 0; else fila">
     <tr *ngFor=" let habitacion of habitaciones">
      
         <td>{{habitacion.idHabitacion}}</td>
-        <td>{{habitacion.tipo}}</td>
         <td>{{habitacion.descripcion}}</td>
         <td>{{habitacion.precio}}</td>
         <img id="foto" src="../assets/img/parejas2.jpg" width="100" height="62">
 
     </tr>
-  </tbody>
+  </tbody> -->
   <!-- <tbody #fila>
 
   </tbody> -->
@@ -30,5 +45,7 @@
       </tr>
     </tbody>
   </ng-template>
-</table>
+  
+<!-- </table> -->
 </div>
+ <!-- ----------------------------- -->

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from '../../services/usuarios.service';
-// import {DataViewModule} from 'primeng/dataview';
+import {DataViewModule} from 'primeng/dataview';
 
 @Component({
     selector: 'app-listar-habitaciones',
@@ -24,22 +24,6 @@ import { UsuariosService } from '../../services/usuarios.service';
       }
 
   }
-// import {Injectable} from 'angular2/core';
-// import {Http, Response} from 'angular2/http';
-// import {Car} from '../domain/car';
-
-// @Injectable()
-// export class CarService {
-
-//     constructor(private http: Http) {}
-
-//     getCarsLarge() {
-//         return this.http.get('/showcase/resources/data/cars-large.json')
-//                     .toPromise()
-//                     .then(res => <Car[]> res.json().data)
-//                     .then(data => { return data; });
-//     }
-// }
 
 
 

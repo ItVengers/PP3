@@ -36,7 +36,7 @@ class HabitacionesModel {
     }
     listarhabitaciones() {
         return __awaiter(this, void 0, void 0, function* () {
-            const habitaciones = yield this.db.query('(select numeroHabitacion as "Habitaciones Disponibles" from habitaciones where estado = 1) UNION (select h.numeroHabitacion as "Habitaciones Disponibles" from habitaciones h left join reservas r on r.habitacion_id = h. idHabitacion where r.estado_id = 2 and  CURDATE() <= r.checkIn and CURDATE() <= r.checkOut	)');
+            const habitaciones = yield this.db.query('select h.idHabitacion, h.checkIn, h.checkOut, h.estado, c.descripcion, t.precio from habitaciones h inner join categoria c on c.idCategoria = h.cat_id inner join tarifas t on t.categoria_id = c.idCategoria where h.idHabitacion not in (select r.habitacion_id from reservas r inner join estado e on e.idEstado = r.estado_id where e.codigo = "PEN");');
             //console.log(usuarios[0]);
             //devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
             return habitaciones[0];

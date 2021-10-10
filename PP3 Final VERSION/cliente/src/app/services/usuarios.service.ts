@@ -6,7 +6,8 @@ import { Router } from '@angular/router';
 import { Habitacion } from '../models/habitacionModel';
 import { environment } from 'src/environments/environment';
 import { Usuario } from '../models/usuarioModel';
-import {Http, Response} from 'angular2/http';
+// import {Http, Response} from 'angular2/http';
+// No funciona el IMPORT
 
 @Injectable({
   providedIn: 'root'

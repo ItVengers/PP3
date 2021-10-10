@@ -10,14 +10,14 @@
   </thead> -->
   <div class="card">
   <p-dataView [value]="habitaciones" [rows]="3" >
-    <ng-template let-habitaciones pTemplate="listItem">
+    <ng-template let-habitacion pTemplate="listItem">
       <div class="p-col-12">
         <div class="product-list-item">
              <img [src]="'../assets/img/parejas2.jpg'"/> 
             <div class="product-list-detail">
-                <div class="product-name">{{habitaciones.idHabitacion}}</div>
-                <div class="product-description">{{habitaciones.descripcion}}</div>
-                <p-rating [ngModel]="habitaciones.descripcion" [readonly]="true" [cancel]="false"></p-rating>
+                <div class="product-name">{{habitacion.idHabitacion}}</div>
+                <div class="product-description">{{habitacion.descripcion}}</div>
+                <p-rating [ngModel]="habitacion.descripcion" [readonly]="true" [cancel]="false"></p-rating>
                 <i class="pi pi-tag product-category-icon"></i><span class="product-category">Categoría de la habitación (Rellenar)</span>
             </div>
         </div>

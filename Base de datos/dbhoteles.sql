@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-10-2021 a las 03:46:55
+-- Tiempo de generación: 03-10-2021 a las 17:54:13
 -- Versión del servidor: 10.4.13-MariaDB
 -- Versión de PHP: 7.2.32
 
@@ -20,31 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `dbhoteles`
 --
-
-DELIMITER $$
---
--- Procedimientos
---
-CREATE DEFINER=`root`@`localhost` PROCEDURE `BusquedaHabitacionesDisponibles` (IN `pPersona` INT(1), IN `pCheckIn` VARCHAR(20), IN `pCheckOut` VARCHAR(20))  BEGIN
-     
-    select h.idHabitacion, h.checkIn, h.checkOut, h.estado, c.descripcion, t.precio 
-from habitaciones h
-            inner join categoria c on c.idCategoria = h.cat_id
-            inner join tarifas t on t.categoria_id = c.idCategoria
-where h.idHabitacion not in (
-	select r.habitacion_id
-from reservas r 
-            inner join estado e on e.idEstado = r.estado_id 
-where ((r.checkIn <= pCheckIn and r.checkOut > pCheckIn) or 
-                (r.checkIn <= pCheckOut and r.checkOut > pCheckOut)) and e.codigo = 'PEN'
-    )
- and c.pasajeros = pPersona;
-      
-
-END$$
-
-DELIMITER ;
-
+Create database IF NOT exists dbhoteles;
+use dbhoteles; 
 -- --------------------------------------------------------
 
 --
@@ -53,7 +30,7 @@ DELIMITER ;
 
 CREATE TABLE `categoria` (
   `idCategoria` int(11) NOT NULL,
-  `descripcion` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `descripcion` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `hotel_id` int(11) DEFAULT NULL,
   `pasajeros` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -69,9 +46,9 @@ INSERT INTO `categoria` (`idCategoria`, `descripcion`, `hotel_id`, `pasajeros`) 
 (4, 'Dobles Suite', 1, 2),
 (7, 'Triples Junior Suite', 1, 3),
 (8, 'Triples Suite', 1, 3),
-(13, 'Cuadruples Junior Suite', 1, 4),
+(13, 'Cuadruples Junior Su', 1, 4),
 (14, 'Cuadruples Suite', 1, 4),
-(15, 'Quintuples Junior Suite', 1, 5),
+(15, 'Quintuples Junior Su', 1, 5),
 (16, 'Quintuples Suite', 1, 5);
 
 -- --------------------------------------------------------
@@ -82,20 +59,17 @@ INSERT INTO `categoria` (`idCategoria`, `descripcion`, `hotel_id`, `pasajeros`) 
 
 CREATE TABLE `estado` (
   `idEstado` int(2) NOT NULL,
-  `descripcion` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `codigo` varchar(3) COLLATE utf8_unicode_ci DEFAULT NULL
+  `descripcion` varchar(45) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `estado`
 --
 
-INSERT INTO `estado` (`idEstado`, `descripcion`, `codigo`) VALUES
-(1, 'Disponible', 'DIS'),
-(2, 'No Disponible', 'NOD'),
-(3, 'Finalizado', 'FIN'),
-(4, 'Pendiente', 'PEN'),
-(5, 'Cancelada', 'CAN');
+INSERT INTO `estado` (`idEstado`, `descripcion`) VALUES
+(1, 'Disponible'),
+(2, 'No Disponible'),
+(3, 'Finalizado');
 
 -- --------------------------------------------------------
 
@@ -119,14 +93,14 @@ CREATE TABLE `habitaciones` (
 INSERT INTO `habitaciones` (`idHabitacion`, `cat_id`, `estado`, `checkIn`, `checkOut`, `numeroHabitacion`) VALUES
 (11, 1, 1, NULL, NULL, 1),
 (12, 2, 1, NULL, NULL, 2),
-(13, 3, 2, '2021-10-03', '2021-10-13', 3),
-(14, 3, 1, NULL, NULL, 4),
+(13, 3, 1, NULL, NULL, 3),
+(14, 3, 2, '2021-11-01', '2021-11-15', 4),
 (15, 7, 1, NULL, NULL, 5),
 (16, 7, 1, NULL, NULL, 10),
-(17, 13, 1, NULL, NULL, 11),
+(17, 13, 2, '2021-12-10', '2021-12-23', 11),
 (18, 13, 1, NULL, NULL, 12),
 (19, 15, 1, NULL, NULL, 13),
-(20, 15, 1, NULL, NULL, 14),
+(20, 15, 2, '2022-01-01', '2022-01-31', 14),
 (21, 15, 1, NULL, NULL, 15);
 
 -- --------------------------------------------------------
@@ -212,8 +186,7 @@ INSERT INTO `reservas` (`idReserva`, `checkIn`, `checkOut`, `fechaReserva`, `pre
 (5, '2021-05-01', '2021-05-20', '2021-04-01 00:00:00', 30200, 3, 20, 2),
 (6, '2021-11-01', '2021-11-15', '2000-02-02 11:01:02', 6500, 2, 14, 9),
 (7, '2022-01-01', '2022-01-31', '2021-10-01 00:00:00', 25000, 2, 20, 6),
-(8, '2021-12-10', '2021-12-23', '2021-09-07 00:00:00', 10500, 2, 17, 8),
-(9, '2021-10-03', '2021-10-13', '2021-10-03 00:00:00', 5000, 2, 13, 4);
+(8, '2021-12-10', '2021-12-23', '2021-09-07 00:00:00', 10500, 2, 17, 8);
 
 -- --------------------------------------------------------
 
@@ -223,7 +196,7 @@ INSERT INTO `reservas` (`idReserva`, `checkIn`, `checkOut`, `fechaReserva`, `pre
 
 CREATE TABLE `tarifas` (
   `idTarifa` int(11) NOT NULL,
-  `precio` float NOT NULL,
+  `precio` int(10) NOT NULL,
   `temporada_id` int(11) NOT NULL,
   `categoria_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -376,7 +349,7 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de la tabla `estado`
 --
 ALTER TABLE `estado`
-  MODIFY `idEstado` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idEstado` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `habitaciones`
@@ -400,7 +373,7 @@ ALTER TABLE `persona`
 -- AUTO_INCREMENT de la tabla `reservas`
 --
 ALTER TABLE `reservas`
-  MODIFY `idReserva` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `idReserva` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `tarifas`

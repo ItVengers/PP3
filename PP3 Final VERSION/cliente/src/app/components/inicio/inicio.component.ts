@@ -17,7 +17,9 @@ export class InicioComponent implements OnInit {
   zona = { zona_id: "" };
 
   seleccionado: string = "";
-  fecha: string = "";
+  checkIn: string = "";
+  checkOut: string = "";
+  personas: number = 1;
 
   ngOnInit(): void {
 
@@ -62,23 +64,23 @@ export class InicioComponent implements OnInit {
     // this.traerHoteles();
   }
 
-  enviarFecha(fecha: string) {
-    console.log(fecha);
-    this.usuariosService.buscarFecha(fecha).subscribe(
-      (res) => {
-        let result: any = res;
-        this.fecha = result;
-        console.log(this.fecha)
-      },
-      (err) => {
-        this.messageService.add({
-          severity: 'error',
-          summary: err.statusText,
-          detail: err.error.message,
-        });
-        console.log(err.error.message);
-      }
-    )
-    // this.traerHoteles();
-  }
+  // enviarFecha(fecha: string) {
+  //   console.log(fecha);
+  //   this.usuariosService.buscarFecha(fecha).subscribe(
+  //     (res) => {
+  //       let result: any = res;
+  //       this.fecha = result;
+  //       console.log(this.fecha)
+  //     },
+  //     (err) => {
+  //       this.messageService.add({
+  //         severity: 'error',
+  //         summary: err.statusText,
+  //         detail: err.error.message,
+  //       });
+  //       console.log(err.error.message);
+  //     }
+  //   )
+  //   // this.traerHoteles();
+  // }
 }

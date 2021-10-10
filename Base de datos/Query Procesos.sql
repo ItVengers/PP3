@@ -1,7 +1,39 @@
-SELECT numeroHabitacion FROM habitaciones WHERE habitaciones.estado = 2 AND checkOut <= checkIn
-UNION
-SELECT numeroHabitacion FROM habitaciones LEFT JOIN reservas WHERE habitaciones.estado = 1 AND NOT checkIn BETWEEN reservas.checkIn and reservas.checkOut;
+#MUESTRA HABITACIONES DISPONIBLES TABLA HABITACIONES
 
-select * from habitaciones h 
-where  h.estado = 1
-and not exists (select * from reservas where reservas between (checkIn ,checkOut)) ;
+select numeroHabitacion as "Habitaciones Disponibles" from habitaciones where estado = 1;
+
+#-------------------------
+
+(select numeroHabitacion as "Habitaciones Disponibles" from habitaciones where estado = 1)
+UNION
+(select h.numeroHabitacion as "Habitaciones Disponibles" from habitaciones h
+left join reservas r on r.habitacion_id = h. idHabitacion
+where r.estado_id = 2 
+and  '' >= r.checkIn 
+and '20211012' >= r.checkOut 
+);
+
+#-----------------------------------------
+(select numeroHabitacion as "Habitaciones Disponibles" from habitaciones where estado = 1)
+UNION
+(select h.numeroHabitacion as "Habitaciones Disponibles" from habitaciones h
+left join reservas r on r.habitacion_id = h. idHabitacion
+where r.estado_id = 2 
+and  CURDATE() >= r.checkIn 
+and CURDATE() >= r.checkOut 
+);
+
+
+
+
+
+
+
+#----------------------------------------------------------------------------------------------------
+
+
+
+#----------------------------------------------------------------------------------------------------
+
+select * from reservas;
+select * from habitaciones;

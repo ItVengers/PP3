@@ -60,7 +60,6 @@ UPDATE `dbhoteles`.`habitaciones` SET `numeroHabitacion` = '15' WHERE (`idHabita
 #MODIFICACIONES DE LAS HABITACIONES CUANDO LAS RESERVAS ESTAN EN ESTADO 2 Y LAS HABITACIONES DISPONIBLES SE PONEN EN ESTADO 1 DISPONIBLE
 UPDATE `dbhoteles`.`habitaciones` SET `estado` = '2', `checkIn` = '20211101', `checkOut` = '20211115' WHERE (`idHabitacion` = '14');
 UPDATE `dbhoteles`.`habitaciones` SET `estado` = '2', `checkIn` = '20211210', `checkOut` = '20211223' WHERE (`idHabitacion` = '17');
-UPDATE `dbhoteles`.`habitaciones` SET `estado` = '2', `checkIn` = '20220101', `checkOut` = '20220131' WHERE (`idHabitacion` = '20');
 UPDATE `dbhoteles`.`habitaciones` SET `estado` = '1' WHERE (`idHabitacion` = '11');
 UPDATE `dbhoteles`.`habitaciones` SET `estado` = '1' WHERE (`idHabitacion` = '12');
 UPDATE `dbhoteles`.`habitaciones` SET `estado` = '1' WHERE (`idHabitacion` = '13');
@@ -136,8 +135,19 @@ insert	into reservas (checkIn,checkOut,fechaReserva,precioTotal, estado_id, habi
 values (20211210,20211223,20210907,10500,2,17,8); 
 
 insert	into reservas (checkIn,checkOut,fechaReserva,precioTotal, estado_id, habitacion_id, persona_id) 
-values (20220101,20220131,20211001,25000,2,20,6); 
+values (20220101,20220131,20211001,25000,2,20,6);
+
+insert	into reservas (checkIn,checkOut,fechaReserva,precioTotal, estado_id, habitacion_id, persona_id) 
+values (20211003,20211013,20211003,5000,2,13,4); 
 #----------------------------------------------------------------------------
+
+-- Mejora tabla de estados
+alter table estado add column codigo varchar(3);
+update estado set codigo = 'DIS' where idEstado = 1;
+update estado set codigo = 'NOD' where idEstado = 2;
+update estado set codigo = 'FIN' where idEstado = 3;
+INSERT INTO estado (idEstado, descripcion, codigo) VALUES (4, 'Pendiente', 'PEN');
+INSERT INTO estado (idEstado, descripcion, codigo) VALUES (5, 'Cancelada', 'CAN');
 
 
 select * from temporada;
@@ -149,6 +159,10 @@ select * from persona;
 select * from hoteles;
 
 select * from tarifas;
+
+#CAMBIO DE INT A FLOAT EN EL TIPO DE DATO DEL PRECIO
+ALTER TABLE `dbhoteles`.`tarifas` 
+CHANGE COLUMN `precio` `precio` FLOAT(10) NOT NULL ;
 
 
 

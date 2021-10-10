@@ -12,7 +12,7 @@ values ("Cuadruples","Suite"),("Cuadruples","Special");# 1 grande 2 chicas / 2 g
 insert into categoria (descripcion,tipo) 
 values ("Quintuples","Suite"),("Quintuples","Special"); # 1 grande 3 chicas / 2 grandes 1 chica / 5 chicas
 #----------------------------------------------
-
+/*
 CREATE TABLE IF NOT EXISTS camas (
 idCamas INT (2) NOT NULL auto_increment, primary key (idCamas),
 descripcion VARCHAR (45) NOT NULL
@@ -22,7 +22,7 @@ select * from camas;
 
 insert into camas (descripcion) 
 values ("1 Individual"),("1 Doble"),("2 Individuales"),("1 Doble + 1 Individual"),("3 Individuales"),("1 Doble + 3 Individuales"),("2 Dobles"),("4 Individuales"),("1 Doble + 3 Individuales"),("2 Dobles + 1 Individual"),("5 Individuales");
-
+*/
 
 select * from habitaciones;
 delete from habitaciones where idHabitacion in (5,6);
@@ -32,13 +32,13 @@ ALTER TABLE habitaciones
 
 
 
-
+/*
 ALTER TABLE habitaciones ADD COLUMN camas_id int (2)  NOT NULL;
 
 
 insert into habitaciones (cat_id, camas_id) 
 values(1,1),(2,1),(3,2),(3,3),(7,4),(7,5),(13,7),(13,8),(15,9),(15,10),(15,11);
-
+*/
 
 
 #----------------------------------------------
@@ -115,3 +115,9 @@ inner join categoria cat on cat.idCategoria = h.cat_id;
 select * from habitaciones h
 inner join camas c on c.idCamas = h.camas_id
 where h.cantPax like '2';
+
+#----------------------------------------------------------
+
+update reservas
+set estado = 'Aprobada'
+where idReserva = 2;

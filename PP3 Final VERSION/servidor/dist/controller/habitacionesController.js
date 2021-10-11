@@ -17,8 +17,9 @@ const habitacionesModel_1 = __importDefault(require("../models/habitacionesModel
 class HabitacionesController {
     habitacionesC(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            //const { habitaciones } = req.body;
-            const result = yield habitacionesModel_1.default.listarhabitaciones();
+            console.log("ESTOY EN EL METODO DEL BACKEND");
+            const { fechaIngreso, fechaEgreso, cantPersona } = req.body;
+            const result = yield habitacionesModel_1.default.listarhabitaciones(fechaIngreso, fechaEgreso, cantPersona);
             //console.log(result.idPersona);
             console.log(result);
             return res.json(result);

@@ -1,6 +1,6 @@
- <div class="col-12">
-  <h1 align="center" style="color: chocolate;">Habitaciones Disponibles</h1>
-  <table class="table table-hover table-striped table-light">
+<div class="col-md-8">
+  <h1 align="right" style="color: chocolate;">Habitaciones Disponibles</h1>
+  <!-- <table class="table table-hover table-striped table-light">
     <thead class="thead-dark">
       <th>Habitación</th>
       <th>Categoría</th>
@@ -8,7 +8,7 @@
       <th>Precio</th>
       <th>Fotos</th>
     </thead>
-<div class="container">
+    <div class="container">
       <div class="col-md-8 col-sm-12 right_box">
         <div class="card-columns" style="width: 100rem;">
           <tbody *ngIf="habitaciones.length > 0; else fila">
@@ -16,10 +16,10 @@
               <img class="card-img-top" src="../assets/img/parejas2.jpg" alt="Card image cap">
               <div class="card-body">
                 <h5 class="card-title">Habitación {{habitacion.idHabitacion}} - {{habitacion.descripcion}} </h5>
-                <p class="card-text">Este es un texto de ejemplo donde iria el texto describiendo los 
+                <p class="card-text">Este es un texto de ejemplo donde iria el texto describiendo los
                   servicios de la habitación. Precio por noche: $<b>{{habitacion.precio}}</b></p>
                 <a href="#" class="btn btn-primary">Reservar</a>
-                
+
               </div>
         </div>
       </div>
@@ -33,18 +33,38 @@
       </tbody>
     </ng-template>
   </table>
+</div> -->
+
+<div class="container">
+  <div class="">
+    <div class="card-columns" style="width: 100rem;">
+      <tbody *ngIf="habitaciones.length > 0">
+        <tr *ngFor=" let habitacion of habitaciones">
+          <img class="card-img-top" src="../assets/img/parejas2.jpg" alt="Card image cap">
+          <div class="card-body">
+            <h5 id="titulo" class="card-title">Habitación {{habitacion.idHabitacion}} - {{habitacion.descripcion}} </h5>
+            <p id="titulo" class="card-text">Este es un texto de ejemplo donde iria el texto describiendo los
+              servicios de la habitación. Precio por noche: $<b>{{habitacion.precio}}</b></p>
+            <a href="#" class="btn btn-primary">Reservar</a>
+
+          </div>
+    </div>
+  </div>
 </div>
 
- <!-- ----------------------------- -->
+
+
+
+<!-- ----------------------------- -->
 <!-- Cosas anteriores -->
 
-  <!-- PRIME NG DATA VIEW -->
-  <!-- <div class="card">
+<!-- PRIME NG DATA VIEW -->
+<!-- <div class="card">
   <p-dataView [value]="habitaciones" [rows]="3" >
     <ng-template let-habitacion pTemplate="listItem">
       <div class="p-col-12">
         <div class="product-list-item">
-             <img [src]="'../assets/img/parejas2.jpg'"/> 
+             <img [src]="'../assets/img/parejas2.jpg'"/>
             <div class="product-list-detail">
                 <div class="product-name">{{habitacion.idHabitacion}}</div>
                 <div class="product-description">{{habitacion.descripcion}}</div>
@@ -55,11 +75,11 @@
     </div>
     </ng-template>
 </p-dataView> -->
- <!-- FIN PRIME NG DATA VIEW -->
+<!-- FIN PRIME NG DATA VIEW -->
 
 
 <!-- <table class="table table-hover table-striped table-light "> -->
-  <!-- <thead class="thead-dark">
+<!-- <thead class="thead-dark">
     <th>Habitación</th>
     <th>Categoría</th>
     <th>Precio</th>
@@ -67,9 +87,9 @@
   </thead> -->
 
 
-  <!-- <tbody *ngIf="habitaciones.length > 0; else fila">
+<!-- <tbody *ngIf="habitaciones.length > 0; else fila">
     <tr *ngFor=" let habitacion of habitaciones">
-     
+
         <td>{{habitacion.idHabitacion}}</td>
         <td>{{habitacion.descripcion}}</td>
         <td>{{habitacion.precio}}</td>
@@ -77,16 +97,16 @@
 
     </tr>
   </tbody> -->
-  <!-- <tbody #fila>
+<!-- <tbody #fila>
 
   </tbody> -->
-  <!-- <ng-template #fila>
+<!-- <ng-template #fila>
     <tbody>
       <tr>
         <td colspan="4">No hay mas filas</td>
       </tr>
     </tbody>
   </ng-template> -->
-  
+
 <!-- </table> -->
 <!-- </div> -->

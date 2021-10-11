@@ -15,7 +15,7 @@ class HabitacionesRoutes {
             res.send('habitaciones!!!');
             //res.render("partials/principal");
         });
-        this.router.get('/listarhabitaciones', habitacionesController_1.default.habitacionesC);
+        this.router.post('/listarhabitaciones', habitacionesController_1.default.habitacionesC);
         // this.router.post('/listarhabitaciones',TokenValidation,habitacionesController.habitacionesC);
     }
 }

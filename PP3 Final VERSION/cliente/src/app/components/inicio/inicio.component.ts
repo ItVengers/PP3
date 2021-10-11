@@ -1,17 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from 'src/app/services/usuarios.service';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.component.html',
   styleUrls: ['./inicio.component.css'],
-  providers: [MessageService],
+  providers: [MessageService, DatePipe],
 })
 export class InicioComponent implements OnInit {
 
-  constructor(private usuariosService: UsuariosService, private router: Router, private messageService: MessageService) { }
+
+  // minDate: Date;
+
+
+
+  constructor(private usuariosService: UsuariosService, private router: Router, private messageService: MessageService, private datePipe: DatePipe) {
+    // this.minDate = new Date();
+    // let minCheckIn = new Date(this.checkIn)
+    // this.minDate.setDate(minCheckIn.getDate());
+  }
 
   hoteles: any = [];
   zona = { zona_id: "" };
@@ -62,6 +72,23 @@ export class InicioComponent implements OnInit {
       }
     )
     // this.traerHoteles();
+  }
+
+  //checkIn: any, checkOut: any, personas: number
+  enviarDatos() {
+    let checkIn = this.datePipe.transform(this.checkIn, 'yyyy-MM-dd');
+    let checkOut = this.datePipe.transform(this.checkOut, 'yyyy-MM-dd');
+
+    const navigationExtras: NavigationExtras = {
+      state: {
+        checkIn: checkIn,
+        checkOut: checkOut,
+        cantPersonas: this.personas
+      }
+    }
+    console.log(navigationExtras);
+    this.router.navigate(['../usuarios/listarhabitaciones'], navigationExtras);
+
   }
 
   // enviarFecha(fecha: string) {

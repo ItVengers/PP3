@@ -40,12 +40,12 @@
 
   <form role="form">
     <!-- <div class="container" data-view="accommodation" id="contenedor" name="filtrohabitaciones"> -->
-    <div class="container-lg " name="filtrohabitaciones" id="containerfiltro">
+    <div class="container-lg" name="filtrohabitaciones" id="containerfiltro">
       <div class="row justify-content-sm-center">
         <div class="col-sm-auto" id="columna">
           <div class="form-group">
             <label id="label">Hotel/Lugar</label> <br>
-            <select class="form-select form-select-sm" name="selector" >
+            <select class="form-select form-select-sm" name="selector">
               <option *ngFor="let hotel of hoteles">
                 {{hotel.descripcion}}
               </option>
@@ -98,14 +98,15 @@
         <div class="col-sm-auto">
           <label for="ingresoF" id="label">Check In</label>
           &nbsp;
-          <input type="text" placeholder="Fecha" class="form-select form-select-sm" [(ngModel)]="checkIn" name="first" bsDatepicker
-            [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY', showWeekNumbers: false, isAnimated: true }">
+          <input type="text" placeholder="CheckIn" class="form-select form-select-sm" [(ngModel)]="checkIn" name="first"
+            bsDatepicker [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY', showWeekNumbers: false, isAnimated: true }">
         </div>
         <div class="col-sm-auto">
           <label for="ingresoF" id="label">Check Out</label>
           &nbsp;
-          <input type="text" placeholder="Fecha" class="form-select form-select-sm" [(ngModel)]="checkOut" name="first" bsDatepicker
-            [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY', showWeekNumbers: false, isAnimated: true }">
+          <input type="text" placeholder="CheckOut" class="form-select form-select-sm" [(ngModel)]="checkOut"
+            name="first" bsDatepicker
+            [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY', showWeekNumbers: false, isAnimated: true }">
         </div>
         <!-- <div class="col-sm-auto" id="columna">
           <div class="form-group">
@@ -115,8 +116,10 @@
         </div> -->
         <div class="col-sm-auto" id="divbutton">
           <div class="form-group">
+            <!-- <a type="submit" class="btn btn-primary btn-block" name="buscar" id="boton" value="Buscar"
+              href="usuarios/listarhabitaciones">Buscar</a> -->
             <a type="submit" class="btn btn-primary btn-block" name="buscar" id="boton" value="Buscar"
-              href="usuarios/listarhabitaciones">Buscar</a>
+              (click)=enviarDatos()>Buscar</a>
           </div>
         </div>
       </div>

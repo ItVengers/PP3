@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { Habitacion } from '../models/habitacionModel';
 import { environment } from 'src/environments/environment';
 import { Usuario } from '../models/usuarioModel';
+import { BusquedaReserva } from '../models/busquedaReserva';
 // import {Http, Response} from 'angular2/http';
 // No funciona el IMPORT
 
@@ -82,8 +83,8 @@ export class UsuariosService {
   }
   // nuevos services
   //---------
-  listarHabitaciones() {
-    return this.http.get(`${this.API_URI4}/listarhabitaciones`);
+  listarHabitaciones(datos: BusquedaReserva): Observable<BusquedaReserva> {
+    return this.http.post(`${this.API_URI4}/listarhabitaciones`, datos);
   }
 
   peticionDatosUsuarios(id: string) {

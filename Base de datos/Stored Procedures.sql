@@ -182,3 +182,63 @@ categoria_id = pCategoria_id
 WHERE idTarifa = pIdTarifa;
 
 END$$
+
+#----------------------------------------------------------
+#Agregar Reserva
+
+DELIMITER $$
+CREATE DEFINER=root@localhost PROCEDURE AgregarReserva (IN pCheckIn date, IN pCheckOut date, in pFechaReserva datetime, in pPrecioTotal FLOAT(10), in PEstado_id int (1), in pHabitacion_id int (11), in pPersona_id int(11)) BEGIN
+     
+ insert into reservas (checkIn,checkOut,fechaReserva,precioTotal,estado_id,habitacion_id,persona_id) 
+ values ( pCheckIn, pCheckOut, pFechaReserva, pPrecioTotal, PEstado_id, pHabitacion_id , pPersona_id );
+
+END$$
+
+#----------------------------------------------------------
+#Cancelar Reserva
+
+DELIMITER $$
+CREATE DEFINER=root@localhost PROCEDURE CancelarReserva (IN pIdReserva int(11))
+ BEGIN
+ 
+
+update reservas set estado_id = 5 where idReserva = pIdReserva;  
+
+END$$
+
+#----------------------------------------------------------
+#Modificar Reserva
+
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE ModificarReserva (IN pIdReserva int(11), IN pCheckIn date, IN pCheckOut date, in pFechaReserva datetime, in pPrecioTotal FLOAT(10), in PEstado_id int (1), in pHabitacion_id int (11), in pPersona_id int(11))
+BEGIN
+
+UPDATE reservas SET 
+checkIn = pCheckIn,
+checkOut = pCheckOut,
+fechaReserva = pFechaReserva,
+precioTotal = pPrecioTotal,
+estado_id = PEstado_id,
+habitacion_id = pHabitacion_id,
+persona_id = pPersona_id
+
+WHERE idReserva = pIdReserva;
+
+END$$
+
+#----------------------------------------------------------
+#Reserva Pendiente
+
+DELIMITER $$
+CREATE DEFINER=root@localhost PROCEDURE PendienteReserva (IN pIdReserva int(11))
+ BEGIN
+ 
+
+update reservas set estado_id = 4 where idReserva = pIdReserva;  
+
+END$$
+
+#----------------------------------------------------------
+
+

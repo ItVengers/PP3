@@ -3,6 +3,7 @@ import { UsuariosService } from 'src/app/services/usuarios.service';
 import { Router, NavigationExtras } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { DatePipe } from '@angular/common';
+import { setDate } from 'ngx-bootstrap/chronos/utils/date-setters';
 
 @Component({
   selector: 'app-inicio',
@@ -13,23 +14,23 @@ import { DatePipe } from '@angular/common';
 export class InicioComponent implements OnInit {
 
 
-  // minDate: Date;
+  minDate: Date;
 
 
 
   constructor(private usuariosService: UsuariosService, private router: Router, private messageService: MessageService, private datePipe: DatePipe) {
-    // this.minDate = new Date();
-    // let minCheckIn = new Date(this.checkIn)
-    // this.minDate.setDate(minCheckIn.getDate());
+    this.minDate = new Date();
+    this.minDate.setDate(this.minDate.getDate());
   }
 
   hoteles: any = [];
   zona = { zona_id: "" };
 
   seleccionado: string = "";
-  checkIn: string = "";
+  checkIn: Date = new Date();
   checkOut: string = "";
   personas: number = 1;
+
 
   ngOnInit(): void {
 

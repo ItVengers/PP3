@@ -99,13 +99,14 @@
           <label for="ingresoF" id="label">Check In</label>
           &nbsp;
           <input type="text" placeholder="CheckIn" class="form-select form-select-sm" [(ngModel)]="checkIn" name="first"
-            bsDatepicker [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY', showWeekNumbers: false, isAnimated: true }">
+            bsDatepicker ngModel [minDate]="minDate"
+            [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY', showWeekNumbers: false, isAnimated: true }">
         </div>
         <div class="col-sm-auto">
           <label for="ingresoF" id="label">Check Out</label>
           &nbsp;
           <input type="text" placeholder="CheckOut" class="form-select form-select-sm" [(ngModel)]="checkOut"
-            name="first" bsDatepicker
+            name="second" bsDatepicker ngModel [minDate]="checkIn"
             [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY', showWeekNumbers: false, isAnimated: true }">
         </div>
         <!-- <div class="col-sm-auto" id="columna">

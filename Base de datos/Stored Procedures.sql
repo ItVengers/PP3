@@ -241,4 +241,49 @@ END$$
 
 #----------------------------------------------------------
 
+#Agregar Hotel
 
+DELIMITER $$
+CREATE DEFINER=root@localhost PROCEDURE AgregarHotel (IN pDescripcion varchar(50), IN pUbicacion varchar(40), IN pZona_id int(11)) BEGIN
+     
+ insert into hoteles (descripcion, ubicacion , zona_id) 
+ values (pDescripcion,pUbicacion, pZona_id);
+
+END$$
+
+#----------------------------------------------------------
+#Borrar Hotel
+
+DELIMITER $$
+CREATE DEFINER=root@localhost PROCEDURE BorrarHotel (IN pIdHotel int(11))
+ BEGIN
+
+DELETE FROM hoteles
+WHERE idHotel = pIdHotel;     
+
+END$$
+#----------------------------------------------------------
+#Modificar Hotel
+
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE ModificarHotel (IN pIdHotel INT(11), IN pDescripcion varchar(50), IN pUbicacion varchar(40), IN pZona_id int(11))
+BEGIN
+
+UPDATE hoteles SET 
+descripcion = pDescripcion,
+ubicacion = pUbicacion,
+zona_id = pZona_id 
+WHERE idHotel = pIdHotel;
+
+END$$
+
+#----------------------------------------------------------
+# Consulta dias de una reserva
+
+DELIMITER $$
+CREATE DEFINER=root@localhost PROCEDURE ConsultaDiasReserva (IN pIdReserva int(11),IN pCheckIn date, IN pCheckOut date) BEGIN
+     
+ select checkIn as 'Check In', checkOut as 'Check Out', DATEDIFF(pCheckOut,pCheckIn ) as 'Total' from reservas where idReserva= pIdReserva;
+
+END$$

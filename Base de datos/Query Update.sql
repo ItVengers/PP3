@@ -149,16 +149,38 @@ update estado set codigo = 'FIN' where idEstado = 3;
 INSERT INTO estado (idEstado, descripcion, codigo) VALUES (4, 'Pendiente', 'PEN');
 INSERT INTO estado (idEstado, descripcion, codigo) VALUES (5, 'Cancelada', 'CAN');
 
+#----------------------------------------------------------------------------
+#BORRAR EL HOTEL DE LA COSTA
+call BorrarHotel (2);
 
-select * from temporada;
 
-select * from zonas;
-
-select * from persona;
+-- Agregar Hoteles
+call AgregarHotel ('Holiday Inn Cordoba','Fray Luis Beltran Y Manuel Cardeñosa 5008',5);
+call AgregarHotel ('Howard Johnson La Cañada Hotel & Suites','Figueroa Alcorta 20', 5);
+call AgregarHotel ('NH Córdoba Urbano','Marcelo T. de Alvear 363',5);
 
 select * from hoteles;
 
+#----------------------------------------------------------------------------
+select * from zonas;
+
+
+select * from temporada;
+
+
+
+select * from persona;
+
+
+
 select * from tarifas;
+select * from reservas;
+
+#QUERY QUE SACA LA CANTIDAD DE DIAS DE UNA RESERVA
+ 
+select checkIn as 'Check In', checkOut as 'Check Out', DATEDIFF(checkOut,checkIn ) as 'Total' from reservas where idReserva=9;
+
+
 
 #CAMBIO DE INT A FLOAT EN EL TIPO DE DATO DEL PRECIO
 ALTER TABLE `dbhoteles`.`tarifas` 

@@ -180,7 +180,9 @@ select * from reservas;
  
 select checkIn as 'Check In', checkOut as 'Check Out', DATEDIFF(checkOut,checkIn ) as 'Total' from reservas where idReserva=9;
 
-
+#QUERY QUE SACA LA CANTIDAD DE DIAS DE TODAS LAS RESERVAS
+ 
+select checkIn as 'Check In', checkOut as 'Check Out', DATEDIFF(checkOut,checkIn ) as 'Total' from reservas;
 
 #CAMBIO DE INT A FLOAT EN EL TIPO DE DATO DEL PRECIO
 ALTER TABLE `dbhoteles`.`tarifas` 

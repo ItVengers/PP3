@@ -287,3 +287,12 @@ CREATE DEFINER=root@localhost PROCEDURE ConsultaDiasReserva (IN pIdReserva int(1
  select checkIn as 'Check In', checkOut as 'Check Out', DATEDIFF(pCheckOut,pCheckIn ) as 'Total' from reservas where idReserva= pIdReserva;
 
 END$$
+
+# Consulta dias de una reserva
+
+DELIMITER $$
+CREATE DEFINER=root@localhost PROCEDURE ConsultaDiasTodasLasReserva (IN pIdReserva int(11),IN pCheckIn date, IN pCheckOut date) BEGIN
+     
+ select checkIn as 'Check In', checkOut as 'Check Out', DATEDIFF(pCheckOut,pCheckIn ) as 'Total' from reservas;
+
+END$$

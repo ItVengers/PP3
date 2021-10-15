@@ -143,4 +143,8 @@ export class UsuariosService {
     return this.http.get(`${this.API_URI3}/datosreservas/${idRes}`);
   }
 
+  // User Service (javier)
+  usuarioReservar(idHab: any){
+    return this.http.get(`${this.API_URI}/reservar/${idHab}`);
+  }
 }

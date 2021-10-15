@@ -1,63 +1,22 @@
-<div class="col-md-8">
-  <h1 align="right" style="color: chocolate;">Habitaciones Disponibles</h1>
-  <!-- <table class="table table-hover table-striped table-light">
-    <thead class="thead-dark">
-      <th>Habitación</th>
-      <th>Categoría</th>
-      <th>Descripción</th>
-      <th>Precio</th>
-      <th>Fotos</th>
-    </thead>
-    <div class="container">
-      <div class="col-md-8 col-sm-12 right_box">
-        <div class="card-columns" style="width: 100rem;">
-          <tbody *ngIf="habitaciones.length > 0; else fila">
-            <tr *ngFor=" let habitacion of habitaciones">
-              <img class="card-img-top" src="../assets/img/parejas2.jpg" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Habitación {{habitacion.idHabitacion}} - {{habitacion.descripcion}} </h5>
-                <p class="card-text">Este es un texto de ejemplo donde iria el texto describiendo los
-                  servicios de la habitación. Precio por noche: $<b>{{habitacion.precio}}</b></p>
-                <a href="#" class="btn btn-primary">Reservar</a>
 
-              </div>
-        </div>
+<h1 align="center" style="color: chocolate;">Habitaciones Disponibles</h1>
+  <div class="col-md-8">
+  <div class="container">
+    <div class="">
+      <div class="card-columns" style="width: 100rem;">
+        <tbody *ngIf="habitaciones.length > 0">
+          <tr *ngFor=" let habitacion of habitaciones">
+            <img class="card-img-top" src="../assets/img/parejas2.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h5 id="titulo" class="card-title">Habitación {{habitacion.idHabitacion}} - {{habitacion.descripcion}} </h5>
+              <p id="titulo" class="card-text">Este es un texto de ejemplo donde iria el texto describiendo los
+                servicios de la habitación. Precio por noche: $<b>{{habitacion.precio}}</b></p>
+              <a routerLink="../reservar/{{habitacion.idHabitacion}}" class="btn btn-primary">Reservar</a>
+  
+            </div>
       </div>
     </div>
-
-    <ng-template #fila>
-      <tbody>
-        <tr>
-          <td colspan="4">No hay mas filas</td>
-        </tr>
-      </tbody>
-    </ng-template>
-  </table>
-</div> -->
-
-<div class="container">
-  <div class="">
-    <div class="card-columns" style="width: 100rem;">
-      <tbody *ngIf="habitaciones.length > 0">
-        <tr *ngFor=" let habitacion of habitaciones">
-          <img class="card-img-top" src="../assets/img/parejas2.jpg" alt="Card image cap">
-          <div class="card-body">
-            <h5 id="titulo" class="card-title">Habitación {{habitacion.idHabitacion}} - {{habitacion.descripcion}} </h5>
-            <p id="titulo" class="card-text">Este es un texto de ejemplo donde iria el texto describiendo los
-              servicios de la habitación. Precio por noche: $<b>{{habitacion.precio}}</b></p>
-            <a href="#" class="btn btn-primary">Reservar</a>
-
-          </div>
-    </div>
   </div>
-</div>
-
-
-
-
-<!-- ----------------------------- -->
-<!-- Cosas anteriores -->
-
 <!-- PRIME NG DATA VIEW -->
 <!-- <div class="card">
   <p-dataView [value]="habitaciones" [rows]="3" >
@@ -76,6 +35,14 @@
     </ng-template>
 </p-dataView> -->
 <!-- FIN PRIME NG DATA VIEW -->
+
+  
+ 
+
+
+<!-- ----------------------------- -->
+<!-- Cosas anteriores -->
+
 
 
 <!-- <table class="table table-hover table-striped table-light "> -->
@@ -110,3 +77,40 @@
 
 <!-- </table> -->
 <!-- </div> -->
+
+ <!-- <table class="table table-hover table-striped table-light">
+    <thead class="thead-dark">
+      <th>Habitación</th>
+      <th>Categoría</th>
+      <th>Descripción</th>
+      <th>Precio</th>
+      <th>Fotos</th>
+    </thead>
+    <div class="container">
+      <div class="col-md-8 col-sm-12 right_box">
+        <div class="card-columns" style="width: 100rem;">
+          <tbody *ngIf="habitaciones.length > 0; else fila">
+            <tr *ngFor=" let habitacion of habitaciones">
+              <img class="card-img-top" src="../assets/img/parejas2.jpg" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Habitación {{habitacion.idHabitacion}} - {{habitacion.descripcion}} </h5>
+                <p class="card-text">Este es un texto de ejemplo donde iria el texto describiendo los
+                  servicios de la habitación. Precio por noche: $<b>{{habitacion.precio}}</b></p>
+                <a href="#" class="btn btn-primary">Reservar</a>
+
+              </div>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #fila>
+      <tbody>
+        <tr>
+          <td colspan="4">No hay mas filas</td>
+        </tr>
+      </tbody>
+    </ng-template>
+  </table>
+</div> -->
+
+

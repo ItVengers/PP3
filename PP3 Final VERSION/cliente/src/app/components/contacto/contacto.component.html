@@ -1,4 +1,36 @@
-<style>
+<h1 align="center">Formulario de contacto</h1>
+<div class="container">
+    <form action="http://localhost:3000" method="POST">
+        <label for="nombre">Nombre</label>
+        <input type="text" name="nombre" id="nombre" placeholder="Ingrese su nombre" required />
+        <label for="nombre">Apellido</label>
+        <input type="text" name="apellido" id="apellido" placeholder="Ingrese su apellido" required />
+        <label for="mail">E-Mail</label>
+        <input type="email" name="mail" id="mail" placeholder="Ingrese su Correo" required />
+        <label for="nombre">Motivo del contacto</label>
+        <select name="motivo" id="motivo" required>
+            <option value="" disabled selected hidden>Seleccione</option>
+            <option value="">Consulta</option>
+            <option value="">Cancelar reserva</option>
+            <option value="">Informar pago</option>
+            <option value="">Problemas con el pago</option>
+        </select>
+        <label for="textarea" class="form-label">Consulta</label>
+        <textarea class="form-control" id="textarea" rows="3"></textarea>
+        <button type="submit">Enviar</button>
+    </form>
+</div>
+
+<!-- <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div> -->
+
+  <!-- <style>
     * {
         box-sizing: border-box;
     }
@@ -73,35 +105,4 @@
 
         color: white;
     }
-</style>
-<h1 align="center">Formulario de contacto</h1>
-<div class="container">
-    <form action="http://localhost:3000" method="POST">
-        <label for="nombre">Nombre</label>
-        <input type="text" name="nombre" id="nombre" placeholder="Ingrese su nombre" required />
-        <label for="nombre">Apellido</label>
-        <input type="text" name="apellido" id="apellido" placeholder="Ingrese su apellido" required />
-        <label for="mail">E-Mail</label>
-        <input type="email" name="mail" id="mail" placeholder="Ingrese su Correo" required />
-        <label for="nombre">Motivo del contacto</label>
-        <select name="motivo" id="motivo" required>
-            <option value="" disabled selected hidden>Seleccione</option>
-            <option value="">Consulta</option>
-            <option value="">Cancelar reserva</option>
-            <option value="">Informar pago</option>
-            <option value="">Problemas con el pago</option>
-        </select>
-        <label for="textarea" class="form-label">Consulta</label>
-        <textarea class="form-control" id="textarea" rows="3"></textarea>
-        <button type="submit">Enviar</button>
-    </form>
-</div>
-
-<!-- <div class="mb-3">
-    <label for="exampleFormControlInput1" class="form-label">Email address</label>
-    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-  </div>
-  <div class="mb-3">
-    <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-  </div> -->
+</style> -->

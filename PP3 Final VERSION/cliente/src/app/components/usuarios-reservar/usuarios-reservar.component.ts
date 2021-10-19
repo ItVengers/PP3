@@ -44,4 +44,12 @@ export class UsuariosReservarComponent implements OnInit {
   }
 
   datosReserva() {}
+
+  enviarDatosReserva(datos: any){
+
+    this.router.navigate(['../usuarios/listarhabitaciones']);
+
+
+
+  }
 }

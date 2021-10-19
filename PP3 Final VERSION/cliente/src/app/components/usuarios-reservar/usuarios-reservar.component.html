@@ -2,16 +2,20 @@
 <h1 align="center">Habitación "idHabitacion"</h1>
 <div class="container" style="background-color:black">
     <img class="card-img-top" src="../assets/img/telo.jpg" alt="Card image cap">
-    <p>Cantidad personas Máxima: $"CantPersonas"</p>
+    <p>Id de la habitacion:</p>
+    <B>{{datosreserva.habitacion_id}}</B>
+    <p>Cantidad personas Máxima:</p>
+    <B>{{datosreserva.cantidadPax}}</B>
     <h6>Servicios</h6>
     <p id="titulo" class="card-text">La habitación cuenta con: aire acondicionado, Televisión con Direct Tv, baño con jacuzzi,calefacción y frigobar
     </p>
     <p id="titulo" class="card-text">Check In: 15hs / Check Out: 10hs</p>
-    <b>Precio total: $"CampoPrecioTotal"</b>
+    <b>Precio total:</b>
+    <b>{{datosreserva.precioTotal}}</b>
     <br>
     <br>
     <a routerLink="../../confirmacionreserva" class="btn btn-primary">Reservar</a>
-    <a (click)="goBack()" class="btn btn-danger" style="margin: 10px">Volver</a>
+    <a routerLink="../../listarhabitaciones" class="btn btn-danger" style="margin: 10px">Volver</a>
 </div>
 
 

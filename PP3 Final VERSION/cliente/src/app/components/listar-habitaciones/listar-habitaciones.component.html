@@ -11,8 +11,8 @@
               <h5 id="titulo" class="card-title">Habitación {{habitacion.idHabitacion}} - {{habitacion.descripcion}} </h5>
               <p id="titulo" class="card-text">Este es un texto de ejemplo donde iria el texto describiendo los
                 servicios de la habitación. Precio por noche: $<b>{{habitacion.precio}}</b></p>
-              <a routerLink="../reservar/{{habitacion.idHabitacion}}" class="btn btn-primary">Reservar</a>
-  
+              <a (click)=enviarDatosReserva(habitacion) routerLink="../reservar/{{habitacion.idHabitacion}}" class="btn btn-primary">Reservar</a>
+
             </div>
       </div>
     </div>
@@ -36,8 +36,8 @@
 </p-dataView> -->
 <!-- FIN PRIME NG DATA VIEW -->
 
-  
- 
+
+
 
 
 <!-- ----------------------------- -->

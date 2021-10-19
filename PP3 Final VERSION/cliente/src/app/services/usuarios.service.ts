@@ -147,4 +147,8 @@ export class UsuariosService {
   usuarioReservar(idHab: any){
     return this.http.get(`${this.API_URI}/reservar/${idHab}`);
   }
+
+  datosReserva(){
+
+  }
 }

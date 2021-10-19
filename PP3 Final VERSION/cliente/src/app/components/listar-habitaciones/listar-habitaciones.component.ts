@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from '../../services/usuarios.service';
 import { DataViewModule } from 'primeng/dataview';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 
 
 @Component({
@@ -14,6 +14,8 @@ export class ListarHabitacionesComponent implements OnInit {
   revelar: boolean = true;
 
   datos = {fechaIngreso: "", fechaEgreso: "", cantPersona: 0 };
+
+  datosreserva = {cantidadPax: "", PrecioTotal: "", habitacionID: "" }
 
   constructor(private usuariosService: UsuariosService, private router: Router) {
     const navigation = this.router.getCurrentNavigation();
@@ -33,10 +35,33 @@ export class ListarHabitacionesComponent implements OnInit {
     this.usuariosService.listarHabitaciones(this.datos).subscribe(
       res => {
         this.habitaciones = res;
-        console.log(res)
+        console.log(res);
+
       },
       err => console.log(err)
     )
+  }
+
+
+  enviarDatosReserva(datos: any){
+
+    let preciototal: string = datos.precio;
+    let pasajeros: number = datos.pasajeros;
+    let idHab: string = datos.idHabitacion;
+    console.log(this.habitaciones);
+    const navigationExtras: NavigationExtras = {
+      state: {
+        habitacion_id: idHab,
+        cantidadPax: pasajeros,
+        precioTotal: preciototal
+      }
+    }
+    console.log(navigationExtras);
+
+    this.router.navigate(['../usuarios/reservar/'+ idHab], navigationExtras);
+
+
+
   }
 
 }

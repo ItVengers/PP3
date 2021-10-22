@@ -17,7 +17,6 @@ export class InicioComponent implements OnInit {
   minDate: Date;
 
 
-
   constructor(private usuariosService: UsuariosService, private router: Router, private messageService: MessageService, private datePipe: DatePipe) {
     this.minDate = new Date();
     this.minDate.setDate(this.minDate.getDate());
@@ -91,8 +90,16 @@ export class InicioComponent implements OnInit {
     this.router.navigate(['../usuarios/listarhabitaciones'], navigationExtras);
 
   }
+  // calcularDias(resultado: ){
+    // let checkOut = new Date();
+    // fechaIngreso = new Date(fechaIngreso);
+    // fechaEgreso = new Date(fechaEgreso);
 
-  // enviarFecha(fecha: string) {
+    // return Math.floor((Date.UTC(fechaEgreso.getFullYear(), fechaEgreso.getMonth(), fechaEgreso.getDate()) - 
+    // Date.UTC(fechaIngreso.getFullYear(), fechaIngreso.getMonth(), fechaIngreso.getDate()) ) /(1000 * 60 * 60 * 24));
+}
+// }
+// enviarFecha(fecha: string) {
   //   console.log(fecha);
   //   this.usuariosService.buscarFecha(fecha).subscribe(
   //     (res) => {
@@ -111,4 +118,3 @@ export class InicioComponent implements OnInit {
   //   )
   //   // this.traerHoteles();
   // }
-}

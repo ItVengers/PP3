@@ -1,7 +1,30 @@
 
 <h1 align="center">Habitación {{datosreserva.habitacion_id}}</h1>
 <div class="container" style="background-color:black">
-    <img class="card-img-top" src="../assets/img/telo.jpg" alt="Card image cap">
+  <div class="row">
+    <div class="col-lg-4">
+      <img class="card-img-top" src="../assets/img/telo.jpg" alt="Card image cap">
+    </div>
+    <div class="col-lg-4"  id="col">
+      <p>Id de la habitacion: <B>{{datosreserva.habitacion_id}}</B></p>
+      <hr>
+      <p>Cantidad personas Máxima: <B>{{datosreserva.cantidadPax}}</B></p>
+      <hr>
+    <p id="titulo" class="card-text">La habitación cuenta con: aire acondicionado, Televisión con Direct Tv, baño con jacuzzi,calefacción y frigobar</p>   
+    </div>
+    <div class="col-lg-4">
+      <p id="titulo" class="card-text">Check In: 15hs / Check Out: 10hs</p>
+      <b id="precio">Precio total: {{datosreserva.precioTotal}}</b>
+      <br>
+      <br>
+      <br>
+      <a id="boton" routerLink="../../confirmacionreserva" class="btn btn-primary">Reservar</a>
+      <a id="boton" routerLink="../../listarhabitaciones" class="btn btn-danger" style="margin: 10px">Volver</a>
+    </div>
+  </div>
+</div>
+
+    <!-- <img class="card-img-top" src="../assets/img/telo.jpg" alt="Card image cap">
     <p>Id de la habitacion:</p>
     <B>{{datosreserva.habitacion_id}}</B>
     <p>Cantidad personas Máxima:</p>
@@ -15,8 +38,8 @@
     <br>
     <br>
     <a routerLink="../../confirmacionreserva" class="btn btn-primary">Reservar</a>
-    <a routerLink="../../listarhabitaciones" class="btn btn-danger" style="margin: 10px">Volver</a>
-</div>
+    <a routerLink="../../listarhabitaciones" class="btn btn-danger" style="margin: 10px">Volver</a> -->
+
 
 
 
@@ -25,3 +48,4 @@
   <h5 id="titulo" class="card-title">Habitación {{habitacion.idHabitacion}} - {{habitacion.descripcion}} </h5>
   <p id="titulo" class="card-text">Este es un texto de ejemplo donde iria el texto describiendo los
     servicios de la habitación. Precio por noche: $<b>{{habitacion.precio}}</b></p> -->
+

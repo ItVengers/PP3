@@ -3,6 +3,7 @@ import { UsuariosService } from '../../services/usuarios.service';
 import { DataViewModule } from 'primeng/dataview';
 import { Router, NavigationExtras } from '@angular/router';
 import { Location } from '@angular/common';
+// import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-usuarios-reservar',
@@ -16,24 +17,42 @@ export class UsuariosReservarComponent implements OnInit {
   datosreserva = {
     habitacion_id: "",
     cantidadPax: "",
-    precioTotal: ""
+    precioTotal: "",
+    checkIn: "",
+    checkOut: "",
+    categoria: "",
+
   };
+
+  estado: number = 2;
+  idPersona: number = 4;
+  fechaReserva: Date = new Date();
+
 
   constructor(
     private usuariosService: UsuariosService,
     private router: Router,
-    private location: Location
+    private location: Location,
+    // private datePipe: DatePipe
   ) {
     const navigation = this.router.getCurrentNavigation();
     const state = navigation?.extras.state as {
       cantidadPax: string;
       habitacion_id: string;
       precioTotal: string;
+      checkIn: string;
+      checkOut: string;
+      categoria: string,
+
     };
 
     this.datosreserva.cantidadPax = state.cantidadPax;
     this.datosreserva.precioTotal = state.precioTotal;
     this.datosreserva.habitacion_id = state.habitacion_id;
+    this.datosreserva.checkIn = state.checkIn;
+    this.datosreserva.checkOut = state.checkOut;
+    this.datosreserva.categoria = state.categoria;
+
   }
 
   ngOnInit(): void {
@@ -43,13 +62,38 @@ export class UsuariosReservarComponent implements OnInit {
     this.location.back();
   }
 
-  datosReserva() {}
+  datosReserva() {
+    this.fechaReserva.setDate(this.fechaReserva.getDate());
+    console.log(this.fechaReserva);
+
+    let reserva = {
+
+      fecReserva: this.fechaReserva,
+      fecCheckIn: this.datosreserva.checkIn,
+      fecCheckOut: this.datosreserva.checkOut,
+      precio: this.datosreserva.precioTotal,
+      habId: this.datosreserva.habitacion_id,
+      status: this.estado,
+      perId: this.idPersona
+    }
+
+    console.log(reserva);
+
+    this.usuariosService.insertarReserva(reserva).subscribe(
+      res => {
+        //this.habitaciones = res;
+        console.log("SE CREO LA RESERVA");
+        console.log(res);
+
+      },
+      err => console.log(err)
+    )
+
+  }
 
   enviarDatosReserva(datos: any){
 
     this.router.navigate(['../usuarios/listarhabitaciones']);
-
-
 
   }
 }

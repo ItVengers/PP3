@@ -4,18 +4,19 @@ import habitacionesController from '../controller/habitacionesController';
 import { TokenValidation } from '../lib/verifyToken';
 
 
-class HabitacionesRoutes{
+class HabitacionesRoutes {
 	public router: Router = Router();
-	constructor(){
+	constructor() {
 		this.config();
 	}
-	config(): void{
-		this.router.get('/',(req:Request,res:Response)=> {
-            res.send('habitaciones!!!');
-            //res.render("partials/principal");
-        });
-       this.router.post('/listarhabitaciones',habitacionesController.habitacionesC);
-	  // this.router.post('/listarhabitaciones',TokenValidation,habitacionesController.habitacionesC);
+	config(): void {
+		this.router.get('/', (req: Request, res: Response) => {
+			res.send('habitaciones!!!');
+			//res.render("partials/principal");
+		});
+		this.router.post('/listarhabitaciones', habitacionesController.habitacionesC);
+		// this.router.post('/listarhabitaciones',TokenValidation,habitacionesController.habitacionesC);
+		this.router.post('/crearreserva', habitacionesController.habitacionesC);
 
 	}
 }

@@ -38,9 +38,15 @@ class HabitacionesModel {
         return __awaiter(this, void 0, void 0, function* () {
             //const habitaciones = await this.db.query('select h.idHabitacion, h.checkIn, h.checkOut, h.estado, c.descripcion, t.precio from habitaciones h inner join categoria c on c.idCategoria = h.cat_id inner join tarifas t on t.categoria_id = c.idCategoria where h.idHabitacion not in (select r.habitacion_id from reservas r inner join estado e on e.idEstado = r.estado_id where e.codigo = "PEN");');
             //const habitaciones = await this.db.query("CALL BusquedaHabitacionesDisponibles(?,?,?)",  [personas, fechaIngreso, fechaEgreso]);
-            const habitaciones = yield this.db.query('select h.idHabitacion, h.checkIn, h.checkOut, h.estado, c.descripcion, c.pasajeros, t.precio from habitaciones h inner join categoria c on c.idCategoria = h.cat_id inner join tarifas t on t.categoria_id = c.idCategoria where h.idHabitacion not in (select r.habitacion_id from reservas r inner join estado e on e.idEstado = r.estado_id  where ((r.checkIn <= ? and r.checkOut > ?) or (r.checkIn <= ? and r.checkOut > ?)) AND (e.codigo = "PEN" OR e.codigo = "NOD")) and c.pasajeros = ?;', [fechaIngreso, fechaIngreso, fechaEgreso, fechaEgreso, personas]);
+            const habitaciones = yield this.db.query('select h.idHabitacion, h.estado, c.descripcion, c.pasajeros, t.precio from habitaciones h inner join categoria c on c.idCategoria = h.cat_id inner join tarifas t on t.categoria_id = c.idCategoria where h.idHabitacion not in (select r.habitacion_id from reservas r inner join estado e on e.idEstado = r.estado_id  where ((r.checkIn <= ? and r.checkOut > ?) or (r.checkIn <= ? and r.checkOut > ?)) AND (e.codigo = "PEN" OR e.codigo = "NOD")) and c.pasajeros = ?;', [fechaIngreso, fechaIngreso, fechaEgreso, fechaEgreso, personas]);
             //console.log(usuarios[0]);
             //devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
+            return habitaciones[0];
+        });
+    }
+    crearReserva(fechaIngreso, fechaEgreso, fechaReserva, habitacion_id, estado, precio, idPersona) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const habitaciones = (yield this.db.query('INSERT INTO RESERVAS(checkIn, checkOut, fechaReserva, precioTotal, estado_id, habitacion_id, persona_id) VALUES(?,?,?,?,?,?,?)', [fechaIngreso, fechaEgreso, fechaReserva, precio, estado, habitacion_id, idPersona]))[0].affectedRows;
             return habitaciones[0];
         });
     }

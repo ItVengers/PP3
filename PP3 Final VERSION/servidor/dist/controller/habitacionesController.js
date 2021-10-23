@@ -25,6 +25,16 @@ class HabitacionesController {
             return res.json(result);
         });
     }
+    crearReserva(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log("ESTOY EN EL METODO CREAR RESERVA");
+            const { fecCheckIn, fecCheckOut, fechaReserva, habId, precio, status, perId } = req.body;
+            console.log(req.body);
+            const result = yield habitacionesModel_1.default.crearReserva(fecCheckIn, fecCheckOut, fechaReserva, habId, precio, status, perId);
+            console.log(result);
+            res.status(200).json({ message: "RESERVA HECHA!!" });
+        });
+    }
 }
 const habitacionesController = new HabitacionesController();
 exports.default = habitacionesController;

@@ -13,9 +13,9 @@ export class ListarHabitacionesComponent implements OnInit {
   habitaciones: any = [];
   revelar: boolean = true;
 
-  datos = {fechaIngreso: "", fechaEgreso: "", cantPersona: 0 };
+  datos = { fechaIngreso: "", fechaEgreso: "", cantPersona: 0 }; //Datos provenientes de la pagina de inicio, sirve para el NGOnInit
 
-  datosreserva = {cantidadPax: "", PrecioTotal: "", habitacionID: "" }
+  // datosreserva = { cantidadPax: "", PrecioTotal: "", habitacionID: "" } //Datos provenientes de la pagina de inicio, sirve para el NGOnInit
 
   constructor(private usuariosService: UsuariosService, private router: Router) {
     const navigation = this.router.getCurrentNavigation();
@@ -35,6 +35,7 @@ export class ListarHabitacionesComponent implements OnInit {
     this.usuariosService.listarHabitaciones(this.datos).subscribe(
       res => {
         this.habitaciones = res;
+        console.log("METODO LISTAR HABITACIONES")
         console.log(res);
 
       },
@@ -43,24 +44,26 @@ export class ListarHabitacionesComponent implements OnInit {
   }
 
 
-  enviarDatosReserva(datos: any){
+  enviarDatosReserva(datos: any) {
 
     let preciototal: string = datos.precio;
     let pasajeros: number = datos.pasajeros;
     let idHab: string = datos.idHabitacion;
+    let cate: string = datos.descripcion;
     console.log(this.habitaciones);
     const navigationExtras: NavigationExtras = {
       state: {
         habitacion_id: idHab,
         cantidadPax: pasajeros,
-        precioTotal: preciototal
+        precioTotal: preciototal,
+        categoria: cate,
+        checkIn: this.datos.fechaIngreso,
+        checkOut: this.datos.fechaEgreso,
       }
     }
     console.log(navigationExtras);
 
-    this.router.navigate(['../usuarios/reservar/'+ idHab], navigationExtras);
-
-
+    this.router.navigate(['../usuarios/reservar/' + idHab], navigationExtras);
 
   }
 

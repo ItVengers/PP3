@@ -148,7 +148,7 @@ export class UsuariosService {
     return this.http.get(`${this.API_URI}/reservar/${idHab}`);
   }
 
-  datosReserva(){
-
+  insertarReserva(agregarRes: any){
+    return this.http.post(`${this.API_URI4}/crearreserva`, agregarRes);
   }
 }

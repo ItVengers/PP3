@@ -46,7 +46,7 @@ class HabitacionesModel {
     }
     crearReserva(fechaIngreso, fechaEgreso, fechaReserva, habitacion_id, estado, precio, idPersona) {
         return __awaiter(this, void 0, void 0, function* () {
-            const habitaciones = (yield this.db.query('INSERT INTO RESERVAS(checkIn, checkOut, fechaReserva, precioTotal, estado_id, habitacion_id, persona_id) VALUES(?,?,?,?,?,?,?)', [fechaIngreso, fechaEgreso, fechaReserva, precio, estado, habitacion_id, idPersona]))[0].affectedRows;
+            const habitaciones = yield this.db.query('INSERT INTO RESERVAS(checkIn, checkOut, fechaReserva, precioTotal, estado_id, habitacion_id, persona_id) VALUES(?,?,?,?,?,?,?)', [fechaIngreso, fechaEgreso, fechaReserva, precio, estado, habitacion_id, idPersona]);
             return habitaciones[0];
         });
     }

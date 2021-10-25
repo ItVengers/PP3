@@ -17,7 +17,7 @@ class HabitacionesRoutes {
         });
         this.router.post('/listarhabitaciones', habitacionesController_1.default.habitacionesC);
         // this.router.post('/listarhabitaciones',TokenValidation,habitacionesController.habitacionesC);
-        this.router.post('/crearreserva', habitacionesController_1.default.habitacionesC);
+        this.router.post('/crearreserva', habitacionesController_1.default.crearReserva);
     }
 }
 //Exportamos el enrutador con 

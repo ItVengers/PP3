@@ -37,7 +37,7 @@ class HabitacionesModel {
 	}
 
 	async crearReserva(fechaIngreso: string, fechaEgreso: string, fechaReserva: string, habitacion_id: string, estado: number, precio: number, idPersona: number) {
-		const habitaciones = (await this.db.query('INSERT INTO RESERVAS(checkIn, checkOut, fechaReserva, precioTotal, estado_id, habitacion_id, persona_id) VALUES(?,?,?,?,?,?,?)', [fechaIngreso, fechaEgreso, fechaReserva, precio, estado, habitacion_id, idPersona]))[0].affectedRows;
+		const habitaciones = await this.db.query('INSERT INTO RESERVAS(checkIn, checkOut, fechaReserva, precioTotal, estado_id, habitacion_id, persona_id) VALUES(?,?,?,?,?,?,?)', [fechaIngreso, fechaEgreso, fechaReserva, precio, estado, habitacion_id, idPersona]);
 		return habitaciones[0];
 	}
 

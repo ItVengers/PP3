@@ -18,10 +18,8 @@ class HabitacionesController {
 	}
 
 	public async crearReserva(req: Request, res: Response) {
-		console.log("ESTOY EN EL METODO CREAR RESERVA");
-		const { fecCheckIn, fecCheckOut, fechaReserva, habId, precio, status, perId } = req.body;
-		console.log(req.body);
-		const result = await habitacionesModel.crearReserva(fecCheckIn, fecCheckOut, fechaReserva, habId, precio, status, perId );
+		const { fecCheckIn, fecCheckOut, fecReserva, habId, precio, status, perId } = req.body;
+		const result = await habitacionesModel.crearReserva(fecCheckIn, fecCheckOut, fecReserva, habId, status, precio, perId);
 		console.log(result);
 		res.status(200).json({ message: "RESERVA HECHA!!" });
 	}

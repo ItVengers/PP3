@@ -82,7 +82,6 @@ export class UsuariosReservarComponent implements OnInit {
     this.usuariosService.insertarReserva(reserva).subscribe(
       res => {
         //this.habitaciones = res;
-        console.log("SE CREO LA RESERVA");
         console.log(res);
 
       },

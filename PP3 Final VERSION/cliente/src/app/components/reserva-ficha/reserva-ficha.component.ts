@@ -14,7 +14,6 @@ export class ReservaFichaComponent implements OnInit {
   reserva: any = [];
   // dayjs(fecha)
   // revelar:boolean = true;
-
   //datosreserva: any = "";
 
   datosreserva = {
@@ -58,8 +57,6 @@ export class ReservaFichaComponent implements OnInit {
   goBack(){
     this.location.back();
   }
-
-
 }
 
 

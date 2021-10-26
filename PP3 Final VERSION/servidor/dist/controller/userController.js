@@ -266,7 +266,6 @@ class UserController {
                 catch (err) {
                     console.log("error: ", err);
                 }
-                // await userModel.crearUsuario(datos);
                 res.status(200).json({
                     message: 'Usuario Registrado!',
                 });

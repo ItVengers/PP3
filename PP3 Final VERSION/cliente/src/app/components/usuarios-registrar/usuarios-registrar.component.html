@@ -1,77 +1,3 @@
-<!-- <div class="container p-4">
-  <div class="row">
-    <div class="col-md-4 mx-auto">
-      <div class="card text-center">
-        <div id="divSession" class="card-header">
-          <h3>Registrarse</h3>
-        </div>
-        <form id="divSession" (submit)="registrar()">
-          <div class="form-group">
-            <input id="divInput" type="text" name="nombre" [(ngModel)]="user.nombre" placeholder="Nombre"
-              class="form-control" (focus)="limpiarNombre()">
-            <div [ngSwitch]="errorNombre">
-              <div class="DivError" *ngSwitchCase="1"> Campo vacio</div>
-              <div class="DivError" *ngSwitchCase="2"> Excedió el limite maximo de caracteres</div>
-              <div class="DivError" *ngSwitchCase="3"> Nombre invalido, debe contener minimo 3 letras</div>
-              <div class="DivError" *ngSwitchCase="4"> Nombre invalido, debe comenzar con mayuscula y no poseer
-                numeros</div>
-            </div>
-            <input id="divInput" type="text" name="apellido" [(ngModel)]="user.apellido" placeholder="Apellido"
-              class="form-control" (focus)="limpiarApellido()">
-            <div [ngSwitch]="errorApellido">
-              <div class="DivError" *ngSwitchCase="1"> Campo vacio</div>
-              <div class="DivError" *ngSwitchCase="2"> Excedió el limite maximo de caracteres</div>
-              <div class="DivError" *ngSwitchCase="3"> Apellido invalido, debe contener minimo 3 letras</div>
-              <div class="DivError" *ngSwitchCase="4"> Apellido invalido, debe comenzar con mayuscula y no poseer
-                numeros</div>
-            </div>
-            <input id="divInput" type="text" name="dni" [(ngModel)]="user.dni" placeholder="DNI" class="form-control"
-              (focus)="limpiarDni()">
-            <div [ngSwitch]="errorDni">
-              <div class="DivError" *ngSwitchCase="1"> Campo vacio</div>
-              <div class="DivError" *ngSwitchCase="2"> Excedió el limite maximo de numeros</div>
-              <div class="DivError" *ngSwitchCase="3"> DNI invalido, debe contener minimo 7 numeros</div>
-              <div class="DivError" *ngSwitchCase="4"> DNI invalido, debe contener solo numeros</div>
-            </div>
-            <input id="divInput" type="text" name="telefono" [(ngModel)]="user.telefono" placeholder="Telefono"
-              class="form-control" (focus)="limpiarTelefono()">
-            <div [ngSwitch]="errorTelefono">
-              <div class="DivError" *ngSwitchCase="1"> Campo vacio</div>
-              <div class="DivError" *ngSwitchCase="2"> Excedió el limite maximo de numeros</div>
-              <div class="DivError" *ngSwitchCase="3"> Telefono invalido, debe contener minimo 8 numeros</div>
-              <div class="DivError" *ngSwitchCase="4"> Telefono invalido, debe contener solo numeros</div>
-            </div>
-            <input id="divInput" type="email" name="mail" [(ngModel)]="user.mail" placeholder="Mail"
-              class="form-control" (focus)="limpiarMail()">
-            <div [ngSwitch]="errorMail">
-              <div class="DivError" *ngSwitchCase="1"> Campo vacio</div>
-              <div class="DivError" *ngSwitchCase="2"> Excedió el limite maximo de caracteres</div>
-              <div class="DivError" *ngSwitchCase="3"> Mail invalido, debe ser example@dominio.com</div>
-            </div>
-            <input id="divInput" type="password" name="contrasenia" [(ngModel)]="user.contrasenia"
-              placeholder="Contraseña" class="form-control" (focus)="limpiarPassword()">
-            <div [ngSwitch]="errorPassword">
-              <div class="DivError" *ngSwitchCase="1"> Campo vacio</div>
-              <div class="DivError" *ngSwitchCase="2"> Excedió el limite maximo de caracteres</div>
-              <div class="DivError" *ngSwitchCase="3"> La contraseña debe de contener 8 caracteres como minimo</div>
-              <div class="DivError" *ngSwitchCase="4"> Contraseña invalida, debe ser alfanumerica y tener
-                mayusculas.</div>
-            </div>
-            <input id="divInput" type="password" name="repassword" [(ngModel)]="user.repassword"
-              placeholder="Repetir Contraseña" class="form-control" (focus)="limpiarRePassword()">
-            <div [ngSwitch]="errorRePassword">
-              <div class="DivError" *ngSwitchCase="1">Las contraseñas no son iguales</div>
-              <div class="DivError" *ngSwitchCase="2">Campo vacio</div>
-            </div>
-            <button class="btn btn-outline-success btn-block" style="font-weight: bold;"
-              (click)="verificarForm()">Enviar</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div> -->
-
 
 <div class="container">
   <p-toast></p-toast>
@@ -232,3 +158,77 @@
     </div>
   </div>
 </div>
+
+<!-- <div class="container p-4">
+  <div class="row">
+    <div class="col-md-4 mx-auto">
+      <div class="card text-center">
+        <div id="divSession" class="card-header">
+          <h3>Registrarse</h3>
+        </div>
+        <form id="divSession" (submit)="registrar()">
+          <div class="form-group">
+            <input id="divInput" type="text" name="nombre" [(ngModel)]="user.nombre" placeholder="Nombre"
+              class="form-control" (focus)="limpiarNombre()">
+            <div [ngSwitch]="errorNombre">
+              <div class="DivError" *ngSwitchCase="1"> Campo vacio</div>
+              <div class="DivError" *ngSwitchCase="2"> Excedió el limite maximo de caracteres</div>
+              <div class="DivError" *ngSwitchCase="3"> Nombre invalido, debe contener minimo 3 letras</div>
+              <div class="DivError" *ngSwitchCase="4"> Nombre invalido, debe comenzar con mayuscula y no poseer
+                numeros</div>
+            </div>
+            <input id="divInput" type="text" name="apellido" [(ngModel)]="user.apellido" placeholder="Apellido"
+              class="form-control" (focus)="limpiarApellido()">
+            <div [ngSwitch]="errorApellido">
+              <div class="DivError" *ngSwitchCase="1"> Campo vacio</div>
+              <div class="DivError" *ngSwitchCase="2"> Excedió el limite maximo de caracteres</div>
+              <div class="DivError" *ngSwitchCase="3"> Apellido invalido, debe contener minimo 3 letras</div>
+              <div class="DivError" *ngSwitchCase="4"> Apellido invalido, debe comenzar con mayuscula y no poseer
+                numeros</div>
+            </div>
+            <input id="divInput" type="text" name="dni" [(ngModel)]="user.dni" placeholder="DNI" class="form-control"
+              (focus)="limpiarDni()">
+            <div [ngSwitch]="errorDni">
+              <div class="DivError" *ngSwitchCase="1"> Campo vacio</div>
+              <div class="DivError" *ngSwitchCase="2"> Excedió el limite maximo de numeros</div>
+              <div class="DivError" *ngSwitchCase="3"> DNI invalido, debe contener minimo 7 numeros</div>
+              <div class="DivError" *ngSwitchCase="4"> DNI invalido, debe contener solo numeros</div>
+            </div>
+            <input id="divInput" type="text" name="telefono" [(ngModel)]="user.telefono" placeholder="Telefono"
+              class="form-control" (focus)="limpiarTelefono()">
+            <div [ngSwitch]="errorTelefono">
+              <div class="DivError" *ngSwitchCase="1"> Campo vacio</div>
+              <div class="DivError" *ngSwitchCase="2"> Excedió el limite maximo de numeros</div>
+              <div class="DivError" *ngSwitchCase="3"> Telefono invalido, debe contener minimo 8 numeros</div>
+              <div class="DivError" *ngSwitchCase="4"> Telefono invalido, debe contener solo numeros</div>
+            </div>
+            <input id="divInput" type="email" name="mail" [(ngModel)]="user.mail" placeholder="Mail"
+              class="form-control" (focus)="limpiarMail()">
+            <div [ngSwitch]="errorMail">
+              <div class="DivError" *ngSwitchCase="1"> Campo vacio</div>
+              <div class="DivError" *ngSwitchCase="2"> Excedió el limite maximo de caracteres</div>
+              <div class="DivError" *ngSwitchCase="3"> Mail invalido, debe ser example@dominio.com</div>
+            </div>
+            <input id="divInput" type="password" name="contrasenia" [(ngModel)]="user.contrasenia"
+              placeholder="Contraseña" class="form-control" (focus)="limpiarPassword()">
+            <div [ngSwitch]="errorPassword">
+              <div class="DivError" *ngSwitchCase="1"> Campo vacio</div>
+              <div class="DivError" *ngSwitchCase="2"> Excedió el limite maximo de caracteres</div>
+              <div class="DivError" *ngSwitchCase="3"> La contraseña debe de contener 8 caracteres como minimo</div>
+              <div class="DivError" *ngSwitchCase="4"> Contraseña invalida, debe ser alfanumerica y tener
+                mayusculas.</div>
+            </div>
+            <input id="divInput" type="password" name="repassword" [(ngModel)]="user.repassword"
+              placeholder="Repetir Contraseña" class="form-control" (focus)="limpiarRePassword()">
+            <div [ngSwitch]="errorRePassword">
+              <div class="DivError" *ngSwitchCase="1">Las contraseñas no son iguales</div>
+              <div class="DivError" *ngSwitchCase="2">Campo vacio</div>
+            </div>
+            <button class="btn btn-outline-success btn-block" style="font-weight: bold;"
+              (click)="verificarForm()">Enviar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div> -->

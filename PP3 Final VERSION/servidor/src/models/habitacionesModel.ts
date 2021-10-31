@@ -41,6 +41,11 @@ class HabitacionesModel {
 		return habitaciones[0];
 	}
 
+	async buscarReservasxUsuario(idPersona: string) {
+		const habitaciones = await this.db.query('SELECT r.idReserva, r.checkIn, r.checkOut, r.fechaReserva, r.precioTotal, e.descripcion, r.habitacion_id FROM RESERVAS r inner join estado e on e.idEstado = r.estado_id WHERE persona_id = ?', [idPersona]);
+		return habitaciones[0];
+	}
+
 	// ADMIN FUNCIONES -----------------
 
 }

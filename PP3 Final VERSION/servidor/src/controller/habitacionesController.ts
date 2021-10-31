@@ -6,6 +6,18 @@ import userModel from '../models/userModel';
 //import bcrypt from "bcrypt";
 class HabitacionesController {
 
+	public async buscarReservasXUsuario(req: Request, res: Response) {
+		console.log("ESTOY EN EL METODO DEL BACKEND")
+		const { IdPersona } = req.params;
+		console.log(IdPersona)
+		const result = await habitacionesModel.buscarReservasxUsuario(IdPersona);
+		//console.log(result.idPersona);
+		console.log(result);
+		return res.json(result);
+
+	}
+
+
 
 	public async habitacionesC(req: Request, res: Response) {
 		console.log("ESTOY EN EL METODO DEL BACKEND")
@@ -23,13 +35,13 @@ class HabitacionesController {
 		const result = await habitacionesModel.crearReserva(fecCheckIn, fecCheckOut, fecReserva, habId, status, precio, perId);
 		console.log(result);
 		res.status(200).json({ message: "RESERVA HECHA!!" });
-		try{
-	await transporter.sendMail({
-		from: '"SISRO Hoteles 👻" <info@sisrohoteles.com>',
-		to: "mail@prueba.com", //iría un user.mail, para que tome el mail del usuario
-		// donde dice {result.nombre} iría la variable que toma el nombre del usuario, anteponiendo un $, quedaría ${result.nombre}
-		subject:'Solicitud de reserva exitosa',
-		html:`Hola {result.nombre}, ¡tu solicitud de reserva fue confirmada! <br>
+		try {
+			await transporter.sendMail({
+				from: '"SISRO Hoteles 👻" <info@sisrohoteles.com>',
+				to: "mail@prueba.com", //iría un user.mail, para que tome el mail del usuario
+				// donde dice {result.nombre} iría la variable que toma el nombre del usuario, anteponiendo un $, quedaría ${result.nombre}
+				subject: 'Solicitud de reserva exitosa',
+				html: `Hola {result.nombre}, ¡tu solicitud de reserva fue confirmada! <br>
 		Para terminar con tu reserva es necesaria una seña por el 50% <br>
 		<br>
 		Datos Reserva: <br>
@@ -60,12 +72,12 @@ class HabitacionesController {
 
 		Ingresa a nuestra Web:<br>
 		<button href="http://localhost:4200"> SISRO Hoteles </a>`
-	}); // ya podés ingresar a nuestro sitio clickeando el siguiente enlace:
-	
-}
-catch(err){
-console.log("error: ",err)
-}
+			}); // ya podés ingresar a nuestro sitio clickeando el siguiente enlace:
+
+		}
+		catch (err) {
+			console.log("error: ", err)
+		}
 
 	}
 }
@@ -82,7 +94,7 @@ export default habitacionesController;
 // 		subject:'Registro en SISRO exitoso!!',
 // 		html:`Hola ${datos.nombre}, ¡gracias por utilizar SISRO Hoteles! <button href="http://localhost:4200"> SISRO Hoteles </a>`
 // 	}); // ya podés ingresar a nuestro sitio clickeando el siguiente enlace:
-	
+
 // }
 // catch(err){
 // console.log("error: ",err)

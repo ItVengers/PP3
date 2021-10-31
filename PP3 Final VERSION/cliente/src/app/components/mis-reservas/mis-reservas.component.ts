@@ -15,6 +15,8 @@ import { MessageService } from 'primeng/api';
 export class MisReservasComponent implements OnInit {
   idPersona = localStorage.getItem('idPersona');
 
+  reserva: any = [];
+
   datosreserva = {
     idReserva: "", fechaDesde: "", fechaHasta: "", fechaReserva: "", habitacion_id: "",
     cantidadPax: "", persona_id: "", precioTotal: "",
@@ -52,11 +54,11 @@ export class MisReservasComponent implements OnInit {
   }
 
   mostrarDatos(id: any) {
-    this.usuariosService.peticionDatosUsuarios(id).subscribe(
+    this.usuariosService.traerReservasxUsuario(id).subscribe(
       (res) => {
         let result: any = res;
         console.log(res);
-        this.datosreserva = result;
+        this.reserva = result;
 
         // this.messageService.add({
         //   severity: 'success',

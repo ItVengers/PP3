@@ -18,6 +18,9 @@ class HabitacionesRoutes {
 		// this.router.post('/listarhabitaciones',TokenValidation,habitacionesController.habitacionesC);
 		this.router.post('/crearreserva', habitacionesController.crearReserva);
 
+		this.router.get('/buscarreservas/:IdPersona', habitacionesController.buscarReservasXUsuario);
+
+
 	}
 }
 

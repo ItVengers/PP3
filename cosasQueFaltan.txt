@@ -5,7 +5,7 @@
 3 - verificar el ingreso y el egreso. Botones en la ficha admin reservas y vista listando todas las 
 verificaciones. Listado similar a los demás.
 
-4 - Validaciones de Reservas
+4 - Validaciones de Reservas 
 
 5 - Vistas verificaciones ingreso y egreso
 
@@ -26,5 +26,8 @@ con los botones iniciar sesion y registrarse.
 
 13 - arreglar que la pagina rompe cuando vas para atras en admin o volves a abrir otro menú.
 Para esto hay que Agregar un Service de "datosreserva" para pasarle el id del usuario por ahí
+
+14 - Hacer que le lleguen las consultas al admin y se puedan contestar
+
 
 

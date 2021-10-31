@@ -151,4 +151,9 @@ export class UsuariosService {
   insertarReserva(agregarRes: any){
     return this.http.post(`${this.API_URI4}/crearreserva`, agregarRes);
   }
+
+  traerReservasxUsuario(idPersona: any){
+    console.log(idPersona);
+    return this.http.get(`${this.API_URI4}/buscarreservas/${idPersona}`);
+  }
 }

@@ -1,3 +1,23 @@
 h4{
     color: white;
 }
+
+#disp{
+    color: green;
+}
+
+#noDisp{
+    color: yellow;
+}
+
+#fin{
+    color: red;
+}
+
+#pend{
+    color: orange;
+}
+
+#canc{
+    color: blue;
+}

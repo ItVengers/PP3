@@ -5,7 +5,7 @@
   <br>
   <h1 align="left" style="color: white;" id="a2">Datos de la Reserva</h1>
 
-  <div id="a2">
+  <!-- <div id="a2">
     <div class="form-group">
       <label>ID:</label>
       <input id="input-datos" type="text" name="nombre" [(ngModel)]="datosreserva.idReserva" class="form-control">
@@ -52,4 +52,60 @@
   <br>
   <br>
   <br>
-</div>
+</div> -->
+
+
+  <table class="table table-hover table-dark ">
+    <thead class="thead-dark">
+      <th>ID</th>
+      <th>Check In</th>
+      <th>Check Out</th>
+      <th>Fecha de reserva</th>
+      <th>Precio Final</th>
+      <th>Estado Actual</th>
+      <th>ID Habitacion</th>
+    </thead>
+    <tr *ngFor="let reservas of reserva">
+      <td>{{reservas.idReserva}}</td>
+      <td class="event">{{reservas.checkIn}}
+        <!-- <div class="date"></div> -->
+      </td>
+      <td class="event">{{reservas.checkOut}}
+        <!-- <div class="date"></div> -->
+      </td>
+      <td class="event">{{reservas.fechaReserva}}
+        <!-- <div class="date"></div> -->
+      </td>
+      <td class="event">{{reservas.precioTotal}}
+        <!-- <div class="date"></div> -->
+      </td>
+      <!-- <td class="event">{{reservas.descripcion}}
+      </td> -->
+      <td [ngSwitch]="reservas.descripcion">
+        <ul *ngSwitchCase="'Disponible'" id="disp">{{reservas.descripcion}}</ul>
+        <ul *ngSwitchCase="'No Disponible'" id="noDisp">{{reservas.descripcion}}</ul>
+        <ul *ngSwitchCase="'Finalizado'" id="fin">{{reservas.descripcion}}</ul>
+        <ul *ngSwitchCase="'Pendiente'" id="pend">{{reservas.descripcion}}</ul>
+        <ul *ngSwitchCase="'Cancelada'" id="canc">{{reservas.descripcion}}</ul>
+        <!-- {{reservas.estado}} -->
+      </td>
+      <td class="event">{{reservas.habitacion_id}}
+        <!-- <div class="date"></div> -->
+      </td>
+    </tr>
+  </table>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>

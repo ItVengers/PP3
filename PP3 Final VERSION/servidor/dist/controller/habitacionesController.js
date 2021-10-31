@@ -16,6 +16,17 @@ const mailer_1 = require("../config/mailer");
 const habitacionesModel_1 = __importDefault(require("../models/habitacionesModel"));
 //import bcrypt from "bcrypt";
 class HabitacionesController {
+    buscarReservasXUsuario(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log("ESTOY EN EL METODO DEL BACKEND");
+            const { IdPersona } = req.params;
+            console.log(IdPersona);
+            const result = yield habitacionesModel_1.default.buscarReservasxUsuario(IdPersona);
+            //console.log(result.idPersona);
+            console.log(result);
+            return res.json(result);
+        });
+    }
     habitacionesC(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log("ESTOY EN EL METODO DEL BACKEND");

@@ -50,6 +50,12 @@ class HabitacionesModel {
             return habitaciones[0];
         });
     }
+    buscarReservasxUsuario(idPersona) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const habitaciones = yield this.db.query('SELECT r.idReserva, r.checkIn, r.checkOut, r.fechaReserva, r.precioTotal, e.descripcion, r.habitacion_id FROM RESERVAS r inner join estado e on e.idEstado = r.estado_id WHERE persona_id = ?', [idPersona]);
+            return habitaciones[0];
+        });
+    }
 }
 const habitacionesModel = new HabitacionesModel();
 exports.default = habitacionesModel;

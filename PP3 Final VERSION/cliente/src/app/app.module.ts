@@ -31,6 +31,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { ReservaFichaComponent } from './components/reserva-ficha/reserva-ficha.component';
 import { UsuariosReservarComponent } from './components/usuarios-reservar/usuarios-reservar.component';
 import { ConfirmarReservaComponent } from './components/confirmar-reserva/confirmar-reserva.component';
+import { AdminIngresosComponent } from './components/admin-ingresos/admin-ingresos.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { ConfirmarReservaComponent } from './components/confirmar-reserva/confir
     ReservaFichaComponent,
     UsuariosReservarComponent,
     ConfirmarReservaComponent,
+    AdminIngresosComponent,
   ],
   imports: [
     BrowserModule,

@@ -26,6 +26,9 @@ class AdminRoutes {
         this.router.get("/habitaciones", adminController.listarHabitaciones);
         
         this.router.get("/datosreservas/:idReserva", adminController.datosReservas);
+
+        this.router.get("/confirmarreservas", adminController.reservasPendientes);
+
     }
 }
 

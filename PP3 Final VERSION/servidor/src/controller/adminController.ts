@@ -3,6 +3,33 @@ import userModel from "../models/userModel";
 
 class AdminController {
 
+    public async verificacionReserva(req: Request, res: Response) {
+        console.log(req.body);
+        console.log(req.header("Authorization"));
+        const{id} = req.body; 
+
+        const verificacionReserva = await userModel.verificacion(id);
+
+        const actualizarEstadoHabitacion = await userModel.actualizarEstado(id);
+
+
+        console.log(actualizarEstadoHabitacion);
+        return res.json(actualizarEstadoHabitacion);
+    }
+
+    public async reservasPendientes(req: Request, res: Response) {
+        // if (!req.session.auth) {
+        //     req.flash("error_session", "Debes iniciar sesion para ver esta seccion");
+        //     res.redirect("./error");
+        //     //res.redirect("/");
+        // }
+        console.log(req.body);
+        console.log(req.header("Authorization"));
+        const reservasPendientes = await userModel.reservasPendientes();
+        console.log(reservasPendientes);
+        return res.json(reservasPendientes);
+    }
+
     public async abm(req: Request, res: Response) {
         // if (!req.session.auth) {
         //     req.flash("error_session", "Debes iniciar sesion para ver esta seccion");

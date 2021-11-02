@@ -22,6 +22,7 @@ class AdminRoutes {
         this.router.get("/usuarios", adminController_1.default.listarUsuarios);
         this.router.get("/habitaciones", adminController_1.default.listarHabitaciones);
         this.router.get("/datosreservas/:idReserva", adminController_1.default.datosReservas);
+        this.router.get("/confirmarreservas", adminController_1.default.reservasPendientes);
     }
 }
 const adminRoutes = new AdminRoutes();

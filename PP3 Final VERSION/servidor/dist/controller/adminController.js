@@ -14,6 +14,31 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const userModel_1 = __importDefault(require("../models/userModel"));
 class AdminController {
+    verificacionReserva(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.body);
+            console.log(req.header("Authorization"));
+            const { id } = req.body;
+            const verificacionReserva = yield userModel_1.default.verificacion(id);
+            const actualizarEstadoHabitacion = yield userModel_1.default.actualizarEstado(id);
+            console.log(actualizarEstadoHabitacion);
+            return res.json(actualizarEstadoHabitacion);
+        });
+    }
+    reservasPendientes(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            // if (!req.session.auth) {
+            //     req.flash("error_session", "Debes iniciar sesion para ver esta seccion");
+            //     res.redirect("./error");
+            //     //res.redirect("/");
+            // }
+            console.log(req.body);
+            console.log(req.header("Authorization"));
+            const reservasPendientes = yield userModel_1.default.reservasPendientes();
+            console.log(reservasPendientes);
+            return res.json(reservasPendientes);
+        });
+    }
     abm(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             // if (!req.session.auth) {

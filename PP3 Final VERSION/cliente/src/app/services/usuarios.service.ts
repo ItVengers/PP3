@@ -139,21 +139,30 @@ export class UsuariosService {
     return this.http.post(`${this.API_URI3}/modificar`, actualizarHab);
   }
 
-  listarDatosReservas(idRes: any){
+  listarDatosReservas(idRes: any) {
     return this.http.get(`${this.API_URI3}/datosreservas/${idRes}`);
   }
 
   // User Service (javier)
-  usuarioReservar(idHab: any){
+  usuarioReservar(idHab: any) {
     return this.http.get(`${this.API_URI}/reservar/${idHab}`);
   }
 
-  insertarReserva(agregarRes: any){
+  insertarReserva(agregarRes: any) {
     return this.http.post(`${this.API_URI4}/crearreserva`, agregarRes);
   }
 
-  traerReservasxUsuario(idPersona: any){
+  traerReservasxUsuario(idPersona: any) {
     console.log(idPersona);
     return this.http.get(`${this.API_URI4}/buscarreservas/${idPersona}`);
   }
+
+  traerReservasPendientes() {
+    return this.http.get(`${this.API_URI3}/confirmarreservas`);
+  }
+
+  verificacionReserva(id:string) {
+    return this.http.post(`${this.API_URI3}/verificacion`, id);
+  }
+
 }

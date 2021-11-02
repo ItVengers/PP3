@@ -18,6 +18,7 @@ import { AdminHabitacionesComponent } from './components/admin-habitaciones/admi
 import { ReservaFichaComponent } from './components/reserva-ficha/reserva-ficha.component';
 import { UsuariosReservarComponent } from './components/usuarios-reservar/usuarios-reservar.component';
 import { ConfirmarReservaComponent } from './components/confirmar-reserva/confirmar-reserva.component';
+import { AdminIngresosComponent } from './components/admin-ingresos/admin-ingresos.component';
 
 
 const routes: Routes = [
@@ -120,7 +121,11 @@ const routes: Routes = [
     path: 'usuarios/confirmacionreserva',
     component: ConfirmarReservaComponent,
   },
-  
+  {
+    path: 'admin/ingresos',
+    component: AdminIngresosComponent,
+  },
+
 ];
 
 @NgModule({

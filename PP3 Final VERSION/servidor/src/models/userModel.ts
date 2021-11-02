@@ -156,6 +156,23 @@ class UserModel {
 		const reservaDato = await this.db.query('SELECT * FROM reservas WHERE idReserva = ?', [id]);
 		return reservaDato[0][0];
 	}
+
+	
+	async reservasPendientes(){
+		const reservasPendientes = await this.db.query('select r.idReserva,p.nombre, p.apellido,r.checkIn as Ingreso,r.checkOut as Egreso,r.precioTotal as "Precio_Final",r.habitacion_id, e.descripcion from reservas r inner join estado e on e.idEstado = r.estado_id inner join persona p on p.idPersona = r.persona_id where fechaReserva = curdate() and estado_id = 4');
+		return reservasPendientes[0];
+	}
+
+	async verificacion(id: string){
+		const verificacion = await this.db.query('update reservas set estado_id = 2 where idreserva = ?', [id]);
+		return verificacion[0];
+	}
+
+	async actualizarEstado(id: string){
+		const actualizarEstado = await this.db.query('update habitaciones h inner join reservas r on r.habitacion_id = h.idHabitacion set h.estado = r.estado_id, h.checkIn = r.checkIn, h.checkOut = r.checkOut where r.idReserva = ?;', [id]);
+		return actualizarEstado[0];
+	}
+	
 }
 
 const userModel: UserModel = new UserModel();

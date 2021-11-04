@@ -12,14 +12,15 @@ where h.idHabitacion not in (
 from reservas r 
             inner join estado e on e.idEstado = r.estado_id 
 where ((r.checkIn <= pCheckIn and r.checkOut > pCheckIn) or 
-                (r.checkIn <= pCheckOut and r.checkOut > pCheckOut)) and e.codigo = 'PEN'
+                (r.checkIn <= pCheckOut and r.checkOut > pCheckOut)) and (e.codigo = 'PEN' OR e.codigo = 'NOD')
     )
  and c.pasajeros = pPersona;
       
 
 END$$
 
-call BusquedaHabitacionesDisponibles (2,'2021-10-03','2021-10-12');
+
+
 
 #----------------------------------------------------------
 #Agregar Habitacion
@@ -288,7 +289,7 @@ CREATE DEFINER=root@localhost PROCEDURE ConsultaDiasReserva (IN pIdReserva int(1
 
 END$$
 
-# Consulta dias de una reserva
+# Consulta dias de todas las reservas
 
 DELIMITER $$
 CREATE DEFINER=root@localhost PROCEDURE ConsultaDiasTodasLasReserva (IN pIdReserva int(11),IN pCheckIn date, IN pCheckOut date) BEGIN
@@ -296,3 +297,5 @@ CREATE DEFINER=root@localhost PROCEDURE ConsultaDiasTodasLasReserva (IN pIdReser
  select checkIn as 'Check In', checkOut as 'Check Out', DATEDIFF(pCheckOut,pCheckIn ) as 'Total' from reservas;
 
 END$$
+#----------------------------------------------------------
+# Reservas con precio

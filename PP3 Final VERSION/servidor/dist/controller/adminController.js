@@ -14,6 +14,26 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const userModel_1 = __importDefault(require("../models/userModel"));
 class AdminController {
+    checkOut(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.body);
+            console.log(req.header("Authorization"));
+            const { id } = req.body;
+            const checkOut = yield userModel_1.default.verificacion(id);
+            const actualizarEstadoHabitacion = yield userModel_1.default.actualizarEstado_CO(id);
+            console.log(actualizarEstadoHabitacion);
+            return res.json(actualizarEstadoHabitacion);
+        });
+    }
+    reservasConfirmadas(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.body);
+            console.log(req.header("Authorization"));
+            const reservasConfirmadas = yield userModel_1.default.reservasConfirmadas();
+            console.log(reservasConfirmadas);
+            return res.json(reservasConfirmadas);
+        });
+    }
     verificacionReserva(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req.body);

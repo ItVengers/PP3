@@ -196,6 +196,24 @@ class UserModel {
             return actualizarEstado[0];
         });
     }
+    reservasConfirmadas() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const reservasConfirmadas = yield this.db.query('select r.idReserva,p.nombre, p.apellido,r.checkIn as Ingreso,r.checkOut as Egreso,r.precioTotal as "Precio_Final",r.habitacion_id, e.descripcion from reservas r inner join estado e on e.idEstado = r.estado_id inner join persona p on p.idPersona = r.persona_id where fechaReserva = curdate() and estado_id = 2');
+            return reservasConfirmadas[0];
+        });
+    }
+    checkOut(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const checkOut = yield this.db.query('update reservas set estado_id = 3 where idreserva = ?', [id]);
+            return checkOut[0];
+        });
+    }
+    actualizarEstado_CO(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const actualizarEstado = yield this.db.query('update habitaciones h inner join reservas r on r.habitacion_id = h.idHabitacion set h.estado = 1, h.checkIn = null, h.checkOut = null where r.idReserva = ?;', [id]);
+            return actualizarEstado[0];
+        });
+    }
 }
 const userModel = new UserModel();
 exports.default = userModel;

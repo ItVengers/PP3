@@ -19,6 +19,7 @@ import { ReservaFichaComponent } from './components/reserva-ficha/reserva-ficha.
 import { UsuariosReservarComponent } from './components/usuarios-reservar/usuarios-reservar.component';
 import { ConfirmarReservaComponent } from './components/confirmar-reserva/confirmar-reserva.component';
 import { AdminIngresosComponent } from './components/admin-ingresos/admin-ingresos.component';
+import { AdminEgresosComponent } from './components/admin-egresos/admin-egresos.component';
 
 
 const routes: Routes = [
@@ -124,6 +125,10 @@ const routes: Routes = [
   {
     path: 'admin/ingresos',
     component: AdminIngresosComponent,
+  },
+  {
+    path: 'admin/egresos',
+    component: AdminEgresosComponent,
   },
 
 ];

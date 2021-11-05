@@ -1,0 +1,29 @@
+<app-home></app-home>
+<div class="main">
+  <div class="col-12">
+    <h1 align="center" style="color: chocolate;">Reservas</h1>
+    <table class="table table-hover table-dark" id="table">
+      <thead class="thead-dark">
+        <th>ID de la Reserva</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <!-- <th>Fecha Ingreso</th>
+        <th>Fecha Egreso</th> -->
+        <!-- <th>Precio Final</th> -->
+        <th>Nro Habitacion</th>
+        <th>Estado</th>
+        <th>Accion</th>
+      </thead>
+      <tr *ngFor="let reservas of reservasConfirmadas">
+        <td style="font-weight: bold;">{{reservas.idReserva}}</td>
+        <td style="font-weight: bold;">{{reservas.nombre}}</td>
+        <td style="font-weight: bold;">{{reservas.apellido}}</td>
+        <!-- <td style="font-weight: bold;">{{reservas.Ingreso}}</td>
+        <td style="font-weight: bold;">{{reservas.Egreso}}</td> -->
+        <!-- <td style="font-weight: bold;">{{reservas.Precio_Final}}</td> -->
+        <td style="font-weight: bold;">{{reservas.habitacion_id}}</td>
+        <td style="font-weight: bold;">{{reservas.descripcion}}</td>
+        <td><a class="btn btn-outline-danger btn-block" (click)=realizarCheckOut(reservas.idReserva)>Check Out</a></td>
+    </table>
+  </div>
+</div>

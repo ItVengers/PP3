@@ -172,6 +172,22 @@ class UserModel {
 		const actualizarEstado = await this.db.query('update habitaciones h inner join reservas r on r.habitacion_id = h.idHabitacion set h.estado = r.estado_id, h.checkIn = r.checkIn, h.checkOut = r.checkOut where r.idReserva = ?;', [id]);
 		return actualizarEstado[0];
 	}
+
+
+	async reservasConfirmadas(){
+		const reservasConfirmadas = await this.db.query('select r.idReserva,p.nombre, p.apellido,r.checkIn as Ingreso,r.checkOut as Egreso,r.precioTotal as "Precio_Final",r.habitacion_id, e.descripcion from reservas r inner join estado e on e.idEstado = r.estado_id inner join persona p on p.idPersona = r.persona_id where fechaReserva = curdate() and estado_id = 2');
+		return reservasConfirmadas[0];
+	}
+
+	async checkOut(id: string){
+		const checkOut = await this.db.query('update reservas set estado_id = 3 where idreserva = ?', [id]);
+		return checkOut[0];
+	}
+
+	async actualizarEstado_CO(id: string){
+		const actualizarEstado = await this.db.query('update habitaciones h inner join reservas r on r.habitacion_id = h.idHabitacion set h.estado = 1, h.checkIn = null, h.checkOut = null where r.idReserva = ?;', [id]);
+		return actualizarEstado[0];
+	}
 	
 }
 

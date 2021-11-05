@@ -32,6 +32,7 @@ import { ReservaFichaComponent } from './components/reserva-ficha/reserva-ficha.
 import { UsuariosReservarComponent } from './components/usuarios-reservar/usuarios-reservar.component';
 import { ConfirmarReservaComponent } from './components/confirmar-reserva/confirmar-reserva.component';
 import { AdminIngresosComponent } from './components/admin-ingresos/admin-ingresos.component';
+import { AdminEgresosComponent } from './components/admin-egresos/admin-egresos.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { AdminIngresosComponent } from './components/admin-ingresos/admin-ingres
     UsuariosReservarComponent,
     ConfirmarReservaComponent,
     AdminIngresosComponent,
+    AdminEgresosComponent,
   ],
   imports: [
     BrowserModule,

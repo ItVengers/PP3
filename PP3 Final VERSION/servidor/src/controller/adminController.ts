@@ -3,6 +3,29 @@ import userModel from "../models/userModel";
 
 class AdminController {
 
+    public async checkOut(req: Request, res: Response) {
+        console.log(req.body);
+        console.log(req.header("Authorization"));
+        const{id} = req.body; 
+
+        const checkOut = await userModel.verificacion(id);
+
+        const actualizarEstadoHabitacion = await userModel.actualizarEstado_CO(id);
+
+
+        console.log(actualizarEstadoHabitacion);
+        return res.json(actualizarEstadoHabitacion);
+    }
+
+    public async reservasConfirmadas(req: Request, res: Response) {
+        console.log(req.body);
+        console.log(req.header("Authorization"));
+        const reservasConfirmadas = await userModel.reservasConfirmadas();
+        console.log(reservasConfirmadas);
+        return res.json(reservasConfirmadas);
+    }
+
+
     public async verificacionReserva(req: Request, res: Response) {
         console.log(req.body);
         console.log(req.header("Authorization"));

@@ -167,7 +167,7 @@ select * from zonas;
 
 select * from temporada;
 
-
+select * from habitaciones;
 
 select * from persona;
 
@@ -175,6 +175,8 @@ select * from persona;
 
 select * from tarifas;
 select * from reservas;
+select * from categoria;
+select * from estado;
 
 #QUERY QUE SACA LA CANTIDAD DE DIAS DE UNA RESERVA
  
@@ -187,6 +189,10 @@ select checkIn as 'Check In', checkOut as 'Check Out', DATEDIFF(checkOut,checkIn
 #CAMBIO DE INT A FLOAT EN EL TIPO DE DATO DEL PRECIO
 ALTER TABLE `dbhoteles`.`tarifas` 
 CHANGE COLUMN `precio` `precio` FLOAT(10) NOT NULL ;
+
+call BusquedaHabitacionesDisponibles (2,'2021-10-03','2021-10-12');
+call AgregarTarifa (5575,5,14);
+
 
 
 

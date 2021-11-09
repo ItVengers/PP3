@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class AdminIngresosComponent implements OnInit {
 
-  constructor(private usuariosService: UsuariosService, private router: Router) { }
+  constructor(private usuariosService: UsuariosService, private router: Router, private location: Location) { }
 
   reservasPendientes: any = [];
 
@@ -36,7 +37,8 @@ export class AdminIngresosComponent implements OnInit {
       },
       err => console.log(err)
     )
-
   }
-
+  goBack(){
+    this.location.back();
+  }
 }

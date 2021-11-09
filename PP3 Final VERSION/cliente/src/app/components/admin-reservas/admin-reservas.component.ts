@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import * as dayjs from 'dayjs';
 import { Router, NavigationExtras } from '@angular/router';
+import { Location } from '@angular/common';
 
 
 
@@ -18,7 +19,7 @@ export class AdminReservasComponent implements OnInit {
   // dayjs(fecha)
   // revelar:boolean = true;
 
-  constructor(private usuariosService: UsuariosService, private router: Router) { }
+  constructor(private usuariosService: UsuariosService, private router: Router, private location: Location) { }
 
   ngOnInit(): void {
     this.usuariosService.reservasAdmin().subscribe(
@@ -59,6 +60,9 @@ export class AdminReservasComponent implements OnInit {
     )
 
 
+  }
+  goBack(){
+    this.location.back();
   }
 }
 

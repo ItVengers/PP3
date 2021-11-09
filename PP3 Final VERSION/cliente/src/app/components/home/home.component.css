@@ -40,3 +40,8 @@ h1 {
   color: #f1f1f1;
 }
 
+.col-6 {
+  margin-left: 180px; /* Same as the width of the sidenav */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}

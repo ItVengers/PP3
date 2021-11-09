@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 
@@ -8,7 +9,7 @@ import { UsuariosService } from 'src/app/services/usuarios.service';
 })
 export class AdminHabitacionesComponent implements OnInit {
   habitacion:any = [];
-  constructor(private usuariosService:UsuariosService) { }
+  constructor(private usuariosService:UsuariosService, private location: Location) { }
 
   ngOnInit(): void {
     this.usuariosService.habitacionesAdmin().subscribe(
@@ -20,5 +21,7 @@ export class AdminHabitacionesComponent implements OnInit {
       
 		)
   }
-
+goBack(){
+  this.location.back();
+}
 }

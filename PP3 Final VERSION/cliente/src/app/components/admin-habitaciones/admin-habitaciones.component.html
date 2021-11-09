@@ -1,6 +1,7 @@
-<app-home></app-home>
+
 <div class="main">
     <div class="col-12">
+      <button class="btn-outline-success" (click)="goBack()" id="a2">Volver</button>
         <h1 align="center" style="color: chocolate;">Habitaciones</h1>
         <table class="table table-hover table-dark ">
           <thead class="thead-dark">
@@ -14,9 +15,11 @@
           </thead>   
             <tr *ngFor= "let habitaciones of habitacion">
                 <td>{{habitaciones.idHabitacion}}</td>
-                <td>{{habitaciones.descripcion}}</td>
+                <td>{{habitaciones.cat_id}}</td>
                 <td>{{habitaciones.cantPax}}</td>
                 <td>{{habitaciones.cat_id}}</td>
                 <td>{{habitaciones.camas_id}}</td>
-                <td style="color: red;">Sin Datos</td>
+                <td>{{habitaciones.precio}}</td>
+                <!-- <td style="color: red;">Sin Datos</td> -->
             </tr>
+            <button class="btn-outline-success" (click)="goBack()" id="a2">Volver</button>

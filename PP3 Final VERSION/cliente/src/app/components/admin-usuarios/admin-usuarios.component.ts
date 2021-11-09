@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from 'src/app/services/usuarios.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-admin-usuarios',
@@ -8,7 +9,7 @@ import { UsuariosService } from 'src/app/services/usuarios.service';
 })
 export class AdminUsuariosComponent implements OnInit {
   usuario:any = [];
-  constructor(private usuariosService:UsuariosService) { }
+  constructor(private usuariosService:UsuariosService, private location: Location) { }
 
   ngOnInit(): void {
     this.usuariosService.usuariosAdmin().subscribe(
@@ -16,9 +17,10 @@ export class AdminUsuariosComponent implements OnInit {
         this.usuario = res; 
         console.log(res)
       },      
-			err => console.log(err)
-      
+			err => console.log(err)      
 		)
   }
-
+goBack(){
+  this.location.back();
+}
 }

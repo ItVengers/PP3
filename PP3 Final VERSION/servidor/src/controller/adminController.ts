@@ -6,9 +6,9 @@ class AdminController {
     public async checkOut(req: Request, res: Response) {
         console.log(req.body);
         console.log(req.header("Authorization"));
-        const{id} = req.body; 
+        const{id} = req.params; 
 
-        const checkOut = await userModel.verificacion(id);
+        const checkOut = await userModel.checkOut(id);
 
         const actualizarEstadoHabitacion = await userModel.actualizarEstado_CO(id);
 
@@ -28,8 +28,8 @@ class AdminController {
 
     public async verificacionReserva(req: Request, res: Response) {
         console.log(req.body);
-        console.log(req.header("Authorization"));
-        const{id} = req.body; 
+        //console.log(req.header("Authorization"));
+        const{id} = req.params; 
 
         const verificacionReserva = await userModel.verificacion(id);
 

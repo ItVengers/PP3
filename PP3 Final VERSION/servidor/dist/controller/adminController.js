@@ -18,8 +18,8 @@ class AdminController {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req.body);
             console.log(req.header("Authorization"));
-            const { id } = req.body;
-            const checkOut = yield userModel_1.default.verificacion(id);
+            const { id } = req.params;
+            const checkOut = yield userModel_1.default.checkOut(id);
             const actualizarEstadoHabitacion = yield userModel_1.default.actualizarEstado_CO(id);
             console.log(actualizarEstadoHabitacion);
             return res.json(actualizarEstadoHabitacion);
@@ -37,8 +37,8 @@ class AdminController {
     verificacionReserva(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req.body);
-            console.log(req.header("Authorization"));
-            const { id } = req.body;
+            //console.log(req.header("Authorization"));
+            const { id } = req.params;
             const verificacionReserva = yield userModel_1.default.verificacion(id);
             const actualizarEstadoHabitacion = yield userModel_1.default.actualizarEstado(id);
             console.log(actualizarEstadoHabitacion);

@@ -180,7 +180,7 @@ class UserModel {
     }
     reservasPendientes() {
         return __awaiter(this, void 0, void 0, function* () {
-            const reservasPendientes = yield this.db.query('select r.idReserva,p.nombre, p.apellido,r.checkIn as Ingreso,r.checkOut as Egreso,r.precioTotal as "Precio_Final",r.habitacion_id, e.descripcion from reservas r inner join estado e on e.idEstado = r.estado_id inner join persona p on p.idPersona = r.persona_id where fechaReserva = curdate() and estado_id = 4');
+            const reservasPendientes = yield this.db.query('select r.idReserva,p.nombre, p.apellido,r.checkIn as Ingreso,r.checkOut as Egreso,r.precioTotal as "Precio_Final",r.habitacion_id, e.descripcion from reservas r inner join estado e on e.idEstado = r.estado_id inner join persona p on p.idPersona = r.persona_id where checkIn = curdate() and estado_id = 4');
             return reservasPendientes[0];
         });
     }
@@ -198,7 +198,7 @@ class UserModel {
     }
     reservasConfirmadas() {
         return __awaiter(this, void 0, void 0, function* () {
-            const reservasConfirmadas = yield this.db.query('select r.idReserva,p.nombre, p.apellido,r.checkIn as Ingreso,r.checkOut as Egreso,r.precioTotal as "Precio_Final",r.habitacion_id, e.descripcion from reservas r inner join estado e on e.idEstado = r.estado_id inner join persona p on p.idPersona = r.persona_id where fechaReserva = curdate() and estado_id = 2');
+            const reservasConfirmadas = yield this.db.query('select r.idReserva,p.nombre, p.apellido,r.checkIn as Ingreso,r.checkOut as Egreso,r.precioTotal as "Precio_Final",r.habitacion_id, e.descripcion from reservas r inner join estado e on e.idEstado = r.estado_id inner join persona p on p.idPersona = r.persona_id where checkOut = curdate() and estado_id = 2');
             return reservasConfirmadas[0];
         });
     }

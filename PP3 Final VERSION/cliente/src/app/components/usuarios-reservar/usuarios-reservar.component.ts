@@ -24,7 +24,7 @@ export class UsuariosReservarComponent implements OnInit {
 
   };
 
-  estado: number = 2;
+  estado: number = 4;
   idPersona: number = 4;
   fechaReserva: Date = new Date();
 

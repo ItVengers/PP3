@@ -30,6 +30,7 @@ export class AdminIngresosComponent implements OnInit {
 
   realizarCheckIn(id: string) {
 
+
     this.usuariosService.verificacionReserva(id).subscribe(
       res => {
         this.reservasPendientes = res;

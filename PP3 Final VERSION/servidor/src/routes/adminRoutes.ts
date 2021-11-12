@@ -29,11 +29,11 @@ class AdminRoutes {
 
         this.router.get("/confirmarreservas", adminController.reservasPendientes);
 
-        this.router.post("/verificacion", adminController.verificacionReserva);
+        this.router.get("/verificacion/:id", adminController.verificacionReserva);
 
         this.router.get("/reservasconfirmadas", adminController.reservasConfirmadas);
 
-        this.router.post("/checkout", adminController.checkOut);
+        this.router.get("/checkout/:id", adminController.checkOut);
 
     }
 }

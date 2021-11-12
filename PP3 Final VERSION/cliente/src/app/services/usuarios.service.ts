@@ -162,7 +162,7 @@ export class UsuariosService {
   }
 
   verificacionReserva(id:string) {
-    return this.http.post(`${this.API_URI3}/verificacion`, id);
+    return this.http.get(`${this.API_URI3}/verificacion/${id}`);
   }
 
   traerReservasConfirmadas() {
@@ -170,7 +170,7 @@ export class UsuariosService {
   }
 
   verificacionCheckOut(id:string) {
-    return this.http.post(`${this.API_URI3}/checkout`, id);
+    return this.http.get(`${this.API_URI3}/checkout/${id}`);
   }
 
 }

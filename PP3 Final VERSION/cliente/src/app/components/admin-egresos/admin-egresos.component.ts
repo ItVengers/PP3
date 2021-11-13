@@ -32,7 +32,8 @@ export class AdminEgresosComponent implements OnInit {
     this.usuariosService.verificacionCheckOut(id).subscribe(
       res => {
         this.reservasConfirmadas = res;
-        console.log(res)
+        console.log(res);
+        this.ngOnInit();
       },
       err => console.log(err)
     )

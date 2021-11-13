@@ -13,17 +13,14 @@ import { setDate } from 'ngx-bootstrap/chronos/utils/date-setters';
 })
 export class InicioComponent implements OnInit {
 
-
   minDate: Date;
-
-
   constructor(private usuariosService: UsuariosService, private router: Router, private messageService: MessageService, private datePipe: DatePipe) {
     this.minDate = new Date();
     this.minDate.setDate(this.minDate.getDate());
   }
 
   hoteles: any = [];
-  zona = { zona_id: "" };
+  hotel = { idHotel: '' };
 
   seleccionado: string = "";
   checkIn: Date = new Date();
@@ -36,6 +33,14 @@ export class InicioComponent implements OnInit {
     this.traerHoteles();
     console.log(this.hoteles);
 
+  }
+
+  selectedDay: string = 'Hotel Sur Centro';
+
+  //event handler for the select element's change event
+  selectChangeHandler(event: any) {
+    //update the ui
+    this.selectedDay = event.target.value;
   }
 
   traerHoteles() {
@@ -56,11 +61,11 @@ export class InicioComponent implements OnInit {
   }
 
   enviarDescripcion(desc: string) {
-    console.log(desc);
     this.usuariosService.buscarId(desc).subscribe(
       (res) => {
         let result: any = res;
-        this.zona.zona_id = result;
+        this.hotel = result;
+        console.log("HOTEL NUMERO " + this.hotel.idHotel);
       },
       (err) => {
         this.messageService.add({
@@ -76,14 +81,34 @@ export class InicioComponent implements OnInit {
 
   //checkIn: any, checkOut: any, personas: number
   enviarDatos() {
+    let nro_hotel = 0;
+    if (this.selectedDay == 'Hotel Sur Centro') {
+      nro_hotel = 1
+    } else {
+      if (this.selectedDay == 'Hotel del Plata') {
+        nro_hotel = 2
+      } else {
+        if (this.selectedDay == 'Hotel Cordoba') {
+          nro_hotel = 3
+        }
+      }
+    }
+
     let checkIn = this.datePipe.transform(this.checkIn, 'yyyy-MM-dd');
+    let str1: string = this.datePipe.transform(this.checkIn, 'MM-dd')!;
     let checkOut = this.datePipe.transform(this.checkOut, 'yyyy-MM-dd');
+    var str2 = new String('1900-');
+    let fechaingreso = str2.concat(str1)
+
+    console.log(fechaingreso);
 
     const navigationExtras: NavigationExtras = {
       state: {
         checkIn: checkIn,
         checkOut: checkOut,
-        cantPersonas: this.personas
+        cantPersonas: this.personas,
+        hotel: nro_hotel,
+        fechaIngreso: fechaingreso
       }
     }
     console.log(navigationExtras);
@@ -91,12 +116,12 @@ export class InicioComponent implements OnInit {
 
   }
   // calcularDias(resultado: ){
-    // let checkOut = new Date();
-    // fechaIngreso = new Date(fechaIngreso);
-    // fechaEgreso = new Date(fechaEgreso);
+  // let checkOut = new Date();
+  // fechaIngreso = new Date(fechaIngreso);
+  // fechaEgreso = new Date(fechaEgreso);
 
-    // return Math.floor((Date.UTC(fechaEgreso.getFullYear(), fechaEgreso.getMonth(), fechaEgreso.getDate()) - 
-    // Date.UTC(fechaIngreso.getFullYear(), fechaIngreso.getMonth(), fechaIngreso.getDate()) ) /(1000 * 60 * 60 * 24));
+  // return Math.floor((Date.UTC(fechaEgreso.getFullYear(), fechaEgreso.getMonth(), fechaEgreso.getDate()) -
+  // Date.UTC(fechaIngreso.getFullYear(), fechaIngreso.getMonth(), fechaIngreso.getDate()) ) /(1000 * 60 * 60 * 24));
 }
 // }
 // enviarFecha(fecha: string) {

@@ -116,7 +116,7 @@ class UserModel {
     }
     listarhoteles() {
         return __awaiter(this, void 0, void 0, function* () {
-            const hoteles = (yield this.db.query('SELECT descripcion FROM hoteles'));
+            const hoteles = (yield this.db.query('SELECT idHotel, descripcion FROM hoteles'));
             return hoteles[0];
         });
     }
@@ -124,10 +124,10 @@ class UserModel {
         return __awaiter(this, void 0, void 0, function* () {
             console.log("ENTRE AL USERMODEL");
             console.log(desc);
-            const zona = (yield this.db.query('SELECT zona_id FROM hoteles WHERE descripcion = ?', [desc]));
-            if (zona.length >= 1) {
+            const id = (yield this.db.query('SELECT idHotel FROM hoteles WHERE descripcion = ?', [desc]));
+            if (id.length >= 1) {
                 console.log("SALI DEL USERMODEL");
-                return zona[0][0];
+                return id[0][0];
             }
             return "VACIO";
         });

@@ -13,7 +13,7 @@ export class ListarHabitacionesComponent implements OnInit {
   habitaciones: any = [];
   revelar: boolean = true;
 
-  datos = { fechaIngreso: "", fechaEgreso: "", cantPersona: 0 }; //Datos provenientes de la pagina de inicio, sirve para el NGOnInit
+  datos = { fechaIngreso: "", fechaEgreso: "", cantPersona: 0, hotel:'', fechaingresoAcortada: '' }; //Datos provenientes de la pagina de inicio, sirve para el NGOnInit
 
   // datosreserva = { cantidadPax: "", PrecioTotal: "", habitacionID: "" } //Datos provenientes de la pagina de inicio, sirve para el NGOnInit
 
@@ -23,15 +23,22 @@ export class ListarHabitacionesComponent implements OnInit {
       checkIn: string,
       checkOut: string,
       cantPersonas: number,
+      hotel: string,
+      fechaIngreso: string
 
     };
 
     this.datos.fechaIngreso = state.checkIn;
     this.datos.fechaEgreso = state.checkOut;
     this.datos.cantPersona = state.cantPersonas;
+    this.datos.hotel = state.hotel;
+    this.datos.fechaingresoAcortada = state.fechaIngreso;
+
   }
 
   ngOnInit() {
+
+    console.log(this.datos);
     this.usuariosService.listarHabitaciones(this.datos).subscribe(
       res => {
         this.habitaciones = res;

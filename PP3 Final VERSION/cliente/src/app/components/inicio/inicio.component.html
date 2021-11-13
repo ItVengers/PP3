@@ -22,7 +22,7 @@
         <div class="col-sm-auto" id="columna">
           <div class="form-group">
             <label id="label">Hotel/Lugar</label> <br>
-            <select class="form-select form-select-sm" name="selector">
+            <select (change)="selectChangeHandler($event)" class="form-select form-select-sm" name="selector">
               <option *ngFor="let hotel of hoteles">
                 {{hotel.descripcion}}
               </option>
@@ -35,7 +35,7 @@
             <input type="number" [(ngModel)]="personas" name="personas" min="1" max="10">
           </div>
         </div>
-      
+
         <div class="col-sm-auto">
           <label for="ingresoF" id="label">Check In</label>
           &nbsp;
@@ -100,7 +100,7 @@
     </div>
   </div>
 </div>
-<!-- 
+<!--
 <div class="row offset-3">
   <div class="col-2" id="match">
     <h3>Conseguí el jugador que te falta</h3>
@@ -109,7 +109,7 @@
       Conseguí el que te falta en MatchMaker 2.0.
       SISRO Hoteles ofrece el servicio de MatchMaker para que armes tus partidos en vacaciones
     </p>
-    
+
   </div>
   <div class="col-4" id="match">
     <h3>Tecnología de punta</h3>
@@ -117,17 +117,17 @@
     </p>
     <img class="card-img-top" src="../assets/img/dibiasi.jpeg" alt="Card image cap">
     <p id="textocol" class="mb-auto">Adquiriendo cualquier servicio te llevas sin cargo
-      una clase magistral de como ser un crack en la vida</p>   
+      una clase magistral de como ser un crack en la vida</p>
   </div>
-    
-  
+
+
     <div class="col-2" id="match">
       <h3>Hacete socio</h3>
       <p id="textocol" class="mb-auto">Hacete socio hoy de Ferro y obtene un regalo en SISRO Hoteles
       </p>
     <img class="card-img-top" src="../assets/img/ferro.png" alt="Card image cap">
     <p id="textocol" class="mb-auto">
-      Y con el trencito a todas partes. 
+      Y con el trencito a todas partes.
       Pileta y clases de natación incluidas con tu cuota.
     </p>
   </div>

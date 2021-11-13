@@ -21,9 +21,9 @@ class HabitacionesController {
 
 	public async habitacionesC(req: Request, res: Response) {
 		console.log("ESTOY EN EL METODO DEL BACKEND")
-		const { fechaIngreso, fechaEgreso, cantPersona } = req.body;
+		const { fechaIngreso, fechaEgreso, cantPersona, hotel, fechaingresoAcortada } = req.body;
 
-		const result = await habitacionesModel.listarhabitaciones(fechaIngreso, fechaEgreso, cantPersona);
+		const result = await habitacionesModel.listarhabitaciones(fechaIngreso, fechaEgreso, cantPersona, hotel, fechaingresoAcortada);
 		//console.log(result.idPersona);
 		console.log(result);
 		return res.json(result);

@@ -29,12 +29,11 @@ export class AdminIngresosComponent implements OnInit {
 
 
   realizarCheckIn(id: string) {
-
-
     this.usuariosService.verificacionReserva(id).subscribe(
       res => {
         this.reservasPendientes = res;
-        console.log(res)
+        console.log(res);
+          this.ngOnInit();
       },
       err => console.log(err)
     )

@@ -41,11 +41,10 @@ class UserController {
             console.log("ENTRE AL METODO BUSCARID");
             const { desc } = req.params;
             console.log(desc);
-            const zona = yield userModel_1.default.buscarID(desc);
-            console.log(zona);
+            const id = yield userModel_1.default.buscarID(desc);
             console.log("SALI DEL METODO BUSCARID");
-            res.status(200).json(zona);
-            return;
+            console.log(id);
+            return res.status(200).json(id);
         });
     }
     buscarFecha(req, res) {

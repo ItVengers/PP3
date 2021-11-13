@@ -29,11 +29,11 @@ class UserController {
 		console.log("ENTRE AL METODO BUSCARID");
 		const { desc } = req.params;
 		console.log(desc);
-		const zona = await userModel.buscarID(desc);
-		console.log(zona);
+		const id = await userModel.buscarID(desc);
 		console.log("SALI DEL METODO BUSCARID");
-		res.status(200).json(zona);
-		return;
+		console.log(id)
+		return res.status(200).json(id);
+		
 	}
 
 	public async buscarFecha(req: Request, res: Response) {

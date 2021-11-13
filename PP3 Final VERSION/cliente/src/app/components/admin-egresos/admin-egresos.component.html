@@ -1,10 +1,9 @@
 <div class="table-responsive">
   <div class="col-12">
-    <button class="btn-outline-success" (click)="goBack()" id="a2">Volver</button>
-    <h1 align="center" style="color: chocolate;">Validación Ingresos</h1>
+    <h1 align="center" style="color: chocolate;">Egresos Diarios</h1>
     <table class="table table-hover table-dark" id="table">
       <thead class="thead-dark">
-        <th>ID de la Reserva</th>
+        <th>Numero de Reserva</th>
         <th>Nombre</th>
         <th>Apellido</th>
         <th>Fecha Ingreso</th>
@@ -12,41 +11,41 @@
         <th>Precio Final</th>
         <th>Nro Habitacion</th>
         <th>Estado</th>
-        <th>Accion</th>
+        <th>Validar</th>
       </thead>
       <!-- <tr>
-          <td style="font-weight: bold;">3</td>
-          <td style="font-weight: bold;">Juan</td>
-          <td style="font-weight: bold;">Unfhurer</td>
-           <td style="font-weight: bold;">01/11/21</td>
-          <td style="font-weight: bold;">09/11/21</td>
-          <td style="font-weight: bold;">5500</td>
-          <td style="font-weight: bold;">2</td>
-          <td style="font-weight: bold;">Suite</td>
-          <td ><a>Validado</a></td>
-        </tr>
+        <td style="font-weight: bold;">3</td>
+        <td style="font-weight: bold;">Pablo</td>
+        <td style="font-weight: bold;">Antepazo</td>
+         <td style="font-weight: bold;">09/11/21</td>
+        <td style="font-weight: bold;">12/11/21</td>
+        <td style="font-weight: bold;">9887</td>
+        <td style="font-weight: bold;">4</td>
+        <td style="font-weight: bold;">Suite Premium</td>
+        <td ><a>Validado</a></td>
+      </tr>
+      <tr>
+        <td style="font-weight: bold;">5</td>
+        <td style="font-weight: bold;">Juan</td>
+        <td style="font-weight: bold;">Di Biasi</td>
+         <td style="font-weight: bold;">09/11/21</td>
+        <td style="font-weight: bold;">12/11/21</td>
+        <td style="font-weight: bold;">3777</td>
+        <td style="font-weight: bold;">3</td>
+        <td style="font-weight: bold;">Triple</td>
+        <td><a class="btn btn-outline-danger btn-block">Validar</a></td>
+      </tr>
         <tr>
-          <td style="font-weight: bold;">5</td>
-          <td style="font-weight: bold;">Juan</td>
-          <td style="font-weight: bold;">Di Biasi</td>
-           <td style="font-weight: bold;">09/11/21</td>
-          <td style="font-weight: bold;">12/11/21</td>
-          <td style="font-weight: bold;">3777</td>
-          <td style="font-weight: bold;">3</td>
-          <td style="font-weight: bold;">Triple</td>
-          <td><a class="btn btn-outline-danger btn-block">Validar</a></td>
-        </tr>
-          <tr>
-          <td style="font-weight: bold;">9</td>
-          <td style="font-weight: bold;">Emiliano</td>
-          <td style="font-weight: bold;">De Vuono</td>
-           <td style="font-weight: bold;">27/11/21</td>
-          <td style="font-weight: bold;">1/12/21</td>
-          <td style="font-weight: bold;">4500</td>
-          <td style="font-weight: bold;">5</td>
-          <td style="font-weight: bold;">Simple</td>
-          <td><a class="btn btn-outline-danger btn-block">Validar</a></td>
-        </tr> -->
+        <td style="font-weight: bold;">9</td>
+        <td style="font-weight: bold;">Emiliano</td>
+        <td style="font-weight: bold;">De Vuono</td>
+         <td style="font-weight: bold;">27/11/21</td>
+        <td style="font-weight: bold;">1/12/21</td>
+        <td style="font-weight: bold;">4500</td>
+        <td style="font-weight: bold;">5</td>
+        <td style="font-weight: bold;">Simple</td>
+        <td><a class="btn btn-outline-danger btn-block">Validar</a></td>
+      </tr> -->
       <tr *ngFor="let reservas of reservasConfirmadas">
         <td style="font-weight: bold;">{{reservas.idReserva}}</td>
         <td style="font-weight: bold;">{{reservas.nombre}}</td>
@@ -56,8 +55,29 @@
         <td style="font-weight: bold;">{{reservas.Precio_Final}}</td>
         <td style="font-weight: bold;">{{reservas.habitacion_id}}</td>
         <td style="font-weight: bold;">{{reservas.descripcion}}</td>
-        <td><a class="btn btn-outline-danger btn-block" (click)=realizarCheckOut(reservas.idReserva)>Verificar</a></td>
+        <td><a class="btn btn-outline-light btn-block" (click)=realizarCheckOut(reservas.idReserva)>Confirmar</a></td>
     </table>
-    <button class="btn-outline-success" (click)="goBack()" id="a2">Volver</button>
+    <button class="btn btn-outline-warning" (click)="goBack()" id="a2">Volver</button>
+    <!-- <button class="btn-outline-success" (click)="goBack()" id="a2">Volver</button> -->
   </div>
 </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

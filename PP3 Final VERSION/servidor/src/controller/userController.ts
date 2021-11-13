@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import userModel from "../models/userModel";
 import jwt from "jsonwebtoken";
-import {transporter} from '../config/mailer'
+import { transporter } from '../config/mailer'
 //import bcrypt from "bcrypt";
 class UserController {
 
@@ -33,7 +33,7 @@ class UserController {
 		console.log("SALI DEL METODO BUSCARID");
 		console.log(id)
 		return res.status(200).json(id);
-		
+
 	}
 
 	public async buscarFecha(req: Request, res: Response) {
@@ -72,33 +72,35 @@ class UserController {
 			//req.flash("error_session", "Usuario Incorrecto");
 			//res.redirect("./error");
 		}
-		else{
-		const checkPassword = await userModel.validarPassword(password, result.contrasenia);
-		if (result.contrasenia == password && result.mail == mail) {
-			//req.session.user = result;
-			//req.session.auth = true;
-			
-			if (result?.rol == 'admin') {
-				//req.session.admin = true;
-				//res.redirect("../admin/home");
-				const token: string = jwt.sign({ _id: result.id }, "secretKey");
-				res.status(200).json({ message: "Bienvenido " + result.nombre, token: token, rol: result.rol, idPersona: result.idPersona });
-				return;
-			}
-			else {
-				//req.session.admin = false;
-				const token: string = jwt.sign({ _id: result.id }, "secretKey");
-				res.status(200).json({ message: "Bienvenido " + result.nombre, token: token, rol: result.rol, idPersona: result.idPersona });
-				return;
-			}
+		else {
+			// const checkPassword = await userModel.validarPassword(password, result.contrasenia);
+			if (result.contrasenia == password && result.mail == mail) {
+				// if (checkPassword == password && result.mail == mail) {
 
-		}
-		if (result.contrasenia != password || result.mail != mail) {
-			//return res.status(404).json({ message: "Usuario no registrado" });
-			return res.status(403).json({ message: "Usuario y/o contraseña incorrectos" });
+				//req.session.user = result;
+				//req.session.auth = true;
 
-			//res.send("No estas registrado");
-		}
+				if (result?.rol == 'admin') {
+					//req.session.admin = true;
+					//res.redirect("../admin/home");
+					const token: string = jwt.sign({ _id: result.id }, "secretKey");
+					res.status(200).json({ message: "Bienvenido " + result.nombre, token: token, rol: result.rol, idPersona: result.idPersona });
+					return;
+				}
+				else {
+					//req.session.admin = false;
+					const token: string = jwt.sign({ _id: result.id }, "secretKey");
+					res.status(200).json({ message: "Bienvenido " + result.nombre, token: token, rol: result.rol, idPersona: result.idPersona });
+					return;
+				}
+
+			}
+			if (result.contrasenia != password || result.mail != mail) {
+				//return res.status(404).json({ message: "Usuario no registrado" });
+				return res.status(403).json({ message: "Usuario y/o contraseña incorrectos" });
+
+				//res.send("No estas registrado");
+			}
 		}
 		//res.status(403).json({ message: "Usuario y/o contraseña incorrectos" });
 	}
@@ -254,24 +256,24 @@ class UserController {
 		// FIN TELEFONO
 
 		const resultado = await userModel.buscarUsuario(datos.mail);
-		datos.contrasenia = await userModel.encriptPass(datos.contrasenia);
+		// datos.contrasenia = await userModel.encriptPass(datos.contrasenia);
 		if (!resultado) {
 			datos.rol = 'user'
 			datos.legajo = 0;
 			await userModel.crearUsuario(datos);
-			try{
+			try {
 				await transporter.sendMail({
 					from: '"SISRO Hoteles 👻" <info@sisrohoteles.com>',
-					to:datos.mail,
-					subject:'Registro en SISRO exitoso!!',
-					html:`Hola ${datos.nombre}, ¡gracias por utilizar SISRO Hoteles! <button href="http://localhost:4200"> SISRO Hoteles </a>`
+					to: datos.mail,
+					subject: 'Registro en SISRO exitoso!!',
+					html: `Hola ${datos.nombre}, ¡gracias por utilizar SISRO Hoteles! <button href="http://localhost:4200"> SISRO Hoteles </a>`
 				}); // ya podés ingresar a nuestro sitio clickeando el siguiente enlace:
-				
+
 			}
-			catch(err){
-			console.log("error: ",err)
+			catch (err) {
+				console.log("error: ", err)
 			}
-			
+
 
 			res.status(200).json({
 				message: 'Usuario Registrado!',

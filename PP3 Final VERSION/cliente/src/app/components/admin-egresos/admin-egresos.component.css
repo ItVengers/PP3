@@ -1,6 +1,9 @@
 #a2 {
- 
-    font-size: 18px; /* Increased text to enable scrolling */
-    padding: 0px 10px;
-  }
-  
+  font-size: 18px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+table {
+  border-color: white;
+  border: 2px white solid;
+}

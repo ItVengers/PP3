@@ -28,15 +28,15 @@ class UserModel {
 	}
 
 	// - - encriptación de password
-	encriptPass = async(password: string): Promise<string> => {
-        const salt = await bcryptjs.genSalt(10);
-        return await bcryptjs.hash(password, salt);
-    }
+	// encriptPass = async(password: string): Promise<string> => {
+    //     const salt = await bcryptjs.genSalt(10);
+    //     return await bcryptjs.hash(password, salt);
+    // }
 
 	
-	validarPassword = async function (password: string, passwordHash: string): Promise<boolean> {		
-        return await bcryptjs.compare(password, passwordHash);
-    }
+	// validarPassword = async function (password: string, passwordHash: string): Promise<boolean> {		
+    //     return await bcryptjs.compare(password, passwordHash);
+    // }
 
 	// -- Fin Encriptación
 

@@ -8,24 +8,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 const promise_1 = require("mysql2/promise");
-const bcryptjs_1 = __importDefault(require("bcryptjs"));
 class UserModel {
     constructor() {
-        // - - encriptación de password
-        this.encriptPass = (password) => __awaiter(this, void 0, void 0, function* () {
-            const salt = yield bcryptjs_1.default.genSalt(10);
-            return yield bcryptjs_1.default.hash(password, salt);
-        });
-        this.validarPassword = function (password, passwordHash) {
-            return __awaiter(this, void 0, void 0, function* () {
-                return yield bcryptjs_1.default.compare(password, passwordHash);
-            });
-        };
         this.config(); //aplicamos la conexion con la BD.
     }
     // async config() {//Parametro de conexion con la BD.
@@ -48,6 +34,14 @@ class UserModel {
             });
         });
     }
+    // - - encriptación de password
+    // encriptPass = async(password: string): Promise<string> => {
+    //     const salt = await bcryptjs.genSalt(10);
+    //     return await bcryptjs.hash(password, salt);
+    // }
+    // validarPassword = async function (password: string, passwordHash: string): Promise<boolean> {		
+    //     return await bcryptjs.compare(password, passwordHash);
+    // }
     // -- Fin Encriptación
     buscarUsuario(mail) {
         return __awaiter(this, void 0, void 0, function* () {

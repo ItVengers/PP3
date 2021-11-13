@@ -1,4 +1,5 @@
-<h1 align="center">Habitación {{datosreserva.habitacion_id}}</h1>
+<BR>
+<h1 align="center">CONFIRMAR RESERVA</h1>
 <br>
 <br>
 <div class="container" style="background-color:black">
@@ -18,13 +19,23 @@
         jacuzzi,calefacción y frigobar</p>
     </div>
     <div class="col-lg-4">
-      <p id="titulo" class="card-text">Check In: 15hs / Check Out: 10hs</p>
+      <br>
+      <b id="titulo" class="card-text">Check In: 15hs / Check Out: 10hs</b>
+      <br>
+      <br>
+      <BR>
       <b id="precio">Precio total: {{datosreserva.precioTotal}}</b>
       <br>
       <br>
       <br>
-      <a id="boton" routerLink="../../confirmacionreserva" (click)="datosReserva()" class="btn btn-primary">Reservar</a>
-      <a id="boton" routerLink="../../listarhabitaciones" class="btn btn-danger" style="margin: 10px">Volver</a>
+      <br>
+      <br>
+      <br>
+      <a id="boton" routerLink="../../confirmacionreserva" (click)="datosReserva()"
+        class="btn btn-outline-success">Confirmar Reserva</a>
+        <br>
+        <br>
+      <a id="boton2" routerLink="../../inicio" class="btn btn-outline-danger">Regresar al Inicio</a>
     </div>
   </div>
 </div>

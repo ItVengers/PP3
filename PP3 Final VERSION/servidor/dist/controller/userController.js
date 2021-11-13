@@ -84,8 +84,9 @@ class UserController {
                 //res.redirect("./error");
             }
             else {
-                const checkPassword = yield userModel_1.default.validarPassword(password, result.contrasenia);
+                // const checkPassword = await userModel.validarPassword(password, result.contrasenia);
                 if (result.contrasenia == password && result.mail == mail) {
+                    // if (checkPassword == password && result.mail == mail) {
                     //req.session.user = result;
                     //req.session.auth = true;
                     if ((result === null || result === void 0 ? void 0 : result.rol) == 'admin') {
@@ -249,7 +250,7 @@ class UserController {
             }
             // FIN TELEFONO
             const resultado = yield userModel_1.default.buscarUsuario(datos.mail);
-            datos.contrasenia = yield userModel_1.default.encriptPass(datos.contrasenia);
+            // datos.contrasenia = await userModel.encriptPass(datos.contrasenia);
             if (!resultado) {
                 datos.rol = 'user';
                 datos.legajo = 0;

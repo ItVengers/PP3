@@ -188,6 +188,12 @@ class UserModel {
 		const actualizarEstado = await this.db.query('update habitaciones h inner join reservas r on r.habitacion_id = h.idHabitacion set h.estado = 1, h.checkIn = null, h.checkOut = null where r.idReserva = ?;', [id]);
 		return actualizarEstado[0];
 	}
+	async verHabitaciones(){
+		const habitaciones = await this.db.query('select h.numeroHabitacion, c.descripcion, h.checkIn, h.checkOut, h.codigo,c.hotel_id from habitaciones h inner join categoria c on c.idCategoria = h.cat_id inner join estado e on e.idEstado = h.estado;');
+		return habitaciones[0];
+	}
+
+
 	
 }
 

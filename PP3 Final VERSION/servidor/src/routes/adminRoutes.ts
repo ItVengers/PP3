@@ -35,6 +35,9 @@ class AdminRoutes {
 
         this.router.get("/checkout/:id", adminController.checkOut);
 
+        this.router.get("/verhabitaciones", adminController.verHabitaciones);
+
+
     }
 }
 

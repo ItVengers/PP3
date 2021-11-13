@@ -208,6 +208,12 @@ class UserModel {
             return actualizarEstado[0];
         });
     }
+    verHabitaciones() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const habitaciones = yield this.db.query('select h.numeroHabitacion, c.descripcion, h.checkIn, h.checkOut, h.codigo,c.hotel_id from habitaciones h inner join categoria c on c.idCategoria = h.cat_id inner join estado e on e.idEstado = h.estado;');
+            return habitaciones[0];
+        });
+    }
 }
 const userModel = new UserModel();
 exports.default = userModel;

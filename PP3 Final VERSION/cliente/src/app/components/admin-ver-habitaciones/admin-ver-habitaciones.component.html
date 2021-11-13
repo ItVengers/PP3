@@ -1,0 +1,46 @@
+<div class="table-responsive">
+  <div class="col-12">
+    <h1 align="center" style="color: chocolate;">Listado de Habitaciones</h1>
+    <table class="table table-hover table-dark" id="table">
+      <thead class="thead-dark">
+        <th>Numero de Habitacion</th>
+        <th>Categoria</th>
+        <th>Ingreso</th>
+        <th>Egreso</th>
+        <th>Estado</th>
+        <th>ID del Hotel</th>
+        <th>Validar</th>
+      </thead>
+      <tr *ngFor="let habitacion of habitaciones">
+        <td style="font-weight: bold;">{{habitacion.numeroHabitacion}}</td>
+        <td style="font-weight: bold;">{{habitacion.descripcion}}</td>
+        <td style="font-weight: bold;">{{habitacion.checkIn}}</td>
+        <td style="font-weight: bold;">{{habitacion.checkOut}}</td>
+        <td style="font-weight: bold;">{{habitacion.estado}}</td>
+        <td style="font-weight: bold;">{{habitacion.hotel_id}}</td>
+        <td><a class="btn btn-outline-light btn-block" >Confirmar</a></td>
+        <!-- (click)=realizarCheckIn(reservas.idReserva) -->
+    </table>
+    <button class="btn btn-outline-warning" (click)="goBack()" id="a2">Volver</button>
+  </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

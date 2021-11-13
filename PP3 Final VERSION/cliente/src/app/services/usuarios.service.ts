@@ -173,4 +173,8 @@ export class UsuariosService {
     return this.http.get(`${this.API_URI3}/checkout/${id}`);
   }
 
+  vistaDeHabitaciones(){
+    return this.http.get(`${this.API_URI3}/verhabitaciones`);
+  }
+
 }

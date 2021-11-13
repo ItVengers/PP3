@@ -3,10 +3,17 @@ import userModel from "../models/userModel";
 
 class AdminController {
 
+    public async verHabitaciones(req: Request, res: Response) {
+
+        const habitaciones = await userModel.verHabitaciones();
+        console.log(habitaciones);
+        return res.json(habitaciones);
+    }
+
     public async checkOut(req: Request, res: Response) {
         console.log(req.body);
         console.log(req.header("Authorization"));
-        const{id} = req.params; 
+        const { id } = req.params;
 
         const checkOut = await userModel.checkOut(id);
 
@@ -29,7 +36,7 @@ class AdminController {
     public async verificacionReserva(req: Request, res: Response) {
         console.log(req.body);
         //console.log(req.header("Authorization"));
-        const{id} = req.params; 
+        const { id } = req.params;
 
         const verificacionReserva = await userModel.verificacion(id);
 
@@ -95,28 +102,28 @@ class AdminController {
 
     }
 
-    public async listarReservas(req: Request, res: Response){
+    public async listarReservas(req: Request, res: Response) {
         const result = await userModel.listarReservas();
         console.log(result);
-		return res.json(result);
-	}
-    public async listarUsuarios(req: Request, res: Response){
+        return res.json(result);
+    }
+    public async listarUsuarios(req: Request, res: Response) {
         const result = await userModel.listarUsuarios();
         console.log(result);
-		return res.json(result);
-	}
-    public async listarHabitaciones(req: Request, res: Response){
+        return res.json(result);
+    }
+    public async listarHabitaciones(req: Request, res: Response) {
         const result = await userModel.listarhabitaciones();
         console.log(result);
-		return res.json(result);
-	}
-    public async datosReservas(req: Request, res: Response){
-        const {idReserva} = req.params;
+        return res.json(result);
+    }
+    public async datosReservas(req: Request, res: Response) {
+        const { idReserva } = req.params;
         console.log(idReserva);
         const result = await userModel.datosReserva(idReserva);
         console.log(result);
-		return res.status(200).json(result);
-	}
+        return res.status(200).json(result);
+    }
 }
 
 const adminController = new AdminController();

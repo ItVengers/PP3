@@ -21,6 +21,8 @@ import { ConfirmarReservaComponent } from './components/confirmar-reserva/confir
 import { AdminIngresosComponent } from './components/admin-ingresos/admin-ingresos.component';
 import { AdminEgresosComponent } from './components/admin-egresos/admin-egresos.component';
 import { HabitacionesComponent } from './components/habitaciones/habitaciones.component';
+import { AdminVerHabitacionesComponent } from './components/admin-ver-habitaciones/admin-ver-habitaciones.component';
+
 
 
 const routes: Routes = [
@@ -107,10 +109,10 @@ const routes: Routes = [
     path: 'admin/usuarios',
     component: AdminUsuariosComponent,
   },
-  {
-    path: 'admin/habitaciones',
-    component: AdminHabitacionesComponent,
-  },
+  // {
+  //   path: 'admin/habitaciones',
+  //   component: AdminHabitacionesComponent,
+  // },
   {
     path: 'datosreserva/:idReserva',
     component: ReservaFichaComponent,
@@ -132,9 +134,14 @@ const routes: Routes = [
     component: AdminEgresosComponent,
   },
   {
+    path: 'admin/habitaciones',
+    component: AdminVerHabitacionesComponent,
+  },
+  {
     path: 'habitaciones',
     component: HabitacionesComponent,
   },
+
 ];
 
 @NgModule({

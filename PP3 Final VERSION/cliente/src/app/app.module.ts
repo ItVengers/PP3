@@ -35,6 +35,8 @@ import { AdminIngresosComponent } from './components/admin-ingresos/admin-ingres
 import { AdminEgresosComponent } from './components/admin-egresos/admin-egresos.component';
 import { HabitacionesComponent } from './components/habitaciones/habitaciones.component';
 import { AdminVerHabitacionesComponent } from './components/admin-ver-habitaciones/admin-ver-habitaciones.component';
+import { NosotrosComponent } from './components/nosotros/nosotros.component';
+import { ElhotelComponent } from './components/elhotel/elhotel.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +63,8 @@ import { AdminVerHabitacionesComponent } from './components/admin-ver-habitacion
     AdminEgresosComponent,
     HabitacionesComponent,
     AdminVerHabitacionesComponent,
+    NosotrosComponent,
+    ElhotelComponent,
   ],
   imports: [
     BrowserModule,

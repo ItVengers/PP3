@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@hubspot/api-client": "^5.0.0",
     "@types/bcryptjs": "^2.4.2",
     "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",

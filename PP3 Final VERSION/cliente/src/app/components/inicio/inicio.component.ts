@@ -4,6 +4,7 @@ import { Router, NavigationExtras } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { DatePipe } from '@angular/common';
 import { setDate } from 'ngx-bootstrap/chronos/utils/date-setters';
+import * as dayjs from 'dayjs';
 
 @Component({
   selector: 'app-inicio',
@@ -14,9 +15,12 @@ import { setDate } from 'ngx-bootstrap/chronos/utils/date-setters';
 export class InicioComponent implements OnInit {
 
   minDate: Date;
+  maxDate: Date;
   constructor(private usuariosService: UsuariosService, private router: Router, private messageService: MessageService, private datePipe: DatePipe) {
     this.minDate = new Date();
     this.minDate.setDate(this.minDate.getDate());
+    this.maxDate = new Date();
+    this.maxDate.setDate(this.checkIn.getDate() + 45);
   }
 
   hoteles: any = [];
@@ -59,7 +63,43 @@ export class InicioComponent implements OnInit {
       }
     )
   }
+  // this.usuariosService.ingresar(this.usuario).subscribe(
+  //   (res) => {
+  //     let result: any = res;
+  //     console.log(result);
+  //     localStorage.setItem('rol', result.rol);
+  //     localStorage.setItem('token', result.token);
+  //     localStorage.setItem('idPersona', result.idPersona);
+  //     this.usuariosService.logued$.emit();
 
+  //     this.isLogin = false;
+
+  //     this.messageService.add({
+  //       severity: 'success',
+  //       summary: 'Bienvenido!!!',
+  //       detail: result,
+  //     });
+
+  //     if (result.rol == 'admin') {
+  //       this.usuariosService.admin$.emit();
+  //       this.router.navigate(['admin/home']);
+  //     } else {
+  //       this.router.navigate(['usuarios/inicio']);
+  //       this.usuario.mail = "";
+  //       this.usuario.password = "";
+
+  //     }
+  //   },
+  //   (err) => {
+  //     this.messageService.add({
+  //       severity: 'error',
+  //       summary: err.statusText,
+  //       detail: err.error.message,
+  //     });
+  //     console.log(err.error.message);
+  //     this.isLogin = false;
+  //   }
+  // );
   enviarDescripcion(desc: string) {
     this.usuariosService.buscarId(desc).subscribe(
       (res) => {
@@ -96,8 +136,7 @@ export class InicioComponent implements OnInit {
 
     let checkIn = this.datePipe.transform(this.checkIn, 'yyyy-MM-dd');
     let checkOut = this.datePipe.transform(this.checkOut, 'yyyy-MM-dd');
-
-
+  
     let str1: string = this.datePipe.transform(this.checkIn, 'MM-dd')!;
     var str2 = new String('1900-');
     let fechaingreso = str2.concat(str1);

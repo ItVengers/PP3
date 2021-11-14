@@ -177,4 +177,25 @@ export class UsuariosService {
     return this.http.get(`${this.API_URI3}/verhabitaciones`);
   }
 
+  bloquearHabitacion(nroHab: number){
+    console.log(nroHab);
+    return this.http.get(`${this.API_URI3}/bloquear/${nroHab}`);
+  }
+
+  habilitarHabitacion(nroHab: number){
+    console.log(nroHab);
+    return this.http.get(`${this.API_URI3}/habilitar/${nroHab}`);
+  }
+
+  conseguirReserva(buscarReserva: any){
+    console.log(buscarReserva);
+    return this.http.post(`${this.API_URI3}/buscarReserva`, buscarReserva );
+  }
+
+  cancelarReserva(nroHab: any){
+    console.log(nroHab);
+    return this.http.get(`${this.API_URI3}/cancelar/${nroHab}`);
+  }
+
+
 }

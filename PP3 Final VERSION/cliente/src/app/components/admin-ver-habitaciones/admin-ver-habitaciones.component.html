@@ -11,14 +11,23 @@
         <th>ID del Hotel</th>
         <th>Validar</th>
       </thead>
-      <tr *ngFor="let habitacion of habitaciones">
+      <tr *ngFor="let habitacion of habitaciones" [ngSwitch]="habitacion.estado">
         <td style="font-weight: bold;">{{habitacion.numeroHabitacion}}</td>
         <td style="font-weight: bold;">{{habitacion.descripcion}}</td>
         <td style="font-weight: bold;">{{habitacion.checkIn}}</td>
         <td style="font-weight: bold;">{{habitacion.checkOut}}</td>
-        <td style="font-weight: bold;">{{habitacion.estado}}</td>
+        <td style="font-weight: bold;">{{habitacion.desc}}</td>
         <td style="font-weight: bold;">{{habitacion.hotel_id}}</td>
-        <td><a class="btn btn-outline-light btn-block" >Confirmar</a></td>
+        <td>
+          <a *ngSwitchCase="1" class="btn btn-outline-warning" (click)="cambiarEstado(habitacion.estado, habitacion.numeroHabitacion, habitacion.checkIn, habitacion.checkOut)">Bloquear</a>
+
+          <a *ngSwitchCase="2" class="btn btn-outline-danger" (click)="cambiarEstado(habitacion.estado, habitacion.numeroHabitacion, habitacion.checkIn, habitacion.checkOut)">Cancelar</a>
+
+          <a *ngSwitchCase="6" class="btn btn-outline-info" (click)="cambiarEstado(habitacion.estado, habitacion.numeroHabitacion, habitacion.checkIn, habitacion.checkOut)">Desbloquear</a>
+
+          <!-- <a class="btn btn-outline-light btn-block" >Confirmar</a> -->
+
+        </td>
         <!-- (click)=realizarCheckIn(reservas.idReserva) -->
     </table>
     <button class="btn btn-outline-warning" (click)="goBack()" id="a2">Volver</button>

@@ -37,6 +37,14 @@ class AdminRoutes {
 
         this.router.get("/verhabitaciones", adminController.verHabitaciones);
 
+        this.router.get("/bloquear/:nroHab", adminController.bloquearHabitacion);
+
+        this.router.get("/habilitar/:nroHab", adminController.habilitarHabitacion);
+
+        this.router.get("/cancelar/:nroHab", adminController.cancelarReservaAnticipadamente);
+
+        this.router.post("/buscarReserva", adminController.habilitarHabitacion);
+
 
     }
 }

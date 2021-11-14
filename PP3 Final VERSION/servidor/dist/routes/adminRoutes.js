@@ -27,6 +27,10 @@ class AdminRoutes {
         this.router.get("/reservasconfirmadas", adminController_1.default.reservasConfirmadas);
         this.router.get("/checkout/:id", adminController_1.default.checkOut);
         this.router.get("/verhabitaciones", adminController_1.default.verHabitaciones);
+        this.router.get("/bloquear/:nroHab", adminController_1.default.bloquearHabitacion);
+        this.router.get("/habilitar/:nroHab", adminController_1.default.habilitarHabitacion);
+        this.router.get("/cancelar/:nroHab", adminController_1.default.cancelarReservaAnticipadamente);
+        this.router.post("/buscarReserva", adminController_1.default.habilitarHabitacion);
     }
 }
 const adminRoutes = new AdminRoutes();

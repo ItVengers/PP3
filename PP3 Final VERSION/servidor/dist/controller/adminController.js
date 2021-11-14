@@ -14,6 +14,39 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const userModel_1 = __importDefault(require("../models/userModel"));
 class AdminController {
+    buscarReserva(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { habNo, fechaIn, fechaE } = req.body;
+            const reservaID = yield userModel_1.default.buscarIdReserva(habNo, fechaIn, fechaE);
+            const habitaciones = yield userModel_1.default.cambiarEstadoAlCancelar(habNo);
+            console.log(reservaID);
+            return res.json(reservaID);
+        });
+    }
+    cancelarReservaAnticipadamente(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { reservaID } = req.params;
+            const actualizarEstadoReserva = yield userModel_1.default.actualizarEstado_CO(reservaID);
+            console.log(actualizarEstadoReserva);
+            return res.json(actualizarEstadoReserva);
+        });
+    }
+    habilitarHabitacion(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { nroHab } = req.params;
+            const habitaciones = yield userModel_1.default.habilitarHabitacion(nroHab);
+            console.log(habitaciones);
+            return res.json(habitaciones);
+        });
+    }
+    bloquearHabitacion(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { nroHab } = req.params;
+            const habitaciones = yield userModel_1.default.bloquearHabitacion(nroHab);
+            console.log(habitaciones);
+            return res.json(habitaciones);
+        });
+    }
     verHabitaciones(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const habitaciones = yield userModel_1.default.verHabitaciones();

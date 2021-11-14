@@ -3,6 +3,44 @@ import userModel from "../models/userModel";
 
 class AdminController {
 
+
+    public async buscarReserva(req: Request, res: Response) {
+        const {habNo, fechaIn, fechaE} = req.body;
+
+        const reservaID = await userModel.buscarIdReserva(habNo, fechaIn, fechaE);
+
+        const habitaciones = await userModel.cambiarEstadoAlCancelar(habNo);
+
+        console.log(reservaID);
+        return res.json(reservaID);
+    }
+
+    public async cancelarReservaAnticipadamente(req: Request, res: Response) {
+        const {reservaID} = req.params;
+
+        const actualizarEstadoReserva = await userModel.actualizarEstado_CO(reservaID);
+
+        console.log(actualizarEstadoReserva);
+        return res.json(actualizarEstadoReserva);
+    }
+
+    public async habilitarHabitacion(req: Request, res: Response) {
+
+        const {nroHab} = req.params;
+        const habitaciones = await userModel.habilitarHabitacion(nroHab);
+        console.log(habitaciones);
+        return res.json(habitaciones);
+    }
+
+
+    public async bloquearHabitacion(req: Request, res: Response) {
+
+        const {nroHab} = req.params;
+        const habitaciones = await userModel.bloquearHabitacion(nroHab);
+        console.log(habitaciones);
+        return res.json(habitaciones);
+    }
+
     public async verHabitaciones(req: Request, res: Response) {
 
         const habitaciones = await userModel.verHabitaciones();

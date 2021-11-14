@@ -210,8 +210,38 @@ class UserModel {
     }
     verHabitaciones() {
         return __awaiter(this, void 0, void 0, function* () {
-            const habitaciones = yield this.db.query('select h.numeroHabitacion, c.descripcion, h.checkIn, h.checkOut, h.codigo,c.hotel_id from habitaciones h inner join categoria c on c.idCategoria = h.cat_id inner join estado e on e.idEstado = h.estado;');
+            const habitaciones = yield this.db.query('select h.numeroHabitacion, c.descripcion, h.checkIn, h.checkOut, h.estado, e.descripcion as "desc",c.hotel_id from habitaciones h inner join categoria c on c.idCategoria = h.cat_id inner join estado e on e.idEstado = h.estado;');
             return habitaciones[0];
+        });
+    }
+    bloquearHabitacion(nroHab) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const habitaciones = yield this.db.query('update habitaciones h set h.estado = 6 where h.numeroHabitacion = ?;', [nroHab]);
+            return habitaciones[0];
+        });
+    }
+    habilitarHabitacion(nroHab) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const habitaciones = yield this.db.query('update habitaciones h set h.estado = 1 where h.numeroHabitacion = ?;', [nroHab]);
+            return habitaciones[0];
+        });
+    }
+    cambiarEstadoAlCancelar(nroHab) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const habitaciones = yield this.db.query('update habitaciones h set h.estado = 1, h.checkIn = null, h.checkOut = null where h.numeroHabitacion = ?;', [nroHab]);
+            return habitaciones[0];
+        });
+    }
+    buscarIdReserva(nroHab, fechaI, fechaE) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const reserva = yield this.db.query('select idReserva from reservas r inner join habitaciones h on h.idHabitacion = r.habitacion_id where r.checkin = ? and r.checkout = ? and h.numeroHabitacion = ?;', [fechaI, fechaE, nroHab]);
+            return reserva[0];
+        });
+    }
+    actualizarReservaxCancelacion(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const reserva = yield this.db.query('update reservas set estado_id = 3, checkOut = curdate() where idreserva = ?', [id]);
+            return reserva[0];
         });
     }
 }

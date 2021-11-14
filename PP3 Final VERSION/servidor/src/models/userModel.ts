@@ -209,8 +209,8 @@ class UserModel {
 	}
 
 	async buscarIdReserva(nroHab: string, fechaI: string, fechaE: string){
-		const reserva = await this.db.query('select idReserva from reservas r inner join habitaciones h on h.idHabitacion = r.habitacion_id where r.checkin = ? and r.checkout = ? and h.numeroHabitacion = ?;', [fechaI, fechaE, nroHab]);
-		return reserva[0];
+		const reserva = await this.db.query('select idReserva from reservas r inner join habitaciones h on h.idHabitacion = r.habitacion_id where r.checkin = ? and r.checkout = ? and h.numeroHabitacion = ? and r.estado_id = 2;', [fechaI, fechaE, nroHab]);
+		return reserva[0][0];
 	}
 
 	async actualizarReservaxCancelacion(id: string){

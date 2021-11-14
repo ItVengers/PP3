@@ -234,8 +234,8 @@ class UserModel {
     }
     buscarIdReserva(nroHab, fechaI, fechaE) {
         return __awaiter(this, void 0, void 0, function* () {
-            const reserva = yield this.db.query('select idReserva from reservas r inner join habitaciones h on h.idHabitacion = r.habitacion_id where r.checkin = ? and r.checkout = ? and h.numeroHabitacion = ?;', [fechaI, fechaE, nroHab]);
-            return reserva[0];
+            const reserva = yield this.db.query('select idReserva from reservas r inner join habitaciones h on h.idHabitacion = r.habitacion_id where r.checkin = ? and r.checkout = ? and h.numeroHabitacion = ? and r.estado_id = 2;', [fechaI, fechaE, nroHab]);
+            return reserva[0][0];
         });
     }
     actualizarReservaxCancelacion(id) {

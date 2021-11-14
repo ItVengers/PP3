@@ -192,9 +192,9 @@ export class UsuariosService {
     return this.http.post(`${this.API_URI3}/buscarReserva`, buscarReserva );
   }
 
-  cancelarReserva(nroHab: any){
-    console.log(nroHab);
-    return this.http.get(`${this.API_URI3}/cancelar/${nroHab}`);
+  cancelarReserva(reservaID: string){
+    console.log(reservaID);
+    return this.http.get(`${this.API_URI3}/cancelar/${reservaID}`);
   }
 
 

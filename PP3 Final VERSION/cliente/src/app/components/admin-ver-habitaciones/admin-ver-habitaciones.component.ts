@@ -46,7 +46,12 @@ export class AdminVerHabitacionesComponent implements OnInit {
         break;
       case 2:
 
-          let datos = {habNo: nroHab,fechain: ingreso, fechaE: egreso}
+        let fechaI = ingreso.substring(0,10);
+        let fechaE = egreso.substring(0,10);
+
+
+
+        let datos = { habNo: nroHab, fechain: fechaI, fechaE: fechaE }
 
         this.usuariosService.conseguirReserva(datos).subscribe(
           res => {
@@ -59,7 +64,9 @@ export class AdminVerHabitacionesComponent implements OnInit {
         this.usuariosService.cancelarReserva(this.reservaID).subscribe(
           res => {
             this.habitaciones = res;
-            console.log(res)
+            console.log(res);
+
+            this.ngOnInit();
           },
           err => console.log(err)
         )

@@ -5,9 +5,16 @@ class AdminController {
 
 
     public async buscarReserva(req: Request, res: Response) {
-        const {habNo, fechaIn, fechaE} = req.body;
+        console.log("METODO BUSCAR RESERVA:");
 
-        const reservaID = await userModel.buscarIdReserva(habNo, fechaIn, fechaE);
+        
+        const {habNo, fechain, fechaE} = req.body;
+
+        console.log(habNo, fechain, fechaE);
+
+        const reservaID = await userModel.buscarIdReserva(habNo, fechain, fechaE);
+
+        console.log("Reserva nro:" + reservaID);
 
         const habitaciones = await userModel.cambiarEstadoAlCancelar(habNo);
 
@@ -20,15 +27,19 @@ class AdminController {
 
         const actualizarEstadoReserva = await userModel.actualizarEstado_CO(reservaID);
 
-        console.log(actualizarEstadoReserva);
+        //console.log(actualizarEstadoReserva);
         return res.json(actualizarEstadoReserva);
     }
+
+
+
+
 
     public async habilitarHabitacion(req: Request, res: Response) {
 
         const {nroHab} = req.params;
         const habitaciones = await userModel.habilitarHabitacion(nroHab);
-        console.log(habitaciones);
+        //console.log(habitaciones);
         return res.json(habitaciones);
     }
 
@@ -37,14 +48,14 @@ class AdminController {
 
         const {nroHab} = req.params;
         const habitaciones = await userModel.bloquearHabitacion(nroHab);
-        console.log(habitaciones);
+        //console.log(habitaciones);
         return res.json(habitaciones);
     }
 
     public async verHabitaciones(req: Request, res: Response) {
 
         const habitaciones = await userModel.verHabitaciones();
-        console.log(habitaciones);
+        //console.log(habitaciones);
         return res.json(habitaciones);
     }
 

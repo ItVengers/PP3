@@ -16,8 +16,11 @@ const userModel_1 = __importDefault(require("../models/userModel"));
 class AdminController {
     buscarReserva(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { habNo, fechaIn, fechaE } = req.body;
-            const reservaID = yield userModel_1.default.buscarIdReserva(habNo, fechaIn, fechaE);
+            console.log("METODO BUSCAR RESERVA:");
+            const { habNo, fechain, fechaE } = req.body;
+            console.log(habNo, fechain, fechaE);
+            const reservaID = yield userModel_1.default.buscarIdReserva(habNo, fechain, fechaE);
+            console.log("Reserva nro:" + reservaID);
             const habitaciones = yield userModel_1.default.cambiarEstadoAlCancelar(habNo);
             console.log(reservaID);
             return res.json(reservaID);
@@ -27,7 +30,7 @@ class AdminController {
         return __awaiter(this, void 0, void 0, function* () {
             const { reservaID } = req.params;
             const actualizarEstadoReserva = yield userModel_1.default.actualizarEstado_CO(reservaID);
-            console.log(actualizarEstadoReserva);
+            //console.log(actualizarEstadoReserva);
             return res.json(actualizarEstadoReserva);
         });
     }
@@ -35,7 +38,7 @@ class AdminController {
         return __awaiter(this, void 0, void 0, function* () {
             const { nroHab } = req.params;
             const habitaciones = yield userModel_1.default.habilitarHabitacion(nroHab);
-            console.log(habitaciones);
+            //console.log(habitaciones);
             return res.json(habitaciones);
         });
     }
@@ -43,14 +46,14 @@ class AdminController {
         return __awaiter(this, void 0, void 0, function* () {
             const { nroHab } = req.params;
             const habitaciones = yield userModel_1.default.bloquearHabitacion(nroHab);
-            console.log(habitaciones);
+            //console.log(habitaciones);
             return res.json(habitaciones);
         });
     }
     verHabitaciones(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const habitaciones = yield userModel_1.default.verHabitaciones();
-            console.log(habitaciones);
+            //console.log(habitaciones);
             return res.json(habitaciones);
         });
     }

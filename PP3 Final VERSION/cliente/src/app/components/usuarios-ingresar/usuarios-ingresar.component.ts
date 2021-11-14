@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from '../../services/usuarios.service';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 
@@ -24,7 +24,7 @@ export class UsuariosIngresarComponent implements OnInit {
       ],
     ],
   });
-  usuario = {mail: "", password: ""};
+  usuario = { mail: "", password: "" };
   constructor(
     private usuariosService: UsuariosService,
     protected fb: FormBuilder,
@@ -36,9 +36,9 @@ export class UsuariosIngresarComponent implements OnInit {
 
   ingresar() {
     this.isLogin = true;
-    this.usuario.mail= this.loginForm.get(['mail'])!.value;
+    this.usuario.mail = this.loginForm.get(['mail'])!.value;
     console.log(this.usuario.mail);
-    this.usuario.password= this.loginForm.get(['password'])!.value;
+    this.usuario.password = this.loginForm.get(['password'])!.value;
     console.log(this.usuario.password);
     //this.usuariosService.ingresar(this.loginForm.get(['mail'])!.value).subscribe(
     this.usuariosService.ingresar(this.usuario).subscribe(
@@ -62,10 +62,12 @@ export class UsuariosIngresarComponent implements OnInit {
           this.usuariosService.admin$.emit();
           this.router.navigate(['admin/home']);
         } else {
+
+          localStorage.setItem('session', '1')
+
           this.router.navigate(['usuarios/inicio']);
           this.usuario.mail = "";
           this.usuario.password = "";
-
         }
       },
       (err) => {

@@ -2,15 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+// import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-admin-ver-habitaciones',
   templateUrl: './admin-ver-habitaciones.component.html',
-  styleUrls: ['./admin-ver-habitaciones.component.css']
+  styleUrls: ['./admin-ver-habitaciones.component.css'],
+  providers: [MessageService]
 })
 export class AdminVerHabitacionesComponent implements OnInit {
 
-  constructor(private usuariosService: UsuariosService, private router: Router, private location: Location) { }
+  constructor(private usuariosService: UsuariosService, private messageService: MessageService, private router: Router, private location: Location) { }
 
   habitaciones: any = [];
   reservaID: any = 0;
@@ -36,18 +39,19 @@ export class AdminVerHabitacionesComponent implements OnInit {
           res => {
             this.habitaciones = res;
             console.log(res);
-
             this.ngOnInit();
           },
-          err => console.log(err)
+          (err) => {
+            console.log(err.error.message);
+          }
         )
 
         // statement 1
         break;
       case 2:
 
-        let fechaI = ingreso.substring(0,10);
-        let fechaE = egreso.substring(0,10);
+        let fechaI = ingreso.substring(0, 10);
+        let fechaE = egreso.substring(0, 10);
 
 
 
@@ -55,21 +59,34 @@ export class AdminVerHabitacionesComponent implements OnInit {
 
         this.usuariosService.conseguirReserva(datos).subscribe(
           res => {
+            let result: any = res;
+            result = result.idReserva;
+            console.log(result.idReserva);
             this.reservaID = res;
             console.log(res);
+
+            this.usuariosService.cancelarReserva(result).subscribe(
+              res => {
+                this.habitaciones = res;
+                console.log(res);
+
+                this.ngOnInit();
+              },
+              err => console.log(err)
+            )
           },
           err => console.log(err)
         )
 
-        this.usuariosService.cancelarReserva(this.reservaID).subscribe(
-          res => {
-            this.habitaciones = res;
-            console.log(res);
+        // this.usuariosService.cancelarReserva(this.reservaID).subscribe(
+        //   res => {
+        //     this.habitaciones = res;
+        //     console.log(res);
 
-            this.ngOnInit();
-          },
-          err => console.log(err)
-        )
+        //     this.ngOnInit();
+        //   },
+        //   err => console.log(err)
+        // )
         // statement 2
         break;
       case 6:
@@ -98,5 +115,33 @@ export class AdminVerHabitacionesComponent implements OnInit {
   goBack() {
     this.location.back();
   }
+
+
+
+  // this.usuariosService.crearActa(this.acta).subscribe(
+  //   res => {
+  //     const result:any = res;
+  //     for(var i =0; i < this.notasTotales.length;i++){
+  //       this.notasTotales[i].idacta =  result.id;
+  //     }
+  //     this.usuariosService.agregarNotas(this.notasTotales,this.acta.tipo).subscribe(
+  //       res => {
+  //         this.alert=true;
+  //         this.mensaje="Se creo el acta correctamente";
+  //         this.load=false
+  //         this.ngOnInit();
+  //       },
+  //       err => {
+  //         console.log("ERROR");
+  //         console.log(err);
+  //         this.load=false
+  //       }
+  //     )
+  //   },
+  //   err =>{
+  //     console.log("ERROR");
+  //     this.load=false
+  //   }
+  // )
 
 }

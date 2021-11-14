@@ -11,9 +11,11 @@ import { MessageService } from 'primeng/api';
 export class AppComponent implements OnInit {
   title = 'cliente';
 
-  constructor(private primengConfig: PrimeNGConfig, private messageService: MessageService) {}
+  constructor(private primengConfig: PrimeNGConfig, private messageService: MessageService) { }
 
   ngOnInit() {
-      this.primengConfig.ripple = true; 
+    this.primengConfig.ripple = true;
+    localStorage.setItem('session', '0')
   }
+
 }

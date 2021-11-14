@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import { Router, NavigationExtras } from '@angular/router';
+import { Message } from 'primeng//api';
 import { MessageService } from 'primeng/api';
 import { DatePipe } from '@angular/common';
-import { setDate } from 'ngx-bootstrap/chronos/utils/date-setters';
-import * as dayjs from 'dayjs';
+import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-inicio',
@@ -14,9 +14,13 @@ import * as dayjs from 'dayjs';
 })
 export class InicioComponent implements OnInit {
 
+  // login_: boolean = false;
+
+
   minDate: Date;
   maxDate: Date;
-  constructor(private usuariosService: UsuariosService, private router: Router, private messageService: MessageService, private datePipe: DatePipe) {
+  constructor(private usuariosService: UsuariosService, private router: Router, private messageService: MessageService, protected fb: FormBuilder,
+    private datePipe: DatePipe) {
     this.minDate = new Date();
     this.minDate.setDate(this.minDate.getDate());
     this.maxDate = new Date();
@@ -33,10 +37,8 @@ export class InicioComponent implements OnInit {
 
 
   ngOnInit(): void {
-
     this.traerHoteles();
     console.log(this.hoteles);
-
   }
 
   selectedDay: string = 'Hotel Sur Centro';
@@ -63,43 +65,7 @@ export class InicioComponent implements OnInit {
       }
     )
   }
-  // this.usuariosService.ingresar(this.usuario).subscribe(
-  //   (res) => {
-  //     let result: any = res;
-  //     console.log(result);
-  //     localStorage.setItem('rol', result.rol);
-  //     localStorage.setItem('token', result.token);
-  //     localStorage.setItem('idPersona', result.idPersona);
-  //     this.usuariosService.logued$.emit();
 
-  //     this.isLogin = false;
-
-  //     this.messageService.add({
-  //       severity: 'success',
-  //       summary: 'Bienvenido!!!',
-  //       detail: result,
-  //     });
-
-  //     if (result.rol == 'admin') {
-  //       this.usuariosService.admin$.emit();
-  //       this.router.navigate(['admin/home']);
-  //     } else {
-  //       this.router.navigate(['usuarios/inicio']);
-  //       this.usuario.mail = "";
-  //       this.usuario.password = "";
-
-  //     }
-  //   },
-  //   (err) => {
-  //     this.messageService.add({
-  //       severity: 'error',
-  //       summary: err.statusText,
-  //       detail: err.error.message,
-  //     });
-  //     console.log(err.error.message);
-  //     this.isLogin = false;
-  //   }
-  // );
   enviarDescripcion(desc: string) {
     this.usuariosService.buscarId(desc).subscribe(
       (res) => {
@@ -136,7 +102,7 @@ export class InicioComponent implements OnInit {
 
     let checkIn = this.datePipe.transform(this.checkIn, 'yyyy-MM-dd');
     let checkOut = this.datePipe.transform(this.checkOut, 'yyyy-MM-dd');
-  
+
     let str1: string = this.datePipe.transform(this.checkIn, 'MM-dd')!;
     var str2 = new String('1900-');
     let fechaingreso = str2.concat(str1);
@@ -144,60 +110,43 @@ export class InicioComponent implements OnInit {
     var date1 = new Date(this.checkIn);
     var date2 = new Date(this.checkOut);
     var Time = date2.getTime() - date1.getTime();
-    console.log(Time);
+    // console.log(Time);
     var Days = Time / (1000 * 3600 * 24);
-    console.log(Days);
+    // console.log(Days);
 
-    console.log("TRUNQUEO: " + Math.trunc(Days));
+    // console.log("TRUNQUEO: " + Math.trunc(Days));
 
     var estadia = Math.trunc(Days);
 
-    // var estadia  = Days.toString();
-    // console.log(estadia.substring(0,1));
+    console.log(checkOut);
 
-    // estadia = estadia.substring(0,1);
+    if (localStorage.getItem('session') == '1') {
+      if (checkOut != null) {
+        const navigationExtras: NavigationExtras = {
+          state: {
+            checkIn: checkIn,
+            checkOut: checkOut,
+            cantPersonas: this.personas,
+            hotel: nro_hotel,
+            fechaIngreso: fechaingreso,
+            estadia: estadia
+          }
+        }
+        console.log(navigationExtras);
+        this.router.navigate(['../usuarios/listarhabitaciones'], navigationExtras);
+      }
+      else {
 
-    // console.log("ESTADIA: " +estadia);//Diference in Days.
-
-    const navigationExtras: NavigationExtras = {
-      state: {
-        checkIn: checkIn,
-        checkOut: checkOut,
-        cantPersonas: this.personas,
-        hotel: nro_hotel,
-        fechaIngreso: fechaingreso,
-        estadia: estadia
+        window.alert("ERROR: CHECKOUT VACIO");
       }
     }
-    console.log(navigationExtras);
-    this.router.navigate(['../usuarios/listarhabitaciones'], navigationExtras);
+    else {
+      window.alert("ERROR: NO INICIO SESION");
+    }
 
   }
-  // calcularDias(resultado: ){
-  // let checkOut = new Date();
-  // fechaIngreso = new Date(fechaIngreso);
-  // fechaEgreso = new Date(fechaEgreso);
 
-  // return Math.floor((Date.UTC(fechaEgreso.getFullYear(), fechaEgreso.getMonth(), fechaEgreso.getDate()) -
-  // Date.UTC(fechaIngreso.getFullYear(), fechaIngreso.getMonth(), fechaIngreso.getDate()) ) /(1000 * 60 * 60 * 24));
-}
-// }
-// enviarFecha(fecha: string) {
-  //   console.log(fecha);
-  //   this.usuariosService.buscarFecha(fecha).subscribe(
-  //     (res) => {
-  //       let result: any = res;
-  //       this.fecha = result;
-  //       console.log(this.fecha)
-  //     },
-  //     (err) => {
-  //       this.messageService.add({
-  //         severity: 'error',
-  //         summary: err.statusText,
-  //         detail: err.error.message,
-  //       });
-  //       console.log(err.error.message);
-  //     }
-  //   )
-  //   // this.traerHoteles();
+  // addSingle() {
+  //   this.messageService.add({ severity: 'success', summary: 'Service Message', detail: 'Via MessageService' });
   // }
+}

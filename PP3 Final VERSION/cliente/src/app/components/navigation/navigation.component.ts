@@ -28,6 +28,7 @@ export class NavigationComponent implements OnInit {
     this.usuariosService.logOut();
     this.login_ = false;
     this.admin_ = false;
+    localStorage.setItem('session', '0')
   }
 
   collapseNavbar(): void {

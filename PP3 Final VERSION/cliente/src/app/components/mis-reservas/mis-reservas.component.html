@@ -67,13 +67,13 @@
     </thead>
     <tr *ngFor="let reservas of reserva">
       <td>{{reservas.idReserva}}</td>
-      <td class="event">{{reservas.checkIn}}
+      <td class="event">{{reservas.checkIn | date:'dd/MM/yyyy'}}
         <!-- <div class="date"></div> -->
       </td>
-      <td class="event">{{reservas.checkOut}}
+      <td class="event">{{reservas.checkOut | date:'dd/MM/yyyy'}}
         <!-- <div class="date"></div> -->
       </td>
-      <td class="event">{{reservas.fechaReserva}}
+      <td class="event">{{reservas.fechaReserva | date:'dd/MM/yyyy'}}
         <!-- <div class="date"></div> -->
       </td>
       <td class="event">{{reservas.precioTotal}}

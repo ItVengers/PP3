@@ -1,4 +1,5 @@
-<button class="btn-outline-success" (click)="goBack()" id="a2">Volver</button>
+<br>
+<button class="btn btn-outline-warning" (click)="goBack()" id="a2">Volver</button>
 <div class="main">
   <div class="col-12">
     <h1 align="center" style="color: chocolate;">Reservas</h1>
@@ -14,15 +15,15 @@
         <td><a id="a" class="primary" routerLink="../datosreserva/{{reservas.idReserva}}"
             (click)=datosreservas(reservas)>{{reservas.idReserva}}
           </a></td>
-        <td class="event" data-date="2021-02-01">{{reservas.checkIn}}
+        <td class="event">{{reservas.checkIn | date:'dd/MM/yyyy'}}
           <!-- <div class="date"></div> -->
         </td>
-        <td class="event" data-date="(reservas.fechaHasta)">{{reservas.checkOut}}
+        <td class="event">{{reservas.checkOut | date:'dd/MM/yyyy'}}
           <!-- <div class="date"></div> -->
         </td>
-        <td class="event" data-date="(reservas.fechaReserva)">{{reservas.fechaReserva}}
+        <td class="event" >{{reservas.fechaReserva | date:'dd/MM/yyyy'}}
           <!-- <div class="date"></div> -->
-          <td class="event" data-date="(reservas.estado_id)">{{reservas.estado_id}}
+          <td class="event">{{reservas.estado_id}}
         </td>
         <td [ngSwitch]="reservas.estado_id">
           <ul *ngSwitchCase="'Aprobada'" id="aprob">{{reservas.estado_id}}</ul>
@@ -32,6 +33,6 @@
         </td>
       </tr>
     </table>
-    <button class="btn-outline-success" (click)="goBack()" id="a2">Volver</button>
+    <button class="btn btn-outline-warning" (click)="goBack()" id="a2">Volver</button>
   </div>
 </div>

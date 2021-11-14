@@ -1,24 +1,37 @@
-
 <div class="table-responsive">
-    <div class="col-12">
-      <button class="btn-outline-success" (click)="goBack()" id="a2">Volver</button>
-        <h1 align="center" style="color: chocolate;">Usuarios</h1>
-        <table class="table table-hover table-dark table-striped">
-          <thead class="thead-dark">
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>DNI</th>
-            <th>Teléfono</th>
-            <th>Mail</th>
-       
-          </thead>   
-            <tr *ngFor= "let persona of usuario">
-              <td>{{persona.idPersona}}</td>
-              <td>{{persona.nombre}}</td>
-              <td>{{persona.apellido}}</td>
-              <td>{{persona.dni}}</td>
-              <td>{{persona.telefono}}</td>
-              <td>{{persona.mail}}</td>
-            </tr>
-  <button class="btn-outline-success" (click)="goBack()" id="a2">Volver</button>
+  <div class="col-12">
+    <h1 align="center" style="color: chocolate;">Usuarios</h1>
+    <table class="table table-hover table-dark table-striped">
+      <thead class="thead-dark">
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>DNI</th>
+        <th>Teléfono</th>
+        <th>Mail</th>
+      </thead>
+      <tr *ngFor="let persona of usuario">
+        <td>{{persona.idPersona}}</td>
+        <td>{{persona.nombre}}</td>
+        <td>{{persona.apellido}}</td>
+        <td>{{persona.dni}}</td>
+        <td>{{persona.telefono}}</td>
+        <td>{{persona.mail}}</td>
+      </tr>
+    </table>
+  </div>
+</div>
+<button class="btn btn-outline-warning" (click)="goBack()" id="a2">Volver</button>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br><br>
+
+

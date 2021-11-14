@@ -29,7 +29,8 @@ class AdminController {
     cancelarReservaAnticipadamente(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { reservaID } = req.params;
-            const actualizarEstadoReserva = yield userModel_1.default.actualizarEstado_CO(reservaID);
+            console.log(reservaID);
+            const actualizarEstadoReserva = yield userModel_1.default.actualizarReservaxCancelacion(reservaID);
             //console.log(actualizarEstadoReserva);
             return res.json(actualizarEstadoReserva);
         });

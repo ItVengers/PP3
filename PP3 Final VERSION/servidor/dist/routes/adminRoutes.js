@@ -29,7 +29,7 @@ class AdminRoutes {
         this.router.get("/verhabitaciones", adminController_1.default.verHabitaciones);
         this.router.get("/bloquear/:nroHab", adminController_1.default.bloquearHabitacion);
         this.router.get("/habilitar/:nroHab", adminController_1.default.habilitarHabitacion);
-        this.router.get("/cancelar/:nroHab", adminController_1.default.cancelarReservaAnticipadamente);
+        this.router.get("/cancelar/:reservaID", adminController_1.default.cancelarReservaAnticipadamente);
         this.router.post("/buscarReserva", adminController_1.default.buscarReserva);
     }
 }

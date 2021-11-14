@@ -41,7 +41,7 @@ class AdminRoutes {
 
         this.router.get("/habilitar/:nroHab", adminController.habilitarHabitacion);
 
-        this.router.get("/cancelar/:nroHab", adminController.cancelarReservaAnticipadamente);
+        this.router.get("/cancelar/:reservaID", adminController.cancelarReservaAnticipadamente);
 
         this.router.post("/buscarReserva", adminController.buscarReserva);
 

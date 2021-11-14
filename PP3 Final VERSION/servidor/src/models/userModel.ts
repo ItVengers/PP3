@@ -210,10 +210,12 @@ class UserModel {
 
 	async buscarIdReserva(nroHab: string, fechaI: string, fechaE: string){
 		const reserva = await this.db.query('select idReserva from reservas r inner join habitaciones h on h.idHabitacion = r.habitacion_id where r.checkin = ? and r.checkout = ? and h.numeroHabitacion = ? and r.estado_id = 2;', [fechaI, fechaE, nroHab]);
+		console.log("ESTE ES EL VALOR RESERVA:"+ reserva); 
 		return reserva[0][0];
 	}
 
 	async actualizarReservaxCancelacion(id: string){
+		console.log("METODO ACTUALIZAR ESTADO POR CANCELACION: " );
 		const reserva = await this.db.query('update reservas set estado_id = 3, checkOut = curdate() where idreserva = ?', [id]);
 		return reserva[0];
 	}

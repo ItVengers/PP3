@@ -235,11 +235,13 @@ class UserModel {
     buscarIdReserva(nroHab, fechaI, fechaE) {
         return __awaiter(this, void 0, void 0, function* () {
             const reserva = yield this.db.query('select idReserva from reservas r inner join habitaciones h on h.idHabitacion = r.habitacion_id where r.checkin = ? and r.checkout = ? and h.numeroHabitacion = ? and r.estado_id = 2;', [fechaI, fechaE, nroHab]);
+            console.log("ESTE ES EL VALOR RESERVA:" + reserva);
             return reserva[0][0];
         });
     }
     actualizarReservaxCancelacion(id) {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log("METODO ACTUALIZAR ESTADO POR CANCELACION: ");
             const reserva = yield this.db.query('update reservas set estado_id = 3, checkOut = curdate() where idreserva = ?', [id]);
             return reserva[0];
         });

@@ -7,7 +7,6 @@ class AdminController {
     public async buscarReserva(req: Request, res: Response) {
         console.log("METODO BUSCAR RESERVA:");
 
-        
         const {habNo, fechain, fechaE} = req.body;
 
         console.log(habNo, fechain, fechaE);
@@ -24,8 +23,9 @@ class AdminController {
 
     public async cancelarReservaAnticipadamente(req: Request, res: Response) {
         const {reservaID} = req.params;
+        console.log(reservaID);
 
-        const actualizarEstadoReserva = await userModel.actualizarEstado_CO(reservaID);
+        const actualizarEstadoReserva = await userModel.actualizarReservaxCancelacion(reservaID);
 
         //console.log(actualizarEstadoReserva);
         return res.json(actualizarEstadoReserva);

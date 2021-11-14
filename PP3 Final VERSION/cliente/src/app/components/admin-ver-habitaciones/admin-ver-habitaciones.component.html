@@ -14,8 +14,8 @@
       <tr *ngFor="let habitacion of habitaciones" [ngSwitch]="habitacion.estado">
         <td style="font-weight: bold;">{{habitacion.numeroHabitacion}}</td>
         <td style="font-weight: bold;">{{habitacion.descripcion}}</td>
-        <td style="font-weight: bold;">{{habitacion.checkIn | date:'dd/MM/yyyy'}}</td>
-        <td style="font-weight: bold;">{{habitacion.checkOut | date:'dd/MM/yyyy'}}</td>
+        <td style="font-weight: bold;">{{habitacion.checkIn | date:'yyyy/MM/dd'}}</td>
+        <td style="font-weight: bold;">{{habitacion.checkOut | date:'yyyy/MM/dd'}}</td>
         <td style="font-weight: bold;">{{habitacion.desc}}</td>
         <td style="font-weight: bold;">{{habitacion.hotel_id}}</td>
         <td>

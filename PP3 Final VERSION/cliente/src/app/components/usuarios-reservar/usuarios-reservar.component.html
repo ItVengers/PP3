@@ -5,7 +5,7 @@
 <div class="container" style="background-color:black">
   <div class="row">
     <div class="col-lg-4" id="">
-      <img class="card-img-top" src="../assets/img/telo.jpg" alt="Card image cap">
+      <img  id="imagen" class="card-img-top" src="../assets/img/telo.jpg" alt="Card image cap">
     </div>
     <div class="col-lg-4" id="col">
       <br>
@@ -15,7 +15,7 @@
       <p>Fecha de Check In: <b>{{datosreserva.checkIn}}</b></p>
       <p>Fecha de Check Out: <b>{{datosreserva.checkOut}}</b></p>
       <hr>
-      <p id="titulo" class="card-text">La habitación cuenta con: aire acondicionado, Televisión con Direct Tv, baño con
+      <p class="card-text">La habitación cuenta con: aire acondicionado, Televisión con Direct Tv, baño con
         jacuzzi,calefacción y frigobar</p>
     </div>
     <div class="col-lg-4">
@@ -24,7 +24,7 @@
       <br>
       <br>
       <BR>
-      <b id="precio">Precio total: {{datosreserva.precioTotal}}</b>
+      <b id="precio"> DIAS: {{datosreserva.estadia}} - TOTAL: ${{datosreserva.precioTotal}}</b>
       <br>
       <br>
       <br>

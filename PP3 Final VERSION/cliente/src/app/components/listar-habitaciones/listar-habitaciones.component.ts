@@ -13,7 +13,7 @@ export class ListarHabitacionesComponent implements OnInit {
   habitaciones: any = [];
   revelar: boolean = true;
 
-  datos = { fechaIngreso: "", fechaEgreso: "", cantPersona: 0, hotel:'', fechaingresoAcortada: '' }; //Datos provenientes de la pagina de inicio, sirve para el NGOnInit
+  datos = { fechaIngreso: "", fechaEgreso: "", cantPersona: 0, hotel:'', fechaingresoAcortada: '', estadia: 0 }; //Datos provenientes de la pagina de inicio, sirve para el NGOnInit
 
   // datosreserva = { cantidadPax: "", PrecioTotal: "", habitacionID: "" } //Datos provenientes de la pagina de inicio, sirve para el NGOnInit
 
@@ -24,7 +24,8 @@ export class ListarHabitacionesComponent implements OnInit {
       checkOut: string,
       cantPersonas: number,
       hotel: string,
-      fechaIngreso: string
+      fechaIngreso: string,
+      estadia: number
 
     };
 
@@ -33,6 +34,7 @@ export class ListarHabitacionesComponent implements OnInit {
     this.datos.cantPersona = state.cantPersonas;
     this.datos.hotel = state.hotel;
     this.datos.fechaingresoAcortada = state.fechaIngreso;
+    this.datos.estadia = state.estadia;
 
   }
 
@@ -53,10 +55,11 @@ export class ListarHabitacionesComponent implements OnInit {
 
   enviarDatosReserva(datos: any) {
 
-    let preciototal: string = datos.precio;
+    let preciototal: number = datos.precio * this.datos.estadia;
     let pasajeros: number = datos.pasajeros;
     let idHab: string = datos.idHabitacion;
     let cate: string = datos.descripcion;
+    let estadia: number = this.datos.estadia;
     console.log(this.habitaciones);
     const navigationExtras: NavigationExtras = {
       state: {
@@ -66,6 +69,7 @@ export class ListarHabitacionesComponent implements OnInit {
         categoria: cate,
         checkIn: this.datos.fechaIngreso,
         checkOut: this.datos.fechaEgreso,
+        estadia: estadia
       }
     }
     console.log(navigationExtras);

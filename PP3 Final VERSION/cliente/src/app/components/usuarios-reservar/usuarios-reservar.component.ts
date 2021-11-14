@@ -17,10 +17,11 @@ export class UsuariosReservarComponent implements OnInit {
   datosreserva = {
     habitacion_id: "",
     cantidadPax: "",
-    precioTotal: "",
+    precioTotal: 0,
     checkIn: "",
     checkOut: "",
     categoria: "",
+    estadia: 0,
 
   };
 
@@ -39,10 +40,11 @@ export class UsuariosReservarComponent implements OnInit {
     const state = navigation?.extras.state as {
       cantidadPax: string;
       habitacion_id: string;
-      precioTotal: string;
+      precioTotal: number;
       checkIn: string;
       checkOut: string;
       categoria: string,
+      estadia: number,
 
     };
 
@@ -52,6 +54,7 @@ export class UsuariosReservarComponent implements OnInit {
     this.datosreserva.checkIn = state.checkIn;
     this.datosreserva.checkOut = state.checkOut;
     this.datosreserva.categoria = state.categoria;
+    this.datosreserva.estadia = state.estadia;
 
   }
 

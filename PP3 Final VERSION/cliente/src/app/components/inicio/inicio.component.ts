@@ -95,12 +95,30 @@ export class InicioComponent implements OnInit {
     }
 
     let checkIn = this.datePipe.transform(this.checkIn, 'yyyy-MM-dd');
-    let str1: string = this.datePipe.transform(this.checkIn, 'MM-dd')!;
     let checkOut = this.datePipe.transform(this.checkOut, 'yyyy-MM-dd');
-    var str2 = new String('1900-');
-    let fechaingreso = str2.concat(str1)
 
-    console.log(fechaingreso);
+
+    let str1: string = this.datePipe.transform(this.checkIn, 'MM-dd')!;
+    var str2 = new String('1900-');
+    let fechaingreso = str2.concat(str1);
+
+    var date1 = new Date(this.checkIn);
+    var date2 = new Date(this.checkOut);
+    var Time = date2.getTime() - date1.getTime();
+    console.log(Time);
+    var Days = Time / (1000 * 3600 * 24);
+    console.log(Days);
+
+    console.log("TRUNQUEO: " + Math.trunc(Days));
+
+    var estadia = Math.trunc(Days);
+
+    // var estadia  = Days.toString();
+    // console.log(estadia.substring(0,1));
+
+    // estadia = estadia.substring(0,1);
+
+    // console.log("ESTADIA: " +estadia);//Diference in Days.
 
     const navigationExtras: NavigationExtras = {
       state: {
@@ -108,7 +126,8 @@ export class InicioComponent implements OnInit {
         checkOut: checkOut,
         cantPersonas: this.personas,
         hotel: nro_hotel,
-        fechaIngreso: fechaingreso
+        fechaIngreso: fechaingreso,
+        estadia: estadia
       }
     }
     console.log(navigationExtras);

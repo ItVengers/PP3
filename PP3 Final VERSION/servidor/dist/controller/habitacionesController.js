@@ -53,13 +53,12 @@ class HabitacionesController {
 		Para terminar con tu reserva es necesaria una seña por el 50% <br>
 		<br>
 		Datos Reserva: <br>
-		Fecha de reserva: ${result.fecReserva}<br>
-		Fecha de Check In: ${result.fecCheckIn}<br>
-		Fecha de Check Out: ${result.fecCheckOut}<br>
-		Identificador de habitación: ${result.habId}<br>
-		Status: ${result.status}<br>
-		Precio por noche: ${result.precio}<br>
-		PerId: ${result.perId} <br>
+		Fecha de Check In: ${fecCheckIn}<br>
+		Fecha de Check Out: ${fecCheckOut}<br>
+		Identificador de habitación: ${habId}<br>
+		Status: ${status}<br>
+		Precio total: ${precio}<br>
+		PerId: ${perId} <br>
 		<br>
 		¿Como realizar la seña? <br>
 		La seña se puede realizar por medio de transferencia bancaria o deposito <br>

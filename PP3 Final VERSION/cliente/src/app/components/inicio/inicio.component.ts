@@ -87,17 +87,21 @@ export class InicioComponent implements OnInit {
 
   //checkIn: any, checkOut: any, personas: number
   enviarDatos() {
+    console.log(this.selectedDay);
     let nro_hotel = 0;
-    if (this.selectedDay == 'Hotel Sur Centro') {
+    if (this.selectedDay == 'Hotel Cordoba') {
       nro_hotel = 1
     } else {
-      if (this.selectedDay == 'Hotel del Plata') {
+      if (this.selectedDay == 'Holiday Inn Cordoba') {
         nro_hotel = 2
       } else {
-        if (this.selectedDay == 'Hotel Cordoba') {
+        if (this.selectedDay == 'Howard Johnson La Cañada Hotel & Suites') {
           nro_hotel = 3
+        }  else {
+          if (this.selectedDay == 'NH Córdoba Urbano') {
+            nro_hotel = 4
         }
-      }
+      } 
     }
 
     let checkIn = this.datePipe.transform(this.checkIn, 'yyyy-MM-dd');
@@ -150,10 +154,9 @@ export class InicioComponent implements OnInit {
         summary: 'Debe de iniciar sesion para realizar una busqueda de habitaciones!',
       });
   }
-
   }
-
   // addSingle() {
   //   this.messageService.add({ severity: 'success', summary: 'Service Message', detail: 'Via MessageService' });
   // }
+}
 }

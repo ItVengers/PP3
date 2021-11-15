@@ -54,3 +54,8 @@ h4{
     width: 3cm;
     margin-top: 7mm;
   }
+
+  p{
+    font-size: 2vw;
+    color: antiquewhite;
+  }

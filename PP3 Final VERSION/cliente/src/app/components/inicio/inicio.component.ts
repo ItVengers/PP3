@@ -137,12 +137,19 @@ export class InicioComponent implements OnInit {
       }
       else {
 
-        window.alert("ERROR: CHECKOUT VACIO");
+        // window.alert("ERROR: CHECKOUT VACIO");
+        this.messageService.add({
+          severity: 'error',
+          summary: 'ERROR! No selecciono una fecha de CheckOut',
+        });
       }
     }
     else {
-      window.alert("ERROR: NO INICIO SESION");
-    }
+      this.messageService.add({
+        severity: 'info',
+        summary: 'Debe de iniciar sesion para realizar una busqueda de habitaciones!',
+      });
+  }
 
   }
 

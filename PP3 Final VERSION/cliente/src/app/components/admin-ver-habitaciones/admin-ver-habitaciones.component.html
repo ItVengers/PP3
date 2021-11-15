@@ -1,5 +1,7 @@
 <div class="table-responsive">
   <div class="col-12">
+    <p-toast></p-toast>
+
     <h1 align="center" style="color: chocolate;">Listado de Habitaciones</h1>
     <table class="table table-hover table-dark" id="table">
       <thead class="thead-dark">
@@ -19,11 +21,14 @@
         <td style="font-weight: bold;">{{habitacion.desc}}</td>
         <td style="font-weight: bold;">{{habitacion.hotel_id}}</td>
         <td>
-          <a *ngSwitchCase="1" class="btn btn-outline-warning" (click)="cambiarEstado(habitacion.estado, habitacion.numeroHabitacion, habitacion.checkIn, habitacion.checkOut)">Bloquear</a>
+          <a *ngSwitchCase="1" class="btn btn-outline-warning"
+            (click)="cambiarEstado(habitacion.estado, habitacion.numeroHabitacion, habitacion.checkIn, habitacion.checkOut)">Bloquear</a>
 
-          <a *ngSwitchCase="2" class="btn btn-outline-danger" (click)="cambiarEstado(habitacion.estado, habitacion.numeroHabitacion, habitacion.checkIn, habitacion.checkOut)">Cancelar</a>
+          <a *ngSwitchCase="2" class="btn btn-outline-danger"
+            (click)="cambiarEstado(habitacion.estado, habitacion.numeroHabitacion, habitacion.checkIn, habitacion.checkOut)">Cancelar</a>
 
-          <a *ngSwitchCase="6" class="btn btn-outline-info" (click)="cambiarEstado(habitacion.estado, habitacion.numeroHabitacion, habitacion.checkIn, habitacion.checkOut)">Desbloquear</a>
+          <a *ngSwitchCase="6" class="btn btn-outline-info"
+            (click)="cambiarEstado(habitacion.estado, habitacion.numeroHabitacion, habitacion.checkIn, habitacion.checkOut)">Desbloquear</a>
 
           <!-- <a class="btn btn-outline-light btn-block" >Confirmar</a> -->
 

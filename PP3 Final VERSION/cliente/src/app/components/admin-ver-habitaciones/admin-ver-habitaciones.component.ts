@@ -40,6 +40,11 @@ export class AdminVerHabitacionesComponent implements OnInit {
             this.habitaciones = res;
             console.log(res);
             this.ngOnInit();
+
+            this.messageService.add({
+              severity: 'success',
+              summary: 'Habitacion Bloqueada',
+            });
           },
           (err) => {
             console.log(err.error.message);
@@ -69,8 +74,12 @@ export class AdminVerHabitacionesComponent implements OnInit {
               res => {
                 this.habitaciones = res;
                 console.log(res);
-
                 this.ngOnInit();
+
+                this.messageService.add({
+                  severity: 'success',
+                  summary: 'RESERVA CANCELADA',
+                });
               },
               err => console.log(err)
             )
@@ -96,6 +105,11 @@ export class AdminVerHabitacionesComponent implements OnInit {
             console.log(res);
 
             this.ngOnInit();
+
+            this.messageService.add({
+              severity: 'success',
+              summary: 'Habitacion Desbloqueada',
+            });
           },
           err => console.log(err)
         )

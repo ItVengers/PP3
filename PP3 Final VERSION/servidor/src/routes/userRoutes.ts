@@ -25,6 +25,10 @@ class UserRoutes {
 		this.router.get('/listarhoteles', userController.listarhoteles);
 		this.router.get('/buscarId/:desc', userController.buscarID)
 		this.router.get('/buscarFecha/:fecha', userController.buscarFecha)
+		this.router.get('/listartemporadas', userController.listartemporadas);
+		this.router.get('/listarcategorias', userController.listarcategorias);
+
+
 
 		
 

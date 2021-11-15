@@ -4,6 +4,17 @@ import userModel from "../models/userModel";
 class AdminController {
 
 
+    public async aplicarAjuste(req: Request, res: Response) {
+
+        const {categoria, hotel, ajuste, temporada} = req.body;
+
+        console.log(categoria, hotel, ajuste, temporada);
+
+        const ajusteAplicado = await userModel.aplicarAjuste(categoria, hotel, ajuste, temporada);
+        console.log(ajusteAplicado);
+        return res.json({ message: "Se modifico satisfactoriamente el precio!" });
+    }
+
     public async buscarReserva(req: Request, res: Response) {
         console.log("METODO BUSCAR RESERVA:");
 

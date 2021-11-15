@@ -1,0 +1,17 @@
+#first {
+  float: left;
+}
+
+#second {
+  overflow: hidden;
+}
+
+#label {
+  font-weight: bold;
+  color: white;
+}
+
+#label2 {
+  font-weight: bold;
+  color: black;
+}

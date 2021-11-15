@@ -45,6 +45,9 @@ class AdminRoutes {
 
         this.router.post("/buscarReserva", adminController.buscarReserva);
 
+        this.router.post("/ajuste", adminController.aplicarAjuste);
+
+
 
     }
 }

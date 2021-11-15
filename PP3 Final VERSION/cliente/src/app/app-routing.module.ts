@@ -24,6 +24,7 @@ import { HabitacionesComponent } from './components/habitaciones/habitaciones.co
 import { AdminVerHabitacionesComponent } from './components/admin-ver-habitaciones/admin-ver-habitaciones.component';
 import { NosotrosComponent } from './components/nosotros/nosotros.component';
 import { ElhotelComponent } from './components/elhotel/elhotel.component';
+import { AdminModificarTarifasComponent } from './components/admin-modificar-tarifas/admin-modificar-tarifas.component';
 
 
 
@@ -138,6 +139,10 @@ const routes: Routes = [
   {
     path: 'admin/habitaciones',
     component: AdminVerHabitacionesComponent,
+  },
+  {
+    path: 'admin/ajustartarifas',
+    component: AdminModificarTarifasComponent,
   },
   {
     path: 'habitaciones',

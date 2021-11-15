@@ -1,5 +1,5 @@
 import { createPool } from 'mysql2/promise';
-import  bcryptjs from 'bcryptjs';
+import bcryptjs from 'bcryptjs';
 
 class UserModel {
 	private db: any;
@@ -29,14 +29,14 @@ class UserModel {
 
 	// - - encriptación de password
 	// encriptPass = async(password: string): Promise<string> => {
-    //     const salt = await bcryptjs.genSalt(10);
-    //     return await bcryptjs.hash(password, salt);
-    // }
+	//     const salt = await bcryptjs.genSalt(10);
+	//     return await bcryptjs.hash(password, salt);
+	// }
 
-	
+
 	// validarPassword = async function (password: string, passwordHash: string): Promise<boolean> {		
-    //     return await bcryptjs.compare(password, passwordHash);
-    // }
+	//     return await bcryptjs.compare(password, passwordHash);
+	// }
 
 	// -- Fin Encriptación
 
@@ -151,77 +151,91 @@ class UserModel {
 		return habitaciones[0];
 	}
 
-	async datosReserva(id:string){
+	async datosReserva(id: string) {
 		console.log(id);
 		const reservaDato = await this.db.query('SELECT * FROM reservas WHERE idReserva = ?', [id]);
 		return reservaDato[0][0];
 	}
 
-	
-	async reservasPendientes(){
+
+	async reservasPendientes() {
 		const reservasPendientes = await this.db.query('select r.idReserva,p.nombre, p.apellido,r.checkIn as Ingreso,r.checkOut as Egreso,r.precioTotal as "Precio_Final",r.habitacion_id, e.descripcion from reservas r inner join estado e on e.idEstado = r.estado_id inner join persona p on p.idPersona = r.persona_id where checkIn = curdate() and estado_id = 4');
 		return reservasPendientes[0];
 	}
 
-	async verificacion(id: string){
+	async verificacion(id: string) {
 		const verificacion = await this.db.query('update reservas set estado_id = 2 where idreserva = ?', [id]);
 		return verificacion[0];
 	}
 
-	async actualizarEstado(id: string){
+	async actualizarEstado(id: string) {
 		const actualizarEstado = await this.db.query('update habitaciones h inner join reservas r on r.habitacion_id = h.idHabitacion set h.estado = r.estado_id, h.checkIn = r.checkIn, h.checkOut = r.checkOut where r.idReserva = ?;', [id]);
 		return actualizarEstado[0];
 	}
 
 
-	async reservasConfirmadas(){
+	async reservasConfirmadas() {
 		const reservasConfirmadas = await this.db.query('select r.idReserva,p.nombre, p.apellido,r.checkIn as Ingreso,r.checkOut as Egreso,r.precioTotal as "Precio_Final",r.habitacion_id, e.descripcion from reservas r inner join estado e on e.idEstado = r.estado_id inner join persona p on p.idPersona = r.persona_id where checkOut = curdate() and estado_id = 2');
 		return reservasConfirmadas[0];
 	}
 
-	async checkOut(id: string){
+	async checkOut(id: string) {
 		const checkOut = await this.db.query('update reservas set estado_id = 3 where idreserva = ?', [id]);
 		return checkOut[0];
 	}
 
-	async actualizarEstado_CO(id: string){
+	async actualizarEstado_CO(id: string) {
 		const actualizarEstado = await this.db.query('update habitaciones h inner join reservas r on r.habitacion_id = h.idHabitacion set h.estado = 1, h.checkIn = null, h.checkOut = null where r.idReserva = ?;', [id]);
 		return actualizarEstado[0];
 	}
-	async verHabitaciones(){
+	async verHabitaciones() {
 		const habitaciones = await this.db.query('select h.numeroHabitacion, c.descripcion, h.checkIn, h.checkOut, h.estado, e.descripcion as "desc",c.hotel_id from habitaciones h inner join categoria c on c.idCategoria = h.cat_id inner join estado e on e.idEstado = h.estado;');
 		return habitaciones[0];
 	}
 
-	async bloquearHabitacion(nroHab: string){
+	async bloquearHabitacion(nroHab: string) {
 		const habitaciones = await this.db.query('update habitaciones h set h.estado = 6 where h.numeroHabitacion = ?;', [nroHab]);
 		return habitaciones[0];
 	}
 
-	async habilitarHabitacion(nroHab: string){
+	async habilitarHabitacion(nroHab: string) {
 		const habitaciones = await this.db.query('update habitaciones h set h.estado = 1 where h.numeroHabitacion = ?;', [nroHab]);
 		return habitaciones[0];
 	}
 
-	async cambiarEstadoAlCancelar(nroHab: string){
+	async cambiarEstadoAlCancelar(nroHab: string) {
 		const habitaciones = await this.db.query('update habitaciones h set h.estado = 1, h.checkIn = null, h.checkOut = null where h.numeroHabitacion = ?;', [nroHab]);
 		return habitaciones[0];
 	}
 
-	async buscarIdReserva(nroHab: string, fechaI: string, fechaE: string){
+	async buscarIdReserva(nroHab: string, fechaI: string, fechaE: string) {
 		const reserva = await this.db.query('select idReserva from reservas r inner join habitaciones h on h.idHabitacion = r.habitacion_id where r.checkin = ? and r.checkout = ? and h.numeroHabitacion = ? and r.estado_id = 2;', [fechaI, fechaE, nroHab]);
-		console.log("ESTE ES EL VALOR RESERVA:"+ reserva); 
+		console.log("ESTE ES EL VALOR RESERVA:" + reserva);
 		return reserva[0][0];
 	}
 
-	async actualizarReservaxCancelacion(id: string){
-		console.log("METODO ACTUALIZAR ESTADO POR CANCELACION: " );
+	async actualizarReservaxCancelacion(id: string) {
+		console.log("METODO ACTUALIZAR ESTADO POR CANCELACION: ");
 		const reserva = await this.db.query('update reservas set estado_id = 3, checkOut = curdate() where idreserva = ?', [id]);
 		return reserva[0];
 	}
 
+	async listarTemporadas() {
+		const temporadas = (await this.db.query('SELECT idTemporada, descripcion FROM temporada'));
+		return temporadas[0];
+	}
 
-	
+	async listarCategorias() {
+		const temporadas = (await this.db.query('select distinct descripcion from categoria'));
+		return temporadas[0];
+	}
+
+	async aplicarAjuste(categoria: string, hotel: string, ajuste: number, temporada: string) {
+		console.log(categoria, hotel, temporada, ajuste)
+		const ajusteAplicado = await this.db.query('update tarifas t inner join categoria c on t.categoria_id = c.idCategoria  inner join hoteles h on c.hotel_id = h.idHotel inner join temporada temp on temp.idTemporada = t.temporada_id set t.precio = (t.precio + t.precio * ?)  where temp.descripcion = "?" and c.descripcion = "?" and h.descripcion = "?"', [ajuste, temporada, categoria, hotel]);
+		return ajusteAplicado[0];
+	}
+
 }
 
 const userModel: UserModel = new UserModel();

@@ -5,7 +5,17 @@ import { transporter } from '../config/mailer'
 //import bcrypt from "bcrypt";
 class UserController {
 
+	public async listarcategorias(req: Request, res: Response) {
+		const categorias = await userModel.listarCategorias();
+		console.log(categorias);
+		return res.json(categorias);
+	}
 
+	public async listartemporadas(req: Request, res: Response) {
+		const temporadas = await userModel.listarTemporadas();
+		console.log(temporadas);
+		return res.json(temporadas);
+	}
 
 	public async listarUsuario(req: Request, res: Response) {
 		console.log(req.params.id);

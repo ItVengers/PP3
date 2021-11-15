@@ -17,6 +17,20 @@ const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const mailer_1 = require("../config/mailer");
 //import bcrypt from "bcrypt";
 class UserController {
+    listarcategorias(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const categorias = yield userModel_1.default.listarCategorias();
+            console.log(categorias);
+            return res.json(categorias);
+        });
+    }
+    listartemporadas(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const temporadas = yield userModel_1.default.listarTemporadas();
+            console.log(temporadas);
+            return res.json(temporadas);
+        });
+    }
     listarUsuario(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req.params.id);

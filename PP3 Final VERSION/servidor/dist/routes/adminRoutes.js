@@ -31,6 +31,7 @@ class AdminRoutes {
         this.router.get("/habilitar/:nroHab", adminController_1.default.habilitarHabitacion);
         this.router.get("/cancelar/:reservaID", adminController_1.default.cancelarReservaAnticipadamente);
         this.router.post("/buscarReserva", adminController_1.default.buscarReserva);
+        this.router.post("/ajuste", adminController_1.default.aplicarAjuste);
     }
 }
 const adminRoutes = new AdminRoutes();

@@ -24,6 +24,8 @@ class UserRoutes {
         this.router.get('/listarhoteles', userController_1.default.listarhoteles);
         this.router.get('/buscarId/:desc', userController_1.default.buscarID);
         this.router.get('/buscarFecha/:fecha', userController_1.default.buscarFecha);
+        this.router.get('/listartemporadas', userController_1.default.listartemporadas);
+        this.router.get('/listarcategorias', userController_1.default.listarcategorias);
     }
 }
 //Exportamos el enrutador con 

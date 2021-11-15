@@ -246,6 +246,25 @@ class UserModel {
             return reserva[0];
         });
     }
+    listarTemporadas() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const temporadas = (yield this.db.query('SELECT idTemporada, descripcion FROM temporada'));
+            return temporadas[0];
+        });
+    }
+    listarCategorias() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const temporadas = (yield this.db.query('select distinct descripcion from categoria'));
+            return temporadas[0];
+        });
+    }
+    aplicarAjuste(categoria, hotel, ajuste, temporada) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(categoria, hotel, temporada, ajuste);
+            const ajusteAplicado = yield this.db.query('update tarifas t inner join categoria c on t.categoria_id = c.idCategoria  inner join hoteles h on c.hotel_id = h.idHotel inner join temporada temp on temp.idTemporada = t.temporada_id set t.precio = (t.precio + t.precio * ?)  where temp.descripcion = "?" and c.descripcion = "?" and h.descripcion = "?"', [ajuste, temporada, categoria, hotel]);
+            return ajusteAplicado[0];
+        });
+    }
 }
 const userModel = new UserModel();
 exports.default = userModel;

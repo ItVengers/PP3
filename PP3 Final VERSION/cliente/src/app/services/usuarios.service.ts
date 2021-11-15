@@ -99,6 +99,14 @@ export class UsuariosService {
     return this.http.get(`${this.API_URI}/listarhoteles`);
   }
 
+  listarTemporadas() {
+    return this.http.get(`${this.API_URI}/listartemporadas`);
+  }
+
+  listarCategorias() {
+    return this.http.get(`${this.API_URI}/listarcategorias`);
+  }
+
   buscarId(desc: string) {
     return this.http.get(`${this.API_URI}/buscarId/${desc}`);
   }
@@ -195,6 +203,10 @@ export class UsuariosService {
   cancelarReserva(reservaID: string){
     console.log(reservaID);
     return this.http.get(`${this.API_URI3}/cancelar/${reservaID}`);
+  }
+
+  aplicarAjuste(ajuste: any) {
+    return this.http.post(`${this.API_URI3}/ajuste`, ajuste);
   }
 
 

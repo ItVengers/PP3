@@ -1,1 +1,93 @@
-<p>admin-modificar-tarifas works!</p>
+<div class="table-responsive">
+  <div class="col-12">
+    <h1 align="center" style="color: chocolate;">Ajuste de Tarifas</h1>
+    <div id="first" class="col-sm-2">
+      <label id="label">Hotel/Lugar</label> <br>
+      <select (change)="selectChangeHandler($event)" id="label2" class="form-select form-select-sm" name="selector">
+        <option *ngFor="let hotel of hoteles">
+          {{hotel.descripcion}}
+        </option>
+      </select>
+    </div>
+    <div id="second" class="col-sm-2">
+      <label id="label">Descripcion</label> <br>
+      <select (change)="selectChangeHandler2($event)" id="label2" class="form-select form-select-sm" name="selector">
+        <option *ngFor="let temporada of temporadas">
+          {{temporada.descripcion}}
+        </option>
+      </select>
+    </div>
+  </div>
+  <br>
+  <div id="div" class="col-10">
+    <table class="table table-dark table-striped table-hover">
+      <thead class="thead-light">
+        <th>Descripcion</th>
+        <th>Ajuste</th>
+        <th>Acción</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cat of categorias, index as i">
+          <td>{{cat.descripcion}}</td>
+          <td>
+            <input type="number" name="ajuste" [(ngModel)]="ajuste[i]" placeholder="Ingrese el % (solo el valor)"
+              min="-100" max="100" class="form-control">
+          </td>
+          <td><button class="btn btn-small  btn-block btn-outline-success" (click)="ajustar(cat, i)">Aplicar
+              Modificacion</button> </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+
+  <!-- <table class="table table-hover table-dark" id="table">
+      <thead class="thead-dark">
+        <th>Numero de Reserva</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Fecha Ingreso</th>
+        <th>Fecha Egreso</th>
+        <th>Precio Final</th>
+        <th>Nro Habitacion</th>
+        <th>Estado</th>
+        <th>Validar</th>
+      </thead>
+      <tr *ngFor="let reservas of reservasPendientes">
+        <td style="font-weight: bold;">{{reservas.idReserva}}</td>
+        <td style="font-weight: bold;">{{reservas.nombre}}</td>
+        <td style="font-weight: bold;">{{reservas.apellido}}</td>
+        <td style="font-weight: bold;">{{reservas.Ingreso | date:'dd/MM/yyyy'}}</td>
+        <td style="font-weight: bold;">{{reservas.Egreso | date:'dd/MM/yyyy'}}</td>
+        <td style="font-weight: bold;">{{reservas.Precio_Final}}</td>
+        <td style="font-weight: bold;">{{reservas.habitacion_id}}</td>
+        <td style="font-weight: bold;">{{reservas.descripcion}}</td>
+        <td>
+          <a class="btn btn-outline-light btn-block" (click)=realizarCheckIn(reservas.idReserva)>Confirmar</a>
+        </td>
+      </tr>
+    </table> -->
+  <!-- <button class="btn btn-outline-warning" " id="a2">Volver</button> -->
+  <!-- <button class="btn-outline-success" (click)="goBack()" id="a2">Volver</button> -->
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

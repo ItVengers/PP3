@@ -14,6 +14,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const userModel_1 = __importDefault(require("../models/userModel"));
 class AdminController {
+    aplicarAjuste(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { categoria, hotel, ajuste, temporada } = req.body;
+            console.log(categoria, hotel, ajuste, temporada);
+            const ajusteAplicado = yield userModel_1.default.aplicarAjuste(categoria, hotel, ajuste, temporada);
+            console.log(ajusteAplicado);
+            return res.json({ message: "Se modifico satisfactoriamente el precio!" });
+        });
+    }
     buscarReserva(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log("METODO BUSCAR RESERVA:");

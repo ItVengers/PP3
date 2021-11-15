@@ -34,6 +34,7 @@ export class InicioComponent implements OnInit {
   checkIn: Date = new Date();
   checkOut: string = "";
   personas: number = 1;
+  selectedDay: string = 'Hotel Cordoba';
 
 
   ngOnInit(): void {
@@ -41,7 +42,6 @@ export class InicioComponent implements OnInit {
     console.log(this.hoteles);
   }
 
-  selectedDay: string = 'Hotel Sur Centro';
 
   //event handler for the select element's change event
   selectChangeHandler(event: any) {
@@ -87,22 +87,40 @@ export class InicioComponent implements OnInit {
 
   //checkIn: any, checkOut: any, personas: number
   enviarDatos() {
-    console.log(this.selectedDay);
+    console.log(this.selectedDay)
     let nro_hotel = 0;
+    // if (this.selectedDay == 'Hotel Cordoba') {
+    //   nro_hotel = 1
+    // } else {
+    //   if (this.selectedDay == 'Holiday Inn Cordoba') {
+    //     nro_hotel = 2
+    //   } else {
+    //     if (this.selectedDay == 'Howard Johnson La Cañada Hotel & Suites') {
+    //       nro_hotel = 3
+    //     }  else {
+    //       if (this.selectedDay == 'NH Córdoba Urbano') {
+    //         nro_hotel = 4
+    //     }
+    //   }
+    // }
+
     if (this.selectedDay == 'Hotel Cordoba') {
-      nro_hotel = 1
-    } else {
-      if (this.selectedDay == 'Holiday Inn Cordoba') {
-        nro_hotel = 2
-      } else {
-        if (this.selectedDay == 'Howard Johnson La Cañada Hotel & Suites') {
-          nro_hotel = 3
-        }  else {
-          if (this.selectedDay == 'NH Córdoba Urbano') {
-            nro_hotel = 4
-        }
-      } 
+      nro_hotel = 1;
     }
+    if (this.selectedDay == 'Holiday Inn Cordoba') {
+      nro_hotel = 2;
+    }
+    if (this.selectedDay == 'Howard Johnson La Cañada Hotel & Suites') {
+      nro_hotel = 3;
+    }
+    if (this.selectedDay == 'NH Córdoba Urbano') {
+      nro_hotel = 4;
+    }
+
+
+
+    console.log(this.selectedDay, nro_hotel);
+
 
     let checkIn = this.datePipe.transform(this.checkIn, 'yyyy-MM-dd');
     let checkOut = this.datePipe.transform(this.checkOut, 'yyyy-MM-dd');
@@ -121,6 +139,10 @@ export class InicioComponent implements OnInit {
     // console.log("TRUNQUEO: " + Math.trunc(Days));
 
     var estadia = Math.trunc(Days);
+
+    if (estadia == 0) {
+      estadia = 1;
+    }
 
     console.log(checkOut);
 
@@ -153,10 +175,10 @@ export class InicioComponent implements OnInit {
         severity: 'info',
         summary: 'Debe de iniciar sesion para realizar una busqueda de habitaciones!',
       });
-  }
+    }
   }
   // addSingle() {
   //   this.messageService.add({ severity: 'success', summary: 'Service Message', detail: 'Via MessageService' });
   // }
 }
-}
+

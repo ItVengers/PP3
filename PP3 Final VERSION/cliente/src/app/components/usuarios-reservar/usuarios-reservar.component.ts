@@ -26,7 +26,7 @@ export class UsuariosReservarComponent implements OnInit {
   };
 
   estado: number = 4;
-  idPersona: number = 4;
+  idPersona: any = localStorage.getItem('idPersona');
   fechaReserva: Date = new Date();
 
 

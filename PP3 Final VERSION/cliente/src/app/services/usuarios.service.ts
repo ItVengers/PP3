@@ -169,7 +169,7 @@ export class UsuariosService {
     return this.http.get(`${this.API_URI3}/confirmarreservas`);
   }
 
-  verificacionReserva(id:string) {
+  verificacionReserva(id: string) {
     return this.http.get(`${this.API_URI3}/verificacion/${id}`);
   }
 
@@ -177,30 +177,30 @@ export class UsuariosService {
     return this.http.get(`${this.API_URI3}/reservasconfirmadas`);
   }
 
-  verificacionCheckOut(id:string) {
+  verificacionCheckOut(id: string) {
     return this.http.get(`${this.API_URI3}/checkout/${id}`);
   }
 
-  vistaDeHabitaciones(){
-    return this.http.get(`${this.API_URI3}/verhabitaciones`);
+  vistaDeHabitaciones(hotel_id: any) {
+    return this.http.get(`${this.API_URI3}/verhabitaciones/${hotel_id}`);
   }
 
-  bloquearHabitacion(nroHab: number){
-    console.log(nroHab);
-    return this.http.get(`${this.API_URI3}/bloquear/${nroHab}`);
+  bloquearHabitacion(datos: any) {
+    console.log(datos);
+    return this.http.post(`${this.API_URI3}/bloquear`, datos);
   }
 
-  habilitarHabitacion(nroHab: number){
-    console.log(nroHab);
-    return this.http.get(`${this.API_URI3}/habilitar/${nroHab}`);
+  habilitarHabitacion(datos: any) {
+    console.log(datos);
+    return this.http.post(`${this.API_URI3}/habilitar`, datos);
   }
 
-  conseguirReserva(buscarReserva: any){
+  conseguirReserva(buscarReserva: any) {
     console.log(buscarReserva);
-    return this.http.post(`${this.API_URI3}/buscarReserva`, buscarReserva );
+    return this.http.post(`${this.API_URI3}/buscarReserva`, buscarReserva);
   }
 
-  cancelarReserva(reservaID: string){
+  cancelarReserva(reservaID: string) {
     console.log(reservaID);
     return this.http.get(`${this.API_URI3}/cancelar/${reservaID}`);
   }

@@ -17,25 +17,64 @@ export class AdminVerHabitacionesComponent implements OnInit {
 
   habitaciones: any = [];
   reservaID: any = 0;
-
+  datosBloquear = { nroHabitacion: "", nroHot: "" };
+  selectedHot: string = 'Hotel Cordoba';
+  hoteles: any = [];
+  nro_hotel = 1;
 
   ngOnInit(): void {
+    this.traerHoteles();
+    if (this.selectedHot == 'Hotel Cordoba') {
+      this.nro_hotel = 1;
+    }
+    if (this.selectedHot == 'Holiday Inn Cordoba') {
+      this.nro_hotel = 2;
+    }
+    if (this.selectedHot == 'Howard Johnson La Cañada Hotel & Suites') {
+      this.nro_hotel = 3;
+    }
+    if (this.selectedHot == 'NH Córdoba Urbano') {
+      this.nro_hotel = 4;
+    }
 
-    this.usuariosService.vistaDeHabitaciones().subscribe(
+    this.usuariosService.vistaDeHabitaciones(this.nro_hotel).subscribe(
       res => {
         this.habitaciones = res;
         console.log(res)
       },
       err => console.log(err)
     )
-
   }
 
-  cambiarEstado(id: number, nroHab: number, ingreso: string, egreso: string) {
+  selectChangeHandler(event: any) {
+    this.selectedHot = event.target.value;
+    this.ngOnInit();
+  }
+
+  traerHoteles() {
+    this.usuariosService.listarHoteles().subscribe(
+      (res) => {
+        this.hoteles = res;
+        console.log(this.hoteles);
+      },
+      (err) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: err.statusText,
+          detail: err.error.message,
+        });
+        console.log(err.error.message);
+      }
+    )
+  }
+
+  cambiarEstado(id: number, nroHab: number, ingreso: string, egreso: string, nroHotel: string) {
 
     switch (id) {
       case 1:
-        this.usuariosService.bloquearHabitacion(nroHab).subscribe(
+        this.datosBloquear.nroHabitacion = nroHab.toString();
+        this.datosBloquear.nroHot = nroHotel;
+        this.usuariosService.bloquearHabitacion(this.datosBloquear).subscribe(
           res => {
             this.habitaciones = res;
             console.log(res);
@@ -99,7 +138,10 @@ export class AdminVerHabitacionesComponent implements OnInit {
         // statement 2
         break;
       case 6:
-        this.usuariosService.habilitarHabitacion(nroHab).subscribe(
+
+        this.datosBloquear.nroHabitacion = nroHab.toString();
+        this.datosBloquear.nroHot = nroHotel;
+        this.usuariosService.habilitarHabitacion(this.datosBloquear).subscribe(
           res => {
             this.habitaciones = res;
             console.log(res);

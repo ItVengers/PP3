@@ -46,23 +46,25 @@ class AdminController {
     }
     habilitarHabitacion(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { nroHab } = req.params;
-            const habitaciones = yield userModel_1.default.habilitarHabitacion(nroHab);
+            const { nroHabitacion, nroHot } = req.body;
+            const habitaciones = yield userModel_1.default.habilitarHabitacion(nroHabitacion, nroHot);
             //console.log(habitaciones);
             return res.json(habitaciones);
         });
     }
     bloquearHabitacion(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { nroHab } = req.params;
-            const habitaciones = yield userModel_1.default.bloquearHabitacion(nroHab);
+            const { nroHabitacion, nroHot } = req.body;
+            // const {nroHab} = req.params;
+            const habitaciones = yield userModel_1.default.bloquearHabitacion(nroHabitacion, nroHot);
             //console.log(habitaciones);
             return res.json(habitaciones);
         });
     }
     verHabitaciones(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const habitaciones = yield userModel_1.default.verHabitaciones();
+            const { hotel_id } = req.params;
+            const habitaciones = yield userModel_1.default.verHabitaciones(hotel_id);
             //console.log(habitaciones);
             return res.json(habitaciones);
         });

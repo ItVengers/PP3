@@ -188,18 +188,18 @@ class UserModel {
 		const actualizarEstado = await this.db.query('update habitaciones h inner join reservas r on r.habitacion_id = h.idHabitacion set h.estado = 1, h.checkIn = null, h.checkOut = null where r.idReserva = ?;', [id]);
 		return actualizarEstado[0];
 	}
-	async verHabitaciones() {
-		const habitaciones = await this.db.query('select h.numeroHabitacion, c.descripcion, h.checkIn, h.checkOut, h.estado, e.descripcion as "desc",c.hotel_id from habitaciones h inner join categoria c on c.idCategoria = h.cat_id inner join estado e on e.idEstado = h.estado;');
+	async verHabitaciones(idHotel: any) {
+		const habitaciones = await this.db.query('select h.numeroHabitacion, c.descripcion, h.checkIn, h.checkOut, h.estado, e.descripcion as "desc",c.hotel_id from habitaciones h inner join categoria c on c.idCategoria = h.cat_id inner join estado e on e.idEstado = h.estado where c.hotel_id = ?;', [idHotel]);
 		return habitaciones[0];
 	}
 
-	async bloquearHabitacion(nroHab: string) {
-		const habitaciones = await this.db.query('update habitaciones h set h.estado = 6 where h.numeroHabitacion = ?;', [nroHab]);
+	async bloquearHabitacion(nroHab: string, nroHotel: string) {
+		const habitaciones = await this.db.query('update habitaciones h inner join categoria c on c.idcategoria = h.cat_id set h.estado = 6 where h.numeroHabitacion = ? and c.hotel_id = ?', [nroHab, nroHotel]);
 		return habitaciones[0];
 	}
 
-	async habilitarHabitacion(nroHab: string) {
-		const habitaciones = await this.db.query('update habitaciones h set h.estado = 1 where h.numeroHabitacion = ?;', [nroHab]);
+	async habilitarHabitacion(nroHab: string, nroHotel: string) {
+		const habitaciones = await this.db.query('update habitaciones h inner join categoria c on c.idcategoria = h.cat_id set h.estado = 1 where h.numeroHabitacion = ? and c.hotel_id = ?', [nroHab, nroHotel]);
 		return habitaciones[0];
 	}
 

@@ -208,21 +208,21 @@ class UserModel {
             return actualizarEstado[0];
         });
     }
-    verHabitaciones() {
+    verHabitaciones(idHotel) {
         return __awaiter(this, void 0, void 0, function* () {
-            const habitaciones = yield this.db.query('select h.numeroHabitacion, c.descripcion, h.checkIn, h.checkOut, h.estado, e.descripcion as "desc",c.hotel_id from habitaciones h inner join categoria c on c.idCategoria = h.cat_id inner join estado e on e.idEstado = h.estado;');
+            const habitaciones = yield this.db.query('select h.numeroHabitacion, c.descripcion, h.checkIn, h.checkOut, h.estado, e.descripcion as "desc",c.hotel_id from habitaciones h inner join categoria c on c.idCategoria = h.cat_id inner join estado e on e.idEstado = h.estado where c.hotel_id = ?;', [idHotel]);
             return habitaciones[0];
         });
     }
-    bloquearHabitacion(nroHab) {
+    bloquearHabitacion(nroHab, nroHotel) {
         return __awaiter(this, void 0, void 0, function* () {
-            const habitaciones = yield this.db.query('update habitaciones h set h.estado = 6 where h.numeroHabitacion = ?;', [nroHab]);
+            const habitaciones = yield this.db.query('update habitaciones h inner join categoria c on c.idcategoria = h.cat_id set h.estado = 6 where h.numeroHabitacion = ? and c.hotel_id = ?', [nroHab, nroHotel]);
             return habitaciones[0];
         });
     }
-    habilitarHabitacion(nroHab) {
+    habilitarHabitacion(nroHab, nroHotel) {
         return __awaiter(this, void 0, void 0, function* () {
-            const habitaciones = yield this.db.query('update habitaciones h set h.estado = 1 where h.numeroHabitacion = ?;', [nroHab]);
+            const habitaciones = yield this.db.query('update habitaciones h inner join categoria c on c.idcategoria = h.cat_id set h.estado = 1 where h.numeroHabitacion = ? and c.hotel_id = ?', [nroHab, nroHotel]);
             return habitaciones[0];
         });
     }

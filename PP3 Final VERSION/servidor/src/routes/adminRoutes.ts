@@ -35,11 +35,11 @@ class AdminRoutes {
 
         this.router.get("/checkout/:id", adminController.checkOut);
 
-        this.router.get("/verhabitaciones", adminController.verHabitaciones);
+        this.router.get("/verhabitaciones/:hotel_id", adminController.verHabitaciones);
 
-        this.router.get("/bloquear/:nroHab", adminController.bloquearHabitacion);
+        this.router.post("/bloquear", adminController.bloquearHabitacion);
 
-        this.router.get("/habilitar/:nroHab", adminController.habilitarHabitacion);
+        this.router.post("/habilitar", adminController.habilitarHabitacion);
 
         this.router.get("/cancelar/:reservaID", adminController.cancelarReservaAnticipadamente);
 

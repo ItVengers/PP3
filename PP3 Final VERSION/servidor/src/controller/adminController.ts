@@ -42,30 +42,25 @@ class AdminController {
         return res.json(actualizarEstadoReserva);
     }
 
-
-
-
-
     public async habilitarHabitacion(req: Request, res: Response) {
-
-        const {nroHab} = req.params;
-        const habitaciones = await userModel.habilitarHabitacion(nroHab);
+        const{nroHabitacion, nroHot} = req.body;
+        const habitaciones = await userModel.habilitarHabitacion(nroHabitacion, nroHot);
         //console.log(habitaciones);
         return res.json(habitaciones);
     }
 
 
     public async bloquearHabitacion(req: Request, res: Response) {
-
-        const {nroHab} = req.params;
-        const habitaciones = await userModel.bloquearHabitacion(nroHab);
+        const{nroHabitacion, nroHot} = req.body;
+        // const {nroHab} = req.params;
+        const habitaciones = await userModel.bloquearHabitacion(nroHabitacion, nroHot);
         //console.log(habitaciones);
         return res.json(habitaciones);
     }
 
     public async verHabitaciones(req: Request, res: Response) {
-
-        const habitaciones = await userModel.verHabitaciones();
+        const{hotel_id} = req.params;
+        const habitaciones = await userModel.verHabitaciones(hotel_id);
         //console.log(habitaciones);
         return res.json(habitaciones);
     }

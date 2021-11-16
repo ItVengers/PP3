@@ -120,8 +120,8 @@ export class UsuariosService {
   // ADMIN SERVICE -----------
   // -------------
 
-  reservasAdmin() {
-    return this.http.get(`${this.API_URI3}/reservas`);
+  reservasAdmin(id: any) {
+    return this.http.get(`${this.API_URI3}/reservas/${id}`);
   }
   usuariosAdmin() {
     return this.http.get(`${this.API_URI3}/usuarios`);

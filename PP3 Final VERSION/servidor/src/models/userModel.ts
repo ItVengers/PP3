@@ -131,8 +131,8 @@ class UserModel {
 	// ADMIN MODELS ----------------
 	//--------------
 
-	async listarReservas() {
-		const reservas = await this.db.query('SELECT * FROM reservas');
+	async listarReservas(id: string) {
+		const reservas = await this.db.query('SELECT idReserva, r.checkIn, r.checkOut, precioTotal, e.codigo AS "codigo", habitacion_id, c.hotel_id FROM reservas r inner join habitaciones h on h.idhabitacion = r.habitacion_id inner join categoria c on c.idCategoria = h.cat_id inner join estado e on e.idEstado = r.estado_id where c.hotel_id = ?;', [id]);
 		//console.log(usuarios[0]);
 		//devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
 		return reservas[0];

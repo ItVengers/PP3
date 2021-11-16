@@ -20,7 +20,6 @@
         <th>Ingreso</th>
         <th>Egreso</th>
         <th>Estado</th>
-        <th>ID del Hotel</th>
         <th>Validar</th>
       </thead>
       <tr *ngFor="let habitacion of habitaciones" [ngSwitch]="habitacion.estado">
@@ -29,7 +28,7 @@
         <td style="font-weight: bold;">{{habitacion.checkIn | date:'yyyy/MM/dd'}}</td>
         <td style="font-weight: bold;">{{habitacion.checkOut | date:'yyyy/MM/dd'}}</td>
         <td style="font-weight: bold;">{{habitacion.desc}}</td>
-        <td style="font-weight: bold;">{{habitacion.hotel_id}}</td>
+        <!-- <td style="font-weight: bold;">{{habitacion.hotel_id}}</td> -->
         <td>
           <a *ngSwitchCase="1" class="btn btn-outline-warning"
             (click)="cambiarEstado(habitacion.estado, habitacion.numeroHabitacion, habitacion.checkIn, habitacion.checkOut, habitacion.hotel_id)">Disponible</a>

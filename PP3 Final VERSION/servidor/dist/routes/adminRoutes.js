@@ -18,7 +18,7 @@ class AdminRoutes {
         this.router.post("/agregar", verifyToken_1.TokenValidation, adminController_1.default.agregar);
         this.router.post("/modificar", verifyToken_1.TokenValidation, adminController_1.default.modificar);
         // ADMIN FUNCIONES
-        this.router.get("/reservas", adminController_1.default.listarReservas);
+        this.router.get("/reservas/:id", adminController_1.default.listarReservas);
         this.router.get("/usuarios", adminController_1.default.listarUsuarios);
         this.router.get("/habitaciones", adminController_1.default.listarHabitaciones);
         this.router.get("/datosreservas/:idReserva", adminController_1.default.datosReservas);

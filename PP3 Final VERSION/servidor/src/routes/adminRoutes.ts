@@ -21,7 +21,7 @@ class AdminRoutes {
 
         // ADMIN FUNCIONES
 
-        this.router.get("/reservas", adminController.listarReservas);
+        this.router.get("/reservas/:id", adminController.listarReservas);
         this.router.get("/usuarios", adminController.listarUsuarios);
         this.router.get("/habitaciones", adminController.listarHabitaciones);
         

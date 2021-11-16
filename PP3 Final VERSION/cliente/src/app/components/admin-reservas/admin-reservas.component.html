@@ -1,17 +1,23 @@
-
-
-
-
 <br>
 <div class="row">
   <div class="col-12">
     <h1 align="center" style="color: chocolate;">Reservas</h1>
+
+    <div id="first" class="col-sm-2">
+      <label id="label">Hotel</label> <br>
+      <select (change)="selectChangeHandler($event)" id="label2" class="form-select form-select-sm" name="selector">
+        <option *ngFor="let hotel of hoteles">
+          {{hotel.descripcion}}
+        </option>
+      </select>
+    </div>
+    <br>
     <table class="table table-hover table-dark ">
       <thead class="thead-dark">
-        <th>ID</th>
+        <th>Nro de Reserva</th>
         <th>Check In</th>
         <th>Check Out</th>
-        <th>Fecha de reserva</th>
+        <th>Precio Final</th>
         <th>Estado</th>
       </thead>
       <tr *ngFor="let reservas of reserva">
@@ -24,18 +30,24 @@
         <td class="event">{{reservas.checkOut | date:'dd/MM/yyyy'}}
           <!-- <div class="date"></div> -->
         </td>
-        <td class="event" >{{reservas.fechaReserva | date:'dd/MM/yyyy'}}
+        <td class="event">{{reservas.precioTotal}}
           <!-- <div class="date"></div> -->
-          <td class="event">{{reservas.estado_id}}
-        </td>
-        <td [ngSwitch]="reservas.estado_id">
-          <ul *ngSwitchCase="'Aprobada'" id="aprob">{{reservas.estado_id}}</ul>
-          <ul *ngSwitchCase="'Pendiente'" id="pend">{{reservas.estado_id}}</ul>
-          <ul *ngSwitchCase="'Anulada'" id="anul">{{reservas.estado_id}}</ul>
+          <!-- <div class="date"></div> -->
+        <td [ngSwitch]="reservas.codigo">
+          <ul *ngSwitchCase="'NOD'" id="noDisp">{{reservas.codigo}}</ul>
+          <ul *ngSwitchCase="'FIN'" id="fin">{{reservas.codigo}}</ul>
+          <ul *ngSwitchCase="'PEN'" id="pend">{{reservas.codigo}}</ul>
+          <ul *ngSwitchCase="'CAN'" id="canc">{{reservas.codigo}}</ul>
           <!-- {{reservas.estado}} -->
         </td>
       </tr>
     </table>
-    <div align="center" class="flex"><button class="btn btn-outline-warning" (click)="goBack()" id="a2">Volver</button></div>>
+    <div align="center" class="flex"><button class="btn btn-outline-warning" (click)="goBack()" id="a2">Volver</button>
+    </div>>
   </div>
 </div>
+<br>
+<br>
+<br>
+<br>
+<br>

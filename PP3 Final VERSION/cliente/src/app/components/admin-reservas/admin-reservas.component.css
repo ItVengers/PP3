@@ -1,35 +1,53 @@
 /* .main {
     margin-left: 180px; /* Same as the width of the sidenav */
-   /* font-size: 28px; /* Increased text to enable scrolling */
-   /* padding: 0px 10px;
+/* font-size: 28px; /* Increased text to enable scrolling */
+/* padding: 0px 10px;
   } */
-#a{
-  background-color:rgba(0, 0, 0, 0);
+#a {
+  background-color: rgba(0, 0, 0, 0);
   text-decoration: none;
   font-weight: bold;
 }
 
-#aprob
-{
+#disp {
+  background-color: transparent;
+  font-weight: bold;
   color: green;
-  background-color: transparent;
-  font-weight: bold;
 }
 
-#pend
-{
+#noDisp {
   background-color: transparent;
   font-weight: bold;
-  color: orange;
+  color: yellow;
 }
 
-#anul
-{
+#fin {
   background-color: transparent;
   font-weight: bold;
   color: red;
 }
 
-#a2{
+#pend {
+  background-color: transparent;
+  font-weight: bold;
+  color: orange;
+}
+
+#canc {
+  background-color: transparent;
+  font-weight: bold;
+  color: white;
+}
+
+#a2 {
   margin-left: 4mm;
+}
+
+#first {
+  float: left;
+}
+
+#label {
+  font-weight: bold;
+  color: white;
 }

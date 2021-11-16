@@ -163,7 +163,8 @@ class AdminController {
     }
 
     public async listarReservas(req: Request, res: Response) {
-        const result = await userModel.listarReservas();
+        const{id} = req.params;
+        const result = await userModel.listarReservas(id);
         console.log(result);
         return res.json(result);
     }

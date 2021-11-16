@@ -4,6 +4,7 @@ import { UsuariosService } from 'src/app/services/usuarios.service';
 import * as dayjs from 'dayjs';
 import { Router, NavigationExtras } from '@angular/router';
 import { Location } from '@angular/common';
+import { MessageService } from 'primeng/api';
 
 
 
@@ -15,20 +16,76 @@ import { Location } from '@angular/common';
 
 export class AdminReservasComponent implements OnInit {
   reserva: any = [];
+  selectedHot: string = 'Hotel Cordoba';
+  hoteles: any = [];
+  nro_hotel = 0;
 
   // dayjs(fecha)
   // revelar:boolean = true;
 
-  constructor(private usuariosService: UsuariosService, private router: Router, private location: Location) { }
+  constructor(private usuariosService: UsuariosService, private router: Router, private messageService: MessageService, private location: Location) { }
 
   ngOnInit(): void {
-    this.usuariosService.reservasAdmin().subscribe(
+
+    if (this.nro_hotel == 0) {
+      this.traerHoteles();
+      if (this.selectedHot == 'Hotel Cordoba') {
+        this.nro_hotel = 1;
+      }
+      if (this.selectedHot == 'Holiday Inn Cordoba') {
+        this.nro_hotel = 2;
+      }
+      if (this.selectedHot == 'Howard Johnson La Cañada Hotel & Suites') {
+        this.nro_hotel = 3;
+      }
+      if (this.selectedHot == 'NH Córdoba Urbano') {
+        this.nro_hotel = 4;
+      }
+    }
+    else {
+      if (this.selectedHot == 'Hotel Cordoba') {
+        this.nro_hotel = 1;
+      }
+      if (this.selectedHot == 'Holiday Inn Cordoba') {
+        this.nro_hotel = 2;
+      }
+      if (this.selectedHot == 'Howard Johnson La Cañada Hotel & Suites') {
+        this.nro_hotel = 3;
+      }
+      if (this.selectedHot == 'NH Córdoba Urbano') {
+        this.nro_hotel = 4;
+      }
+    }
+
+    this.usuariosService.reservasAdmin(this.nro_hotel).subscribe(
       res => {
         this.reserva = res;
         console.log(res)
       },
       err => console.log(err)
 
+    )
+  }
+
+  selectChangeHandler(event: any) {
+    this.selectedHot = event.target.value;
+    this.ngOnInit();
+  }
+
+  traerHoteles() {
+    this.usuariosService.listarHoteles().subscribe(
+      (res) => {
+        this.hoteles = res;
+        console.log(this.hoteles);
+      },
+      (err) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: err.statusText,
+          detail: err.error.message,
+        });
+        console.log(err.error.message);
+      }
     )
   }
 
@@ -53,7 +110,7 @@ export class AdminReservasComponent implements OnInit {
           }
         }
         console.log(navigationExtras);
-        this.router.navigate(['../datosreserva/'+ result.idReserva], navigationExtras);
+        this.router.navigate(['../datosreserva/' + result.idReserva], navigationExtras);
       },
       err => console.log(err)
 
@@ -61,7 +118,7 @@ export class AdminReservasComponent implements OnInit {
 
 
   }
-  goBack(){
+  goBack() {
     this.location.back();
   }
 }

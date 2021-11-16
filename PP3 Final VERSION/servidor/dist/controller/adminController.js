@@ -162,7 +162,8 @@ class AdminController {
     }
     listarReservas(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const result = yield userModel_1.default.listarReservas();
+            const { id } = req.params;
+            const result = yield userModel_1.default.listarReservas(id);
             console.log(result);
             return res.json(result);
         });

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import { MessageService } from 'primeng/api';
-import { concat } from 'rxjs';
+import { Location } from '@angular/common';
+
 
 
 
@@ -13,7 +14,7 @@ import { concat } from 'rxjs';
 })
 export class AdminModificarTarifasComponent implements OnInit {
 
-  constructor(private usuariosService: UsuariosService, private messageService: MessageService) { }
+  constructor(private usuariosService: UsuariosService, private messageService: MessageService, private location: Location) { }
 
   ngOnInit(): void {
     this.traerHoteles();
@@ -140,25 +141,50 @@ export class AdminModificarTarifasComponent implements OnInit {
     console.log(this.datos);
 
 
-    this.usuariosService.aplicarAjuste(this.datos).subscribe(
-      (res) => {
-        this.ngOnInit();
-        this.ajuste = [];
-        this.messageService.add({
-          severity: 'success',
-          summary: 'Modificado Satisfactoriamente',
-        });
 
-      },
-      (err) => {
+    if (this.ajuste[i] != null) {
+      if (this.ajuste[i] >= -50) {
+        if (this.ajuste[i] <= 100) {
+          this.usuariosService.aplicarAjuste(this.datos).subscribe(
+            (res) => {
+              this.ngOnInit();
+              this.ajuste = [];
+              this.messageService.add({
+                severity: 'success',
+                summary: 'Modificado Satisfactoriamente',
+              });
+
+            },
+            (err) => {
+              this.messageService.add({
+                severity: 'error',
+                summary: err.statusText,
+                detail: err.error.message,
+              });
+              console.log(err.error.message);
+            }
+          )
+        } else {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'ERROR! No puede ingresar valores mayores a 100',
+          });
+        }
+      } else {
         this.messageService.add({
           severity: 'error',
-          summary: err.statusText,
-          detail: err.error.message,
+          summary: 'ERROR! No puede ingresar valores menores a -50',
         });
-        console.log(err.error.message);
       }
-    )
-
+    } else {
+      this.messageService.add({
+        severity: 'error',
+        summary: 'ERROR! No puede dejar el campo vacio',
+      });
+    }
   }
+  goBack() {
+    this.location.back();
+  }
+
 }

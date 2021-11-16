@@ -35,7 +35,7 @@
             (click)="cambiarEstado(habitacion.estado, habitacion.numeroHabitacion, habitacion.checkIn, habitacion.checkOut, habitacion.hotel_id)">Disponible</a>
 
           <a *ngSwitchCase="2" class="btn btn-outline-danger"
-            (click)="cambiarEstado(habitacion.estado, habitacion.numeroHabitacion, habitacion.checkIn, habitacion.checkOu, habitacion.hotel_id)">Cancelar</a>
+            (click)="cambiarEstado(habitacion.estado, habitacion.numeroHabitacion, habitacion.checkIn, habitacion.checkOut, habitacion.hotel_id)">Cancelar</a>
 
           <a *ngSwitchCase="6" class="btn btn-outline-info"
             (click)="cambiarEstado(habitacion.estado, habitacion.numeroHabitacion, habitacion.checkIn, habitacion.checkOut, habitacion.hotel_id)">No Disponible</a>
@@ -45,7 +45,7 @@
         </td>
         <!-- (click)=realizarCheckIn(reservas.idReserva) -->
     </table>
-    <button class="btn btn-outline-warning" (click)="goBack()" id="a2">Volver</button>
+    <div align="center" class="flex"><button class="btn btn-outline-warning" (click)="goBack()" id="a2">Volver</button></div>>
   </div>
 </div>
 <br>

@@ -2,21 +2,35 @@
 
 <div class="row">
 
-  <div class="card-columns" style="width: 115rem;">
+  <div class="container marketing">
     <tbody *ngIf="habitaciones.length > 0">
       <tr *ngFor=" let habitacion of habitaciones">
-        <img class="card-img-top" src="../assets/img/parejas2.jpg" alt="Card image cap">
-        <div class="card-body">
-          <h5 id="titulo" class="card-title">Habitación {{habitacion.idHabitacion}} - {{habitacion.descripcion}}
-          </h5>
-          <p id="titulo" class="card-text">Este es un texto de ejemplo donde iria el texto describiendo los
-            servicios de la habitación. Precio por noche: $<b>{{habitacion.precio}}</b></p>
-          <p id="titulo" class="card-text"> Estadia Total: <b>{{datos.estadia}}</b></p>
-          <p id="titulo" class="card-text">Precio Total: $<b>{{datos.estadia * habitacion.precio}}</b></p>
+        <hr class="featurette-divider">
 
-          <a (click)=enviarDatosReserva(habitacion) routerLink="../reservar/{{habitacion.idHabitacion}}"
-            class="btn btn-primary">Reservar</a>
-
+        <div class="row featurette" style="background-color:blanchedalmond;">
+          <div class="col-md-7">
+            <h2 class="featurette-heading">Habitación {{habitacion.idHabitacion}} - {{habitacion.descripcion}}
+            </h2>
+            <h5 class="lead">Artículos de tocador gratuitos Cocina Caja fuerte Baño adicional
+              Bidé Lavarropas Servicio de streaming (ej.: Netflix) Baño Sofá Bañera o ducha
+              Piso de madera o parquet Toallas Ropa de cama Enchufe cerca de la cama
+              Productos de limpieza Piso de baldosa/mármol Silla para bebés
+              Zona de estar Entrada privada TV Heladera Equipo de planchado
+              Canales vía satélite Tetera/Cafetera Plancha para ropa Canales de pago
+              Habitaciones comunicadas disponibles Microondas
+              Calefacción Secador de pelo Utensilios de cocina
+              Kitchenette Ventilador Vestidor Toallas/sábanas (cargos extra) </h5>
+            <h5><b>Precio por noche: ${{habitacion.precio}}</b></h5>
+            <h4 id="titulo" class="card-text" style="color: black;"> Estadia Total: <b>{{datos.estadia}}</b></h4>
+            <h4 id="titulo" class="card-text" style="color: black;">Precio Total: $<b>{{datos.estadia *
+                habitacion.precio}}</b></h4>
+            <a (click)=enviarDatosReserva(habitacion) routerLink="../reservar/{{habitacion.idHabitacion}}"
+              class="btn btn-primary">Reservar</a>
+          </div>
+          <div class="col-md-5">
+            <img class="bd-placeholder-img" width="500" height="420" src="../assets/img/parejas2.jpg" role="img"
+              aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+          </div>
         </div>
   </div>
 </div>
@@ -28,24 +42,33 @@
 <footer class="container py-5">
   <div class="row">
     <div class="col-12 col-md">
-      <svg style="color:ivory;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mb-2" role="img" viewBox="0 0 24 24"><title>Product</title><circle cx="12" cy="12" r="10"></circle><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"></path></svg>
-      <small class="d-block mb-3 text-muted" >© 2017–2021</small>
+      <svg style="color:ivory;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+        stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mb-2"
+        role="img" viewBox="0 0 24 24">
+        <title>Product</title>
+        <circle cx="12" cy="12" r="10"></circle>
+        <path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94">
+        </path>
+      </svg>
+      <small class="d-block mb-3 text-muted">© 2017–2021</small>
     </div>
     <div class="col-6 col-md">
       <h5 style="color:chocolate;">Páginas</h5>
       <ul class="list-unstyled text-small">
-        <li><a  style="color: antiquewhite;" class="link-secondary" routerLink="../">Inicio</a></li>
-        <li><a  style="color: antiquewhite;" class="link-secondary" routerLink="....//habitaciones">Habitaciones</a></li>
-        <li><a  style="color: antiquewhite;" class="link-secondary" routerLink="../../nosotros">Nosotros</a></li>
-        <li><a  style="color: antiquewhite;" class="link-secondary" routerLink="../../elhotel">Los Hoteles</a></li>
-        <li><a  style="color: antiquewhite;" class="link-secondary" routerLink="../../contacto">Contacto</a></li>
+        <li><a style="color: antiquewhite;" class="link-secondary" routerLink="../">Inicio</a></li>
+        <li><a style="color: antiquewhite;" class="link-secondary" routerLink="....//habitaciones">Habitaciones</a></li>
+        <li><a style="color: antiquewhite;" class="link-secondary" routerLink="../../nosotros">Nosotros</a></li>
+        <li><a style="color: antiquewhite;" class="link-secondary" routerLink="../../elhotel">Los Hoteles</a></li>
+        <li><a style="color: antiquewhite;" class="link-secondary" routerLink="../../contacto">Contacto</a></li>
       </ul>
     </div>
     <div class="col-6 col-md">
       <h5 style="color:chocolate;">Buscar</h5>
       <ul class="list-unstyled text-small">
         <li><a style="color: antiquewhite;" class="link-secondary" routerLink="../">Otra habitación</a></li>
-        <li><a  style="color: antiquewhite;" class="link-secondary" href="https://api.whatsapp.com/send?phone=+541122554827&text=Quiero%20hacer%20una%20consulta">Consultas por WhatsApp</a></li>
+        <li><a style="color: antiquewhite;" class="link-secondary"
+            href="https://api.whatsapp.com/send?phone=+541122554827&text=Quiero%20hacer%20una%20consulta">Consultas por
+            WhatsApp</a></li>
       </ul>
     </div>
   </div>

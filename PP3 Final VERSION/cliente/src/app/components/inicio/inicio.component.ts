@@ -148,18 +148,25 @@ export class InicioComponent implements OnInit {
 
     if (localStorage.getItem('session') == '1') {
       if (checkOut != null) {
-        const navigationExtras: NavigationExtras = {
-          state: {
-            checkIn: checkIn,
-            checkOut: checkOut,
-            cantPersonas: this.personas,
-            hotel: nro_hotel,
-            fechaIngreso: fechaingreso,
-            estadia: estadia
+        if(estadia <= 45){
+          const navigationExtras: NavigationExtras = {
+            state: {
+              checkIn: checkIn,
+              checkOut: checkOut,
+              cantPersonas: this.personas,
+              hotel: nro_hotel,
+              fechaIngreso: fechaingreso,
+              estadia: estadia
+            }
           }
+          console.log(navigationExtras);
+          this.router.navigate(['../usuarios/listarhabitaciones'], navigationExtras);
+        }else{
+          this.messageService.add({
+            severity: 'error',
+            summary: 'No se permiten reservas de mas de 45 dias!',
+          });
         }
-        console.log(navigationExtras);
-        this.router.navigate(['../usuarios/listarhabitaciones'], navigationExtras);
       }
       else {
 

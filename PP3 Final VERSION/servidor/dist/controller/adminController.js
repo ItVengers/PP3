@@ -17,9 +17,11 @@ class AdminController {
     aplicarAjuste(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { categoria, hotel, ajuste, temporada } = req.body;
-            console.log(categoria, hotel, ajuste, temporada);
-            const ajusteAplicado = yield userModel_1.default.aplicarAjuste(categoria, hotel, ajuste, temporada);
-            console.log(ajusteAplicado);
+            const ID = yield userModel_1.default.aplicarAjuste(categoria, hotel, ajuste, temporada);
+            // const ID = await userModel.buscarIdTarifa(categoria, hotel, temporada);
+            // console.log(ID);
+            // let precio = ID + (ID * ajuste);
+            // console.log(precio);
             return res.json({ message: "Se modifico satisfactoriamente el precio!" });
         });
     }

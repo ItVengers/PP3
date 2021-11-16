@@ -204,6 +204,10 @@ export class UsuariosService {
     console.log(reservaID);
     return this.http.get(`${this.API_URI3}/cancelar/${reservaID}`);
   }
+  cancelarReservaAnticipadamente(reservaID: string) {
+    console.log(reservaID);
+    return this.http.get(`${this.API_URI}/cancelar/${reservaID}`);
+  }
 
   aplicarAjuste(ajuste: any) {
     return this.http.post(`${this.API_URI3}/ajuste`, ajuste);

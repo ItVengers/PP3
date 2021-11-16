@@ -1,23 +1,29 @@
-h4{
-    color: white;
+h4 {
+  color: white;
 }
 
-#disp{
-    color: green;
+#disp {
+  font-weight: bold;
+  color: green;
 }
 
-#noDisp{
-    color: yellow;
+#noDisp {
+  font-weight: bold;
+  color: yellow;
 }
 
-#fin{
-    color: red;
+#fin {
+  font-weight: bold;
+  color: red;
 }
 
-#pend{
-    color: orange;
+#pend {
+
+  font-weight: bold;
+  color: orange;
 }
 
-#canc{
-    color: blue;
+#canc {
+  font-weight: bold;
+  color: white;
 }

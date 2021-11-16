@@ -26,6 +26,7 @@ class UserRoutes {
         this.router.get('/buscarFecha/:fecha', userController_1.default.buscarFecha);
         this.router.get('/listartemporadas', userController_1.default.listartemporadas);
         this.router.get('/listarcategorias', userController_1.default.listarcategorias);
+        this.router.get("/cancelar/:reservaID", userController_1.default.cancelarReservaAnticipadamente);
     }
 }
 //Exportamos el enrutador con 

@@ -9,7 +9,7 @@ h4{
     margin: 10px;
   }
 
-  
+
 #title {
     text-align: center;
     font-family: times new roman;
@@ -24,32 +24,32 @@ h4{
     font-weight: normal;
     color: ivory;
   }
-  
+
   #textocol {
     text-align: center;
     font-weight: normal;
     color: lightgoldenrodyellow;
   }
-  
+
   #containerfiltro{
-  
+
     border-style:solid;
     border-color: wheat;
     margin-bottom: 1cm;
   }
-  
+
   #label{
     color: white;
     font-weight: bolder;
   }
-  
+
   #label2{
     color: white;
     font-weight: bolder;
     margin-bottom: 4mm;
   }
-  
-  
+
+
   #boton{
     width: 3cm;
     margin-top: 7mm;
@@ -58,4 +58,22 @@ h4{
   p{
     font-size: 2vw;
     color: antiquewhite;
+  }
+
+  #first {
+    float: left;
+  }
+
+  #second {
+    overflow: hidden;
+  }
+
+  #label3 {
+    font-weight: bold;
+    color: white;
+  }
+
+  #label4 {
+    font-weight: bold;
+    color: black;
   }

@@ -77,6 +77,23 @@ export class MisReservasComponent implements OnInit {
     )
   }
 
+  cancelarReserva(id: string){
+
+    this.usuariosService.cancelarReservaAnticipadamente(id).subscribe(
+      res => {
+        this.reserva = res;
+        console.log(res);
+        this.ngOnInit();
+
+        this.messageService.add({
+          severity: 'success',
+          summary: 'RESERVA CANCELADA',
+        });
+      },
+      err => console.log(err)
+    )
+  }
+
   goBack() {
     this.location.back();
   }

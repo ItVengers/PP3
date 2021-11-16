@@ -246,6 +246,13 @@ class UserModel {
             return reserva[0];
         });
     }
+    actualizarReservaxCancelacion_Usuario(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log("METODO ACTUALIZAR ESTADO POR CANCELACION: ");
+            const reserva = yield this.db.query('update reservas set estado_id = 5, checkOut = curdate() where idreserva = ?', [id]);
+            return reserva[0];
+        });
+    }
     listarTemporadas() {
         return __awaiter(this, void 0, void 0, function* () {
             const temporadas = (yield this.db.query('SELECT idTemporada, descripcion FROM temporada'));
@@ -260,8 +267,9 @@ class UserModel {
     }
     aplicarAjuste(categoria, hotel, ajuste, temporada) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(categoria, hotel, temporada, ajuste);
-            const ajusteAplicado = yield this.db.query('update tarifas t inner join categoria c on t.categoria_id = c.idCategoria  inner join hoteles h on c.hotel_id = h.idHotel inner join temporada temp on temp.idTemporada = t.temporada_id set t.precio = (t.precio + t.precio * ?)  where temp.descripcion = "?" and c.descripcion = "?" and h.descripcion = "?"', [ajuste, temporada, categoria, hotel]);
+            console.log("MODEL: " + categoria, hotel, temporada, ajuste);
+            const ajusteAplicado = (yield this.db.query('update tarifas t inner join categoria c on t.categoria_id = c.idCategoria  inner join hoteles h on c.hotel_id = h.idHotel inner join temporada temp on temp.idTemporada = t.temporada_id set t.precio = (t.precio + t.precio * ?)  where temp.descripcion = ? and c.descripcion = ? and h.descripcion = ?', [ajuste, temporada, categoria, hotel]))[0].affectedRows;
+            console.log(ajusteAplicado);
             return ajusteAplicado[0];
         });
     }

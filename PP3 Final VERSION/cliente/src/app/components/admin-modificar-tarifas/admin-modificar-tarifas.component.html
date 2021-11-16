@@ -1,8 +1,9 @@
+<p-toast></p-toast>
 <div class="table-responsive">
   <div class="col-12">
     <h1 align="center" style="color: chocolate;">Ajuste de Tarifas</h1>
     <div id="first" class="col-sm-2">
-      <label id="label">Hotel/Lugar</label> <br>
+      <label id="label">Hotel</label> <br>
       <select (change)="selectChangeHandler($event)" id="label2" class="form-select form-select-sm" name="selector">
         <option *ngFor="let hotel of hoteles">
           {{hotel.descripcion}}
@@ -10,7 +11,7 @@
       </select>
     </div>
     <div id="second" class="col-sm-2">
-      <label id="label">Descripcion</label> <br>
+      <label id="label">Temporada</label> <br>
       <select (change)="selectChangeHandler2($event)" id="label2" class="form-select form-select-sm" name="selector">
         <option *ngFor="let temporada of temporadas">
           {{temporada.descripcion}}
@@ -21,17 +22,17 @@
   <br>
   <div id="div" class="col-10">
     <table class="table table-dark table-striped table-hover">
-      <thead class="thead-light">
-        <th>Descripcion</th>
+      <thead align="center" class="thead-light">
+        <th>Categoria</th>
         <th>Ajuste</th>
-        <th>Acción</th>
+        <th></th>
       </thead>
       <tbody>
         <tr *ngFor="let cat of categorias, index as i">
-          <td>{{cat.descripcion}}</td>
+          <td align="center">{{cat.descripcion}}</td>
           <td>
             <input type="number" name="ajuste" [(ngModel)]="ajuste[i]" placeholder="Ingrese el % (solo el valor)"
-              min="-100" max="100" class="form-control">
+              min="-50" max="100" class="form-control">
           </td>
           <td><button class="btn btn-small  btn-block btn-outline-success" (click)="ajustar(cat, i)">Aplicar
               Modificacion</button> </td>

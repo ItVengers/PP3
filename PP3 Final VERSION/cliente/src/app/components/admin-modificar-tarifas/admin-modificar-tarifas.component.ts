@@ -25,7 +25,7 @@ export class AdminModificarTarifasComponent implements OnInit {
   categorias: any = [];
   datos = { categoria: "", hotel: "", temporada: "", ajuste: "" };
   ajuste: any = [];
-  selectedHot: string = 'Hotel Sur Centro';
+  selectedHot: string = 'Hotel Cordoba';
   selectedTemp: string = 'Baja';
 
 
@@ -108,22 +108,24 @@ export class AdminModificarTarifasComponent implements OnInit {
       valor = "1";
       console.log(valor);
     }
-    if (this.ajuste[i] < -100 && this.ajuste[i] >= -10) {
+
+
+    if (this.ajuste[i] >= -50 && this.ajuste[i] <= -10) {
       let abs: number = Math.abs(this.ajuste[i]);
+      console.log(abs);
       valor = "-0.";
       valor = valor.concat(abs.toString());
       console.log(valor);
     }
-    if (this.ajuste[i] < -10 && this.ajuste[i] >= -1) {
+    if (this.ajuste[i] > -10 && this.ajuste[i] <= -1) {
       let abs: number = Math.abs(this.ajuste[i]);
       valor = "-0.0";
       valor = valor.concat(abs.toString());
       console.log(valor);
     }
-    if (this.ajuste[i] == -100) {
-      valor = "-1";
-      console.log(valor);
-    }
+
+
+
 
     if (this.ajuste[i] < -100 || this.ajuste[i] > 100) {
       valor = "0";
@@ -135,14 +137,18 @@ export class AdminModificarTarifasComponent implements OnInit {
     this.datos.temporada = this.selectedTemp;
     this.datos.ajuste = valor;
 
-    console.log(this.datos.temporada);
+    console.log(this.datos);
 
 
     this.usuariosService.aplicarAjuste(this.datos).subscribe(
       (res) => {
-        window.alert(res);
         this.ngOnInit();
         this.ajuste = [];
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Modificado Satisfactoriamente',
+        });
+
       },
       (err) => {
         this.messageService.add({

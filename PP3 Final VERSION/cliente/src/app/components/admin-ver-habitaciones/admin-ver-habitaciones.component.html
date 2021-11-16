@@ -4,7 +4,7 @@
     <h1 align="center" style="color: chocolate;">Listado de Habitaciones</h1>
 
     <div id="first" class="col-sm-2">
-      <label id="label">Hotel/Lugar</label> <br>
+      <label id="label">Hotel</label> <br>
       <select (change)="selectChangeHandler($event)" id="label2" class="form-select form-select-sm" name="selector">
         <option *ngFor="let hotel of hoteles">
           {{hotel.descripcion}}
@@ -32,13 +32,13 @@
         <td style="font-weight: bold;">{{habitacion.hotel_id}}</td>
         <td>
           <a *ngSwitchCase="1" class="btn btn-outline-warning"
-            (click)="cambiarEstado(habitacion.estado, habitacion.numeroHabitacion, habitacion.checkIn, habitacion.checkOut, habitacion.hotel_id)">Bloquear</a>
+            (click)="cambiarEstado(habitacion.estado, habitacion.numeroHabitacion, habitacion.checkIn, habitacion.checkOut, habitacion.hotel_id)">Disponible</a>
 
           <a *ngSwitchCase="2" class="btn btn-outline-danger"
             (click)="cambiarEstado(habitacion.estado, habitacion.numeroHabitacion, habitacion.checkIn, habitacion.checkOu, habitacion.hotel_id)">Cancelar</a>
 
           <a *ngSwitchCase="6" class="btn btn-outline-info"
-            (click)="cambiarEstado(habitacion.estado, habitacion.numeroHabitacion, habitacion.checkIn, habitacion.checkOut, habitacion.hotel_id)">Desbloquear</a>
+            (click)="cambiarEstado(habitacion.estado, habitacion.numeroHabitacion, habitacion.checkIn, habitacion.checkOut, habitacion.hotel_id)">No Disponible</a>
 
           <!-- <a class="btn btn-outline-light btn-block" >Confirmar</a> -->
 

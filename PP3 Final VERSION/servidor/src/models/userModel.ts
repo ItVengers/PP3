@@ -220,6 +220,12 @@ class UserModel {
 		return reserva[0];
 	}
 
+	async actualizarReservaxCancelacion_Usuario(id: string) {
+		console.log("METODO ACTUALIZAR ESTADO POR CANCELACION: ");
+		const reserva = await this.db.query('update reservas set estado_id = 5, checkOut = curdate() where idreserva = ?', [id]);
+		return reserva[0];
+	}
+
 	async listarTemporadas() {
 		const temporadas = (await this.db.query('SELECT idTemporada, descripcion FROM temporada'));
 		return temporadas[0];
@@ -230,11 +236,18 @@ class UserModel {
 		return temporadas[0];
 	}
 
-	async aplicarAjuste(categoria: string, hotel: string, ajuste: number, temporada: string) {
-		console.log(categoria, hotel, temporada, ajuste)
-		const ajusteAplicado = await this.db.query('update tarifas t inner join categoria c on t.categoria_id = c.idCategoria  inner join hoteles h on c.hotel_id = h.idHotel inner join temporada temp on temp.idTemporada = t.temporada_id set t.precio = (t.precio + t.precio * ?)  where temp.descripcion = "?" and c.descripcion = "?" and h.descripcion = "?"', [ajuste, temporada, categoria, hotel]);
+	async aplicarAjuste(categoria: string, hotel: string, ajuste: string, temporada: string) {
+		console.log("MODEL: " + categoria, hotel, temporada, ajuste)
+		const ajusteAplicado = (await this.db.query('update tarifas t inner join categoria c on t.categoria_id = c.idCategoria  inner join hoteles h on c.hotel_id = h.idHotel inner join temporada temp on temp.idTemporada = t.temporada_id set t.precio = (t.precio + t.precio * ?)  where temp.descripcion = ? and c.descripcion = ? and h.descripcion = ?', [ajuste, temporada, categoria, hotel]))[0].affectedRows;
+		console.log(ajusteAplicado);
 		return ajusteAplicado[0];
 	}
+
+	// async buscarIdTarifa(categoria: string, hotel: string,temporada: string) {
+	// 	console.log(categoria, hotel, temporada)
+	// 	const ID = await this.db.query('select precio from tarifas t inner join temporada tem on tem.idTemporada = t.temporada_id inner join categoria c on c.idCategoria = t.categoria_id where tem.descripcion = ? and c.descripcion = ? and c.hotel_id = ?', [temporada, categoria, hotel]);
+	// 	return ID[0];
+	// }
 
 }
 

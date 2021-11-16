@@ -6,19 +6,24 @@ class AdminController {
 
     public async aplicarAjuste(req: Request, res: Response) {
 
-        const {categoria, hotel, ajuste, temporada} = req.body;
+        const { categoria, hotel, ajuste, temporada } = req.body;
 
-        console.log(categoria, hotel, ajuste, temporada);
+        const ID = await userModel.aplicarAjuste(categoria, hotel, ajuste, temporada);
+        
+        // const ID = await userModel.buscarIdTarifa(categoria, hotel, temporada);
+        // console.log(ID);
 
-        const ajusteAplicado = await userModel.aplicarAjuste(categoria, hotel, ajuste, temporada);
-        console.log(ajusteAplicado);
+        // let precio = ID + (ID * ajuste);
+
+        // console.log(precio);
+
         return res.json({ message: "Se modifico satisfactoriamente el precio!" });
     }
 
     public async buscarReserva(req: Request, res: Response) {
         console.log("METODO BUSCAR RESERVA:");
 
-        const {habNo, fechain, fechaE} = req.body;
+        const { habNo, fechain, fechaE } = req.body;
 
         console.log(habNo, fechain, fechaE);
 
@@ -33,7 +38,7 @@ class AdminController {
     }
 
     public async cancelarReservaAnticipadamente(req: Request, res: Response) {
-        const {reservaID} = req.params;
+        const { reservaID } = req.params;
         console.log(reservaID);
 
         const actualizarEstadoReserva = await userModel.actualizarReservaxCancelacion(reservaID);
@@ -43,7 +48,7 @@ class AdminController {
     }
 
     public async habilitarHabitacion(req: Request, res: Response) {
-        const{nroHabitacion, nroHot} = req.body;
+        const { nroHabitacion, nroHot } = req.body;
         const habitaciones = await userModel.habilitarHabitacion(nroHabitacion, nroHot);
         //console.log(habitaciones);
         return res.json(habitaciones);
@@ -51,7 +56,7 @@ class AdminController {
 
 
     public async bloquearHabitacion(req: Request, res: Response) {
-        const{nroHabitacion, nroHot} = req.body;
+        const { nroHabitacion, nroHot } = req.body;
         // const {nroHab} = req.params;
         const habitaciones = await userModel.bloquearHabitacion(nroHabitacion, nroHot);
         //console.log(habitaciones);
@@ -59,7 +64,7 @@ class AdminController {
     }
 
     public async verHabitaciones(req: Request, res: Response) {
-        const{hotel_id} = req.params;
+        const { hotel_id } = req.params;
         const habitaciones = await userModel.verHabitaciones(hotel_id);
         //console.log(habitaciones);
         return res.json(habitaciones);

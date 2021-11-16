@@ -5,6 +5,16 @@ import { transporter } from '../config/mailer'
 //import bcrypt from "bcrypt";
 class UserController {
 
+	public async cancelarReservaAnticipadamente(req: Request, res: Response) {
+        const { reservaID } = req.params;
+        console.log(reservaID);
+
+        const actualizarEstadoReserva = await userModel.actualizarReservaxCancelacion_Usuario(reservaID);
+
+        //console.log(actualizarEstadoReserva);
+        return res.json(actualizarEstadoReserva);
+    }
+
 	public async listarcategorias(req: Request, res: Response) {
 		const categorias = await userModel.listarCategorias();
 		console.log(categorias);
@@ -288,6 +298,9 @@ class UserController {
 			res.status(200).json({
 				message: 'Usuario Registrado!',
 			});
+
+			res.status(403).json({ message: 'Pase pase' });
+
 		}
 		res.status(403).json({ message: 'Error, ya existe el usuario' });
 	}

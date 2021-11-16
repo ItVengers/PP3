@@ -20,22 +20,41 @@ export class AdminVerHabitacionesComponent implements OnInit {
   datosBloquear = { nroHabitacion: "", nroHot: "" };
   selectedHot: string = 'Hotel Cordoba';
   hoteles: any = [];
-  nro_hotel = 1;
+  nro_hotel = 0;
 
   ngOnInit(): void {
-    this.traerHoteles();
-    if (this.selectedHot == 'Hotel Cordoba') {
-      this.nro_hotel = 1;
+
+    if(this.nro_hotel == 0)
+    {
+      this.traerHoteles();
+      if (this.selectedHot == 'Hotel Cordoba') {
+        this.nro_hotel = 1;
+      }
+      if (this.selectedHot == 'Holiday Inn Cordoba') {
+        this.nro_hotel = 2;
+      }
+      if (this.selectedHot == 'Howard Johnson La Cañada Hotel & Suites') {
+        this.nro_hotel = 3;
+      }
+      if (this.selectedHot == 'NH Córdoba Urbano') {
+        this.nro_hotel = 4;
+      }
     }
-    if (this.selectedHot == 'Holiday Inn Cordoba') {
-      this.nro_hotel = 2;
+    else{
+      if (this.selectedHot == 'Hotel Cordoba') {
+        this.nro_hotel = 1;
+      }
+      if (this.selectedHot == 'Holiday Inn Cordoba') {
+        this.nro_hotel = 2;
+      }
+      if (this.selectedHot == 'Howard Johnson La Cañada Hotel & Suites') {
+        this.nro_hotel = 3;
+      }
+      if (this.selectedHot == 'NH Córdoba Urbano') {
+        this.nro_hotel = 4;
+      }
     }
-    if (this.selectedHot == 'Howard Johnson La Cañada Hotel & Suites') {
-      this.nro_hotel = 3;
-    }
-    if (this.selectedHot == 'NH Córdoba Urbano') {
-      this.nro_hotel = 4;
-    }
+
 
     this.usuariosService.vistaDeHabitaciones(this.nro_hotel).subscribe(
       res => {
@@ -44,6 +63,8 @@ export class AdminVerHabitacionesComponent implements OnInit {
       },
       err => console.log(err)
     )
+
+
   }
 
   selectChangeHandler(event: any) {

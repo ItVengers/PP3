@@ -17,6 +17,15 @@ const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const mailer_1 = require("../config/mailer");
 //import bcrypt from "bcrypt";
 class UserController {
+    cancelarReservaAnticipadamente(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { reservaID } = req.params;
+            console.log(reservaID);
+            const actualizarEstadoReserva = yield userModel_1.default.actualizarReservaxCancelacion_Usuario(reservaID);
+            //console.log(actualizarEstadoReserva);
+            return res.json(actualizarEstadoReserva);
+        });
+    }
     listarcategorias(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const categorias = yield userModel_1.default.listarCategorias();
@@ -283,6 +292,7 @@ class UserController {
                 res.status(200).json({
                     message: 'Usuario Registrado!',
                 });
+                res.status(403).json({ message: 'Pase pase' });
             }
             res.status(403).json({ message: 'Error, ya existe el usuario' });
         });

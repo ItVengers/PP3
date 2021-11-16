@@ -84,12 +84,15 @@ export class UsuariosRegistrarComponent implements OnInit {
           this.router.navigate(["usuarios/ingresar"]);
         },
         err => {
-          console.log(err.error.message);
+          this.messageService.add({
+            severity: 'error',
+            summary: 'ERROR',
+            detail: err.message
+          });
         }
       )
     }
-    else
-    {
+    else {
       this.isLogin = false;
       this.messageService.add({
         severity: 'error',

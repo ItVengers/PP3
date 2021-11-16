@@ -28,6 +28,9 @@ class UserRoutes {
 		this.router.get('/listartemporadas', userController.listartemporadas);
 		this.router.get('/listarcategorias', userController.listarcategorias);
 
+		this.router.get("/cancelar/:reservaID", userController.cancelarReservaAnticipadamente);
+
+
 
 
 		

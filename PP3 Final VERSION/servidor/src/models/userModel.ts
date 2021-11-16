@@ -231,8 +231,8 @@ class UserModel {
 		return temporadas[0];
 	}
 
-	async listarCategorias() {
-		const temporadas = (await this.db.query('select distinct descripcion from categoria'));
+	async listarCategorias(hotel: string, temporada: string) {
+		const temporadas = (await this.db.query('select distinct cat.descripcion, tar.precio  from categoria cat inner join hoteles hot on hot.idHotel = cat.hotel_id inner join tarifas tar on tar.categoria_id = cat.idCategoria inner join temporada tem on tem.idTemporada = tar.temporada_id where hot.descripcion = ? and tem.descripcion = ?',[hotel, temporada]));
 		return temporadas[0];
 	}
 

@@ -28,7 +28,8 @@ class UserController {
     }
     listarcategorias(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const categorias = yield userModel_1.default.listarCategorias();
+            const { hotel, temporada } = req.body;
+            const categorias = yield userModel_1.default.listarCategorias(hotel, temporada);
             console.log(categorias);
             return res.json(categorias);
         });

@@ -103,8 +103,8 @@ export class UsuariosService {
     return this.http.get(`${this.API_URI}/listartemporadas`);
   }
 
-  listarCategorias() {
-    return this.http.get(`${this.API_URI}/listarcategorias`);
+  listarCategorias(datos: any) {
+    return this.http.post(`${this.API_URI}/listarcategorias`, datos);
   }
 
   buscarId(desc: string) {

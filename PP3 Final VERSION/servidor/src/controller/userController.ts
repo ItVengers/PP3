@@ -16,7 +16,8 @@ class UserController {
     }
 
 	public async listarcategorias(req: Request, res: Response) {
-		const categorias = await userModel.listarCategorias();
+		const{hotel, temporada} = req.body;
+		const categorias = await userModel.listarCategorias(hotel, temporada);
 		console.log(categorias);
 		return res.json(categorias);
 	}

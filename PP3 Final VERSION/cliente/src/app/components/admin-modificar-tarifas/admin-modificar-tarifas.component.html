@@ -25,6 +25,7 @@
       <thead align="center" class="thead-light">
         <th>Categoria</th>
         <th>Ajuste</th>
+        <th>Precio</th>
         <th></th>
       </thead>
       <tbody>
@@ -33,6 +34,9 @@
           <td>
             <input type="number" name="ajuste" [(ngModel)]="ajuste[i]" placeholder="Ingrese el % (solo el valor)"
               min="-50" max="100" class="form-control">
+          </td>
+          <td align="center">
+            <b>$ {{cat.precio}}</b>
           </td>
           <td><button class="btn btn-small  btn-block btn-outline-success" (click)="ajustar(cat, i)">Aplicar
               Modificacion</button> </td>
@@ -74,7 +78,8 @@
   <!-- <button class="btn-outline-success" (click)="goBack()" id="a2">Volver</button> -->
 </div>
 
-<div align="center" class="flex"><button class="btn btn-outline-warning" (click)="goBack()" id="a2">Volver</button></div>>
+<div align="center" class="flex"><button class="btn btn-outline-warning" (click)="goBack()" id="a2">Volver</button>
+</div>>
 <br>
 <br>
 <br>

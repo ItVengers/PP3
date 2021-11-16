@@ -259,9 +259,9 @@ class UserModel {
             return temporadas[0];
         });
     }
-    listarCategorias() {
+    listarCategorias(hotel, temporada) {
         return __awaiter(this, void 0, void 0, function* () {
-            const temporadas = (yield this.db.query('select distinct descripcion from categoria'));
+            const temporadas = (yield this.db.query('select distinct cat.descripcion, tar.precio  from categoria cat inner join hoteles hot on hot.idHotel = cat.hotel_id inner join tarifas tar on tar.categoria_id = cat.idCategoria inner join temporada tem on tem.idTemporada = tar.temporada_id where hot.descripcion = ? and tem.descripcion = ?', [hotel, temporada]));
             return temporadas[0];
         });
     }

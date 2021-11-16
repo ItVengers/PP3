@@ -28,15 +28,19 @@ export class AdminModificarTarifasComponent implements OnInit {
   ajuste: any = [];
   selectedHot: string = 'Hotel Cordoba';
   selectedTemp: string = 'Baja';
+  datos_precio = { hotel: "", temporada: "" };
+
 
 
 
   selectChangeHandler(event: any) {
     this.selectedHot = event.target.value;
+    this.traerCategorias();
   }
 
   selectChangeHandler2(event: any) {
     this.selectedTemp = event.target.value;
+    this.traerCategorias();
   }
 
   traerHoteles() {
@@ -74,7 +78,10 @@ export class AdminModificarTarifasComponent implements OnInit {
   }
 
   traerCategorias() {
-    this.usuariosService.listarCategorias().subscribe(
+    this.datos_precio.hotel = this.selectedHot;
+    this.datos_precio.temporada = this.selectedTemp;
+
+    this.usuariosService.listarCategorias(this.datos_precio).subscribe(
       (res) => {
         this.categorias = res;
         console.log(this.temporadas);
@@ -88,6 +95,10 @@ export class AdminModificarTarifasComponent implements OnInit {
         console.log(err.error.message);
       }
     )
+
+
+
+
   }
 
 

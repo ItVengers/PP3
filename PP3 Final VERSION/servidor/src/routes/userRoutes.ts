@@ -26,7 +26,7 @@ class UserRoutes {
 		this.router.get('/buscarId/:desc', userController.buscarID)
 		this.router.get('/buscarFecha/:fecha', userController.buscarFecha)
 		this.router.get('/listartemporadas', userController.listartemporadas);
-		this.router.get('/listarcategorias', userController.listarcategorias);
+		this.router.post('/listarcategorias', userController.listarcategorias);
 
 		this.router.get("/cancelar/:reservaID", userController.cancelarReservaAnticipadamente);
 

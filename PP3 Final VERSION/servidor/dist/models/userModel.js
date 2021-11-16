@@ -168,7 +168,7 @@ class UserModel {
     datosReserva(id) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(id);
-            const reservaDato = yield this.db.query('SELECT * FROM reservas WHERE idReserva = ?', [id]);
+            const reservaDato = yield this.db.query('select nombre, apellido, dni, telefono, mail from persona p  inner join reservas r on r.persona_id = p.idPersona where r.idReserva = ?;', [id]);
             return reservaDato[0][0];
         });
     }

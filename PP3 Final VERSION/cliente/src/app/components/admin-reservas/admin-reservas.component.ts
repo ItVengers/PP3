@@ -97,16 +97,14 @@ export class AdminReservasComponent implements OnInit {
       res => {
         let result: any
         result = res;
+        console.log(result);
         const navigationExtras: NavigationExtras = {
           state: {
-            idReserva: result.idReserva,
-            fechaDesde: result.fechaDesde,
-            fechaHasta: result.fechaHasta,
-            fechaReserva: result.fechaReserva,
-            habitacion_id: result.habitacion_id,
-            cantidadPax: result.cantidadPax,
-            persona_id: result.persona_id,
-            precioTotal: result.precioTotal
+            nombre: result.nombre,
+            apellido: result.apellido,
+            dni: result.dni,
+            telefono: result.telefono,
+            mail: result.mail,
           }
         }
         console.log(navigationExtras);

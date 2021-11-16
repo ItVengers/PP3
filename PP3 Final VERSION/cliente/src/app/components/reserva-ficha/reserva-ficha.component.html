@@ -1,59 +1,35 @@
-<div class="container" id="a2">
+<div class="col-12" id="a2">
   <p-toast></p-toast>
-  <button class="btn btn-outline-warning" (click)="goBack()" id="a2">Volver</button>
 
   <br>
-  <h1 align="left" style="color: white;" id="a2">Datos de la Reserva</h1>
+  <h1 align="center" style="color: white;" id="a2">Datos del Pasajero</h1>
 
+  <table class="table table-hover table-dark" id="table">
+    <thead class="thead-dark">
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>DNI</th>
+      <th>TELEFONO</th>
+      <th>MAIL</th>
+    </thead>
+    <tr >
+      <td style="font-weight: bold;">{{datosreserva.nombre}}</td>
+      <td style="font-weight: bold;">{{datosreserva.apellido}}</td>
+      <td style="font-weight: bold;">{{datosreserva.dni}}</td>
+      <td style="font-weight: bold;">{{datosreserva.telefono}}</td>
+      <td style="font-weight: bold;">{{datosreserva.mail}}</td>
+  </table>
 
-
-
-
-
-
-  <!-- <div id="a2">
-    <div class="form-group">
-      <label>ID:</label>
-      <input id="input-datos" type="text" name="nombre" [(ngModel)]="datosreserva.idReserva" class="form-control">
-    </div>
-
-    <div class="form-group">
-      <label>Fecha Desde:</label>
-      <input type="text" id="input-datos" name="apellido" [(ngModel)]="datosreserva.fechaDesde" class="form-control">
-    </div>
-
-    <div class="form-group">
-      <label>Fecha Hasta:</label>
-      <input type="text" id="input-datos" name="dni" [(ngModel)]="datosreserva.fechaHasta" class="form-control">
-    </div>
-
-    <div class="form-group">
-      <label>Fecha Reserva:</label>
-      <input type="text" id="input-datos" name="telefono" [(ngModel)]="datosreserva.fechaReserva" class="form-control">
-    </div>
-
-    <div class="form-group">
-      <label>Id Hab:</label>
-      <input type="text" id="input-datos" name="mail" [(ngModel)]="datosreserva.habitacion_id" class="form-control">
-    </div>
-
-    <div class="form-group">
-      <label>Cantidad Pax:</label>
-      <input type="text" id="input-datos" name="contrasenia" [(ngModel)]="datosreserva.cantidadPax"
-        class="form-control">
-    </div>
-    <div class="form-group">
-      <label>Id Persona:</label>
-      <input type="text" id="input-datos" name="repassword" [(ngModel)]="datosreserva.persona_id"
-        placeholder="Confirmar" class="form-control">
-    </div>
-    <div class="form-group">
-      <label>Precio Total:</label>
-      <input type="text" id="input-datos" name="repassword" [(ngModel)]="datosreserva.precioTotal"
-        placeholder="Confirmar" class="form-control">
-    </div>
-  </div> -->
-  <button class="btn btn-outline-warning" (click)="goBack()" id="a2">Volver</button>
+  <button class="btn btn-outline-warning" (click)="goBack()">Volver</button>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
   <br>
   <br>
   <br>

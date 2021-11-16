@@ -153,7 +153,7 @@ class UserModel {
 
 	async datosReserva(id: string) {
 		console.log(id);
-		const reservaDato = await this.db.query('SELECT * FROM reservas WHERE idReserva = ?', [id]);
+		const reservaDato = await this.db.query('select nombre, apellido, dni, telefono, mail from persona p  inner join reservas r on r.persona_id = p.idPersona where r.idReserva = ?;', [id]);
 		return reservaDato[0][0];
 	}
 

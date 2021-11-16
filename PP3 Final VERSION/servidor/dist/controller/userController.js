@@ -14,7 +14,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const userModel_1 = __importDefault(require("../models/userModel"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-const mailer_1 = require("../config/mailer");
 //import bcrypt from "bcrypt";
 class UserController {
     cancelarReservaAnticipadamente(req, res) {
@@ -279,17 +278,17 @@ class UserController {
                 datos.rol = 'user';
                 datos.legajo = 0;
                 yield userModel_1.default.crearUsuario(datos);
-                try {
-                    yield mailer_1.transporter.sendMail({
-                        from: '"SISRO Hoteles 👻" <info@sisrohoteles.com>',
-                        to: datos.mail,
-                        subject: 'Registro en SISRO exitoso!!',
-                        html: `Hola ${datos.nombre}, ¡gracias por utilizar SISRO Hoteles! <button href="http://localhost:4200"> SISRO Hoteles </a>`
-                    }); // ya podés ingresar a nuestro sitio clickeando el siguiente enlace:
-                }
-                catch (err) {
-                    console.log("error: ", err);
-                }
+                // // try {
+                // // 	await transporter.sendMail({
+                // // 		from: '"SISRO Hoteles 👻" <info@sisrohoteles.com>',
+                // // 		to: datos.mail,
+                // // 		subject: 'Registro en SISRO exitoso!!',
+                // // 		html: `Hola ${datos.nombre}, ¡gracias por utilizar SISRO Hoteles! <button href="http://localhost:4200"> SISRO Hoteles </a>`
+                // // 	}); // ya podés ingresar a nuestro sitio clickeando el siguiente enlace:
+                // // }
+                // // catch (err) {
+                // // 	console.log("error: ", err)
+                // // }
                 res.status(200).json({
                     message: 'Usuario Registrado!',
                 });

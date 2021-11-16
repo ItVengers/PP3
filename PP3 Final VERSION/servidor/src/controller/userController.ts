@@ -282,18 +282,18 @@ class UserController {
 			datos.rol = 'user'
 			datos.legajo = 0;
 			await userModel.crearUsuario(datos);
-			try {
-				await transporter.sendMail({
-					from: '"SISRO Hoteles 👻" <info@sisrohoteles.com>',
-					to: datos.mail,
-					subject: 'Registro en SISRO exitoso!!',
-					html: `Hola ${datos.nombre}, ¡gracias por utilizar SISRO Hoteles! <button href="http://localhost:4200"> SISRO Hoteles </a>`
-				}); // ya podés ingresar a nuestro sitio clickeando el siguiente enlace:
+			// // try {
+			// // 	await transporter.sendMail({
+			// // 		from: '"SISRO Hoteles 👻" <info@sisrohoteles.com>',
+			// // 		to: datos.mail,
+			// // 		subject: 'Registro en SISRO exitoso!!',
+			// // 		html: `Hola ${datos.nombre}, ¡gracias por utilizar SISRO Hoteles! <button href="http://localhost:4200"> SISRO Hoteles </a>`
+			// // 	}); // ya podés ingresar a nuestro sitio clickeando el siguiente enlace:
 
-			}
-			catch (err) {
-				console.log("error: ", err)
-			}
+			// // }
+			// // catch (err) {
+			// // 	console.log("error: ", err)
+			// // }
 
 
 			res.status(200).json({
